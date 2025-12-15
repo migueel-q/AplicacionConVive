@@ -17,7 +17,7 @@ public class Gasto {
     @ManyToOne
     private Inquilino inquilino;
     @ManyToOne
-    private Piso piso;  //Los gastos puedes ser N:M o 1:N, hay que preguntar a Eduardo
+    private Piso piso;
 
     public Gasto() {
     }

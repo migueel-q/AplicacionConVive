@@ -9,7 +9,7 @@ import java.util.List;
 public class Propietario extends Usuario{
     @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL)
     private List<Piso> pisos;
-    @ManyToMany(mappedBy = "propietarios")
+    @OneToMany(mappedBy = "propietario",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inquilino> inquilinos;     //Esta lista es la lista que recoge los inquilinos con los que habla el propietario
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "propietario_id")

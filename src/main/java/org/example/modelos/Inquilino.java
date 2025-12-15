@@ -2,11 +2,14 @@ package org.example.modelos;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "inquilinos")
 public class Inquilino extends Usuario {
+
+    private LocalDateTime fechaAlta;
     @ManyToOne
     private Piso piso;
     @OneToMany(mappedBy = "inquilino",  cascade = CascadeType.ALL, orphanRemoval = true)
@@ -17,8 +20,7 @@ public class Inquilino extends Usuario {
     private List<Solicitud> solicitudes;
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Gasto> gastos;
-    @ManyToMany
-    @JoinTable(name = "inquilinos_propietarios", joinColumns = {@JoinColumn(name = "idInquilino")}, inverseJoinColumns = {@JoinColumn(name = "idPropietario")})
+    @OneToMany(mappedBy = "inquilino", cascade =  CascadeType.ALL, orphanRemoval = true)
     private List<Propietario> propietarios;     //Esta lista recoge los propietarios con los que hablan los inquilinos
 
     public Inquilino() {

@@ -16,6 +16,8 @@ public class Piso {
     @Column(nullable = false)
     private String descripcion;
     private String urlImagen;
+    @Column(nullable = false)
+    private boolean disponible;
     @OneToMany(mappedBy = "piso")
     List<Inquilino> inquilinos;
     @ManyToOne
@@ -50,6 +52,14 @@ public class Piso {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     public String getUrlImagen() {
