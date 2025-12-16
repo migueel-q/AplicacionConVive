@@ -10,21 +10,39 @@ public class Propietario extends Usuario{
     @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL)
     private List<Piso> pisos;
     @OneToMany(mappedBy = "propietario",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Inquilino> inquilinos;     //Esta lista es la lista que recoge los inquilinos con los que habla el propietario
+    private List<InquilinoPropietario> inquilinos;     //Esta lista es la lista que recoge los inquilinos con los que habla el propietario
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "propietario_id")
     private List<Oferta> ofertas;
+    @OneToMany(mappedBy = "propietario",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contrato> contratos;
 
     public Propietario() {
 
     }
 
-    public List<Inquilino> getInquilinos() {
+    public List<InquilinoPropietario> getInquilinos() {
         return inquilinos;
     }
 
-    public void setInquilinos(List<Inquilino> inquilinos) {
+    public void setInquilinos(List<InquilinoPropietario> inquilinos) {
         this.inquilinos = inquilinos;
+    }
+
+    public List<Oferta> getOfertas() {
+        return ofertas;
+    }
+
+    public void setOfertas(List<Oferta> ofertas) {
+        this.ofertas = ofertas;
+    }
+
+    public List<Contrato> getContratos() {
+        return contratos;
+    }
+
+    public void setContratos(List<Contrato> contratos) {
+        this.contratos = contratos;
     }
 
     public List<Piso> getPisos() {

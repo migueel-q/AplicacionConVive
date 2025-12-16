@@ -1,6 +1,5 @@
 package org.example.modelos;
 
-
 import java.util.Objects;
 
 public class InquilinoPropietarioId {
@@ -10,31 +9,31 @@ public class InquilinoPropietarioId {
     public InquilinoPropietarioId() {
     }
 
-    public int getInquilinoId() {
-        return inquilinoId;
+    public int getInquilino() {
+        return inquilino;
     }
 
-    public void setInquilinoId(int inquilinoId) {
-        this.inquilinoId = inquilinoId;
+    public void setInquilino(int inquilino) {
+        this.inquilino = inquilino;
     }
 
-    public int getPropietarioId() {
-        return propietarioId;
+    public int getPropietario() {
+        return propietario;
     }
 
-    public void setPropietarioId(int propietarioId) {
-        this.propietarioId = propietarioId;
+    public void setPropietario(int propietario) {
+        this.propietario = propietario;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         InquilinoPropietarioId that = (InquilinoPropietarioId) o;
-        return inquilinoId == that.inquilinoId && propietarioId == that.propietarioId;
+        return inquilino == that.inquilino && propietario == that.propietario;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inquilinoId, propietarioId);
+        return Objects.hash(inquilino, propietario);
     }
 }

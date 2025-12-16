@@ -21,16 +21,18 @@ public class Inquilino extends Usuario {
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Gasto> gastos;
     @OneToMany(mappedBy = "inquilino", cascade =  CascadeType.ALL, orphanRemoval = true)
-    private List<Propietario> propietarios;     //Esta lista recoge los propietarios con los que hablan los inquilinos
+    private List<InquilinoPropietario> propietarios;     //Esta lista recoge los propietarios con los que hablan los inquilinos y la fecha de los mensajes permiten que se puedan repetir
+    @ManyToOne
+    private Contrato contrato;
 
     public Inquilino() {
     }
 
-    public List<Propietario> getPropietarios() {
+    public List<InquilinoPropietario> getPropietarios() {
         return propietarios;
     }
 
-    public void setPropietarios(List<Propietario> propietarios) {
+    public void setPropietarios(List<InquilinoPropietario> propietarios) {
         this.propietarios = propietarios;
     }
 
@@ -72,5 +74,21 @@ public class Inquilino extends Usuario {
 
     public void setPiso(Piso piso) {
         this.piso = piso;
+    }
+
+    public LocalDateTime getFechaAlta() {
+        return fechaAlta;
+    }
+
+    public void setFechaAlta(LocalDateTime fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
     }
 }

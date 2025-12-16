@@ -11,11 +11,11 @@ import java.util.Objects;
 public class InquilinoPropietario {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="inquilino_id",insertable=false,updatable=false)
+    @JoinColumn(name="inquilinoId", nullable = false)
     private Inquilino inquilino;
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="propietario_id",insertable=false,updatable=false)
+    @JoinColumn(name="propietarioId", nullable = false)
     private Propietario propietario;
     @Column(nullable = false)
     private LocalDateTime fechaMsg;

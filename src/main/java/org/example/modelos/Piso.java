@@ -26,6 +26,8 @@ public class Piso {
     private List<Oferta> ofertas;
     @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Gasto> gastos;
+    @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contrato> contratos;
 
     public Piso() {
     }
@@ -100,5 +102,13 @@ public class Piso {
 
     public void setGastos(List<Gasto> gastos) {
         this.gastos = gastos;
+    }
+
+    public List<Contrato> getContratos() {
+        return contratos;
+    }
+
+    public void setContratos(List<Contrato> contratos) {
+        this.contratos = contratos;
     }
 }
