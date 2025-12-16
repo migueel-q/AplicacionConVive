@@ -12,6 +12,15 @@ public class Solicitud {
     private Inquilino inquilino;
     @ManyToOne
     private Oferta oferta;
+    private boolean aceptado;
+
+    public boolean isAceptado() {
+        return aceptado;
+    }
+
+    public void setAceptado(boolean aceptado) {
+        this.aceptado = aceptado;
+    }
 
     public Solicitud() {
     }
