@@ -1,5 +1,7 @@
 package org.example.DAO;
 
+import org.example.modelos.Inquilino;
+
 import java.util.List;
 
 public interface IDAOGeneral<T, Integer> {

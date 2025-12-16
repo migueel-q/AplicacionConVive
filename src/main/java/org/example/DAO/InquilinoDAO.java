@@ -4,17 +4,17 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import org.example.modelos.Inquilino;
-import org.example.modelos.Propietario;
 import org.example.persistencia.AccesoBD;
 
-import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class InquilinoDAO {
+public class InquilinoDAO implements IDAOGeneral<Inquilino, Integer>{
 
     EntityManager em = AccesoBD.getEntityManager();
     EntityTransaction tx = em.getTransaction();
-
-    public void insertInquilino(Inquilino inquilino) {
+    @Override
+    public void insertar(Inquilino inquilino) {
         try {
             tx.begin();
             em.persist(inquilino);
@@ -25,7 +25,8 @@ public class InquilinoDAO {
             em.close();
         }
     }
-    public void updateInquilino(Inquilino inquilino) {
+    @Override
+    public void actualizar(Inquilino inquilino) {
         try {
             tx.begin();
             em.merge(inquilino);
@@ -36,9 +37,12 @@ public class InquilinoDAO {
             em.close();
         }
     }
-    public void deleteInquilino(Inquilino inquilino) {
+
+    @Override
+    public void eliminar(Integer id) {
         try {
             tx.begin();
+            Inquilino inquilino = em.find(Inquilino.class, id);
             em.remove(inquilino);
             tx.commit();
         } catch (Exception e) {
@@ -47,10 +51,27 @@ public class InquilinoDAO {
             em.close();
         }
     }
-    public void findInquilino(int id){
+    @Override
+    public List<Inquilino> obtenerTodos(){
+        List<Inquilino> inquilinos = new ArrayList<>();
         try {
             tx.begin();
-            Inquilino inquilino = em.find(Inquilino.class, id);
+            TypedQuery<Inquilino> query = em.createQuery("Select i from Inquilino i", Inquilino.class);
+            inquilinos=query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Error al listar inquilinos: " + e.getMessage());
+        } finally {
+            em.close();
+        }
+        return inquilinos;
+    }
+
+    @Override
+    public Inquilino obtenerPorId(Integer id) {
+        Inquilino inquilino = null;
+        try {
+            tx.begin();
+            inquilino = em.find(Inquilino.class, id);
             System.out.println(inquilino.toString());
             tx.commit();
         } catch (Exception e) {
@@ -58,19 +79,6 @@ public class InquilinoDAO {
         } finally{
             em.close();
         }
-    }
-    public void listarInquilinos(){
-        try {
-            tx.begin();
-            TypedQuery<Inquilino> query = em.createQuery("Select i from Inquilino i", Inquilino.class);
-            var inquilinos=query.getResultList();
-            inquilinos.forEach(i->{
-                System.out.println(i.toString());
-            });
-        } catch (Exception e) {
-            System.out.println("Error al listar inquilinos: " + e.getMessage());
-        } finally {
-            em.close();
-        }
+        return inquilino;
     }
 }
