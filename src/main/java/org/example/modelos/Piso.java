@@ -29,6 +29,22 @@ public class Piso {
     @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contrato> contratos;
 
+    @Override
+    public String toString() {
+        return "Piso{" +
+                "id=" + id +
+                ", direccion=" + direccion +
+                ", descripcion='" + descripcion + '\'' +
+                ", urlImagen='" + urlImagen + '\'' +
+                ", disponible=" + disponible +
+                ", inquilinos=" + inquilinos +
+                ", propietario=" + propietario +
+                ", ofertas=" + ofertas +
+                ", gastos=" + gastos +
+                ", contratos=" + contratos +
+                '}';
+    }
+
     public Piso() {
     }
 
