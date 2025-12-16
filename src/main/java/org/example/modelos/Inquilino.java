@@ -91,4 +91,15 @@ public class Inquilino extends Usuario {
     public void setContrato(Contrato contrato) {
         this.contrato = contrato;
     }
+
+    @Override
+    public String toString() {
+        return "Inquilino{" +
+                "nombreUsuario='" + nombreUsuario + '\'' +
+                ", nombreReal='" + nombreReal + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", email='" + email + '\'' +
+                ", piso=" + piso +
+                '}';
+    }
 }
