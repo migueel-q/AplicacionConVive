@@ -52,4 +52,18 @@ public class Propietario extends Usuario{
     public void setPisos(List<Piso> pisos) {
         this.pisos = pisos;
     }
+
+    @Override
+    public String toString() {
+        return "Propietario{" +
+                "pisos=" + pisos +
+                ", inquilinos=" + inquilinos +
+                ", ofertas=" + ofertas +
+                ", contratos=" + contratos +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", nombreReal='" + nombreReal + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
