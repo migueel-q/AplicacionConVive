@@ -4,11 +4,16 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import org.example.modelos.Piso;
+import org.example.modelos.Solicitud;
 import org.example.persistencia.AccesoBD;
 
-public class PisoDAO {
+import java.util.ArrayList;
+import java.util.List;
+
+public class PisoDAO implements IDAOGeneral<Piso,Integer> {
     EntityManager em = AccesoBD.getEntityManager();
-    public void insertarPiso(Piso piso) {
+    @Override
+    public void insertar(Piso piso) {
         try {
             em.getTransaction().begin();
             em.persist(piso);
@@ -19,7 +24,8 @@ public class PisoDAO {
             em.close();
         }
     }
-    public void actualizarPiso(Piso piso) {
+    @Override
+    public void actualizar(Piso piso) {
         try {
             em.getTransaction().begin();
             em.merge(piso);
@@ -30,7 +36,8 @@ public class PisoDAO {
             em.close();
         }
     }
-    public void eliminarPiso(int id) {
+    @Override
+    public void eliminar(Integer id) {
         try {
             em.getTransaction().begin();
             Piso piso=em.find(Piso.class,id);
@@ -44,32 +51,35 @@ public class PisoDAO {
             em.close();
         }
     }
-    public void buscarPisos() {
+    @Override
+    public List<Piso> obtenerTodos() {
+        List<Piso> pisos = new ArrayList<>();
         try {
             em.getTransaction().begin();
-            TypedQuery<Piso>  query = em.createQuery("Select p from Piso p", Piso.class);
-            var pisos=query.getResultList();
-            pisos.forEach(p->{
-                System.out.println("direccion"+p.getDireccion());
-                System.out.println("descripcion"+p.getDescripcion());
-                System.out.println("Disponible (Si o No)"+p.isDisponible());
-                System.out.println("Inquilinos"+p.getInquilinos());
-                System.out.println("Propietario"+p.getPropietario());
-            });
+            pisos = em.createQuery("SELECT p FROM Piso p", Piso.class).getResultList();
+            em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println("Error al buscar los pisos");
+            System.out.println("Error al listar los pisos: " + e.getMessage());
+            em.getTransaction().rollback();
         } finally {
             em.close();
         }
+        return pisos;
     }
-    public void buscarPiso(int id) {
+    @Override
+    public Piso obtenerPorId(Integer id) {
+        Piso piso = null;
         try {
             em.getTransaction().begin();
-            Piso piso = em.find(Piso.class, id);
-            System.out.println(piso.toString());
+            piso = em.find(Piso.class,id);
             em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println("Error al buscar el Piso");
+            System.out.println("Error al listar los pisos: " + e.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
         }
+        return piso;
     }
+
 }

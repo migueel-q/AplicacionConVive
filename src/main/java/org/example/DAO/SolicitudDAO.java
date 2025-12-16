@@ -1,14 +1,16 @@
 package org.example.DAO;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-import org.example.modelos.Piso;
 import org.example.modelos.Solicitud;
 import org.example.persistencia.AccesoBD;
 
-public class SolicitudDAO {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SolicitudDAO implements IDAOGeneral<Solicitud, Integer> {
     EntityManager em = AccesoBD.getEntityManager();
-    public void insertarSolicitud(Solicitud solicitud) {
+    @Override
+    public void insertar(Solicitud solicitud) {
         try {
             em.getTransaction().begin();
             em.persist(solicitud);
@@ -19,7 +21,8 @@ public class SolicitudDAO {
             em.close();
         }
     }
-    public void eliminarSolicitud(int id) {
+    @Override
+    public void eliminar(Integer id) {
         try {
             em.getTransaction().begin();
             Solicitud solicitud = em.find(Solicitud.class, id);
@@ -33,7 +36,8 @@ public class SolicitudDAO {
             em.close();
         }
     }
-    public void actualizarSolicitud(Solicitud solicitud) {
+    @Override
+    public void actualizar(Solicitud solicitud) {
         try {
             em.getTransaction().begin();
             em.merge(solicitud);
@@ -44,34 +48,35 @@ public class SolicitudDAO {
             em.close();
         }
     }
-    public void listarSolicitudes() {
+    @Override
+    public List<Solicitud> obtenerTodos() {
+        List<Solicitud> solicitudes = new ArrayList<>();
         try {
             em.getTransaction().begin();
-            TypedQuery<Solicitud> query = em.createQuery("Select s from Solicitud s", Solicitud.class);
-            var solicitudes=query.getResultList();
-            solicitudes.forEach(s->{
-                System.out.println("Inquilino"+s.getInquilino());
-                System.out.println("Oferta "+s.getOferta());
-                System.out.println("Esta aceptada (Si o No)"+s.isAceptado());
-            });
-
-        } catch (Exception e) {
-            System.out.println("Error al buscar la solicitud");
-        } finally {
-            em.close();
-        }
-    }
-    public void listarSolicitud(int id) {
-        try {
-            em.getTransaction().begin();
-            Solicitud solicitud = em.find(Solicitud.class, id);
-            System.out.println(solicitud.toString());
+           solicitudes = em.createQuery("SELECT s FROM Solicitud s", Solicitud.class).getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println("Error al buscar la solicitud por id");
+            System.out.println("Error al listar las solicitudes: " + e.getMessage());
+            em.getTransaction().rollback();
         } finally {
             em.close();
         }
+        return solicitudes;
     }
+    @Override
+    public Solicitud obtenerPorId(Integer id) {
+        Solicitud solicitud = null;
+        try {
+            em.getTransaction().begin();
+            solicitud = em.find(Solicitud.class,id);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Error al listar las solicitudes: " + e.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return solicitud;
     }
+}
 
