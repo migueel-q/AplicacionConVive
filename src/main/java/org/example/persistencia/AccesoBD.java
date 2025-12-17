@@ -1,6 +1,6 @@
 package org.example.persistencia;
 
-import com.google.protobuf.ServiceException;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
