@@ -17,6 +17,7 @@ public class InquilinoPropietario {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="propietarioId", nullable = false)
     private Propietario propietario;
+    @Id
     @Column(nullable = false)
     private LocalDateTime fechaMsg;
 

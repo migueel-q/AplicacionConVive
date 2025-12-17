@@ -1,10 +1,12 @@
 package org.example.modelos;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class InquilinoPropietarioId {
     private int inquilino;
     private int propietario;
+    private LocalDateTime fechaMsg;
 
     public InquilinoPropietarioId() {
     }
@@ -25,15 +27,23 @@ public class InquilinoPropietarioId {
         this.propietario = propietario;
     }
 
+    public LocalDateTime getFechaMsg() {
+        return fechaMsg;
+    }
+
+    public void setFechaMsg(LocalDateTime fechaMsg) {
+        this.fechaMsg = fechaMsg;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         InquilinoPropietarioId that = (InquilinoPropietarioId) o;
-        return inquilino == that.inquilino && propietario == that.propietario;
+        return inquilino == that.inquilino && propietario == that.propietario && Objects.equals(fechaMsg, that.fechaMsg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inquilino, propietario);
+        return Objects.hash(inquilino, propietario, fechaMsg);
     }
 }
