@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/solicitudes")
+@RequestMapping("/api")
 public class SolicitudControlador {
     @Autowired
     private final SolicitudServicioImpl solicitudServicio;
@@ -20,7 +20,7 @@ public class SolicitudControlador {
     public SolicitudControlador(SolicitudServicioImpl solicitudServicio) {
         this.solicitudServicio = solicitudServicio;
     }
-    @GetMapping
+    @GetMapping("/solicitudes")
     public ResponseEntity<List<Solicitud>> obtenerSolicitudes() {
         List<Solicitud> solicitudes = solicitudServicio.obtenerSolicitudes();
         if(solicitudes.isEmpty()) {
@@ -30,7 +30,7 @@ public class SolicitudControlador {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("solicitudes/{id}")
     public ResponseEntity<Solicitud> obtenerSolicitudPorId(@PathVariable Integer id) {
        Solicitud solicitud = solicitudServicio.obtenerSolicitudPorId(id);
         if(solicitud==null)
@@ -38,19 +38,19 @@ public class SolicitudControlador {
         return ResponseEntity.ok(solicitud);
     }
 
-    @PostMapping
+    @PostMapping("/solicitudes")
     public ResponseEntity<Solicitud> crearSolicitud(@RequestBody Solicitud solicitud) {
         Solicitud guardado = solicitudServicio.guardar(solicitud);
         return ResponseEntity.status(HttpStatus.CREATED).body(guardado);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/solicitudes/{id}")
     public ResponseEntity<Solicitud> actualizarSolicitud(@PathVariable Integer id, @RequestBody Solicitud solicitud) {
           Solicitud solicitudActualizads=solicitudServicio.actualizar(solicitud,id);
           return ResponseEntity.ok(solicitudActualizads);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/solicitudes/{id}")
     public ResponseEntity<Solicitud> eliminarSolicitud(@PathVariable Integer id) {
        Solicitud solicitud =solicitudServicio.eliminar(id);
         return ResponseEntity.ok(solicitud);

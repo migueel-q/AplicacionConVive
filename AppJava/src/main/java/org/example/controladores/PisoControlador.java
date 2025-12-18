@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pisos")
+@RequestMapping("/api")
 public class PisoControlador {
 
     @Autowired
@@ -25,7 +25,7 @@ public class PisoControlador {
         this.pisoServicio = pisoServicio;
     }
 
-    @GetMapping
+    @GetMapping("/pisos")
     public ResponseEntity<List<Piso>> obtenerPisos() {
         List<Piso> pisos = pisoServicio.obtenerPisos();
         if(pisos.isEmpty()) {
@@ -35,7 +35,7 @@ public class PisoControlador {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("pisos/{id}")
     public ResponseEntity<Piso> obtenerPisoPorId(@PathVariable Integer id) {
         Piso piso = pisoServicio.obtenerPisoPorId(id);
         if(piso==null)
@@ -43,13 +43,13 @@ public class PisoControlador {
         return ResponseEntity.ok(piso);
     }
 
-    @PostMapping
+    @PostMapping("/pisos")
     public ResponseEntity<Piso> crearPiso(@RequestBody Piso piso) {
         Piso guardado = pisoServicio.guardar(piso);
         return ResponseEntity.status(HttpStatus.CREATED).body(guardado);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/pisos/{id}")
     public ResponseEntity<Piso> actualizarPiso(@PathVariable Integer id, @RequestBody Piso piso) {
         Piso actualizado = pisoServicio.actualizar(piso, id);
         if (actualizado != null) {
@@ -60,7 +60,7 @@ public class PisoControlador {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/pisos/{id}")
     public ResponseEntity<Void> eliminarPiso(@PathVariable Integer id) {
         Piso eliminado = pisoServicio.eliminar(id);
         if (eliminado != null) {
