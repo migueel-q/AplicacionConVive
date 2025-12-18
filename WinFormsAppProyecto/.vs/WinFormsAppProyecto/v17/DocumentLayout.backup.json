@@ -1,10 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\",
+  "WorkspaceRootPath": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\WinFormsAppProyecto.csproj|c:\\users\\usuario1\\source\\repos\\winformsappproyecto\\winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\WinFormsAppProyecto.csproj|solutionrelative:winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formpruebas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formpruebas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69B6D0EA-0A0D-467E-B576-015E1980AECC}|UserControlLib\\UserControlLib.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\usercontrollib\\fichapiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69B6D0EA-0A0D-467E-B576-015E1980AECC}|UserControlLib\\UserControlLib.csproj|solutionrelative:usercontrollib\\fichapiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formpruebas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formpruebas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69B6D0EA-0A0D-467E-B576-015E1980AECC}|UserControlLib\\UserControlLib.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\usercontrollib\\fichapiso.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69B6D0EA-0A0D-467E-B576-015E1980AECC}|UserControlLib\\UserControlLib.csproj|solutionrelative:usercontrollib\\fichapiso.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69B6D0EA-0A0D-467E-B576-015E1980AECC}|UserControlLib\\UserControlLib.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\usercontrollib\\fichapiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{69B6D0EA-0A0D-467E-B576-015E1980AECC}|UserControlLib\\UserControlLib.csproj|solutionrelative:usercontrollib\\fichapiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formregistro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formregistro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formlogs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formlogs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\forminiciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\forminiciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\forma\u00F1adirpiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\forma\u00F1adirpiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\usuario1\\documents\\github\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 267,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,15 +66,139 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FichaPiso.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\UserControlLib\\FichaPiso.Designer.cs",
+              "RelativeDocumentMoniker": "UserControlLib\\FichaPiso.Designer.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\UserControlLib\\FichaPiso.Designer.cs",
+              "RelativeToolTip": "UserControlLib\\FichaPiso.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:18:06.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Program.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\Program.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Program.cs",
+              "RelativeToolTip": "WinFormsAppProyecto\\Program.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAADwv0MAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T17:12:34.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs",
+              "Title": "Formpruebas.cs",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Formpruebas.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\Formpruebas.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Formpruebas.cs",
+              "RelativeToolTip": "WinFormsAppProyecto\\Formpruebas.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAkwBoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T17:05:50.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Formpruebas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Formpruebas.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\Formpruebas.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Formpruebas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\Formpruebas.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:52:46.246Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FichaPiso.cs",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\UserControlLib\\FichaPiso.cs",
+              "RelativeDocumentMoniker": "UserControlLib\\FichaPiso.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\UserControlLib\\FichaPiso.cs",
+              "RelativeToolTip": "UserControlLib\\FichaPiso.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAywBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:38:39.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FichaPiso.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\UserControlLib\\FichaPiso.cs",
+              "RelativeDocumentMoniker": "UserControlLib\\FichaPiso.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\UserControlLib\\FichaPiso.cs [Dise\u00F1o]",
+              "RelativeToolTip": "UserControlLib\\FichaPiso.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:17:26.018Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FormRegistro.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormRegistro.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormRegistro.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormRegistro.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormRegistro.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:15:11.856Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FormLogs.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormLogs.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormLogs.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormLogs.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormLogs.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:14:42.04Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FormInicioSesion.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormInicioSesion.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormInicioSesion.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormInicioSesion.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormInicioSesion.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:14:38.774Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FormA\u00F1adirPiso.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormA\u00F1adirPiso.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormA\u00F1adirPiso.cs",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormA\u00F1adirPiso.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormA\u00F1adirPiso.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T16:14:28.698Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsAppProyecto\\Form1.cs",
-              "ToolTip": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs [Design]",
-              "RelativeToolTip": "WinFormsAppProyecto\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\usuario1\\Documents\\GitHub\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-16T18:13:23.838Z",
-              "EditorCaption": " [Design]"
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

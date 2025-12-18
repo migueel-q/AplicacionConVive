@@ -1,0 +1,14 @@
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\bin\Debug\net8.0-windows\UserControlLib.deps.json
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\bin\Debug\net8.0-windows\UserControlLib.dll
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\bin\Debug\net8.0-windows\UserControlLib.pdb
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.FichaPiso.resources
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.csproj.GenerateResource.cache
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.AssemblyInfoInputs.cache
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.AssemblyInfo.cs
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.csproj.CoreCompileInputs.cache
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.sourcelink.json
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.dll
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\refint\UserControlLib.dll
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\UserControlLib.pdb
+C:\Users\usuario1\Documents\GitHub\AplicacionProyecto\WinFormsAppProyecto\UserControlLib\obj\Debug\net8.0-windows\ref\UserControlLib.dll
