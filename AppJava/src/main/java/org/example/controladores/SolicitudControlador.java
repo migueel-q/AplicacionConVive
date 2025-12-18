@@ -21,7 +21,7 @@ public class SolicitudControlador {
         this.solicitudServicio = solicitudServicio;
     }
     @GetMapping("/solicitudes")
-    public ResponseEntity<List<Solicitud>> obtenerSolicitudes() {
+    public ResponseEntity<?> obtenerSolicitudes() {
         List<Solicitud> solicitudes = solicitudServicio.obtenerSolicitudes();
         if(solicitudes.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -31,7 +31,7 @@ public class SolicitudControlador {
     }
 
     @GetMapping("solicitudes/{id}")
-    public ResponseEntity<Solicitud> obtenerSolicitudPorId(@PathVariable Integer id) {
+    public ResponseEntity<?> obtenerSolicitudPorId(@PathVariable Integer id) {
        Solicitud solicitud = solicitudServicio.obtenerSolicitudPorId(id);
         if(solicitud==null)
             return ResponseEntity.notFound().build();
@@ -45,13 +45,13 @@ public class SolicitudControlador {
     }
 
     @PutMapping("/solicitudes/{id}")
-    public ResponseEntity<Solicitud> actualizarSolicitud(@PathVariable Integer id, @RequestBody Solicitud solicitud) {
+    public ResponseEntity<?> actualizarSolicitud(@PathVariable Integer id, @RequestBody Solicitud solicitud) {
           Solicitud solicitudActualizads=solicitudServicio.actualizar(solicitud,id);
           return ResponseEntity.ok(solicitudActualizads);
     }
 
     @DeleteMapping("/solicitudes/{id}")
-    public ResponseEntity<Solicitud> eliminarSolicitud(@PathVariable Integer id) {
+    public ResponseEntity<?> eliminarSolicitud(@PathVariable Integer id) {
        Solicitud solicitud =solicitudServicio.eliminar(id);
         return ResponseEntity.ok(solicitud);
     }

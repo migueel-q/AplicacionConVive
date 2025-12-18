@@ -26,7 +26,7 @@ public class PisoControlador {
     }
 
     @GetMapping("/pisos")
-    public ResponseEntity<List<Piso>> obtenerPisos() {
+    public ResponseEntity<?> obtenerPisos() {
         List<Piso> pisos = pisoServicio.obtenerPisos();
         if(pisos.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -36,7 +36,7 @@ public class PisoControlador {
     }
 
     @GetMapping("pisos/{id}")
-    public ResponseEntity<Piso> obtenerPisoPorId(@PathVariable Integer id) {
+    public ResponseEntity<?> obtenerPisoPorId(@PathVariable Integer id) {
         Piso piso = pisoServicio.obtenerPisoPorId(id);
         if(piso==null)
             return ResponseEntity.notFound().build();
@@ -44,13 +44,13 @@ public class PisoControlador {
     }
 
     @PostMapping("/pisos")
-    public ResponseEntity<Piso> crearPiso(@RequestBody Piso piso) {
+    public ResponseEntity<Piso> nuevoPiso(@RequestBody Piso piso) {
         Piso guardado = pisoServicio.guardar(piso);
         return ResponseEntity.status(HttpStatus.CREATED).body(guardado);
     }
 
     @PutMapping("/pisos/{id}")
-    public ResponseEntity<Piso> actualizarPiso(@PathVariable Integer id, @RequestBody Piso piso) {
+    public ResponseEntity<?> actualizarPiso(@PathVariable Integer id, @RequestBody Piso piso) {
         Piso actualizado = pisoServicio.actualizar(piso, id);
         if (actualizado != null) {
             return ResponseEntity.ok(actualizado);
@@ -61,13 +61,9 @@ public class PisoControlador {
 
 
     @DeleteMapping("/pisos/{id}")
-    public ResponseEntity<Void> eliminarPiso(@PathVariable Integer id) {
+    public ResponseEntity<?> borrarPiso(@PathVariable Integer id) {
         Piso eliminado = pisoServicio.eliminar(id);
-        if (eliminado != null) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.notFound().build();
     }
 }
 

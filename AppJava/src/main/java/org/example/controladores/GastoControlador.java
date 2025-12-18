@@ -19,7 +19,7 @@ public class GastoControlador {
 
     @GetMapping("/gastos")
     public ResponseEntity<?> obtenerGastos(){
-        List<Gasto> gastos = gastoServicio.obtenerTodos();
+        List<Gasto> gastos = gastoServicio.obtenerGastos();
         if(gastos.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -28,7 +28,7 @@ public class GastoControlador {
 
     @GetMapping("gastos/{id}")
     public ResponseEntity<?> obtenerGastoPorId(@PathVariable Integer id) {
-        Gasto gasto = gastoServicio.findById(id);
+        Gasto gasto = gastoServicio.obtenerGastoPorId(id);
         if (gasto == null) {
             return ResponseEntity.notFound().build();
         }
