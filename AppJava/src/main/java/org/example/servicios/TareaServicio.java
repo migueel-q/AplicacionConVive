@@ -9,6 +9,6 @@ public interface TareaServicio {
     public Tarea obtenerTareaPorId(Integer id);
     public Tarea guardar(Tarea tarea);
     public Tarea actualizar(Tarea tarea,Integer id);
-    public Tarea eliminar(Tarea tarea);
+    public Tarea eliminar(Integer id);
 
 }
