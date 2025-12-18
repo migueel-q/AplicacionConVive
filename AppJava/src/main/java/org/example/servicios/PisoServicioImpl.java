@@ -1,32 +1,52 @@
 package org.example.servicios;
 
 import org.example.modelos.Piso;
+import org.example.repositorios.PisoRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class PisoServicioImpl implements  PisoServicio {
+    @Autowired
+    private PisoRepositorio pisoRepositorio;
     @Override
     public List<Piso> obtenerPisos() {
-        return List.of();
+        return pisoRepositorio.findAll();
     }
 
     @Override
     public Piso obtenerPisoPorId(Integer id) {
-        return null;
+        return pisoRepositorio.findById(id).orElse(null);
     }
 
     @Override
     public Piso guardar(Piso piso) {
-        return null;
+        return pisoRepositorio.save(piso);
     }
 
     @Override
     public Piso actualizar(Piso piso, Integer id) {
+        Piso existe = pisoRepositorio.findById(id).orElse(null);
+        if (existe!=null){
+            existe.setDescripcion(piso.getDescripcion());
+            existe.setDireccion(existe.getDireccion());
+            existe.setDisponible(existe.isDisponible());
+            existe.setPropietario(existe.getPropietario());
+            existe.setInquilinos(existe.getInquilinos());
+            existe.setGastos(existe.getGastos());
+            existe.setOfertas(existe.getOfertas());
+            return pisoRepositorio.save(existe);
+        }
         return null;
     }
 
     @Override
     public Piso eliminar(Integer id) {
-        return null;
+        Piso existe = pisoRepositorio.findById(id).orElse(null);
+        if (existe!=null){
+            pisoRepositorio.delete(existe);
+        }
+        return existe;
     }
 }
