@@ -1,13 +1,16 @@
 package org.example.DAO;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.example.modelos.Gasto;
 import org.example.persistencia.AccesoBD;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class GastoDAO implements IDAOGeneral<Gasto, Integer> {
+    @PersistenceContext
     EntityManager em = AccesoBD.getEntityManager();
     @Override
     public void insertar(Gasto gasto) {
