@@ -34,8 +34,8 @@ public class ContratoServicioImpl implements ContratoServicio {
         if (contrato != null) {
             contrato.setDescripcion(contratoActualizar.getDescripcion());
             contrato.setPrecio(contratoActualizar.getPrecio());
-            contrato.setFechaInicio(contratoActualizar.getFechaInicio());
-            contrato.setFechaFin(contratoActualizar.getFechaFin());
+            contrato.setFecha_inicio(contratoActualizar.getFecha_inicio());
+            contrato.setFecha_fin(contratoActualizar.getFecha_fin());
             contrato.setInquilinos(contratoActualizar.getInquilinos());
             contrato.setPropietario(contratoActualizar.getPropietario());
             contrato.setPiso(contratoActualizar.getPiso());

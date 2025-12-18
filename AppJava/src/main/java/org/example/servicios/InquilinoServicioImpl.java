@@ -1,7 +1,6 @@
 package org.example.servicios;
 
 import org.example.modelos.Inquilino;
-import org.example.modelos.Propietario;
 import org.example.repositorios.InquilinoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,10 +39,10 @@ public class InquilinoServicioImpl implements InquilinoServicio {
             inquilino.setSolicitudes(inquilinoEditar.getSolicitudes());
             inquilino.setTareas(inquilinoEditar.getTareas());
             inquilino.setEmail(inquilinoEditar.getEmail());
-            inquilino.setNombreReal(inquilinoEditar.getNombreReal());
-            inquilino.setNombreUsuario(inquilinoEditar.getNombreUsuario());
+            inquilino.setNombre_real(inquilinoEditar.getNombre_real());
+            inquilino.setNombre_usuario(inquilinoEditar.getNombre_usuario());
             inquilino.setPassword(inquilinoEditar.getPassword());
-            inquilino.setFechaNacimiento(inquilinoEditar.getFechaNacimiento());
+            inquilino.setFecha_nacimiento(inquilinoEditar.getFecha_nacimiento());
             inquilinoRepositorio.save(inquilino);
         }
         return inquilino;

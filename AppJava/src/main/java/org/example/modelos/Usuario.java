@@ -10,11 +10,11 @@ public abstract class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
     @Column(unique = true,  nullable = false)
-    protected String nombreUsuario;
+    protected String nombre_usuario;
     @Column(nullable = false)
-    protected String nombreReal;
+    protected String nombre_real;
     @Column(nullable = false)
-    protected LocalDate fechaNacimiento;
+    protected LocalDate fecha_nacimiento;
     @Column(unique = true,  nullable = false)
     protected String email;
     @Column(nullable = false)
@@ -31,28 +31,28 @@ public abstract class Usuario implements Serializable {
         return id;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getNombre_usuario() {
+        return nombre_usuario;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombre_usuario(String nombreUsuario) {
+        this.nombre_usuario = nombreUsuario;
     }
 
-    public String getNombreReal() {
-        return nombreReal;
+    public String getNombre_real() {
+        return nombre_real;
     }
 
-    public void setNombreReal(String nombreReal) {
-        this.nombreReal = nombreReal;
+    public void setNombre_real(String nombreReal) {
+        this.nombre_real = nombreReal;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFecha_nacimiento(LocalDate fechaNacimiento) {
+        this.fecha_nacimiento = fechaNacimiento;
     }
 
     public String getPassword() {

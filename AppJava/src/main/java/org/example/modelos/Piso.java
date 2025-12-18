@@ -15,7 +15,7 @@ public class Piso {
     private Direccion direccion;
     @Column(nullable = false)
     private String descripcion;
-    private String urlImagen;
+    private String url_imagen;
     @Column(nullable = false)
     private boolean disponible;
     @OneToMany(mappedBy = "piso")
@@ -35,7 +35,7 @@ public class Piso {
                 "id=" + id +
                 ", direccion=" + direccion +
                 ", descripcion='" + descripcion + '\'' +
-                ", urlImagen='" + urlImagen + '\'' +
+                ", urlImagen='" + url_imagen + '\'' +
                 ", disponible=" + disponible +
                 ", inquilinos=" + inquilinos +
                 ", propietario=" + propietario +
@@ -80,12 +80,12 @@ public class Piso {
         this.disponible = disponible;
     }
 
-    public String getUrlImagen() {
-        return urlImagen;
+    public String getUrl_imagen() {
+        return url_imagen;
     }
 
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
+    public void setUrl_imagen(String urlImagen) {
+        this.url_imagen = urlImagen;
     }
 
     public List<Inquilino> getInquilinos() {

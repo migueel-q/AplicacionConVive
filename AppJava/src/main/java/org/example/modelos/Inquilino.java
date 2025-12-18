@@ -95,9 +95,9 @@ public class Inquilino extends Usuario {
     @Override
     public String toString() {
         return "Inquilino{" +
-                "nombreUsuario='" + nombreUsuario + '\'' +
-                ", nombreReal='" + nombreReal + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
+                "nombreUsuario='" + nombre_usuario + '\'' +
+                ", nombreReal='" + nombre_real + '\'' +
+                ", fechaNacimiento=" + fecha_nacimiento +
                 ", email='" + email + '\'' +
                 ", piso=" + piso +
                 '}';

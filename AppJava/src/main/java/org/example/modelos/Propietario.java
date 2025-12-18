@@ -60,9 +60,9 @@ public class Propietario extends Usuario{
                 ", inquilinos=" + inquilinos +
                 ", ofertas=" + ofertas +
                 ", contratos=" + contratos +
-                ", nombreUsuario='" + nombreUsuario + '\'' +
-                ", nombreReal='" + nombreReal + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
+                ", nombreUsuario='" + nombre_usuario + '\'' +
+                ", nombreReal='" + nombre_real + '\'' +
+                ", fechaNacimiento=" + fecha_nacimiento +
                 ", email='" + email + '\'' +
                 '}';
     }

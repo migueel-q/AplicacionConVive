@@ -2,7 +2,6 @@ package org.example.servicios;
 
 import org.example.modelos.Propietario;
 import org.example.repositorios.PropietarioRepositorio;
-import org.hibernate.annotations.SecondaryRow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +36,9 @@ public class PropietarioServicioImpl implements PropietarioServicio {
             propietario.setOfertas(propietarioEditar.getOfertas());
             propietario.setPisos(propietarioEditar.getPisos());
             propietario.setEmail(propietarioEditar.getEmail());
-            propietario.setFechaNacimiento(propietarioEditar.getFechaNacimiento());
-            propietario.setNombreReal(propietarioEditar.getNombreReal());
-            propietario.setNombreUsuario(propietarioEditar.getNombreUsuario());
+            propietario.setFecha_nacimiento(propietarioEditar.getFecha_nacimiento());
+            propietario.setNombre_real(propietarioEditar.getNombre_real());
+            propietario.setNombre_usuario(propietarioEditar.getNombre_usuario());
             propietario.setPassword(propietarioEditar.getPassword());
             propietarioRepositorio.save(propietario);
         }
