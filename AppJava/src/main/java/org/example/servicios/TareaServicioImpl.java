@@ -1,32 +1,49 @@
 package org.example.servicios;
 
 import org.example.modelos.Tarea;
+import org.example.repositorios.TareaRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TareaServicioImpl implements  TareaServicio {
+    @Autowired
+    private TareaRepositorio tareaRepositorio;
     @Override
     public List<Tarea> obtenerTareas() {
-        return List.of();
+        return tareaRepositorio.findAll();
     }
 
     @Override
     public Tarea obtenerTareaPorId(Integer id) {
-        return null;
+        return tareaRepositorio.findById(id).orElse(null);
     }
 
     @Override
     public Tarea guardar(Tarea tarea) {
-        return null;
+        return tareaRepositorio.save(tarea);
     }
 
     @Override
     public Tarea actualizar(Tarea tarea, Integer id) {
-        return null;
+        if (tareaRepositorio.existsById(id)) {
+            tarea.setId(id);
+            return tareaRepositorio.save(tarea);
+        } else{
+            return null;
+        }
     }
 
     @Override
-    public Tarea eliminar(Tarea tarea) {
-        return null;
+    public Tarea eliminar(Integer id) {
+        if (tareaRepositorio.existsById(id)) {
+            Tarea tarea = tareaRepositorio.findById(id).get();
+            tareaRepositorio.delete(tarea);
+            return tarea;
+        } else{
+            return null;
+        }
     }
 }
