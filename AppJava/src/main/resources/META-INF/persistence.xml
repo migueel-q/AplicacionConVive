@@ -14,7 +14,7 @@
             <!-- Configuración de dialecto de Hibernate para BD-->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <!-- Configuración pde comportamiento DDL (create, update, none)-->
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <!-- Opcional: Configuración para ver las consultas SQL generadas-->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
