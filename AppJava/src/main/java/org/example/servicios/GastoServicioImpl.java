@@ -1,5 +1,6 @@
 package org.example.servicios;
 
+import org.example.DTO.GastoDTO;
 import org.example.modelos.Gasto;
 import org.example.repositorios.GastoRespositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,15 @@ public class GastoServicioImpl implements GastoServicio {
     @Autowired
     private GastoRespositorio gastoRespositorio;
     @Override
-    public List<Gasto> obtenerGastos() {
-        return gastoRespositorio.findAll();
+    public List<GastoDTO> obtenerGastos() {
+        return gastoRespositorio.findAll().stream().map
+                (g ->
+                        new GastoDTO( g.getId(),
+                                g.getConcepto(),
+                                g.getValor(),
+                                g.getInquilino().getId(),
+                                g.getPiso().getId() ))
+                .toList();
     }
 
     @Override

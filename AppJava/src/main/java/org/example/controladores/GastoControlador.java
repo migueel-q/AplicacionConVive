@@ -1,6 +1,7 @@
 package org.example.controladores;
 
 import org.example.DAO.GastoDAO;
+import org.example.DTO.GastoDTO;
 import org.example.modelos.Gasto;
 import org.example.servicios.GastoServicio;
 import org.example.servicios.GastoServicioImpl;
@@ -19,7 +20,7 @@ public class GastoControlador {
 
     @GetMapping("/gastos")
     public ResponseEntity<?> obtenerGastos(){
-        List<Gasto> gastos = gastoServicio.obtenerGastos();
+        List<GastoDTO> gastos = gastoServicio.obtenerGastos();
         if(gastos.isEmpty()){
             return ResponseEntity.notFound().build();
         }
