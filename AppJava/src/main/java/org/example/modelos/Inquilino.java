@@ -1,5 +1,6 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -9,18 +10,23 @@ import java.util.List;
 @Table(name = "inquilinos")
 public class Inquilino extends Usuario {
 
-    private LocalDateTime fechaAlta;
+    private LocalDateTime fecha_alta;
     @ManyToOne
     private Piso piso;
     @OneToMany(mappedBy = "inquilino",  cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Tarea> tareas;
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Oferta> ofertas;
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Solicitud> solicitudes;
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Gasto> gastos;
     @OneToMany(mappedBy = "inquilino", cascade =  CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<InquilinoPropietario> propietarios;     //Esta lista recoge los propietarios con los que hablan los inquilinos y la fecha de los mensajes permiten que se puedan repetir
     @ManyToOne
     private Contrato contrato;
@@ -77,11 +83,11 @@ public class Inquilino extends Usuario {
     }
 
     public LocalDateTime getFechaAlta() {
-        return fechaAlta;
+        return fecha_alta;
     }
 
     public void setFechaAlta(LocalDateTime fechaAlta) {
-        this.fechaAlta = fechaAlta;
+        this.fecha_alta = fechaAlta;
     }
 
     public Contrato getContrato() {
