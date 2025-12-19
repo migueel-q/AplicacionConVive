@@ -1,5 +1,6 @@
 package org.example.controladores;
 
+import org.example.DTO.InquilinoDTO;
 import org.example.modelos.Inquilino;
 import org.example.modelos.Propietario;
 import org.example.servicios.InquilinoServicio;
@@ -18,7 +19,7 @@ public class InquilinoControlador {
 
     @GetMapping("/inquilinos")
     public ResponseEntity<?> obtenerInquilinos(){
-        List<Inquilino> inquilinos = inquilinoServicio.obtenerInquilinos();
+        List<InquilinoDTO> inquilinos = inquilinoServicio.obtenerInquilinos();
         if(inquilinos.isEmpty()){
             return ResponseEntity.notFound().build();
         }
