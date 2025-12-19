@@ -11,11 +11,11 @@ import java.util.Objects;
 public class InquilinoPropietario {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="inquilinoId", nullable = false)
+    @JoinColumn(name="inquilino_id", nullable = false)
     private Inquilino inquilino;
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="propietarioId", nullable = false)
+    @JoinColumn(name="propietario_id", nullable = false)
     private Propietario propietario;
     @Id
     @Column(nullable = false)

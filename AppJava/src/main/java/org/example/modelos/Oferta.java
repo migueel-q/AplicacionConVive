@@ -1,5 +1,6 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Oferta {
     @ManyToOne
     private Inquilino inquilino;
     @OneToMany(mappedBy = "oferta",  cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Solicitud> solicitudes;
 
 
