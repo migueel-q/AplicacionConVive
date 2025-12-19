@@ -1,6 +1,7 @@
 package org.example.controladores;
 
 import jakarta.servlet.ServletRequest;
+import org.example.DTO.OfertaDTO;
 import org.example.modelos.Oferta;
 import org.example.repositorios.OfertaRepositorio;
 import org.example.servicios.OfertaServicio;
@@ -23,7 +24,7 @@ public class OfertaControlador {
 
     @GetMapping("/ofertas")
     public ResponseEntity<?> obtenerOfertas(){
-        List<Oferta> ofertas = ofertaServicio.obtenerOfertas();
+        List<OfertaDTO> ofertas = ofertaServicio.obtenerOfertas();
         if(ofertas.isEmpty()){
             return ResponseEntity.notFound().build();
         }else{

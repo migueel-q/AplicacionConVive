@@ -73,4 +73,5 @@ public class Oferta {
     public void setSolicitudes(List<Solicitud> solicitudes) {
         this.solicitudes = solicitudes;
     }
+
 }

@@ -1,5 +1,7 @@
 package org.example.servicios;
 
+import org.example.DTO.ContratoDTO;
+import org.example.DTO.OfertaDTO;
 import org.example.modelos.Contrato;
 import org.example.repositorios.ContratoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,18 @@ public class ContratoServicioImpl implements ContratoServicio {
     private ContratoRepositorio contratoRepositorio;
 
     @Override
-    public List<Contrato> obtenerContratos() {
-        return contratoRepositorio.findAll();
+    public List<ContratoDTO> obtenerContratos() {
+        return contratoRepositorio.findAll().stream().map
+                        (c ->
+                                new ContratoDTO( c.getId(),
+                                        c.getDescripcion(),
+                                        c.getPrecio(),
+                                        c.getFecha_inicio(),
+                                        c.getFecha_fin(),
+                                        c.getInquilinos(),
+                                        c.getPropietario().getId(),
+                                        c.getPiso().getId()))
+                .toList();
     }
 
     @Override
