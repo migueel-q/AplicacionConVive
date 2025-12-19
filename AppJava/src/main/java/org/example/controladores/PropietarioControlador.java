@@ -1,5 +1,6 @@
 package org.example.controladores;
 
+import org.example.DTO.PropietarioDTO;
 import org.example.modelos.Propietario;
 import org.example.servicios.PropietarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class PropietarioControlador {
 
     @GetMapping("/propietarios")
     public ResponseEntity<?> obtenerPropietarios(){
-        List<Propietario> propietarios = propietarioServicio.obtenerPropietarios();
+        List<PropietarioDTO> propietarios = propietarioServicio.obtenerPropietarios();
         if(propietarios.isEmpty()){
             return ResponseEntity.notFound().build();
         }

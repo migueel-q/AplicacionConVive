@@ -33,6 +33,10 @@ public class Contrato {
     public Contrato() {
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
