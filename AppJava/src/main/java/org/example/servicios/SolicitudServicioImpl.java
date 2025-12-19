@@ -1,24 +1,38 @@
 package org.example.servicios;
 
+import org.example.DTO.SolicitudDTO;
 import org.example.modelos.Solicitud;
 import org.example.repositorios.SolicitudRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class SolicitudServicioImpl implements  SolicitudServicio {
     @Autowired
     private SolicitudRepositorio solicitudRepositorio;
     @Override
-    public List<Solicitud> obtenerSolicitudes() {
-        return solicitudRepositorio.findAll();
+    public List<SolicitudDTO> obtenerSolicitudes() {
+        return solicitudRepositorio.findAll().stream().map
+                        (s ->
+                                new SolicitudDTO(s.getId(),
+                                        s.getInquilino().getId(),
+                                       s.getOferta().getId(),
+                                        s.isAceptado() ))
+                .toList();
 
     }
 
     @Override
-    public Solicitud obtenerSolicitudPorId(Integer id) {
-        return solicitudRepositorio.findById(id).orElse(null);
+    public SolicitudDTO obtenerSolicitudPorId(Integer id) {
+        return solicitudRepositorio.findById(id)
+                .map(s -> new SolicitudDTO(
+                        s.getId(),
+                        s.getInquilino().getId(),
+                        s.getOferta().getId(),
+                        s.isAceptado()
+                )).orElse(null);
     }
 
     @Override

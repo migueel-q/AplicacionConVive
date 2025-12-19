@@ -1,5 +1,7 @@
 package org.example.controladores;
 
+import org.example.DTO.GastoDTO;
+import org.example.DTO.SolicitudDTO;
 import org.example.modelos.Piso;
 import org.example.modelos.Solicitud;
 import org.example.servicios.PisoServicioImpl;
@@ -15,26 +17,24 @@ import java.util.List;
 @RequestMapping("/api")
 public class SolicitudControlador {
     @Autowired
-    private final SolicitudServicioImpl solicitudServicio;
+    private SolicitudServicioImpl solicitudServicio;
 
-    public SolicitudControlador(SolicitudServicioImpl solicitudServicio) {
-        this.solicitudServicio = solicitudServicio;
-    }
+
     @GetMapping("/solicitudes")
     public ResponseEntity<?> obtenerSolicitudes() {
-        List<Solicitud> solicitudes = solicitudServicio.obtenerSolicitudes();
-        if(solicitudes.isEmpty()) {
+        List<SolicitudDTO> solicitudes = solicitudServicio.obtenerSolicitudes();
+        if(solicitudes.isEmpty()){
             return ResponseEntity.notFound().build();
-        }else {
-            return ResponseEntity.ok(solicitudes);
         }
+        return ResponseEntity.ok(solicitudes);
     }
 
     @GetMapping("solicitudes/{id}")
     public ResponseEntity<?> obtenerSolicitudPorId(@PathVariable Integer id) {
-       Solicitud solicitud = solicitudServicio.obtenerSolicitudPorId(id);
-        if(solicitud==null)
+        SolicitudDTO solicitud = solicitudServicio.obtenerSolicitudPorId(id);
+        if (solicitud == null) {
             return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(solicitud);
     }
 

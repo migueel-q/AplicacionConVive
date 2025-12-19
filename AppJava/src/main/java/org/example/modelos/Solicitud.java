@@ -11,6 +11,15 @@ public class Solicitud {
     private int id;
     @ManyToOne
     private Inquilino inquilino;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @ManyToOne
     private Oferta oferta;
     private boolean aceptado;

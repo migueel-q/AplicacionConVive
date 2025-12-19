@@ -1,5 +1,6 @@
 package org.example.servicios;
 
+import org.example.DTO.PisoDTO;
 import org.example.modelos.Piso;
 import org.example.repositorios.PisoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,34 @@ public class PisoServicioImpl implements  PisoServicio {
     @Autowired
     private PisoRepositorio pisoRepositorio;
     @Override
-    public List<Piso> obtenerPisos() {
-        return pisoRepositorio.findAll();
+    public List<PisoDTO> obtenerPisos() {
+
+        return pisoRepositorio.findAll().stream().map
+                        (p ->
+                                new PisoDTO( p.getId(),
+                                        p.getDireccion(),
+                                        p.getDescripcion(),
+                                        p.getUrl_imagen(),
+                                        p.isDisponible(),
+                                        p.getOfertas(),
+                                        p.getGastos(),
+                                        p.getContratos()))
+                .toList();
     }
 
     @Override
-    public Piso obtenerPisoPorId(Integer id) {
-        return pisoRepositorio.findById(id).orElse(null);
+    public PisoDTO obtenerPisoPorId(Integer id) {
+        return pisoRepositorio.findById(id)
+                .map(p -> new PisoDTO(
+                        p.getId(),
+                        p.getDireccion(),
+                        p.getDescripcion(),
+                        p.getUrl_imagen(),
+                        p.isDisponible(),
+                        p.getOfertas(),
+                        p.getGastos(),
+                        p.getContratos()
+                )).orElse(null);
     }
 
     @Override

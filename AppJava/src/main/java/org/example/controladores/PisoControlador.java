@@ -2,6 +2,8 @@ package org.example.controladores;
 
 import org.example.DAO.GastoDAO;
 import org.example.DAO.PisoDAO;
+import org.example.DTO.GastoDTO;
+import org.example.DTO.PisoDTO;
 import org.example.modelos.Gasto;
 import org.example.modelos.Piso;
 import org.example.modelos.Solicitud;
@@ -27,19 +29,19 @@ public class PisoControlador {
 
     @GetMapping("/pisos")
     public ResponseEntity<?> obtenerPisos() {
-        List<Piso> pisos = pisoServicio.obtenerPisos();
-        if(pisos.isEmpty()) {
+        List<PisoDTO> pisos = pisoServicio.obtenerPisos();
+        if(pisos.isEmpty()){
             return ResponseEntity.notFound().build();
-        }else {
-            return ResponseEntity.ok(pisos);
         }
+        return ResponseEntity.ok(pisos);
     }
 
     @GetMapping("pisos/{id}")
     public ResponseEntity<?> obtenerPisoPorId(@PathVariable Integer id) {
-        Piso piso = pisoServicio.obtenerPisoPorId(id);
-        if(piso==null)
+        PisoDTO piso = pisoServicio.obtenerPisoPorId(id);
+        if (piso == null) {
             return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(piso);
     }
 
