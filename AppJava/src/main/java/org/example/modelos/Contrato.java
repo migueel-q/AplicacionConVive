@@ -18,7 +18,7 @@ public class Contrato {
     private double precio;
     @Column(nullable = false)
     private LocalDate fechaInicio;
-    @Column(nullable = false)
+    @Column(name = "fechaFin",nullable = false)
     private LocalDate fechaFin;
     @OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inquilino> inquilinos;
