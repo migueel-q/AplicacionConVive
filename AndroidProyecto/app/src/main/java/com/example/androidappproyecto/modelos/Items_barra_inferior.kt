@@ -1,5 +1,6 @@
 package com.example.androidappproyecto.modelos
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
@@ -16,11 +17,11 @@ sealed class Items_barra_inferior(
     object Item_bottom_nav_home: Items_barra_inferior(
         Icons.Filled.Home,"Home", Rutas.Home.name)
     object Item_bottom_nav_pisos:Items_barra_inferior(
-        Icons.Filled.List,"Artists", Rutas.MisPisos.name)
+        Icons.Filled.List,"Mis pisos", Rutas.MisPisos.name)
     object Item_bottom_nav_search:Items_barra_inferior(
-        Icons.Filled.Search,"Search", Rutas.Buscar.name)
+        Icons.Filled.Search,"Buscar", Rutas.Buscar.name)
     object Item_bottom_nav_myapp:Items_barra_inferior(
-        Icons.Filled.Person,"MyApp", Rutas.Perfil.name)
+        Icons.Filled.Person,"Perfil", Rutas.Perfil.name)
     object Item_bottom_nav_premium:Items_barra_inferior(
-        Icons.Filled.Star,"Premium", Rutas.Premium.name)
+        Icons.Filled.Email,"Chat", Rutas.Premium.name)
 }
