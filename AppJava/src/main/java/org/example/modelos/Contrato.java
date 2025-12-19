@@ -3,7 +3,6 @@ package org.example.modelos;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -17,9 +16,11 @@ public class Contrato {
     @Column(nullable = false)
     private double precio;
     @Column(nullable = false)
-    private LocalDate fechaInicio;
-    @Column(name = "fechaFin",nullable = false)
-    private LocalDate fechaFin;
+
+    private LocalDate fecha_inicio;
+    @Column(nullable = false)
+    private LocalDate fecha_fin;
+
     @OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inquilino> inquilinos;
     @ManyToOne
@@ -46,20 +47,20 @@ public class Contrato {
         this.precio = precio;
     }
 
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
+    public LocalDate getFecha_inicio() {
+        return fecha_inicio;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setFecha_inicio(LocalDate fechaInicio) {
+        this.fecha_inicio = fechaInicio;
     }
 
-    public LocalDate getFechaFin() {
-        return fechaFin;
+    public LocalDate getFecha_fin() {
+        return fecha_fin;
     }
 
-    public void setFechaFin(LocalDate fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setFecha_fin(LocalDate fechaFin) {
+        this.fecha_fin = fechaFin;
     }
 
     public List<Inquilino> getInquilinos() {

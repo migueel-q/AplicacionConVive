@@ -6,7 +6,7 @@ import java.util.Objects;
 public class InquilinoPropietarioId {
     private int inquilino;
     private int propietario;
-    private LocalDateTime fechaMsg;
+    private LocalDateTime fecha_msg;
 
     public InquilinoPropietarioId() {
     }
@@ -27,23 +27,23 @@ public class InquilinoPropietarioId {
         this.propietario = propietario;
     }
 
-    public LocalDateTime getFechaMsg() {
-        return fechaMsg;
+    public LocalDateTime getFecha_msg() {
+        return fecha_msg;
     }
 
-    public void setFechaMsg(LocalDateTime fechaMsg) {
-        this.fechaMsg = fechaMsg;
+    public void setFecha_msg(LocalDateTime fecha_msg) {
+        this.fecha_msg = fecha_msg;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         InquilinoPropietarioId that = (InquilinoPropietarioId) o;
-        return inquilino == that.inquilino && propietario == that.propietario && Objects.equals(fechaMsg, that.fechaMsg);
+        return inquilino == that.inquilino && propietario == that.propietario && Objects.equals(fecha_msg, that.fecha_msg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inquilino, propietario, fechaMsg);
+        return Objects.hash(inquilino, propietario, fecha_msg);
     }
 }
