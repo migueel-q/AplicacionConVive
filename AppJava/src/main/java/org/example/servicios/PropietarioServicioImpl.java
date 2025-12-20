@@ -1,6 +1,5 @@
 package org.example.servicios;
 
-import org.example.DTO.GastoDTO;
 import org.example.DTO.PropietarioDTO;
 import org.example.modelos.Propietario;
 import org.example.repositorios.PropietarioRepositorio;
@@ -16,23 +15,32 @@ public class PropietarioServicioImpl implements PropietarioServicio {
 
     @Override
     public List<PropietarioDTO> obtenerPropietarios() {
-        return propietarioRepositorio.findAll().stream().map
-                        (p ->
-                                new PropietarioDTO( p.getId(),
-                                        p.getNombre_usuario(),
-                                        p.getNombre_real(),
-                                        p.getFecha_nacimiento(),
-                                        p.getEmail(),
-                                        p.getPisos(),
-                                        p.getInquilinos(),
-                                        p.getOfertas(),
-                                        p.getContratos()))
+        return propietarioRepositorio.findAll().stream().map(p ->
+                        new PropietarioDTO( p.getId(),
+                                p.getNombre_usuario(),
+                                p.getNombre_real(),
+                                p.getFecha_nacimiento(),
+                                p.getEmail(),
+                                p.getPisos(),
+                                p.getInquilinos(),
+                                p.getOfertas(),
+                                p.getContratos()))
                 .toList();
     }
 
     @Override
-    public Propietario obtenerPropietarioPorId(Integer id) {
-        return propietarioRepositorio.findById(id).orElse(null);
+    public PropietarioDTO obtenerPropietarioPorId(Integer id) {
+        return propietarioRepositorio.findById(id).map(p ->
+                        new PropietarioDTO( p.getId(),
+                                p.getNombre_usuario(),
+                                p.getNombre_real(),
+                                p.getFecha_nacimiento(),
+                                p.getEmail(),
+                                p.getPisos(),
+                                p.getInquilinos(),
+                                p.getOfertas(),
+                                p.getContratos()))
+                .orElse(null);
     }
 
     @Override

@@ -6,10 +6,10 @@ import org.example.modelos.Tarea;
 import java.util.List;
 
 public interface TareaServicio {
-    public List<TareaDTO> obtenerTareas();
-    public TareaDTO obtenerTareaPorId(Integer id);
-    public Tarea guardar(Tarea tarea);
-    public Tarea actualizar(Tarea tarea,Integer id);
-    public Tarea eliminar(Integer id);
+    List<TareaDTO> obtenerTareas();
+    TareaDTO obtenerTareaPorId(Integer id);
+    Tarea guardar(Tarea tarea);
+    Tarea actualizar(Tarea tarea,Integer id);
+    Tarea eliminar(Integer id);
 
 }

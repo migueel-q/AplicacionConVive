@@ -14,32 +14,30 @@ public class PisoServicioImpl implements  PisoServicio {
     @Override
     public List<PisoDTO> obtenerPisos() {
 
-        return pisoRepositorio.findAll().stream().map
-                        (p ->
-                                new PisoDTO( p.getId(),
-                                        p.getDireccion(),
-                                        p.getDescripcion(),
-                                        p.getUrl_imagen(),
-                                        p.isDisponible(),
-                                        p.getOfertas(),
-                                        p.getGastos(),
-                                        p.getContratos()))
+        return pisoRepositorio.findAll().stream().map(p ->
+                        new PisoDTO( p.getId(),
+                                p.getDireccion(),
+                                p.getDescripcion(),
+                                p.getUrl_imagen(),
+                                p.isDisponible(),
+                                p.getOfertas(),
+                                p.getGastos(),
+                                p.getContratos()))
                 .toList();
     }
 
     @Override
     public PisoDTO obtenerPisoPorId(Integer id) {
-        return pisoRepositorio.findById(id)
-                .map(p -> new PisoDTO(
-                        p.getId(),
-                        p.getDireccion(),
-                        p.getDescripcion(),
-                        p.getUrl_imagen(),
-                        p.isDisponible(),
-                        p.getOfertas(),
-                        p.getGastos(),
-                        p.getContratos()
-                )).orElse(null);
+        return pisoRepositorio.findById(id).map(p ->
+                        new PisoDTO(p.getId(),
+                                p.getDireccion(),
+                                p.getDescripcion(),
+                                p.getUrl_imagen(),
+                                p.isDisponible(),
+                                p.getOfertas(),
+                                p.getGastos(),
+                                p.getContratos()))
+                .orElse(null);
     }
 
     @Override

@@ -2,7 +2,7 @@ package org.example.controladores;
 
 import org.example.DTO.PropietarioDTO;
 import org.example.modelos.Propietario;
-import org.example.servicios.PropietarioServicio;
+import org.example.servicios.PropietarioServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class PropietarioControlador {
+
     @Autowired
-    private PropietarioServicio propietarioServicio;
+    private PropietarioServicioImpl propietarioServicio;
 
     @GetMapping("/propietarios")
     public ResponseEntity<?> obtenerPropietarios(){
@@ -22,22 +23,17 @@ public class PropietarioControlador {
         if(propietarios.isEmpty()){
             return ResponseEntity.notFound().build();
         }
-        else
-        {
-            return ResponseEntity.ok(propietarios);
-        }
+        return ResponseEntity.ok(propietarios);
     }
 
     @GetMapping("/propietarios/{id}")
-    public ResponseEntity<Propietario> obtenerPropietarioPorId(@PathVariable Integer id){
-        Propietario propietario = propietarioServicio.obtenerPropietarioPorId(id);
+    public ResponseEntity<?> obtenerPropietarioPorId(@PathVariable Integer id){
+        PropietarioDTO propietario = propietarioServicio.obtenerPropietarioPorId(id);
         if(propietario == null){
             return ResponseEntity.notFound().build();
         }
-        else
-        {
-            return ResponseEntity.ok(propietario);
-        }
+        return ResponseEntity.ok(propietario);
+
     }
 
     @PostMapping("/propietarios")

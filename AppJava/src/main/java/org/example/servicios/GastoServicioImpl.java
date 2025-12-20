@@ -13,26 +13,24 @@ public class GastoServicioImpl implements GastoServicio {
     private GastoRespositorio gastoRespositorio;
     @Override
     public List<GastoDTO> obtenerGastos() {
-        return gastoRespositorio.findAll().stream().map
-                (g ->
-                        new GastoDTO( g.getId(),
+        return gastoRespositorio.findAll().stream().map(g ->
+                        new GastoDTO(g.getId(),
                                 g.getConcepto(),
                                 g.getValor(),
                                 g.getInquilino().getId(),
-                                g.getPiso().getId() ))
+                                g.getPiso().getId()))
                 .toList();
     }
 
     @Override
     public GastoDTO obtenerGastoPorId(Integer id) {
-        return gastoRespositorio.findById(id)
-                .map(g -> new GastoDTO(
-                        g.getId(),
-                        g.getConcepto(),
-                        g.getValor(),
-                        g.getInquilino().getId(),
-                        g.getPiso().getId()
-                )).orElse(null);
+        return gastoRespositorio.findById(id).map(g ->
+                        new GastoDTO(g.getId(),
+                            g.getConcepto(),
+                            g.getValor(),
+                            g.getInquilino().getId(),
+                            g.getPiso().getId()))
+                .orElse(null);
     }
 
     @Override
@@ -54,7 +52,7 @@ public class GastoServicioImpl implements GastoServicio {
     }
 
     @Override
-    public Gasto borrar(Integer id) {
+    public Gasto eliminar(Integer id) {
         if (gastoRespositorio.existsById(id)) {
             Gasto gasto = gastoRespositorio.findById(id).get();
             gastoRespositorio.delete(gasto);

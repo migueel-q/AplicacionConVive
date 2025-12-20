@@ -25,7 +25,7 @@ fun ProyectoView(){
     val navController= rememberNavController()
     Scaffold(
         topBar = { AppConviveTopBar() },
-        bottomBar = { MiMusicaBottomBar(navController = navController) },
+        bottomBar = { AppConviveBottomBar(navController = navController) },
         content = { AppConviveNavigation(navController = navController) }
     )
 }
@@ -59,7 +59,7 @@ fun currentRoute(navController: NavHostController):String?=
 
 
 @Composable
-private fun MiMusicaBottomBar(navController: NavHostController) {
+private fun AppConviveBottomBar(navController: NavHostController) {
     val bar_items= listOf(
         Items_barra_inferior.Item_bottom_nav_home,
         Items_barra_inferior.Item_bottom_nav_pisos,
