@@ -6,9 +6,9 @@ import org.example.modelos.Gasto;
 import java.util.List;
 
 public interface GastoServicio {
-    public List<GastoDTO> obtenerGastos();
-    public GastoDTO obtenerGastoPorId(Integer id);
-    public Gasto guardar(Gasto gasto);
-    public Gasto modificar(Gasto gasto,Integer id);
-    public Gasto borrar(Integer id);
+    List<GastoDTO> obtenerGastos();
+    GastoDTO obtenerGastoPorId(Integer id);
+    Gasto guardar(Gasto gasto);
+    Gasto modificar(Gasto gasto,Integer id);
+    Gasto eliminar(Integer id);
 }

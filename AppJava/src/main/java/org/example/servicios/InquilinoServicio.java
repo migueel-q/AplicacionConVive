@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface InquilinoServicio {
     List<InquilinoDTO> obtenerInquilinos();
-    Inquilino obtenerInquilinoPorId(Integer id);
-    public Inquilino guardar(Inquilino inquilino);
-    public Inquilino actualizar(Inquilino inquilino, Integer id);
-    public Inquilino eliminar(Integer id);
+    InquilinoDTO obtenerInquilinoPorId(Integer id);
+    Inquilino guardar(Inquilino inquilino);
+    Inquilino actualizar(Inquilino inquilino, Integer id);
+    Inquilino eliminar(Integer id);
 }

@@ -1,7 +1,6 @@
 package org.example.servicios;
 
 import org.example.DTO.ContratoDTO;
-import org.example.DTO.OfertaDTO;
 import org.example.modelos.Contrato;
 import org.example.repositorios.ContratoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +15,30 @@ public class ContratoServicioImpl implements ContratoServicio {
 
     @Override
     public List<ContratoDTO> obtenerContratos() {
-        return contratoRepositorio.findAll().stream().map
-                        (c ->
-                                new ContratoDTO( c.getId(),
-                                        c.getDescripcion(),
-                                        c.getPrecio(),
-                                        c.getFecha_inicio(),
-                                        c.getFecha_fin(),
-                                        c.getInquilinos(),
-                                        c.getPropietario().getId(),
-                                        c.getPiso().getId()))
+        return contratoRepositorio.findAll().stream().map(c ->
+                        new ContratoDTO( c.getId(),
+                                c.getDescripcion(),
+                                c.getPrecio(),
+                                c.getFecha_inicio(),
+                                c.getFecha_fin(),
+                                c.getInquilinos(),
+                                c.getPropietario().getId(),
+                                c.getPiso().getId()))
                 .toList();
     }
 
     @Override
-    public Contrato obtenerContratoPorId(Integer id) {
-        return contratoRepositorio.findById(id).orElse(null);
+    public ContratoDTO obtenerContratoPorId(Integer id) {
+        return contratoRepositorio.findById(id).map(c ->
+                        new ContratoDTO( c.getId(),
+                            c.getDescripcion(),
+                            c.getPrecio(),
+                            c.getFecha_inicio(),
+                            c.getFecha_fin(),
+                            c.getInquilinos(),
+                            c.getPropietario().getId(),
+                            c.getPiso().getId()))
+                .orElse(null);
     }
 
     @Override
