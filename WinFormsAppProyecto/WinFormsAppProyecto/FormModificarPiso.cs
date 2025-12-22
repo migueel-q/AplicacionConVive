@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Formularios
 {
-    public partial class FormModificarPisocs : Form
+    public partial class FormModificarPiso : Form
     {
-        public FormModificarPisocs()
+        public FormModificarPiso()
         {
             InitializeComponent();
         }

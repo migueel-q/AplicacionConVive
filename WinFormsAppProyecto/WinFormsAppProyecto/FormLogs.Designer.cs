@@ -43,6 +43,7 @@
             btnRegistro.TabIndex = 0;
             btnRegistro.Text = "Registrate";
             btnRegistro.UseVisualStyleBackColor = true;
+            btnRegistro.Click += btnRegistro_Click;
             // 
             // btnInicioSesion
             // 
@@ -52,6 +53,7 @@
             btnInicioSesion.TabIndex = 1;
             btnInicioSesion.Text = "Inicio de sesion";
             btnInicioSesion.UseVisualStyleBackColor = true;
+            btnInicioSesion.Click += btnInicioSesion_Click;
             // 
             // pictureBox1
             // 
@@ -63,7 +65,7 @@
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
-            // Form1
+            // FormLogs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -71,7 +73,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(btnInicioSesion);
             Controls.Add(btnRegistro);
-            Name = "Form1";
+            Name = "FormLogs";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

@@ -76,6 +76,7 @@
             btnIniciarSesion.TabIndex = 13;
             btnIniciarSesion.Text = "Iniciar sesión";
             btnIniciarSesion.UseVisualStyleBackColor = true;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
             // btnVolver
             // 
@@ -85,6 +86,7 @@
             btnVolver.TabIndex = 14;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FormInicioSesion
             // 

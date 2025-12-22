@@ -177,6 +177,7 @@
             btnVolver.TabIndex = 15;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FormRegistro
             // 
@@ -201,7 +202,6 @@
             Controls.Add(label1);
             Name = "FormRegistro";
             Text = "FormRegistro";
-            Load += this.FormRegistro_Load;
             ResumeLayout(false);
             PerformLayout();
         }

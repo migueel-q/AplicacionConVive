@@ -13,7 +13,7 @@
     <Compile Update="FormLogs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormModificarPisocs.cs">
+    <Compile Update="FormModificarPiso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormRegistro.cs">

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsAppProyecto;
 
 namespace Formularios
 {
@@ -15,11 +16,19 @@ namespace Formularios
         public FormRegistro()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            FormLogs formLogs = new FormLogs();
+            formLogs.Show();
+            this.Close();
         }
     }
 }

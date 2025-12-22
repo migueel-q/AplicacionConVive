@@ -28,12 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            menuStrip1 = new MenuStrip();
+            gestiónPisosToolStripMenuItem = new ToolStripMenuItem();
+            añadirPiso = new ToolStripMenuItem();
+            modificarPiso = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónPisosToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // gestiónPisosToolStripMenuItem
+            // 
+            gestiónPisosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { añadirPiso, modificarPiso });
+            gestiónPisosToolStripMenuItem.Name = "gestiónPisosToolStripMenuItem";
+            gestiónPisosToolStripMenuItem.Size = new Size(89, 20);
+            gestiónPisosToolStripMenuItem.Text = "Gestión pisos";
+            // 
+            // añadirPiso
+            // 
+            añadirPiso.Name = "añadirPiso";
+            añadirPiso.Size = new Size(180, 22);
+            añadirPiso.Text = "Añadir piso";
+            añadirPiso.Click += añadirPiso_click;
+            // 
+            // modificarPiso
+            // 
+            modificarPiso.Name = "modificarPiso";
+            modificarPiso.Size = new Size(180, 22);
+            modificarPiso.Text = "Modificar piso";
+            modificarPiso.Click += modificarPiso_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "Form1";
+            Text = "Form1";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem gestiónPisosToolStripMenuItem;
+        private ToolStripMenuItem añadirPiso;
+        private ToolStripMenuItem modificarPiso;
     }
 }
