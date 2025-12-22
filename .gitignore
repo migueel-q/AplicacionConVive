@@ -33,8 +33,17 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
 .vs/
+*.suo
+*.user
+*.dtbcache.v2
+*.futdcache.v2
+*.metadata.v9.bin
+*.projects.v9.bin
+*.strings.v9.bin
+*.AssemblyInfo.cs
+obj/
+bin/
 
 ### Mac OS ###
 .DS_Store
