@@ -8,3 +8,4 @@ data class Piso(
     val precio : Double,
     val urlImagen : String,
 )
+

@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
 import com.example.androidappproyecto.modelos.Usuario
 import com.example.androidappproyecto.pantallas.PantallaBuscar
+import com.example.androidappproyecto.pantallas.PantallaDetallePiso
 import com.example.androidappproyecto.pantallas.PantallaHome
 import com.example.androidappproyecto.pantallas.PantallaMisPisos
 import com.example.androidappproyecto.pantallas.PantallaPerfil
@@ -28,10 +29,11 @@ fun AppConviveNavigation(navController: NavHostController){
         startDestination = Rutas.Home.name)
     {
         composable(Rutas.Home.name){ PantallaHome() }
-        composable(Rutas.MisPisos.name) { PantallaMisPisos() }
+        composable(Rutas.MisPisos.name) { PantallaMisPisos(navController) }
         composable(Rutas.Buscar.name) { PantallaBuscar() }
         composable(Rutas.Perfil.name) { PantallaPerfil(user = currentUser) }
         composable(Rutas.Premium.name) { PantallaPremium() }
+        composable(Rutas.DetallePiso.name) { PantallaDetallePiso() }
     }
 
 }

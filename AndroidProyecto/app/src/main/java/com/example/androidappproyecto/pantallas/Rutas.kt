@@ -5,5 +5,6 @@ enum class Rutas {
     MisPisos,
     Buscar,
     Perfil,
-    Premium
+    Premium,
+    DetallePiso
 }
