@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.example.androidappproyecto.data.pisos
 import com.example.androidappproyecto.modelos.Piso
 
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
@@ -20,12 +21,13 @@ import com.example.androidappproyecto.navegacion.PisoSeleccionado
 @Composable
 fun PantallaMisPisos(navController: NavHostController) {
 
-    val pisos = listOf(
+    val pisosPrueba = listOf(
         Piso(
             titulo = "Piso Centro",
             direccion = "C/ Mayor 12, Torrelavega",
             descripcion = "Luminoso, 3 habitaciones, cerca de todo.",
             propietario = "Juan Pérez",
+            precio = 350.00,
             urlImagen = "https://picsum.photos/600/400?random=1",
         ),
         Piso(
@@ -33,6 +35,7 @@ fun PantallaMisPisos(navController: NavHostController) {
             direccion = "Av. del Mar 5, Suances",
             descripcion = "Vistas al mar, ideal para teletrabajo.",
             propietario = "Laura Gómez",
+            precio = 420.00,
             urlImagen = "https://picsum.photos/600/400?random=2",
         )
     )
