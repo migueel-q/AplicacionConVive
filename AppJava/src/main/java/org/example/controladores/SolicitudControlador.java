@@ -1,10 +1,7 @@
 package org.example.controladores;
 
-import org.example.DTO.GastoDTO;
 import org.example.DTO.SolicitudDTO;
-import org.example.modelos.Piso;
 import org.example.modelos.Solicitud;
-import org.example.servicios.PisoServicioImpl;
 import org.example.servicios.SolicitudServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class SolicitudControlador {
+
     @Autowired
     private SolicitudServicioImpl solicitudServicio;
-
 
     @GetMapping("/solicitudes")
     public ResponseEntity<?> obtenerSolicitudes() {
@@ -39,20 +36,24 @@ public class SolicitudControlador {
     }
 
     @PostMapping("/solicitudes")
-    public ResponseEntity<Solicitud> crearSolicitud(@RequestBody Solicitud solicitud) {
+    public ResponseEntity<Solicitud> nuevoSolicitud(@RequestBody Solicitud solicitud) {
         Solicitud guardado = solicitudServicio.guardar(solicitud);
         return ResponseEntity.status(HttpStatus.CREATED).body(guardado);
     }
 
     @PutMapping("/solicitudes/{id}")
-    public ResponseEntity<?> actualizarSolicitud(@PathVariable Integer id, @RequestBody Solicitud solicitud) {
-          Solicitud solicitudActualizads=solicitudServicio.actualizar(solicitud,id);
-          return ResponseEntity.ok(solicitudActualizads);
+    public ResponseEntity<?> editarSolicitud(@PathVariable Integer id, @RequestBody Solicitud solicitudEditar) {
+          Solicitud solicitud = solicitudServicio.actualizar(solicitudEditar,id);
+          if(solicitud == null){
+              return ResponseEntity.notFound().build();
+          }
+          return ResponseEntity.ok(solicitud);
     }
 
     @DeleteMapping("/solicitudes/{id}")
-    public ResponseEntity<?> eliminarSolicitud(@PathVariable Integer id) {
-       Solicitud solicitud =solicitudServicio.eliminar(id);
-        return ResponseEntity.ok(solicitud);
+    public ResponseEntity<?> borrarSolicitud(@PathVariable Integer id) {
+        solicitudServicio.eliminar(id);
+        return ResponseEntity.noContent().build();
+
     }
 }

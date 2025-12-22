@@ -1,14 +1,11 @@
 package org.example.controladores;
 
-import jakarta.servlet.ServletRequest;
 import org.example.DTO.OfertaDTO;
 import org.example.modelos.Oferta;
-import org.example.repositorios.OfertaRepositorio;
-import org.example.servicios.OfertaServicio;
+import org.example.servicios.OfertaServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,28 +15,24 @@ import java.util.List;
 public class OfertaControlador {
 
     @Autowired
-    private OfertaServicio ofertaServicio;
-    @Autowired
-    private OfertaRepositorio ofertaRepositorio;
+    private OfertaServicioImpl ofertaServicio;
 
     @GetMapping("/ofertas")
     public ResponseEntity<?> obtenerOfertas(){
         List<OfertaDTO> ofertas = ofertaServicio.obtenerOfertas();
         if(ofertas.isEmpty()){
             return ResponseEntity.notFound().build();
-        }else{
-            return ResponseEntity.ok(ofertas);
         }
+        return ResponseEntity.ok(ofertas);
     }
 
     @GetMapping("/ofertas/{id}")
     public ResponseEntity<?> obtenerOfertaPorId(@PathVariable int id){
-        Oferta oferta = ofertaServicio.obtenerOfertaPorId(id);
+        OfertaDTO oferta = ofertaServicio.obtenerOfertaPorId(id);
         if(oferta==null){
             return ResponseEntity.notFound().build();
-        }else{
-            return ResponseEntity.ok(oferta);
         }
+        return ResponseEntity.ok(oferta);
     }
 
     @PostMapping("/ofertas")
@@ -51,15 +44,14 @@ public class OfertaControlador {
     @PutMapping("/ofertas/{id}")
     public ResponseEntity<?> editarOferta(@PathVariable Integer id, @RequestBody Oferta ofertaEditar){
         Oferta oferta =ofertaServicio.actualizar(ofertaEditar, id);
-        if (oferta==null){
+        if (oferta == null){
             return ResponseEntity.notFound().build();
-        }else{
-            return ResponseEntity.ok(oferta);
         }
+        return ResponseEntity.ok(oferta);
     }
 
     @DeleteMapping("/ofertas/{id}")
-    public ResponseEntity<?> eliminarOferta(@PathVariable Integer id){
+    public ResponseEntity<?> borrarOferta(@PathVariable Integer id){
         ofertaServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }

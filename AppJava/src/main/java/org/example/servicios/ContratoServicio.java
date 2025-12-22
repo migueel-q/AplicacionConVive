@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface ContratoServicio {
     List<ContratoDTO> obtenerContratos();
-    Contrato obtenerContratoPorId(Integer id);
-    public Contrato guardar(Contrato contrato);
-    public Contrato actualizar(Contrato contrato, Integer id);
-    public Contrato eliminar(Integer id);
+    ContratoDTO obtenerContratoPorId(Integer id);
+    Contrato guardar(Contrato contrato);
+    Contrato actualizar(Contrato contrato, Integer id);
+    Contrato eliminar(Integer id);
 }

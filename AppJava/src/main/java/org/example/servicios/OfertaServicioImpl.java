@@ -1,7 +1,6 @@
 package org.example.servicios;
 
 import org.example.DTO.OfertaDTO;
-import org.example.DTO.PropietarioDTO;
 import org.example.modelos.Oferta;
 import org.example.repositorios.OfertaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +13,25 @@ public class OfertaServicioImpl implements  OfertaServicio {
     private OfertaRepositorio ofertaRepositorio;
     @Override
     public List<OfertaDTO> obtenerOfertas() {
-        return ofertaRepositorio.findAll().stream().map
-                        (o ->
-                                new OfertaDTO( o.getId(),
-                                        o.getCantidad(),
-                                        o.getDescripcion(),
-                                        o.getPiso().getId(),
-                                        o.getInquilino().getId(),
-                                        o.getSolicitudes()))
+        return ofertaRepositorio.findAll().stream().map(o ->
+                        new OfertaDTO(o.getId(),
+                                o.getCantidad(),
+                                o.getDescripcion(),
+                                o.getPiso().getId(),
+                                o.getInquilino().getId(),
+                                o.getSolicitudes()))
                 .toList();
     }
     @Override
-    public Oferta obtenerOfertaPorId(Integer id) {
-        return ofertaRepositorio.findById(id).orElse(null);
+    public OfertaDTO obtenerOfertaPorId(Integer id) {
+        return ofertaRepositorio.findById(id).map(o ->
+                        new OfertaDTO(o.getId(),
+                                o.getCantidad(),
+                                o.getDescripcion(),
+                                o.getPiso().getId(),
+                                o.getInquilino().getId(),
+                                o.getSolicitudes()))
+                .orElse(null);
     }
 
     @Override

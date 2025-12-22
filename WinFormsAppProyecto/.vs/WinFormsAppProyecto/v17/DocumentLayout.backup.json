@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
+              "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsAppProyecto\\Form1.cs",
-              "ToolTip": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs [Design]",
-              "RelativeToolTip": "WinFormsAppProyecto\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-16T18:13:23.838Z",
-              "EditorCaption": " [Design]"
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

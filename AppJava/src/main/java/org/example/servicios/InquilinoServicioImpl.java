@@ -1,7 +1,6 @@
 package org.example.servicios;
 
 import org.example.DTO.InquilinoDTO;
-import org.example.DTO.PropietarioDTO;
 import org.example.modelos.Inquilino;
 import org.example.repositorios.InquilinoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +15,41 @@ public class InquilinoServicioImpl implements InquilinoServicio {
 
     @Override
     public List<InquilinoDTO> obtenerInquilinos() {
-        return inquilinoRepositorio.findAll().stream().map
-                        (i ->
-                                new InquilinoDTO( i.getId(),
-                                        i.getNombre_usuario(),
-                                        i.getNombre_real(),
-                                        i.getFecha_nacimiento(),
-                                        i.getEmail(),
-                                        i.getFechaAlta(),
-                                        i.getPiso().getId(),
-                                        i.getTareas(),
-                                        i.getOfertas(),
-                                        i.getSolicitudes(),
-                                        i.getGastos(),
-                                        i.getPropietarios(),
-                                        i.getContrato().getId()))
+        return inquilinoRepositorio.findAll().stream().map(i ->
+                        new InquilinoDTO(i.getId(),
+                                i.getNombre_usuario(),
+                                i.getNombre_real(),
+                                i.getFecha_nacimiento(),
+                                i.getEmail(),
+                                i.getFechaAlta(),
+                                i.getPiso().getId(),
+                                i.getTareas(),
+                                i.getOfertas(),
+                                i.getSolicitudes(),
+                                i.getGastos(),
+                                i.getPropietarios(),
+                                i.getContrato().getId()))
                 .toList();
     }
 
     @Override
-    public Inquilino obtenerInquilinoPorId(Integer id) { return inquilinoRepositorio.findById(id).orElse(null); }
+    public InquilinoDTO obtenerInquilinoPorId(Integer id) {
+        return inquilinoRepositorio.findById(id).map(i ->
+                        new InquilinoDTO(i.getId(),
+                                i.getNombre_usuario(),
+                                i.getNombre_real(),
+                                i.getFecha_nacimiento(),
+                                i.getEmail(),
+                                i.getFechaAlta(),
+                                i.getPiso().getId(),
+                                i.getTareas(),
+                                i.getOfertas(),
+                                i.getSolicitudes(),
+                                i.getGastos(),
+                                i.getPropietarios(),
+                                i.getContrato().getId()))
+                .orElse(null);
+    }
 
 
     @Override

@@ -6,9 +6,9 @@ import org.example.modelos.Solicitud;
 import java.util.List;
 
 public interface SolicitudServicio {
-    public List<SolicitudDTO> obtenerSolicitudes();
-    public SolicitudDTO obtenerSolicitudPorId(Integer id);
-    public Solicitud guardar(Solicitud solicitud);
-    public Solicitud actualizar(Solicitud solicitud, Integer id);
-    public Solicitud eliminar(Integer id);
+    List<SolicitudDTO> obtenerSolicitudes();
+    SolicitudDTO obtenerSolicitudPorId(Integer id);
+    Solicitud guardar(Solicitud solicitud);
+    Solicitud actualizar(Solicitud solicitud, Integer id);
+    Solicitud eliminar(Integer id);
 }

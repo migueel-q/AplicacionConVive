@@ -6,9 +6,9 @@ import org.example.modelos.Piso;
 import java.util.List;
 
 public interface PisoServicio {
-    public List<PisoDTO> obtenerPisos();
-    public PisoDTO obtenerPisoPorId(Integer id);
-    public Piso guardar(Piso piso);
-    public Piso actualizar(Piso piso, Integer id);
-    public Piso eliminar(Integer id);
+    List<PisoDTO> obtenerPisos();
+    PisoDTO obtenerPisoPorId(Integer id);
+    Piso guardar(Piso piso);
+    Piso actualizar(Piso piso, Integer id);
+    Piso eliminar(Integer id);
 }

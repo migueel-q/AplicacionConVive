@@ -1,9 +1,7 @@
 package org.example.controladores;
 
-import org.example.DAO.GastoDAO;
 import org.example.DTO.GastoDTO;
 import org.example.modelos.Gasto;
-import org.example.servicios.GastoServicio;
 import org.example.servicios.GastoServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class GastoControlador {
+
     @Autowired
     private GastoServicioImpl gastoServicio;
 
@@ -53,7 +52,7 @@ public class GastoControlador {
 
     @DeleteMapping("/gastos/{id}")
     public ResponseEntity<?> borrarGasto(@PathVariable Integer id){
-        gastoServicio.borrar(id);
+        gastoServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }
 }

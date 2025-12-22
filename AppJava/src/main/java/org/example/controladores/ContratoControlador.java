@@ -1,9 +1,8 @@
 package org.example.controladores;
 
-import jakarta.servlet.ServletRequest;
+import org.example.DTO.ContratoDTO;
 import org.example.modelos.Contrato;
-import org.example.repositorios.ContratoRepositorio;
-import org.example.servicios.ContratoServicio;
+import org.example.servicios.ContratoServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,28 +15,24 @@ import java.util.List;
 public class ContratoControlador {
 
     @Autowired
-    private ContratoServicio contratoServicio;
-    @Autowired
-    private ContratoRepositorio contratoRepositorio;
+    private ContratoServicioImpl contratoServicio;
 
     @GetMapping("/contratos")
     public ResponseEntity<?> obtenerContratos(){
-        List<Contrato> contratos = contratoServicio.obtenerContratos();
+        List<ContratoDTO> contratos = contratoServicio.obtenerContratos();
         if(contratos.isEmpty()){
             return ResponseEntity.notFound().build();
-        }else{
-            return ResponseEntity.ok(contratos);
         }
+        return ResponseEntity.ok(contratos);
     }
 
     @GetMapping("/contratos/{id}")
     public ResponseEntity<?> obtenerContratoPorId(@PathVariable int id){
-        Contrato contrato = contratoServicio.obtenerContratoPorId(id);
+        ContratoDTO contrato = contratoServicio.obtenerContratoPorId(id);
         if(contrato == null){
             return ResponseEntity.notFound().build();
-        }else{
-            return ResponseEntity.ok(contrato);
         }
+        return ResponseEntity.ok(contrato);
     }
 
     @PostMapping("/contratos")
@@ -51,13 +46,12 @@ public class ContratoControlador {
         Contrato contrato = contratoServicio.actualizar(contratoEditar, id);
         if (contrato == null){
             return ResponseEntity.notFound().build();
-        }else{
-            return ResponseEntity.ok(contrato);
         }
+        return ResponseEntity.ok(contrato);
     }
 
     @DeleteMapping("/contratos/{id}")
-    public ResponseEntity<?> eliminarContrato(@PathVariable Integer id){
+    public ResponseEntity<?> borrarContrato(@PathVariable Integer id){
         contratoServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }
