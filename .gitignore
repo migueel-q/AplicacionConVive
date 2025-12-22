@@ -33,7 +33,42 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
+# Visual Studio
 .vscode/
+.vs/
+*.suo
+*.user
+*.cache
+*.db
+*.v2
+*.v9.bin
+*.backup.json
+
+# Build
+bin/
+obj/
+
+# NuGet
+*.nuget.*
+project.assets.json
+project.nuget.cache
+*.dgspec.json
+
+# Auto-generados
+*.AssemblyInfo.cs
+*.Designer.cs
+*.editorconfig
+*.g.cs
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.GlobalUsings.g.cs
+
+# Copilot / VS
+CopilotIndices/
+FileContentIndex/
+DesignTimeBuild/
+ProjectEvaluation/
+
+
 
 ### Mac OS ###
 .DS_Store
