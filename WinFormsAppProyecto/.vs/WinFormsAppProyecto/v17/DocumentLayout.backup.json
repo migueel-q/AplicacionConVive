@@ -1,10 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\",
+  "WorkspaceRootPath": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\WinFormsAppProyecto.csproj|c:\\users\\usuario1\\source\\repos\\winformsappproyecto\\winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\WinFormsAppProyecto.csproj|solutionrelative:winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formregistro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formregistro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formregistro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formregistro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formmodificarpisocs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formmodificarpisocs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\formlogs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\formlogs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\forminiciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\forminiciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\winformsappproyecto\\forma\u00F1adirpiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\forma\u00F1adirpiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{647F2D1F-B876-4314-A106-F55EFD35130E}|WinFormsAppProyecto\\Formularios.csproj|solutionrelative:winformsappproyecto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93D110DB-4418-40F6-A713-06135EE0DA3E}|Controlador\\Controlador.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\controlador\\gastocontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93D110DB-4418-40F6-A713-06135EE0DA3E}|Controlador\\Controlador.csproj|solutionrelative:controlador\\gastocontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{167B8523-C05D-464D-B82C-EDD27EC95724}|Modelos\\Modelos.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\modelos\\gasto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{167B8523-C05D-464D-B82C-EDD27EC95724}|Modelos\\Modelos.csproj|solutionrelative:modelos\\gasto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93D110DB-4418-40F6-A713-06135EE0DA3E}|Controlador\\Controlador.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\controlador\\tareacontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93D110DB-4418-40F6-A713-06135EE0DA3E}|Controlador\\Controlador.csproj|solutionrelative:controlador\\tareacontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{167B8523-C05D-464D-B82C-EDD27EC95724}|Modelos\\Modelos.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\modelos\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{167B8523-C05D-464D-B82C-EDD27EC95724}|Modelos\\Modelos.csproj|solutionrelative:modelos\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93D110DB-4418-40F6-A713-06135EE0DA3E}|Controlador\\Controlador.csproj|c:\\users\\rebec\\source\\repos\\aplicacionproyecto\\winformsappproyecto\\controlador\\icontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93D110DB-4418-40F6-A713-06135EE0DA3E}|Controlador\\Controlador.csproj|solutionrelative:controlador\\icontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +58,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 267,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -27,14 +75,152 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs",
+              "Title": "FormRegistro.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\rebec\\Source\\Repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormRegistro.Designer.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormRegistro.Designer.cs",
+              "ToolTip": "C:\\Users\\rebec\\Source\\Repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormRegistro.Designer.cs",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormRegistro.Designer.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAADwv8oAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T14:39:22.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormRegistro.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormRegistro.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormRegistro.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormRegistro.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormRegistro.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T14:39:19.281Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormModificarPisocs.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormModificarPisocs.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormModificarPisocs.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormModificarPisocs.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormModificarPisocs.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T14:39:16.374Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormLogs.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormLogs.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormLogs.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormLogs.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormLogs.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T14:39:13.89Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormInicioSesion.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormInicioSesion.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormInicioSesion.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormInicioSesion.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormInicioSesion.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T14:39:11.089Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormA\u00F1adirPiso.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormA\u00F1adirPiso.cs",
+              "RelativeDocumentMoniker": "WinFormsAppProyecto\\FormA\u00F1adirPiso.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\FormA\u00F1adirPiso.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\FormA\u00F1adirPiso.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T14:39:04.929Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Gasto.cs",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\Modelos\\Gasto.cs",
+              "RelativeDocumentMoniker": "Modelos\\Gasto.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\Modelos\\Gasto.cs",
+              "RelativeToolTip": "Modelos\\Gasto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T14:36:07.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Tarea.cs",
+              "DocumentMoniker": "C:\\Users\\rebec\\Source\\Repos\\AplicacionProyecto\\WinFormsAppProyecto\\Modelos\\Tarea.cs",
+              "RelativeDocumentMoniker": "Modelos\\Tarea.cs",
+              "ToolTip": "C:\\Users\\rebec\\Source\\Repos\\AplicacionProyecto\\WinFormsAppProyecto\\Modelos\\Tarea.cs",
+              "RelativeToolTip": "Modelos\\Tarea.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T13:59:15.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TareaControlador.cs",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\Controlador\\TareaControlador.cs",
+              "RelativeDocumentMoniker": "Controlador\\TareaControlador.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\Controlador\\TareaControlador.cs",
+              "RelativeToolTip": "Controlador\\TareaControlador.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAmwEoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T13:56:03.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IControlador.cs",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\Controlador\\IControlador.cs",
+              "RelativeDocumentMoniker": "Controlador\\IControlador.cs",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\Controlador\\IControlador.cs",
+              "RelativeToolTip": "Controlador\\IControlador.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T17:11:32.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GastoControlador.cs",
+              "DocumentMoniker": "C:\\Users\\rebec\\Source\\Repos\\AplicacionProyecto\\WinFormsAppProyecto\\Controlador\\GastoControlador.cs",
+              "RelativeDocumentMoniker": "Controlador\\GastoControlador.cs",
+              "ToolTip": "C:\\Users\\rebec\\Source\\Repos\\AplicacionProyecto\\WinFormsAppProyecto\\Controlador\\GastoControlador.cs",
+              "RelativeToolTip": "Controlador\\GastoControlador.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwCYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T17:10:48.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsAppProyecto\\Form1.cs",
-              "ToolTip": "C:\\Users\\usuario1\\source\\repos\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs [Design]",
-              "RelativeToolTip": "WinFormsAppProyecto\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\rebec\\source\\repos\\AplicacionProyecto\\WinFormsAppProyecto\\WinFormsAppProyecto\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "WinFormsAppProyecto\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-16T18:13:23.838Z",
-              "EditorCaption": " [Design]"
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

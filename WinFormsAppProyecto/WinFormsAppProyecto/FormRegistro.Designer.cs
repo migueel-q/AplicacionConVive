@@ -201,7 +201,6 @@
             Controls.Add(label1);
             Name = "FormRegistro";
             Text = "FormRegistro";
-            Load += this.FormRegistro_Load;
             ResumeLayout(false);
             PerformLayout();
         }

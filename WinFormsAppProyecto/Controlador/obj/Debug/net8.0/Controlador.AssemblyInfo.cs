@@ -11,15 +11,13 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Formularios")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Controlador")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49959669b3007fe374e7782d2c57d9a9cac6700d")]
-[assembly: System.Reflection.AssemblyProductAttribute("Formularios")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Formularios")]
+[assembly: System.Reflection.AssemblyProductAttribute("Controlador")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Controlador")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
-[assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
-[assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
 
