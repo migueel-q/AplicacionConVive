@@ -5,5 +5,6 @@ data class Piso(
     val direccion : String,
     val descripcion : String,
     val propietario : String,
+    val precio : Double,
     val urlImagen : String,
 )

@@ -3,11 +3,14 @@ package com.example.androidappproyecto.pantallas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -23,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
@@ -40,15 +44,16 @@ import com.example.androidappproyecto.data.pisos
 import com.example.androidappproyecto.modelos.Piso
 import java.time.LocalDate
 
-@Preview(showBackground = true)
 @Composable
 fun PantallaHome(){
     LazyColumn (
         modifier = Modifier
             .fillMaxSize()
+            .background(Color.LightGray)
             .padding(8.dp),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.Start
+        horizontalAlignment = Alignment.Start,
+
     ){
         items(pisos){ piso ->
             PisoSeccion(piso)
@@ -64,29 +69,28 @@ fun PisoSeccion(piso : Piso){
         ),
         modifier = Modifier
             .fillMaxWidth()
+            .height(420.dp)
             .padding(8.dp),
         colors = CardColors(
-            containerColor = Color.Black,
-            contentColor = Color.White,
+            containerColor = Color.White,
+            contentColor = Color.Black,
             disabledContainerColor = Color.Gray,
-            disabledContentColor = Color.White
+            disabledContentColor = Color.Black
         ),
         shape = CardDefaults.shape,
     ) {
-        Row(
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .background(Color(0xFF800000))
-                .padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceEvenly
         ) {
             ImagenPisoCard(
                 url = piso.urlImagen,
                 desc = "Imagen del artista"
             )
             Spacer(modifier = Modifier.width(16.dp))
-            InfoArtist(piso, modifier = Modifier.weight(0.75f))
+            InfoArtist(piso, modifier = Modifier.padding(12.dp).fillMaxSize())
 
         }
     }
@@ -98,10 +102,22 @@ fun InfoArtist(piso: Piso, modifier: Modifier) {
         modifier=modifier
     ) {
         Text(
-            text = piso.titulo,
-            color = Color.White,
+            text = piso.precio.toString(),
+            color = Color.Black,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(
+            text = piso.titulo,
+            color = Color.Black,
+            fontSize = 20.sp,
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(
+            text = piso.descripcion,
+            color = Color.Gray,
+            fontSize = 14.sp,
             overflow = TextOverflow.Ellipsis
         )
     }
@@ -113,8 +129,8 @@ fun ImagenPisoCard(url: String?, desc: String){
     GlideImage(
         model = url,
         contentDescription = desc,
-        modifier =  Modifier.size(80.dp)
-            .clip(CircleShape)
+        modifier =  Modifier.height(220.dp)
+            .fillMaxWidth()
             .background(Color.Gray),
         contentScale = ContentScale.Crop,
         loading = placeholder(R.drawable.loading),
@@ -128,5 +144,6 @@ fun seleccionDelPiso(): Piso {
         direccion = " ",
         descripcion = " ",
         propietario = " ",
+        precio = 0.00,
         urlImagen = " ")
 }

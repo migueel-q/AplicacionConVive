@@ -1,6 +1,7 @@
 package com.example.androidappproyecto.pantallas
 
 import android.annotation.SuppressLint
+import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -11,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -42,7 +44,7 @@ fun AppConviveTopBar() {
     TopAppBar(
         title = {
             Text(
-                text = "App ConVive",
+                text = "ConVive",
                 style = MaterialTheme.typography.headlineLarge
             )
         },
@@ -68,17 +70,19 @@ private fun AppConviveBottomBar(navController: NavHostController) {
         Items_barra_inferior.Item_bottom_nav_premium)
 
     NavigationBar(
+        contentColor = Color(0xFF800000),
         containerColor = MaterialTheme.colorScheme.surfaceVariant
 
     ){
         bar_items.forEach { it ->
-            val clicked= currentRoute(navController)==it.ruta
+            val clicked = currentRoute(navController) == it.ruta
             NavigationBarItem(selected = clicked,
                 onClick = { navController.navigate(it.ruta) },
-                icon = { Icon(imageVector = it.icono, contentDescription =
-                    null)
+                icon = { Icon(imageVector = it.icono,
+                    contentDescription = null,
+                    )
                 },
-                label = {Text(text=it.texto)}
+                label = { Text(text=it.texto) }
             )
         }
     }
