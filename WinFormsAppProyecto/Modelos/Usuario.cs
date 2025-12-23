@@ -8,12 +8,12 @@ namespace Modelos
 {
     public abstract class Usuario
     {
-        protected int id {  get; set; }
-        protected string nombre_usuario { get; set; }
-        protected string nombre_real { get; set; }
-        protected DateOnly fecha_nacimiento { get; set; }
-        protected string email { get; set; }
-        protected string password { get; set; }
+        public int id {  get; set; }
+        public string nombre_usuario { get; set; }
+        public string nombre_real { get; set; }
+        public DateOnly fecha_nacimiento { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
 
     }
 }

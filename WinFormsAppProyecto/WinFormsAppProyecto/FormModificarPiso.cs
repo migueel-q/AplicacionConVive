@@ -14,7 +14,7 @@ namespace Formularios
     {
         public FormModificarPiso()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controladores;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsAppProyecto;
+using Modelos;
 
 namespace Formularios
 {
@@ -17,6 +19,8 @@ namespace Formularios
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            cmbTipoUsuario.Items.Add("Propietario");
+            cmbTipoUsuario.Items.Add("Inquilino");
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -31,7 +35,7 @@ namespace Formularios
             this.Close();
         }
 
-        private void btnRegistrarse_Click(object sender, EventArgs e)
+        private async void btnRegistrarse_Click(object sender, EventArgs e)
         {
             if (txtContrasena.Text != txtContraValida.Text)
             {
@@ -42,34 +46,34 @@ namespace Formularios
             {
                 errorProvider.Clear();
             }
-            /*string tipo = cmbTipoUsuario.SelectedItem.ToString();
+            string tipo = cmbTipoUsuario.SelectedItem.ToString();
             if (tipo == "Propietario")
             {
-                //Propietario controlador
-                var usuario = new //Propietario nuevoPropietario = new Propietario
+                PropietarioControlador propietarioControlador = new PropietarioControlador();
+                Propietario nuevoPropietario = new Propietario
                 {
                     nombre_usuario = txtNombreUsu.Text,
-                    nombreReal = txtNombreReal.Text,
-                    fechaNac = dtpFechaNac.Value.ToString(),
+                    nombre_real = txtNombreReal.Text,
+                    fecha_nacimiento = DateOnly.FromDateTime(dtpFechaNac.Value),
                     email = txtEmail.Text,
-                    contrasena = txtContrasena.Text
+                    password = txtContrasena.Text
                 };
-                // await controlador.add(nuevoPropietario)
+                await propietarioControlador.add(nuevoPropietario);
                 MessageBox.Show("Propietario registrado correctamente.");
             } else if (tipo == "Inquilino")
             {
-                //Inquilino controlador
-                var usuario = new //Inquilino nuevoInquilino = new Inquilino
+                InquilinoControlador inquilinoControlador = new InquilinoControlador();
+                Inquilino nuevoInquilino = new Inquilino
                 {
                     nombre_usuario = txtNombreUsu.Text,
-                    nombreReal = txtNombreReal.Text,
-                    fechaNac = dtpFechaNac.Value.ToString(),
+                    nombre_real = txtNombreReal.Text,
+                    fecha_nacimiento = DateOnly.FromDateTime(dtpFechaNac.Value),
                     email = txtEmail.Text,
-                    contrasena = txtContrasena.Text
+                    password = txtContrasena.Text
                 };
-                // await controlador.add(nuevoInquilino)
+                await inquilinoControlador.add(nuevoInquilino);
                 MessageBox.Show("Inquilino registrado correctamente.");
-            }*/
+            }
         }
     }
 }
