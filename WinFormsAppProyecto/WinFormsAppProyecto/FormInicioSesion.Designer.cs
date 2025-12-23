@@ -42,6 +42,7 @@
             txtContrasena.Name = "txtContrasena";
             txtContrasena.Size = new Size(100, 23);
             txtContrasena.TabIndex = 12;
+            txtContrasena.UseSystemPasswordChar = true;
             // 
             // txtEmail
             // 

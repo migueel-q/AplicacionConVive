@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -41,9 +42,11 @@
             label6 = new Label();
             txtContraValida = new TextBox();
             label7 = new Label();
-            comboBox1 = new ComboBox();
+            cmbTipoUsuario = new ComboBox();
             btnRegistrarse = new Button();
             btnVolver = new Button();
+            errorProvider = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -119,6 +122,7 @@
             txtContrasena.Name = "txtContrasena";
             txtContrasena.Size = new Size(100, 23);
             txtContrasena.TabIndex = 8;
+            txtContrasena.UseSystemPasswordChar = true;
             // 
             // dtpFechaNac
             // 
@@ -142,6 +146,7 @@
             txtContraValida.Name = "txtContraValida";
             txtContraValida.Size = new Size(100, 23);
             txtContraValida.TabIndex = 11;
+            txtContraValida.UseSystemPasswordChar = true;
             // 
             // label7
             // 
@@ -152,13 +157,13 @@
             label7.TabIndex = 12;
             label7.Text = "¿Qué tipo de usuario eres?";
             // 
-            // comboBox1
+            // cmbTipoUsuario
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(258, 123);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 13;
+            cmbTipoUsuario.FormattingEnabled = true;
+            cmbTipoUsuario.Location = new Point(258, 123);
+            cmbTipoUsuario.Name = "cmbTipoUsuario";
+            cmbTipoUsuario.Size = new Size(121, 23);
+            cmbTipoUsuario.TabIndex = 13;
             // 
             // btnRegistrarse
             // 
@@ -168,6 +173,7 @@
             btnRegistrarse.TabIndex = 14;
             btnRegistrarse.Text = "Registrarse";
             btnRegistrarse.UseVisualStyleBackColor = true;
+            btnRegistrarse.Click += btnRegistrarse_Click;
             // 
             // btnVolver
             // 
@@ -179,6 +185,10 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
+            // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -186,7 +196,7 @@
             ClientSize = new Size(492, 339);
             Controls.Add(btnVolver);
             Controls.Add(btnRegistrarse);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbTipoUsuario);
             Controls.Add(label7);
             Controls.Add(txtContraValida);
             Controls.Add(label6);
@@ -202,6 +212,7 @@
             Controls.Add(label1);
             Name = "FormRegistro";
             Text = "FormRegistro";
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,8 +232,9 @@
         private Label label6;
         private TextBox txtContraValida;
         private Label label7;
-        private ComboBox comboBox1;
+        private ComboBox cmbTipoUsuario;
         private Button btnRegistrarse;
         private Button btnVolver;
+        private ErrorProvider errorProvider;
     }
 }
