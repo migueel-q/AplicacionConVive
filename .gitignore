@@ -35,6 +35,7 @@ build/
 ### VS Code ###
 # Visual Studio
 .vscode/
+<<<<<<< HEAD
 .vs/
 *.suo
 *.user
@@ -68,7 +69,24 @@ FileContentIndex/
 DesignTimeBuild/
 ProjectEvaluation/
 
+# Archivos de Visual Studio
+.vs/
+*.user
+*.suo
+*.vssscc
+*.vspscc
+*.dbmdl
+*.vsscc
+WinFormsAppProyecto/.vs/
+WinFormsAppProyecto/FileContentIndex/
 
+# Build results (Visual Studio / .NET)
+bin/
+obj/
+
+# Ignorar bin/ y obj/ dentro del proyecto WinForms
+WinFormsAppProyecto/WinFormsAppProyecto/bin/
+WinFormsAppProyecto/WinFormsAppProyecto/obj/
 
 ### Mac OS ###
 .DS_Store
