@@ -9,7 +9,7 @@ using Modelos;
 
 namespace Controladores
 {
-    internal class GastoControlador
+    internal class GastoControlador : IControlador<Gasto>
     {
         private HttpClient cliente;
 
@@ -18,10 +18,10 @@ namespace Controladores
             cliente = new HttpClient();
         }
 
-        public async Task<Gasto> add(Gasto tareaNueva)
+        public async Task<Gasto> add(Gasto gastoNuevo)
         {
             Gasto gasto = new Gasto();
-            string json = JsonConvert.SerializeObject(tareaNueva);
+            string json = JsonConvert.SerializeObject(gastoNuevo);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage mensaje = await cliente.PostAsync("http://localhost:8080/api/gastos", content);
@@ -55,17 +55,17 @@ namespace Controladores
             return gasto;
         }
 
-        public async Task<bool> remove(int id)
+        public async Task<bool> delete(int id)
         {
             HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://localhost:8080/api/gastos/{id}");
             mensaje.EnsureSuccessStatusCode();
             return true;
         }
 
-        public async Task<Gasto> update(Gasto tareaModificada, int id)
+        public async Task<Gasto> update(Gasto gastoModificado, int id)
         {
             Gasto gasto = new Gasto();
-            string json = JsonConvert.SerializeObject(tareaModificada);
+            string json = JsonConvert.SerializeObject(gastoModificado);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage mensaje = await cliente.PutAsync($"http://localhost:8080/api/gastos/{id}", content);

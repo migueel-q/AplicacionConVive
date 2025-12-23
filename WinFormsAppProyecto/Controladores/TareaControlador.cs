@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Controladores
 {
-    public class TareaControlador
+    public class TareaControlador : IControlador<Tarea>
     {
         private HttpClient cliente;
 
@@ -54,7 +54,7 @@ namespace Controladores
             return tarea;
         }
 
-        public async Task<bool> remove(int id)
+        public async Task<bool> delete(int id)
         {
             HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://localhost:8080/api/tareas/{id}");
             mensaje.EnsureSuccessStatusCode();
