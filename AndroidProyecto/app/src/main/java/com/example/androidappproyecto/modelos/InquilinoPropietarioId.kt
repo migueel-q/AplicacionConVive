@@ -1,8 +1,8 @@
 package com.example.androidappproyecto.modelos
 
 data class InquilinoPropietarioId(
-    val inquilino: Int = 0,
-    val propietario: Int = 0,
+    val inquilino: Int,
+    val propietario: Int,
 
     val fecha_msg: String? = null
 )

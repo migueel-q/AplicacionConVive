@@ -1,8 +1,6 @@
 package com.example.androidappproyecto.modelos
 
 data class Propietario(
-
-
     val uid: String,
     val name: String,
     val email: String,

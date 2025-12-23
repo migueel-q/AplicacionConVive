@@ -1,11 +1,10 @@
 package com.example.androidappproyecto.modelos
 
 data class Gasto(
-    val id: Int = 0,
+    val id: Int,
     val concepto: String? = null,
-    val valor: Double = 0.0,
+    val valor: Double,
 
-    // Relaciones
     val inquilino: Inquilino? = null,
     val piso: Piso? = null
 )

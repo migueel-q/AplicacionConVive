@@ -1,9 +1,9 @@
 package com.example.androidappproyecto.modelos
 
 data class Contrato(
-    var id: Int = 0,
+    var id: Int,
     var descripcion: String? = null,
-    var precio: Double = 0.0,
+    var precio: Double,
 
     var fecha_inicio: String? = null,
     var fecha_fin: String? = null,

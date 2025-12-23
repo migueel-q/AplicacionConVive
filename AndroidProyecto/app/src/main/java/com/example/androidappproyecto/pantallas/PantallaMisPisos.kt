@@ -26,9 +26,10 @@ fun PantallaMisPisos(navController: NavHostController) {
             titulo = "Piso Centro",
             direccion = "C/ Mayor 12, Torrelavega",
             descripcion = "Luminoso, 3 habitaciones, cerca de todo.",
+            url_imagen = "https://picsum.photos/600/400?random=1",
+            disponible = true,
             propietario = "Juan Pérez",
-            precio = 350.00,
-            urlImagen = "https://picsum.photos/600/400?random=1",
+            precio = 350.00
         ),
         Piso(
             titulo = "Piso Playa",
@@ -36,11 +37,11 @@ fun PantallaMisPisos(navController: NavHostController) {
             descripcion = "Vistas al mar, ideal para teletrabajo.",
             propietario = "Laura Gómez",
             precio = 420.00,
-            urlImagen = "https://picsum.photos/600/400?random=2",
+            url_imagen = "https://picsum.photos/600/400?random=2",
         )
     )
 
-    if (pisos.isEmpty()) {
+    if (pisosPrueba.isEmpty()) {
         EstadoSinPisos()
     } else {
         LazyColumn(
@@ -48,7 +49,7 @@ fun PantallaMisPisos(navController: NavHostController) {
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(pisos) { piso ->
+            items(pisosPrueba) { piso ->
                 TarjetaPiso(piso) {
                     PisoSeleccionado.piso = piso
                     navController.navigate(Rutas.DetallePiso.name)
