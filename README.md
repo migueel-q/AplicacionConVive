@@ -48,10 +48,10 @@ Convive es un proyecto desarrollado como parte de un trabajo académico, orienta
 
 ## Licencia
 
-Este proyecto se distribuye con fines educativos.
+Este proyecto se distribuye con fines educativos. MIT License
 
 ---
 
-## 📫 Contacto
+## Contacto
 
-Para cualquier duda o sugerencia relacionada con el proyecto, puedes abrir una *issue* en este repositorio.
+Para cualquier duda o sugerencia relacionada con el proyecto, puedes escribirnos un correo a nuestros perfiles de GitHub, o abrir una *issue* en este repositorio.
