@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Controladores
 {
-    internal class PropietarioControlador : IControlador<Propietario>
+    public class PropietarioControlador : IControlador<Propietario>
     {
         private HttpClient cliente;
 
@@ -23,7 +23,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(propietarioNuevo);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PostAsync("http://localhost:8080/api/propietarios", content);
+            HttpResponseMessage mensaje = await cliente.PostAsync("http://192.168.56.1/:8080/api/propietarios", content);
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
             gasto = JsonConvert.DeserializeObject<Propietario>(mensajeJson);
