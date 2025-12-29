@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsAppProyecto;
+using Modelos;
+using Controladores;
 
 namespace Formularios
 {
@@ -27,28 +29,27 @@ namespace Formularios
 
         }
 
-        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        private async void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
             form1.Show();
             this.Close();
 
             // Codigo para iniciar sesion
-            //PropietarioControlador propietarioControlador = new PropietarioControlador()
-            //InquilinoControlador inquilinoControlador = new InquilinoControlador()
-            /*
+            PropietarioControlador propietarioControlador = new PropietarioControlador();
+            InquilinoControlador inquilinoControlador = new InquilinoControlador();
+            
              var propietarios = await propietarioControlador.getAll();
-             var propietario = propietarios.FirstOrDefault(p => p.email == txtEmail.Text && p.contraseña == txtContrasena.Text);
+             var propietario = propietarios.FirstOrDefault(p => p.email == txtEmail.Text && p.password == txtContrasena.Text);
              if(propietario!=null){
-               MessageBox de bienvenido
+                MessageBox.Show("Bienvenido");
              }
 
              var inquilinos = await inquilinoControlador.getAll();
-             var inquilino = inquilinos.FirstOrDefault(i => i.email == txtEmail.Text && i.contraseña == txtContrasena.Text);
+             var inquilino = inquilinos.FirstOrDefault(i => i.email == txtEmail.Text && i.password == txtContrasena.Text);
              if(inquilino!=null){
-               MessageBox de bienvenido
-             }
-             */
+                MessageBox.Show("Bienvenido");
+            }
         }
     }
 }
