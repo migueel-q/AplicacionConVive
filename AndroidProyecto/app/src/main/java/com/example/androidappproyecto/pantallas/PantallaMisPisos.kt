@@ -28,16 +28,26 @@ fun PantallaMisPisos(navController: NavHostController) {
             descripcion = "Luminoso, 3 habitaciones, cerca de todo.",
             url_imagen = "https://picsum.photos/600/400?random=1",
             disponible = true,
-            propietario = "Juan Pérez",
-            precio = 350.00
+            propietario = null,
+            precio = 350.00,
+            inquilinos = null,
+            ofertas = null,
+            gastos = null,
+            contratos = null,
+            id = 1
         ),
         Piso(
             titulo = "Piso Playa",
             direccion = "Av. del Mar 5, Suances",
             descripcion = "Vistas al mar, ideal para teletrabajo.",
-            propietario = "Laura Gómez",
+            propietario = null,
             precio = 420.00,
             url_imagen = "https://picsum.photos/600/400?random=2",
+            inquilinos = null,
+            ofertas = null,
+            gastos = null,
+            contratos = null,
+            id = 2
         )
     )
 
@@ -84,7 +94,7 @@ private fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
     ) {
         Column {
             GlideImage(
-                model = piso.urlImagen,
+                model = piso.url_imagen,
                 contentDescription = "Foto del piso",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -92,7 +102,7 @@ private fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
             )
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(piso.titulo, fontWeight = FontWeight.Bold)
-                Text(piso.direccion)
+                piso.direccion?.let { Text(it) }
             }
         }
     }
