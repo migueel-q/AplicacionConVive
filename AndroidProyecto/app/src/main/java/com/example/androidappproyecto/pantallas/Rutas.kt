@@ -2,9 +2,9 @@ package com.example.androidappproyecto.pantallas
 
 enum class Rutas {
     Home,
-    MisPisos,
     Buscar,
+    Chat,
+    MisPisos,
     Perfil,
-    Premium,
     DetallePiso
 }
