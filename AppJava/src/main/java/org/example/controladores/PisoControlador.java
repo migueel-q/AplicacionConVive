@@ -18,8 +18,8 @@ public class PisoControlador {
     private PisoServicioImpl pisoServicio;
 
     @GetMapping("/pisos")
-    public ResponseEntity<?> obtenerPisos() {
-        List<PisoDTO> pisos = pisoServicio.obtenerPisos();
+    public ResponseEntity<List<Piso>> obtenerPisos() {
+        List<Piso> pisos = pisoServicio.obtenerPisos();
         if(pisos.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -27,8 +27,8 @@ public class PisoControlador {
     }
 
     @GetMapping("pisos/{id}")
-    public ResponseEntity<?> obtenerPisoPorId(@PathVariable Integer id) {
-        PisoDTO piso = pisoServicio.obtenerPisoPorId(id);
+    public ResponseEntity<Piso> obtenerPisoPorId(@PathVariable Integer id) {
+        Piso piso = pisoServicio.obtenerPisoPorId(id);
         if (piso == null) {
             return ResponseEntity.notFound().build();
         }
@@ -42,7 +42,7 @@ public class PisoControlador {
     }
 
     @PutMapping("/pisos/{id}")
-    public ResponseEntity<?> actualizarPiso(@PathVariable Integer id, @RequestBody Piso pisoEditar) {
+    public ResponseEntity<Piso> actualizarPiso(@PathVariable Integer id, @RequestBody Piso pisoEditar) {
         Piso piso = pisoServicio.actualizar(pisoEditar, id);
         if (piso == null) {
             return ResponseEntity.notFound().build();
@@ -53,7 +53,7 @@ public class PisoControlador {
 
 
     @DeleteMapping("/pisos/{id}")
-    public ResponseEntity<?> borrarPiso(@PathVariable Integer id) {
+    public ResponseEntity<Piso> borrarPiso(@PathVariable Integer id) {
         pisoServicio.eliminar(id);
         return ResponseEntity.notFound().build();
     }

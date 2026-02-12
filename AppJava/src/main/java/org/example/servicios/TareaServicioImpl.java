@@ -13,23 +13,13 @@ public class TareaServicioImpl implements  TareaServicio {
     @Autowired
     private TareaRepositorio tareaRepositorio;
     @Override
-    public List<TareaDTO> obtenerTareas() {
-        return tareaRepositorio.findAll().stream()
-                .map(t -> new TareaDTO(
-                        t.getId(),
-                        t.getDescripcion(),
-                        t.getInquilino().getId()
-                )).toList();
+    public List<Tarea> obtenerTareas() {
+        return tareaRepositorio.findAll();
     }
 
     @Override
-    public TareaDTO obtenerTareaPorId(Integer id) {
-        return tareaRepositorio.findById(id)
-                .map(t -> new TareaDTO(
-                        t.getId(),
-                        t.getDescripcion(),
-                        t.getInquilino().getId()
-                )).orElse(null);
+    public Tarea obtenerTareaPorId(Integer id) {
+        return tareaRepositorio.findById(id).orElse(null);
     }
 
     @Override

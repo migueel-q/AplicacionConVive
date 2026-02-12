@@ -19,8 +19,8 @@ public class TareaControlador {
     private TareaServicioImpl tareaServicio;
 
     @GetMapping("/tareas")
-    public ResponseEntity<?> obtenerGastos(){
-        List<TareaDTO> tarea = tareaServicio.obtenerTareas();
+    public ResponseEntity<List<Tarea>> obtenerGastos(){
+        List<Tarea> tarea = tareaServicio.obtenerTareas();
         if(tarea.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -28,8 +28,8 @@ public class TareaControlador {
     }
 
     @GetMapping("tareas/{id}")
-    public ResponseEntity<?> obtenerGastoPorId(@PathVariable Integer id) {
-        TareaDTO tarea = tareaServicio.obtenerTareaPorId(id);
+    public ResponseEntity<Tarea> obtenerGastoPorId(@PathVariable Integer id) {
+        Tarea tarea = tareaServicio.obtenerTareaPorId(id);
         if (tarea == null) {
             return ResponseEntity.notFound().build();
         }
@@ -43,7 +43,7 @@ public class TareaControlador {
     }
 
     @PutMapping("/tareas/{id}")
-    public ResponseEntity<?> editarGasto(@RequestBody Tarea tareaEditar, @PathVariable Integer id){
+    public ResponseEntity<Tarea> editarGasto(@RequestBody Tarea tareaEditar, @PathVariable Integer id){
         Tarea tarea = tareaServicio.actualizar(tareaEditar, id);
         if (tarea == null) {
             return ResponseEntity.notFound().build();
@@ -52,7 +52,7 @@ public class TareaControlador {
     }
 
     @DeleteMapping("/tareas/{id}")
-    public ResponseEntity<?> borrarGasto(@PathVariable Integer id){
+    public ResponseEntity<Tarea> borrarGasto(@PathVariable Integer id){
         tareaServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }

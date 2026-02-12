@@ -18,8 +18,8 @@ public class OfertaControlador {
     private OfertaServicioImpl ofertaServicio;
 
     @GetMapping("/ofertas")
-    public ResponseEntity<?> obtenerOfertas(){
-        List<OfertaDTO> ofertas = ofertaServicio.obtenerOfertas();
+    public ResponseEntity<List<Oferta>> obtenerOfertas(){
+        List<Oferta> ofertas = ofertaServicio.obtenerOfertas();
         if(ofertas.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -27,8 +27,8 @@ public class OfertaControlador {
     }
 
     @GetMapping("/ofertas/{id}")
-    public ResponseEntity<?> obtenerOfertaPorId(@PathVariable int id){
-        OfertaDTO oferta = ofertaServicio.obtenerOfertaPorId(id);
+    public ResponseEntity<Oferta> obtenerOfertaPorId(@PathVariable int id){
+        Oferta oferta = ofertaServicio.obtenerOfertaPorId(id);
         if(oferta==null){
             return ResponseEntity.notFound().build();
         }
@@ -36,13 +36,13 @@ public class OfertaControlador {
     }
 
     @PostMapping("/ofertas")
-    public ResponseEntity<?> nuevaOferta(@RequestBody Oferta oferta){
+    public ResponseEntity<Oferta> nuevaOferta(@RequestBody Oferta oferta){
         Oferta guardado=ofertaServicio.guardar(oferta);
         return ResponseEntity.status(HttpStatus.CREATED).body(guardado);
     }
 
     @PutMapping("/ofertas/{id}")
-    public ResponseEntity<?> editarOferta(@PathVariable Integer id, @RequestBody Oferta ofertaEditar){
+    public ResponseEntity<Oferta> editarOferta(@PathVariable Integer id, @RequestBody Oferta ofertaEditar){
         Oferta oferta =ofertaServicio.actualizar(ofertaEditar, id);
         if (oferta == null){
             return ResponseEntity.notFound().build();
@@ -51,7 +51,7 @@ public class OfertaControlador {
     }
 
     @DeleteMapping("/ofertas/{id}")
-    public ResponseEntity<?> borrarOferta(@PathVariable Integer id){
+    public ResponseEntity<Oferta> borrarOferta(@PathVariable Integer id){
         ofertaServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }

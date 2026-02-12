@@ -18,8 +18,8 @@ public class PropietarioControlador {
     private PropietarioServicioImpl propietarioServicio;
 
     @GetMapping("/propietarios")
-    public ResponseEntity<?> obtenerPropietarios(){
-        List<PropietarioDTO> propietarios = propietarioServicio.obtenerPropietarios();
+    public ResponseEntity<List<Propietario>> obtenerPropietarios(){
+        List<Propietario> propietarios = propietarioServicio.obtenerPropietarios();
         if(propietarios.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -27,8 +27,8 @@ public class PropietarioControlador {
     }
 
     @GetMapping("/propietarios/{id}")
-    public ResponseEntity<?> obtenerPropietarioPorId(@PathVariable Integer id){
-        PropietarioDTO propietario = propietarioServicio.obtenerPropietarioPorId(id);
+    public ResponseEntity<Propietario> obtenerPropietarioPorId(@PathVariable Integer id){
+        Propietario propietario = propietarioServicio.obtenerPropietarioPorId(id);
         if(propietario == null){
             return ResponseEntity.notFound().build();
         }
@@ -43,7 +43,7 @@ public class PropietarioControlador {
     }
 
     @PutMapping("/propietarios/{id}")
-    public ResponseEntity<?> editarPropietario(@PathVariable Integer id, @RequestBody Propietario propietarioEditar){
+    public ResponseEntity<Propietario> editarPropietario(@PathVariable Integer id, @RequestBody Propietario propietarioEditar){
         Propietario propietario = propietarioServicio.actualizar(propietarioEditar, id);
         if(propietario == null){
             return ResponseEntity.notFound().build();
@@ -52,7 +52,7 @@ public class PropietarioControlador {
     }
 
     @DeleteMapping("/propietarios/{id}")
-    public ResponseEntity<?> borrarPropietario(@PathVariable Integer id){
+    public ResponseEntity<Propietario> borrarPropietario(@PathVariable Integer id){
             propietarioServicio.eliminar(id);
             return ResponseEntity.noContent().build();
     }

@@ -14,41 +14,13 @@ public class InquilinoServicioImpl implements InquilinoServicio {
     private InquilinoRepositorio inquilinoRepositorio;
 
     @Override
-    public List<InquilinoDTO> obtenerInquilinos() {
-        return inquilinoRepositorio.findAll().stream().map(i ->
-                        new InquilinoDTO(i.getId(),
-                                i.getNombre_usuario(),
-                                i.getNombre_real(),
-                                i.getFecha_nacimiento(),
-                                i.getEmail(),
-                                i.getFechaAlta(),
-                                i.getPiso().getId(),
-                                i.getTareas(),
-                                i.getOfertas(),
-                                i.getSolicitudes(),
-                                i.getGastos(),
-                                i.getPropietarios(),
-                                i.getContrato().getId()))
-                .toList();
+    public List<Inquilino> obtenerInquilinos() {
+        return inquilinoRepositorio.findAll();
     }
 
     @Override
-    public InquilinoDTO obtenerInquilinoPorId(Integer id) {
-        return inquilinoRepositorio.findById(id).map(i ->
-                        new InquilinoDTO(i.getId(),
-                                i.getNombre_usuario(),
-                                i.getNombre_real(),
-                                i.getFecha_nacimiento(),
-                                i.getEmail(),
-                                i.getFechaAlta(),
-                                i.getPiso().getId(),
-                                i.getTareas(),
-                                i.getOfertas(),
-                                i.getSolicitudes(),
-                                i.getGastos(),
-                                i.getPropietarios(),
-                                i.getContrato().getId()))
-                .orElse(null);
+    public Inquilino obtenerInquilinoPorId(Integer id) {
+        return inquilinoRepositorio.findById(id).orElse(null);
     }
 
 
