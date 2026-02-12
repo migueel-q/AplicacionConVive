@@ -25,7 +25,7 @@ fun PantallaDetallePiso() {
     ) {
         item {
             GlideImage(
-                model = piso.urlImagen,
+                model = piso.url_imagen,
                 contentDescription = "Foto piso",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -33,7 +33,7 @@ fun PantallaDetallePiso() {
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(piso.titulo, fontWeight = FontWeight.Bold)
-            Text(piso.direccion)
+            piso.direccion?.let { Text(it) }
             Spacer(modifier = Modifier.height(8.dp))
             Text(piso.descripcion)
         }

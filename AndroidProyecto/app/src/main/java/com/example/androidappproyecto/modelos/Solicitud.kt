@@ -1,7 +1,7 @@
 package com.example.androidappproyecto.modelos
 
 data class Solicitud(
-    val id: Int = 0,
+    val id: Int,
     val aceptado: Boolean = false,
 
     val inquilino: Inquilino? = null,

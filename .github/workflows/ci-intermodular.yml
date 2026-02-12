@@ -1,0 +1,32 @@
+name: CI Intermodular ConVive
+
+on:
+  push:
+    branches:
+      - develop
+      - feature/*
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Compilar y ejecutar tests
+        run: mvn clean verify
+
+      - name: Confirmación de ejecución
+        run: echo "CI ejecutada correctamente en la rama ${{ github.ref }}"

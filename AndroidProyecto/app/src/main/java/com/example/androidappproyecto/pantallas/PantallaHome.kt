@@ -30,6 +30,7 @@ import com.bumptech.glide.integration.compose.placeholder
 import com.example.androidappproyecto.R
 import com.example.androidappproyecto.data.pisos
 import com.example.androidappproyecto.modelos.Piso
+import com.example.androidappproyecto.modelos.Propietario
 
 @Composable
 fun PantallaHome(){
@@ -73,7 +74,7 @@ fun PisoSeccion(piso : Piso){
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
             ImagenPisoCard(
-                url = piso.urlImagen,
+                url = piso.url_imagen,
                 desc = "Imagen del artista"
             )
             Spacer(modifier = Modifier.width(16.dp))
@@ -127,10 +128,18 @@ fun ImagenPisoCard(url: String?, desc: String){
 
 fun seleccionDelPiso(): Piso {
     val tituloValido = ""
-    return pisos.find { it.titulo != tituloValido } ?: Piso(titulo = " ",
+    return pisos.find { it.titulo != tituloValido } ?: Piso(
+        titulo = " ",
         direccion = " ",
         descripcion = " ",
-        propietario = " ",
+        propietario = null,
         precio = 0.00,
-        urlImagen = " ")
+        url_imagen = " ",
+        id = 0,
+        disponible = false,
+        inquilinos = null,
+        ofertas = null,
+        gastos = null,
+        contratos = null
+    )
 }

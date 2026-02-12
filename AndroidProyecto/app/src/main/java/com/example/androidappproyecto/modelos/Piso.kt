@@ -1,11 +1,13 @@
 package com.example.androidappproyecto.modelos
 
 data class Piso(
-    val id: Int = 0,
-    val direccion: Direccion? = null,
-    val descripcion: String? = null,
+    val id: Int,
+    val titulo : String,
+    val direccion: String? = null,
+    val descripcion: String,
     val url_imagen: String? = null,
     val disponible: Boolean = false,
+    val precio : Double,
 
     val inquilinos: List<Inquilino>? = null,
     val propietario: Propietario? = null,

@@ -26,21 +26,32 @@ fun PantallaMisPisos(navController: NavHostController) {
             titulo = "Piso Centro",
             direccion = "C/ Mayor 12, Torrelavega",
             descripcion = "Luminoso, 3 habitaciones, cerca de todo.",
-            propietario = "Juan Pérez",
+            url_imagen = "https://picsum.photos/600/400?random=1",
+            disponible = true,
+            propietario = null,
             precio = 350.00,
-            urlImagen = "https://picsum.photos/600/400?random=1",
+            inquilinos = null,
+            ofertas = null,
+            gastos = null,
+            contratos = null,
+            id = 1
         ),
         Piso(
             titulo = "Piso Playa",
             direccion = "Av. del Mar 5, Suances",
             descripcion = "Vistas al mar, ideal para teletrabajo.",
-            propietario = "Laura Gómez",
+            propietario = null,
             precio = 420.00,
-            urlImagen = "https://picsum.photos/600/400?random=2",
+            url_imagen = "https://picsum.photos/600/400?random=2",
+            inquilinos = null,
+            ofertas = null,
+            gastos = null,
+            contratos = null,
+            id = 2
         )
     )
 
-    if (pisos.isEmpty()) {
+    if (pisosPrueba.isEmpty()) {
         EstadoSinPisos()
     } else {
         LazyColumn(
@@ -48,7 +59,7 @@ fun PantallaMisPisos(navController: NavHostController) {
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(pisos) { piso ->
+            items(pisosPrueba) { piso ->
                 TarjetaPiso(piso) {
                     PisoSeleccionado.piso = piso
                     navController.navigate(Rutas.DetallePiso.name)
@@ -83,7 +94,7 @@ private fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
     ) {
         Column {
             GlideImage(
-                model = piso.urlImagen,
+                model = piso.url_imagen,
                 contentDescription = "Foto del piso",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -91,7 +102,7 @@ private fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
             )
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(piso.titulo, fontWeight = FontWeight.Bold)
-                Text(piso.direccion)
+                piso.direccion?.let { Text(it) }
             }
         }
     }
