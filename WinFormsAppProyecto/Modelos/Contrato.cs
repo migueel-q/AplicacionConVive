@@ -9,13 +9,13 @@ namespace Modelos
 {
     public class Contrato
     {
-        private int id {  get; set; }
-        private String descripcion {  get; set; }
-        private Double precio { get; set; }
-        private DateOnly fechaInicio { get; set; }
-        private DateOnly fechaFin {  get; set; }
-        private List<Inquilino> inquilinos { get; set; }
-        private int propietarioId { get; set; } 
-        private int pisoId { get; set; }
+        public int id {  get; set; }
+        public string descripcion {  get; set; }
+        public double precio { get; set; }
+        public DateOnly fechaInicio { get; set; }
+        public DateOnly fechaFin {  get; set; }
+        public List<Inquilino> inquilinos { get; set; }
+        public Propietario propietarioId { get; set; }
+        public Piso pisoId { get; set; }
     }
 }

@@ -12,25 +12,13 @@ public class GastoServicioImpl implements GastoServicio {
     @Autowired
     private GastoRespositorio gastoRespositorio;
     @Override
-    public List<GastoDTO> obtenerGastos() {
-        return gastoRespositorio.findAll().stream().map(g ->
-                        new GastoDTO(g.getId(),
-                                g.getConcepto(),
-                                g.getValor(),
-                                g.getInquilino().getId(),
-                                g.getPiso().getId()))
-                .toList();
+    public List<Gasto> obtenerGastos() {
+        return gastoRespositorio.findAll();
     }
 
     @Override
-    public GastoDTO obtenerGastoPorId(Integer id) {
-        return gastoRespositorio.findById(id).map(g ->
-                        new GastoDTO(g.getId(),
-                            g.getConcepto(),
-                            g.getValor(),
-                            g.getInquilino().getId(),
-                            g.getPiso().getId()))
-                .orElse(null);
+    public Gasto obtenerGastoPorId(Integer id) {
+        return gastoRespositorio.findById(id).orElse(null);
     }
 
     @Override

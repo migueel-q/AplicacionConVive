@@ -14,33 +14,13 @@ public class PropietarioServicioImpl implements PropietarioServicio {
     private PropietarioRepositorio propietarioRepositorio;
 
     @Override
-    public List<PropietarioDTO> obtenerPropietarios() {
-        return propietarioRepositorio.findAll().stream().map(p ->
-                        new PropietarioDTO( p.getId(),
-                                p.getNombre_usuario(),
-                                p.getNombre_real(),
-                                p.getFecha_nacimiento(),
-                                p.getEmail(),
-                                p.getPisos(),
-                                p.getInquilinos(),
-                                p.getOfertas(),
-                                p.getContratos()))
-                .toList();
+    public List<Propietario> obtenerPropietarios() {
+        return propietarioRepositorio.findAll();
     }
 
     @Override
-    public PropietarioDTO obtenerPropietarioPorId(Integer id) {
-        return propietarioRepositorio.findById(id).map(p ->
-                        new PropietarioDTO( p.getId(),
-                                p.getNombre_usuario(),
-                                p.getNombre_real(),
-                                p.getFecha_nacimiento(),
-                                p.getEmail(),
-                                p.getPisos(),
-                                p.getInquilinos(),
-                                p.getOfertas(),
-                                p.getContratos()))
-                .orElse(null);
+    public Propietario obtenerPropietarioPorId(Integer id) {
+        return propietarioRepositorio.findById(id).orElse(null);
     }
 
     @Override

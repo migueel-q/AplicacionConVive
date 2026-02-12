@@ -8,10 +8,10 @@ namespace Modelos
 {
     public class Gasto
     {
-        private int id {  get; set; }
-        private string concepto { get; set; }
-        private double valor { get; set; }
-        private string inquilinoNombre { get; set; }
-        private int pisoId { get; set; }
+        public int id {  get; set; }
+        public string concepto { get; set; }
+        public double valor { get; set; }
+        public string inquilinoNombre { get; set; }
+        public Piso pisoId { get; set; }
     }
 }
