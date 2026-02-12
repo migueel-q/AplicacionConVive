@@ -9,13 +9,13 @@ namespace Modelos
     public class Inquilino : Usuario
     {
         public DateOnly fecha_alta {  get; set; }
-        public int pisoId { get; set; }
+        public Piso pisoId { get; set; }
         public List<Tarea> tareas { get; set; }
         public List<Oferta> ofertas { get; set; }
         public List<Solicitud> solicitudes { get; set; }
         public List<Gasto> gastos { get; set; }
         public List<Propietario> propietarios { get; set; }
-        public int contratoId { get; set; }
+        public Contrato contratoId { get; set; }
 
     }
 }

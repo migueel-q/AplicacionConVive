@@ -9,9 +9,9 @@ namespace Modelos
 {
     public class Solicitud
     {
-        private int id { get; set; }
-        private int inquilino { get; set; }
-        private int oferta { get; set; }
-        private bool aceptado { get; set; }
+        public int id { get; set; }
+        public Inquilino inquilino { get; set; }
+        public Oferta oferta { get; set; }
+        public bool aceptado { get; set; }
     }
 }
