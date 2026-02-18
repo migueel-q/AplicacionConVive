@@ -18,8 +18,8 @@ public class InquilinoControlador {
     private InquilinoServicioImpl inquilinoServicio;
 
     @GetMapping("/inquilinos")
-    public ResponseEntity<?> obtenerInquilinos(){
-        List<InquilinoDTO> inquilinos = inquilinoServicio.obtenerInquilinos();
+    public ResponseEntity<List<Inquilino>> obtenerInquilinos(){
+        List<Inquilino> inquilinos = inquilinoServicio.obtenerInquilinos();
         if(inquilinos.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -27,8 +27,8 @@ public class InquilinoControlador {
     }
 
     @GetMapping("/inquilinos/{id}")
-    public ResponseEntity<?> obtenerInquilinoPorId(@PathVariable Integer id){
-        InquilinoDTO inquilino = inquilinoServicio.obtenerInquilinoPorId(id);
+    public ResponseEntity<Inquilino> obtenerInquilinoPorId(@PathVariable Integer id){
+        Inquilino inquilino = inquilinoServicio.obtenerInquilinoPorId(id);
         if(inquilino == null){
             return ResponseEntity.notFound().build();
         }
@@ -42,7 +42,7 @@ public class InquilinoControlador {
     }
 
     @PutMapping("/inquilinos/{id}")
-    public ResponseEntity<?> editarInquilino(@PathVariable Integer id, @RequestBody Inquilino inquilinoEditar){
+    public ResponseEntity<Inquilino> editarInquilino(@PathVariable Integer id, @RequestBody Inquilino inquilinoEditar){
         Inquilino inquilino = inquilinoServicio.actualizar(inquilinoEditar, id);
         if(inquilino == null){
             return ResponseEntity.notFound().build();
@@ -51,7 +51,7 @@ public class InquilinoControlador {
     }
 
     @DeleteMapping("/inquilinos/{id}")
-    public ResponseEntity<?> borrarInquilino(@PathVariable Integer id){
+    public ResponseEntity<Inquilino> borrarInquilino(@PathVariable Integer id){
         inquilinoServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }

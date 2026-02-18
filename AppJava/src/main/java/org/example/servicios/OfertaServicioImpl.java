@@ -12,26 +12,12 @@ public class OfertaServicioImpl implements  OfertaServicio {
     @Autowired
     private OfertaRepositorio ofertaRepositorio;
     @Override
-    public List<OfertaDTO> obtenerOfertas() {
-        return ofertaRepositorio.findAll().stream().map(o ->
-                        new OfertaDTO(o.getId(),
-                                o.getCantidad(),
-                                o.getDescripcion(),
-                                o.getPiso().getId(),
-                                o.getInquilino().getId(),
-                                o.getSolicitudes()))
-                .toList();
+    public List<Oferta> obtenerOfertas() {
+        return ofertaRepositorio.findAll();
     }
     @Override
-    public OfertaDTO obtenerOfertaPorId(Integer id) {
-        return ofertaRepositorio.findById(id).map(o ->
-                        new OfertaDTO(o.getId(),
-                                o.getCantidad(),
-                                o.getDescripcion(),
-                                o.getPiso().getId(),
-                                o.getInquilino().getId(),
-                                o.getSolicitudes()))
-                .orElse(null);
+    public Oferta obtenerOfertaPorId(Integer id) {
+        return ofertaRepositorio.findById(id).orElse(null);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package org.example.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -9,17 +10,17 @@ import java.util.List;
 @Table(name = "propietarios")
 public class Propietario extends Usuario{
     @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Piso> pisos;
     @OneToMany(mappedBy = "propietario",cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<InquilinoPropietario> inquilinos;     //Esta lista es la lista que recoge los inquilinos con los que habla el propietario
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "propietario_id")
-    @JsonIgnore
+    @JsonManagedReference
     private List<Oferta> ofertas;
     @OneToMany(mappedBy = "propietario",cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Contrato> contratos;
 
     public Propietario() {

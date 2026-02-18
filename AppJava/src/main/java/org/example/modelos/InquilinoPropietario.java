@@ -1,5 +1,6 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -11,11 +12,13 @@ import java.util.Objects;
 @Table(name = "inquilinos_propietarios")
 public class InquilinoPropietario {
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     @JoinColumn(name="inquilino_id", nullable = false)
     private Inquilino inquilino;
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     @JoinColumn(name="propietario_id", nullable = false)
     private Propietario propietario;
     @Id

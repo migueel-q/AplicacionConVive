@@ -1,7 +1,6 @@
 package org.example;
 
 import jakarta.persistence.EntityManager;
-import org.example.persistencia.AccesoBD;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

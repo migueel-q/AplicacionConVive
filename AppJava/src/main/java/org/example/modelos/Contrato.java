@@ -1,6 +1,7 @@
 package org.example.modelos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -23,11 +24,13 @@ public class Contrato {
     private LocalDate fecha_fin;
 
     @OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Inquilino> inquilinos;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JsonBackReference
     private Propietario propietario;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Piso piso;
 
     public Contrato() {

@@ -18,8 +18,8 @@ public class SolicitudControlador {
     private SolicitudServicioImpl solicitudServicio;
 
     @GetMapping("/solicitudes")
-    public ResponseEntity<?> obtenerSolicitudes() {
-        List<SolicitudDTO> solicitudes = solicitudServicio.obtenerSolicitudes();
+    public ResponseEntity<List<Solicitud>> obtenerSolicitudes() {
+        List<Solicitud> solicitudes = solicitudServicio.obtenerSolicitudes();
         if(solicitudes.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -27,8 +27,8 @@ public class SolicitudControlador {
     }
 
     @GetMapping("solicitudes/{id}")
-    public ResponseEntity<?> obtenerSolicitudPorId(@PathVariable Integer id) {
-        SolicitudDTO solicitud = solicitudServicio.obtenerSolicitudPorId(id);
+    public ResponseEntity<Solicitud> obtenerSolicitudPorId(@PathVariable Integer id) {
+        Solicitud solicitud = solicitudServicio.obtenerSolicitudPorId(id);
         if (solicitud == null) {
             return ResponseEntity.notFound().build();
         }
@@ -42,7 +42,7 @@ public class SolicitudControlador {
     }
 
     @PutMapping("/solicitudes/{id}")
-    public ResponseEntity<?> editarSolicitud(@PathVariable Integer id, @RequestBody Solicitud solicitudEditar) {
+    public ResponseEntity<Solicitud> editarSolicitud(@PathVariable Integer id, @RequestBody Solicitud solicitudEditar) {
           Solicitud solicitud = solicitudServicio.actualizar(solicitudEditar,id);
           if(solicitud == null){
               return ResponseEntity.notFound().build();
@@ -51,7 +51,7 @@ public class SolicitudControlador {
     }
 
     @DeleteMapping("/solicitudes/{id}")
-    public ResponseEntity<?> borrarSolicitud(@PathVariable Integer id) {
+    public ResponseEntity<Solicitud> borrarSolicitud(@PathVariable Integer id) {
         solicitudServicio.eliminar(id);
         return ResponseEntity.noContent().build();
 

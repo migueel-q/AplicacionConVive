@@ -1,6 +1,8 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -11,24 +13,25 @@ import java.util.List;
 public class Inquilino extends Usuario {
 
     private LocalDateTime fecha_alta;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Piso piso;
     @OneToMany(mappedBy = "inquilino",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Tarea> tareas;
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Oferta> ofertas;
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Solicitud> solicitudes;
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Gasto> gastos;
     @OneToMany(mappedBy = "inquilino", cascade =  CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<InquilinoPropietario> propietarios;     //Esta lista recoge los propietarios con los que hablan los inquilinos y la fecha de los mensajes permiten que se puedan repetir
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Contrato contrato;
 
     public Inquilino() {

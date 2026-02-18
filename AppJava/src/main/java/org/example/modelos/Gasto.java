@@ -1,5 +1,6 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -15,9 +16,11 @@ public class Gasto {
     private String concepto;
     @Column(nullable = false)
     private double valor;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Inquilino inquilino;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Piso piso;
 
     public Gasto() {

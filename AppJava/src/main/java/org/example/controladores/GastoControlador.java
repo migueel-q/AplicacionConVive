@@ -18,8 +18,8 @@ public class GastoControlador {
     private GastoServicioImpl gastoServicio;
 
     @GetMapping("/gastos")
-    public ResponseEntity<?> obtenerGastos(){
-        List<GastoDTO> gastos = gastoServicio.obtenerGastos();
+    public ResponseEntity<List<Gasto>> obtenerGastos(){
+        List<Gasto> gastos = gastoServicio.obtenerGastos();
         if(gastos.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -27,8 +27,8 @@ public class GastoControlador {
     }
 
     @GetMapping("gastos/{id}")
-    public ResponseEntity<?> obtenerGastoPorId(@PathVariable Integer id) {
-        GastoDTO gasto = gastoServicio.obtenerGastoPorId(id);
+    public ResponseEntity<Gasto> obtenerGastoPorId(@PathVariable Integer id) {
+        Gasto gasto = gastoServicio.obtenerGastoPorId(id);
         if (gasto == null) {
             return ResponseEntity.notFound().build();
         }
@@ -42,7 +42,7 @@ public class GastoControlador {
     }
 
     @PutMapping("/gastos/{id}")
-    public ResponseEntity<?> editarGasto(@RequestBody Gasto gastoEditar, @PathVariable Integer id){
+    public ResponseEntity<Gasto> editarGasto(@RequestBody Gasto gastoEditar, @PathVariable Integer id){
         Gasto gasto = gastoServicio.modificar(gastoEditar, id);
         if (gasto == null) {
             return ResponseEntity.notFound().build();
@@ -51,7 +51,7 @@ public class GastoControlador {
     }
 
     @DeleteMapping("/gastos/{id}")
-    public ResponseEntity<?> borrarGasto(@PathVariable Integer id){
+    public ResponseEntity<Gasto> borrarGasto(@PathVariable Integer id){
         gastoServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }

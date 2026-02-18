@@ -6,8 +6,8 @@ import org.example.modelos.Oferta;
 import java.util.List;
 
 public interface OfertaServicio {
-    List<OfertaDTO> obtenerOfertas();
-    OfertaDTO obtenerOfertaPorId(Integer id);
+    List<Oferta> obtenerOfertas();
+    Oferta obtenerOfertaPorId(Integer id);
     Oferta guardar(Oferta oferta);
     Oferta actualizar(Oferta oferta, Integer id);
     Oferta eliminar(Integer id);

@@ -13,24 +13,14 @@ public class SolicitudServicioImpl implements  SolicitudServicio {
     @Autowired
     private SolicitudRepositorio solicitudRepositorio;
     @Override
-    public List<SolicitudDTO> obtenerSolicitudes() {
-        return solicitudRepositorio.findAll().stream().map(s ->
-                        new SolicitudDTO(s.getId(),
-                                s.getInquilino().getId(),
-                                s.getOferta().getId(),
-                                s.isAceptado()))
-                .toList();
+    public List<Solicitud> obtenerSolicitudes() {
+        return solicitudRepositorio.findAll();
 
     }
 
     @Override
-    public SolicitudDTO obtenerSolicitudPorId(Integer id) {
-        return solicitudRepositorio.findById(id).map(s ->
-                        new SolicitudDTO(s.getId(),
-                                s.getInquilino().getId(),
-                                s.getOferta().getId(),
-                                s.isAceptado()))
-                .orElse(null);
+    public Solicitud obtenerSolicitudPorId(Integer id) {
+        return solicitudRepositorio.findById(id).orElse(null);
     }
 
     @Override

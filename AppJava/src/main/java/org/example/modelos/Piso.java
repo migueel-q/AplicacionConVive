@@ -1,7 +1,9 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -21,18 +23,19 @@ public class Piso {
     @Column(nullable = false)
     private boolean disponible;
     @OneToMany(mappedBy = "piso")
-    @JsonIgnore
+    @JsonManagedReference
     List<Inquilino> inquilinos;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     Propietario propietario;
     @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Oferta> ofertas;
     @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Gasto> gastos;
     @OneToMany(mappedBy = "piso",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Contrato> contratos;
 
     @Override
