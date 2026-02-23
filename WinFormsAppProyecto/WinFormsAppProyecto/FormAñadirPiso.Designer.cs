@@ -30,13 +30,17 @@
         {
             label1 = new Label();
             label2 = new Label();
-            label4 = new Label();
             label5 = new Label();
-            txtDireccion = new TextBox();
-            txtDescripcion = new TextBox();
-            txtImagen = new TextBox();
+            txtCalle = new TextBox();
+            txtProvincia = new TextBox();
             btnGuardarPiso = new Button();
-            richTextBox1 = new RichTextBox();
+            richTextBoxDesc = new RichTextBox();
+            txtCiudad = new TextBox();
+            label6 = new Label();
+            txtImagen = new TextBox();
+            label7 = new Label();
+            txtPrecio = new TextBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -44,9 +48,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(59, 71);
             label1.Name = "label1";
-            label1.Size = new Size(72, 20);
+            label1.Size = new Size(42, 20);
             label1.TabIndex = 0;
-            label1.Text = "Dirección";
+            label1.Text = "Calle";
             // 
             // label2
             // 
@@ -57,78 +61,116 @@
             label2.TabIndex = 1;
             label2.Text = "Provincia";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(59, 256);
-            label4.Name = "label4";
-            label4.Size = new Size(59, 20);
-            label4.TabIndex = 3;
-            label4.Text = "Imagen";
-            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(59, 311);
+            label5.Location = new Point(59, 242);
             label5.Name = "label5";
             label5.Size = new Size(87, 20);
             label5.TabIndex = 4;
             label5.Text = "Descripción";
             // 
-            // txtDireccion
+            // txtCalle
             // 
-            txtDireccion.Location = new Point(152, 68);
-            txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(180, 27);
-            txtDireccion.TabIndex = 5;
+            txtCalle.Location = new Point(171, 68);
+            txtCalle.Name = "txtCalle";
+            txtCalle.Size = new Size(180, 27);
+            txtCalle.TabIndex = 5;
             // 
-            // txtDescripcion
+            // txtProvincia
             // 
-            txtDescripcion.Location = new Point(171, 171);
-            txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(180, 27);
-            txtDescripcion.TabIndex = 6;
-            // 
-            // txtImagen
-            // 
-            txtImagen.Location = new Point(171, 249);
-            txtImagen.Name = "txtImagen";
-            txtImagen.Size = new Size(161, 27);
-            txtImagen.TabIndex = 7;
+            txtProvincia.Location = new Point(171, 171);
+            txtProvincia.Name = "txtProvincia";
+            txtProvincia.Size = new Size(180, 27);
+            txtProvincia.TabIndex = 6;
             // 
             // btnGuardarPiso
             // 
-            btnGuardarPiso.Location = new Point(289, 454);
+            btnGuardarPiso.Location = new Point(344, 418);
             btnGuardarPiso.Name = "btnGuardarPiso";
             btnGuardarPiso.Size = new Size(94, 29);
             btnGuardarPiso.TabIndex = 9;
             btnGuardarPiso.Text = "Guardar";
             btnGuardarPiso.UseVisualStyleBackColor = true;
+            btnGuardarPiso.Click += btnGuardarPiso_Click;
             // 
-            // richTextBox1
+            // richTextBoxDesc
             // 
-            richTextBox1.Location = new Point(171, 311);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(388, 120);
-            richTextBox1.TabIndex = 10;
-            richTextBox1.Text = "";
+            richTextBoxDesc.Location = new Point(171, 242);
+            richTextBoxDesc.Name = "richTextBoxDesc";
+            richTextBoxDesc.Size = new Size(546, 120);
+            richTextBoxDesc.TabIndex = 10;
+            richTextBoxDesc.Text = "";
+            // 
+            // txtCiudad
+            // 
+            txtCiudad.Location = new Point(171, 121);
+            txtCiudad.Name = "txtCiudad";
+            txtCiudad.Size = new Size(180, 27);
+            txtCiudad.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(59, 124);
+            label6.Name = "label6";
+            label6.Size = new Size(56, 20);
+            label6.TabIndex = 11;
+            label6.Text = "Ciudad";
+            // 
+            // txtImagen
+            // 
+            txtImagen.Location = new Point(556, 68);
+            txtImagen.Name = "txtImagen";
+            txtImagen.Size = new Size(161, 27);
+            txtImagen.TabIndex = 14;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(444, 75);
+            label7.Name = "label7";
+            label7.Size = new Size(59, 20);
+            label7.TabIndex = 13;
+            label7.Text = "Imagen";
+            // 
+            // txtPrecio
+            // 
+            txtPrecio.Location = new Point(556, 121);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(161, 27);
+            txtPrecio.TabIndex = 16;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(444, 128);
+            label8.Name = "label8";
+            label8.Size = new Size(50, 20);
+            label8.TabIndex = 15;
+            label8.Text = "Precio";
             // 
             // FormAñadirPiso
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(801, 501);
-            Controls.Add(richTextBox1);
-            Controls.Add(btnGuardarPiso);
+            Controls.Add(txtPrecio);
+            Controls.Add(label8);
             Controls.Add(txtImagen);
-            Controls.Add(txtDescripcion);
-            Controls.Add(txtDireccion);
+            Controls.Add(label7);
+            Controls.Add(txtCiudad);
+            Controls.Add(label6);
+            Controls.Add(richTextBoxDesc);
+            Controls.Add(btnGuardarPiso);
+            Controls.Add(txtProvincia);
+            Controls.Add(txtCalle);
             Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormAñadirPiso";
             Text = "Añadir Piso";
+            Load += FormAñadirPiso_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -138,12 +180,16 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
         private Label label5;
-        private TextBox txtDireccion;
-        private TextBox txtDescripcion;
-        private TextBox txtImagen;
+        private TextBox txtCalle;
+        private TextBox txtProvincia;
         private Button btnGuardarPiso;
-        private RichTextBox richTextBox1;
+        private RichTextBox richTextBoxDesc;
+        private TextBox txtCiudad;
+        private Label label6;
+        private TextBox txtImagen;
+        private Label label7;
+        private TextBox txtPrecio;
+        private Label label8;
     }
 }

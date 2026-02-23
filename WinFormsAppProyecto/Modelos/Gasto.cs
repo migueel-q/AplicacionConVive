@@ -11,7 +11,6 @@ namespace Modelos
         public int id {  get; set; }
         public string concepto { get; set; }
         public double valor { get; set; }
-        public Inquilino inquilino { get; set; }
         public Piso piso { get; set; }
     }
 }

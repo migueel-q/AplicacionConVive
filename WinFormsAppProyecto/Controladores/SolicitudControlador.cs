@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Controladores
 {
-    internal class SolicitudControlador : IControlador<Solicitud>
+    public class SolicitudControlador : IControlador<Solicitud>
     {
         private HttpClient cliente;
 

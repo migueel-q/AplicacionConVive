@@ -4,6 +4,6 @@
     {
         public int id {  get; set; }
         public string descripcion { get; set; }
-        public Inquilino inquilino { get; set; }
+        public Piso inquilino { get; set; }
     }
 }
