@@ -17,8 +17,6 @@ public class Gasto {
     @Column(nullable = false)
     private double valor;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Inquilino inquilino;
-    @ManyToOne(fetch = FetchType.EAGER)
     private Piso piso;
 
     public Gasto() {
@@ -42,14 +40,6 @@ public class Gasto {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-
-    public Inquilino getInquilino() {
-        return inquilino;
-    }
-
-    public void setInquilino(Inquilino inquilino) {
-        this.inquilino = inquilino;
     }
 
     public Piso getPiso() {

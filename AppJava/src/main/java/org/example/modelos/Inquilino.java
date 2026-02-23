@@ -12,23 +12,11 @@ import java.util.List;
 @Table(name = "inquilinos")
 public class Inquilino extends Usuario {
 
-    // QUITAR FECHA DE ALTA
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Piso piso;
     @ManyToOne(fetch = FetchType.EAGER)
     private Contrato contrato;
 
     public Inquilino() {
     }
-
-    public Piso getPiso() {
-        return piso;
-    }
-
-    public void setPiso(Piso piso) {
-        this.piso = piso;
-    }
-
 
     public Contrato getContrato() {
         return contrato;
@@ -45,7 +33,6 @@ public class Inquilino extends Usuario {
                 ", nombreReal='" + nombre_real + '\'' +
                 ", fechaNacimiento=" + fecha_nacimiento +
                 ", email='" + email + '\'' +
-                ", piso=" + piso +
                 '}';
     }
 }
