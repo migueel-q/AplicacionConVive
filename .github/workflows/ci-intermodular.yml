@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - develop
-      - feature/*
+      - "feature/*"
   pull_request:
     branches:
       - main
@@ -22,11 +22,12 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'maven'
 
       - name: Compilar y ejecutar tests
-        run: mvn clean verify
+        run: mvn -B clean verify
+        working-directory: ./AppJava      # <--- Ajuste clave
 
       - name: Confirmación de ejecución
-        run: echo "CI ejecutada correctamente en la rama ${{ github.ref }}"
+        run: echo "CI ejecutada correctamente para ${{ github.ref }}"
