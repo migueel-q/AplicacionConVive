@@ -13,7 +13,8 @@ public class Tarea {
     private String descripcion;
     @ManyToOne(fetch = FetchType.EAGER)
     private Inquilino inquilino;
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Piso piso;
     public Tarea() {
     }
 
@@ -35,5 +36,13 @@ public class Tarea {
 
     public void setInquilino(Inquilino inquilino) {
         this.inquilino = inquilino;
+    }
+
+    public Piso getPiso() {
+        return piso;
+    }
+
+    public void setPiso(Piso piso) {
+        this.piso = piso;
     }
 }

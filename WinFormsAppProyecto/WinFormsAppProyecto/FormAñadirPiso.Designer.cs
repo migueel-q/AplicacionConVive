@@ -35,8 +35,8 @@
             txtDireccion = new TextBox();
             txtDescripcion = new TextBox();
             txtImagen = new TextBox();
-            txtPropietario = new TextBox();
             btnGuardarPiso = new Button();
+            richTextBox1 = new RichTextBox();
             SuspendLayout();
             // 
             // label1
@@ -51,16 +51,16 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(59, 145);
+            label2.Location = new Point(59, 178);
             label2.Name = "label2";
-            label2.Size = new Size(87, 20);
+            label2.Size = new Size(69, 20);
             label2.TabIndex = 1;
-            label2.Text = "Descripción";
+            label2.Text = "Provincia";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(374, 71);
+            label4.Location = new Point(59, 256);
             label4.Name = "label4";
             label4.Size = new Size(59, 20);
             label4.TabIndex = 3;
@@ -69,11 +69,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(374, 145);
+            label5.Location = new Point(59, 311);
             label5.Name = "label5";
-            label5.Size = new Size(83, 20);
+            label5.Size = new Size(87, 20);
             label5.TabIndex = 4;
-            label5.Text = "Propietario";
+            label5.Text = "Descripción";
             // 
             // txtDireccion
             // 
@@ -84,41 +84,42 @@
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(152, 138);
+            txtDescripcion.Location = new Point(171, 171);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(180, 27);
             txtDescripcion.TabIndex = 6;
             // 
             // txtImagen
             // 
-            txtImagen.Location = new Point(463, 71);
+            txtImagen.Location = new Point(171, 249);
             txtImagen.Name = "txtImagen";
             txtImagen.Size = new Size(161, 27);
             txtImagen.TabIndex = 7;
             // 
-            // txtPropietario
-            // 
-            txtPropietario.Location = new Point(463, 138);
-            txtPropietario.Name = "txtPropietario";
-            txtPropietario.Size = new Size(161, 27);
-            txtPropietario.TabIndex = 8;
-            // 
             // btnGuardarPiso
             // 
-            btnGuardarPiso.Location = new Point(298, 243);
+            btnGuardarPiso.Location = new Point(289, 454);
             btnGuardarPiso.Name = "btnGuardarPiso";
             btnGuardarPiso.Size = new Size(94, 29);
             btnGuardarPiso.TabIndex = 9;
             btnGuardarPiso.Text = "Guardar";
             btnGuardarPiso.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(171, 311);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(388, 120);
+            richTextBox1.TabIndex = 10;
+            richTextBox1.Text = "";
+            // 
             // FormAñadirPiso
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(682, 413);
+            ClientSize = new Size(801, 501);
+            Controls.Add(richTextBox1);
             Controls.Add(btnGuardarPiso);
-            Controls.Add(txtPropietario);
             Controls.Add(txtImagen);
             Controls.Add(txtDescripcion);
             Controls.Add(txtDireccion);
@@ -142,7 +143,7 @@
         private TextBox txtDireccion;
         private TextBox txtDescripcion;
         private TextBox txtImagen;
-        private TextBox txtPropietario;
         private Button btnGuardarPiso;
+        private RichTextBox richTextBox1;
     }
 }

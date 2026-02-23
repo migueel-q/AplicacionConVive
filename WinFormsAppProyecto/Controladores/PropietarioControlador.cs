@@ -20,8 +20,7 @@ namespace Controladores
         public async Task<Propietario> add(Propietario propietarioNuevo)
         {
             Propietario propietario = new Propietario();
-            string json = JsonConvert.SerializeObject(propietarioNuevo);
-            File.WriteAllText("json_enviado.txt", json);
+            string json = JsonConvert.SerializeObject(propietarioNuevo);           
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage mensaje = await cliente.PostAsync("http://localhost:8080/api/propietarios", content);
