@@ -35,7 +35,6 @@ public class InquilinoServicioImpl implements InquilinoServicio {
         if (inquilino != null) {
             inquilino.setContrato(inquilinoEditar.getContrato());
             inquilino.setPiso(inquilinoEditar.getPiso());
-            inquilino.setFechaAlta(inquilinoEditar.getFechaAlta());
             inquilino.setEmail(inquilinoEditar.getEmail());
             inquilino.setNombre_real(inquilinoEditar.getNombre_real());
             inquilino.setNombre_usuario(inquilinoEditar.getNombre_usuario());

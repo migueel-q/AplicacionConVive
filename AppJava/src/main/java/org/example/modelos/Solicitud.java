@@ -12,6 +12,9 @@ public class Solicitud {
     private int id;
     @ManyToOne(fetch = FetchType.EAGER)
     private Inquilino inquilino;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Oferta oferta;
+    private boolean aceptado;
 
     public int getId() {
         return id;
@@ -20,10 +23,6 @@ public class Solicitud {
     public void setId(int id) {
         this.id = id;
     }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Oferta oferta;
-    private boolean aceptado;
 
     public boolean isAceptado() {
         return aceptado;

@@ -23,8 +23,6 @@ public class Contrato {
     @Column(nullable = false)
     private LocalDate fecha_fin;
 
-    @ManyToOne (fetch = FetchType.EAGER)
-    private Propietario propietario;
     @ManyToOne(fetch = FetchType.EAGER)
     private Piso piso;
 
@@ -65,14 +63,6 @@ public class Contrato {
 
     public void setFecha_fin(LocalDate fechaFin) {
         this.fecha_fin = fechaFin;
-    }
-
-    public Propietario getPropietario() {
-        return propietario;
-    }
-
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
     }
 
     public Piso getPiso() {
