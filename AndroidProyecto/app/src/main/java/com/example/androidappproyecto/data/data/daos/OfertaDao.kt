@@ -6,23 +6,22 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.androidappproyecto.data.data.modelos.Gasto
+import com.example.androidappproyecto.data.data.modelos.Oferta
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface GastoDao {
-
-    @Query("SELECT * FROM gastos")
-    fun getAllGastos(): Flow<List<Gasto>>
+interface OfertaDao {
+    @Query("SELECT * FROM ofertas")
+    fun getAllOfertas(): Flow<List<Oferta>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertGasto(gasto: Gasto)
+    suspend fun insertOferta(oferta: Oferta)
 
     @Update
-    suspend fun updateGasto(gasto: Gasto)
+    suspend fun updateOferta(oferta: Oferta)
 
     @Delete
-    suspend fun deleteGasto(gasto: Gasto)
+    suspend fun deleteOferta(oferta: Oferta)
 
 
 }

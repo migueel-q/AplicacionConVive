@@ -34,7 +34,6 @@ public class InquilinoServicioImpl implements InquilinoServicio {
         Inquilino inquilino = inquilinoRepositorio.findById(id).orElse(null);
         if (inquilino != null) {
             inquilino.setContrato(inquilinoEditar.getContrato());
-            inquilino.setPiso(inquilinoEditar.getPiso());
             inquilino.setEmail(inquilinoEditar.getEmail());
             inquilino.setNombre_real(inquilinoEditar.getNombre_real());
             inquilino.setNombre_usuario(inquilinoEditar.getNombre_usuario());

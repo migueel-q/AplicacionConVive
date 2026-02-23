@@ -12,12 +12,6 @@ import androidx.room.TypeConverters
     tableName = "inquilinos",
     foreignKeys = [
         ForeignKey(
-            entity = Piso::class,
-            parentColumns = ["id_piso"],
-            childColumns = ["piso_id_piso"],
-            onDelete = ForeignKey.SET_NULL
-        ),
-        ForeignKey(
             entity = Contrato::class,
             parentColumns = ["id_contrato"],
             childColumns = ["contrato_id_contrato"],
@@ -34,18 +28,7 @@ data class Inquilino(
     override val fecha_nacimiento: String?,
     override val email: String,
     override val password: String,
-
-    @ColumnInfo(name = "fecha_alta")
-    val fecha_alta: String? = null,
-
-    @Embedded(prefix = "piso_")
-    val piso: Piso? = null,
     @Embedded(prefix = "contrato_")
     val contrato: Contrato? = null,
 
-    val tareas: List<Tarea>? = null,
-    val ofertas: List<Oferta>? = null,
-    val solicitudes: List<Solicitud>? = null,
-    val gastos: List<Gasto>? = null,
-    val propietarios: List<InquilinoPropietario>? = null
 ) : Usuario(id, nombre_usuario, nombre_real, fecha_nacimiento, email, password)

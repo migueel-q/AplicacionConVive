@@ -36,11 +36,8 @@ data class Piso(
     val disponible: Boolean = false,
     @ColumnInfo(name = "precio")
     val precio : Double,
-
-    val inquilinos: List<Inquilino>? = null,
+    @ColumnInfo(name = "validado")
+    val validado: Boolean = false,
     @Embedded(prefix = "prop_")
     val propietario: Propietario? = null,
-    val ofertas: List<Oferta>? = null,
-    val gastos: List<Gasto>? = null,
-    val contratos: List<Contrato>? = null
 )
