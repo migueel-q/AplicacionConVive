@@ -22,6 +22,8 @@ namespace WinFormsAppProyecto
             this.IsMdiContainer = true;
             this.WindowState = FormWindowState.Maximized;
             this.propietario = propietario;
+            CatalogoPisos catalogoPisos = new CatalogoPisos();
+            AbrirFormulario(catalogoPisos);
         }
         private void AbrirFormulario(Form formulario)
         {
@@ -38,10 +40,19 @@ namespace WinFormsAppProyecto
 
         private void modificarPiso_Click(object sender, EventArgs e)
         {
-            FormModificarPiso formMod = new FormModificarPiso();
-            AbrirFormulario(formMod);
+            //FormModificarPiso formMod = new FormModificarPiso();
+            //AbrirFormulario(formMod);
         }
 
-        
+        private void verPisosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CatalogoPisos catalogoPisos = new CatalogoPisos();
+            AbrirFormulario(catalogoPisos);
+        }
+
+        private void verGastodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
