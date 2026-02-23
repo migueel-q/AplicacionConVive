@@ -19,8 +19,8 @@ namespace WinFormsAppProyecto
         private void btnInicioSesion_Click(object sender, EventArgs e)
         {
             FormInicioSesion formInicioSesion = new FormInicioSesion();
-            formInicioSesion.Show();
-            this.Close();
+            this.Hide();
+            formInicioSesion.Show();            
         }
     }
 }

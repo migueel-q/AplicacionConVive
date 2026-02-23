@@ -8,14 +8,9 @@ namespace Modelos
 {
     public class Inquilino : Usuario
     {
-        public DateOnly fecha_alta {  get; set; }
-        public Piso pisoId { get; set; }
-        public List<Tarea> tareas { get; set; }
-        public List<Oferta> ofertas { get; set; }
-        public List<Solicitud> solicitudes { get; set; }
-        public List<Gasto> gastos { get; set; }
-        public List<Propietario> propietarios { get; set; }
-        public Contrato contratoId { get; set; }
+        public string fecha_alta {  get; set; }
+        public Piso piso { get; set; }
+        public Contrato contrato { get; set; }
 
     }
 }

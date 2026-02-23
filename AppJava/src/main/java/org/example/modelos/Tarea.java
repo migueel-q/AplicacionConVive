@@ -12,7 +12,6 @@ public class Tarea {
     private int id;
     private String descripcion;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Inquilino inquilino;
 
     public Tarea() {

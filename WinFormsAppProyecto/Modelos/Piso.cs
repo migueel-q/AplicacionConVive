@@ -8,15 +8,11 @@ namespace Modelos
 {
     public class Piso
     {
-        public int id {  get; set; }
-        public string direccion {  get; set; }
+        public int id { get; set; }
+        public Direccion direccion { get; set; }
         public string descripcion { get; set; }
-        public string imagenUrl { get; set; }
+        public string url_imagen { get; set; }
         public bool disponible { get; set; }
-        public List<Inquilino> inquilinos { get; set; }
-        public Propietario propietarioId { get; set; }
-        public List<Oferta> ofertas { get; set; }
-        public List<Gasto> gastos { get; set; }
-        public List<Contrato> contratos { get; set; }
+        public Propietario propietario { get; set; }
     }
 }

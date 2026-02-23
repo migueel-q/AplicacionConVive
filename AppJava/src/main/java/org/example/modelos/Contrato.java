@@ -23,14 +23,9 @@ public class Contrato {
     @Column(nullable = false)
     private LocalDate fecha_fin;
 
-    @OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Inquilino> inquilinos;
     @ManyToOne (fetch = FetchType.EAGER)
-    @JsonBackReference
     private Propietario propietario;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Piso piso;
 
     public Contrato() {
@@ -70,14 +65,6 @@ public class Contrato {
 
     public void setFecha_fin(LocalDate fechaFin) {
         this.fecha_fin = fechaFin;
-    }
-
-    public List<Inquilino> getInquilinos() {
-        return inquilinos;
-    }
-
-    public void setInquilinos(List<Inquilino> inquilinos) {
-        this.inquilinos = inquilinos;
     }
 
     public Propietario getPropietario() {

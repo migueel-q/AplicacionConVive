@@ -15,7 +15,7 @@ namespace Modelos
         public DateOnly fechaInicio { get; set; }
         public DateOnly fechaFin {  get; set; }
         public List<Inquilino> inquilinos { get; set; }
-        public Propietario propietarioId { get; set; }
-        public Piso pisoId { get; set; }
+        public Propietario propietario { get; set; }
+        public Piso piso { get; set; }
     }
 }

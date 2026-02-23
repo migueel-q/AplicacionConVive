@@ -74,5 +74,6 @@ namespace Controladores
             inquilino = JsonConvert.DeserializeObject<Inquilino>(mensajeJson);
             return inquilino;
         }
+
     }
 }
