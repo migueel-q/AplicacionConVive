@@ -39,6 +39,4 @@ data class Oferta(
     @Embedded(prefix = "inq_")
     var inquilino: Inquilino? = null,
 
-    var solicitudes: List<Solicitud>? = null
-
 )

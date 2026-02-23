@@ -15,7 +15,13 @@ import androidx.room.PrimaryKey
             parentColumns = ["id"],
             childColumns = ["inq_id"],
             onDelete = ForeignKey.CASCADE
-        )
+        ),
+        ForeignKey(
+            entity = Piso::class,
+            parentColumns = ["id_piso"],
+            childColumns = ["piso_id_piso"],
+            onDelete = ForeignKey.CASCADE
+)
     ],
 )
 data class Tarea(
@@ -25,5 +31,7 @@ data class Tarea(
     @ColumnInfo(name = "descripcion")
     val descripcion: String? = null,
     @Embedded(prefix = "inq_")
-    val inquilino: Inquilino? = null
+    val inquilino: Inquilino? = null,
+    @Embedded(prefix = "piso_")
+    val piso : Piso? = null
 )

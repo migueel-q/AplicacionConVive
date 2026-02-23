@@ -15,9 +15,4 @@ data class Propietario(
     override val fecha_nacimiento: String?,
     override val email: String,
     override val password: String,
-
-    val pisos: List<Piso>? = null,
-    val inquilinos: List<InquilinoPropietario>? = null,
-    val ofertas: List<Oferta>? = null,
-    val contratos: List<Contrato>? = null
 ) : Usuario(id, nombre_usuario, nombre_real, fecha_nacimiento, email, password)

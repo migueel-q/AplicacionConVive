@@ -33,7 +33,6 @@ public class GastoServicioImpl implements GastoServicio {
             gasto.setValor(gastoEditar.getValor());
             gasto.setPiso(gastoEditar.getPiso());
             gasto.setConcepto(gastoEditar.getConcepto());
-            gasto.setInquilino(gastoEditar.getInquilino());
             gastoRespositorio.save(gasto);
         }
         return gasto;
