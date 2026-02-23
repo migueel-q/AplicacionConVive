@@ -32,7 +32,7 @@ namespace Controladores
 
         public async Task<List<Inquilino>> getAll()
         {
-            List<Inquilino> listaInquilinos = new List<Inquilino>();
+            List<Inquilino> listaInquilinos = new List<Inquilino >();
             HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/inquilinos");
 
             mensaje.EnsureSuccessStatusCode();

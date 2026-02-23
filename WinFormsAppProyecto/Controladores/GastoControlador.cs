@@ -9,7 +9,7 @@ using Modelos;
 
 namespace Controladores
 {
-    internal class GastoControlador : IControlador<Gasto>
+    public class GastoControlador : IControlador<Gasto>
     {
         private HttpClient cliente;
 

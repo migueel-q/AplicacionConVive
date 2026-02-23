@@ -12,10 +12,8 @@ namespace Modelos
         public int id {  get; set; }
         public string descripcion {  get; set; }
         public double precio { get; set; }
-        public DateOnly fechaInicio { get; set; }
-        public DateOnly fechaFin {  get; set; }
-        public List<Inquilino> inquilinos { get; set; }
-        public Propietario propietario { get; set; }
+        public DateOnly fecha_inicio { get; set; }
+        public DateOnly fecha_fin {  get; set; }
         public Piso piso { get; set; }
     }
 }

@@ -14,5 +14,7 @@ namespace Modelos
         public string url_imagen { get; set; }
         public bool disponible { get; set; }
         public Propietario propietario { get; set; }
+        public double precio { get; set; }
+        public bool validado { get; set; }
     }
 }

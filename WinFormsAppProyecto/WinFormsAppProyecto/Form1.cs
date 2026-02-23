@@ -1,42 +1,45 @@
+using Controladores;
 using Formularios;
+using Modelos;
 
 namespace WinFormsAppProyecto
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        Propietario propietario;
+        Inquilino inquilino;
+        public Form1(Inquilino inquilino)
         {
             InitializeComponent();
             this.IsMdiContainer = true;
             this.WindowState = FormWindowState.Maximized;
+            this.inquilino = inquilino;
         }
 
-        private void AbrirFormulario<T>() where T : Form, new()
+        public Form1(Propietario propietario)
         {
-            Form formulario = this.MdiChildren.FirstOrDefault(f => f is T);
-
-            if (formulario == null)
-            {
-                formulario = new T
-                {
-                    MdiParent = this
-                };
-                formulario.Show();
-            }
-            else
-            {
-                formulario.Activate();
-            }
+            InitializeComponent();
+            this.IsMdiContainer = true;
+            this.WindowState = FormWindowState.Maximized;
+            this.propietario = propietario;
         }
+        private void AbrirFormulario(Form formulario)
+        {
+            formulario.MdiParent = this;
+            formulario.Show();
+        }
+
 
         private void añadirPiso_click(object sender, EventArgs e)
         {
-            AbrirFormulario<FormAñadirPiso>();
+            FormAñadirPiso formAñadirPiso = new FormAñadirPiso(propietario);
+            AbrirFormulario(formAñadirPiso);
         }
 
         private void modificarPiso_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<FormModificarPiso>();
+            FormModificarPiso formMod = new FormModificarPiso();
+            AbrirFormulario(formMod);
         }
 
         

@@ -10,7 +10,7 @@ namespace Modelos
     public class Solicitud
     {
         public int id { get; set; }
-        public Inquilino inquilino { get; set; }
+        public Piso inquilino { get; set; }
         public Oferta oferta { get; set; }
         public bool aceptado { get; set; }
     }
