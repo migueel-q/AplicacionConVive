@@ -23,8 +23,9 @@ public class Piso {
     @Column(nullable = false)
     private boolean disponible;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference("propietario-pisos")
     Propietario propietario;
+    private double precio;
+    private boolean validado;
 
 
 
@@ -69,5 +70,29 @@ public class Piso {
 
     public void setUrl_imagen(String urlImagen) {
         this.url_imagen = urlImagen;
+    }
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public boolean isValidado() {
+        return validado;
+    }
+
+    public void setValidado(boolean validado) {
+        this.validado = validado;
     }
 }

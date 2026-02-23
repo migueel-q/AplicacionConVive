@@ -32,8 +32,10 @@ public class PisoServicioImpl implements  PisoServicio {
         Piso existe = pisoRepositorio.findById(id).orElse(null);
         if (existe!=null){
             existe.setDescripcion(piso.getDescripcion());
-            existe.setDireccion(existe.getDireccion());
-            existe.setDisponible(existe.isDisponible());
+            existe.setDireccion(piso.getDireccion());
+            existe.setDisponible(piso.isDisponible());
+            existe.setPrecio(piso.getPrecio());
+            existe.setValidado(piso.isValidado());
             return pisoRepositorio.save(existe);
         }
         return null;
