@@ -54,7 +54,7 @@ namespace Formularios
                 {
                     nombre_usuario = txtNombreUsu.Text,
                     nombre_real = txtNombreReal.Text,
-                    fecha_nacimiento = DateOnly.FromDateTime(dtpFechaNac.Value),
+                    fecha_nacimiento = dtpFechaNac.Value.ToString("yyyy-MM-dd"),
                     email = txtEmail.Text,
                     password = txtContrasena.Text
                 };
@@ -67,9 +67,10 @@ namespace Formularios
                 {
                     nombre_usuario = txtNombreUsu.Text,
                     nombre_real = txtNombreReal.Text,
-                    fecha_nacimiento = DateOnly.FromDateTime(dtpFechaNac.Value),
+                    fecha_nacimiento = dtpFechaNac.Value.ToString("yyyy-MM-dd"),
                     email = txtEmail.Text,
-                    password = txtContrasena.Text
+                    password = txtContrasena.Text,
+                    fecha_alta = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
                 };
                 await inquilinoControlador.add(nuevoInquilino);
                 MessageBox.Show("Inquilino registrado correctamente.");

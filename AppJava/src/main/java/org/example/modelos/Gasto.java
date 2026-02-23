@@ -17,10 +17,8 @@ public class Gasto {
     @Column(nullable = false)
     private double valor;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Inquilino inquilino;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Piso piso;
 
     public Gasto() {

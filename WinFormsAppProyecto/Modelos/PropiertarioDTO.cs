@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelos
 {
-    public class Propietario : Usuario
+    public class PropiertarioDTO : Usuario
     {
-
     }
 }

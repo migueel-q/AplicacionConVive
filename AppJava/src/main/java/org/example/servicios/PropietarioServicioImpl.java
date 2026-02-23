@@ -32,10 +32,6 @@ public class PropietarioServicioImpl implements PropietarioServicio {
     public Propietario actualizar(Propietario propietarioEditar, Integer id) {
         Propietario propietario = propietarioRepositorio.findById(id).orElse(null);
         if (propietario != null) {
-            propietario.setContratos(propietarioEditar.getContratos());
-            propietario.setInquilinos(propietarioEditar.getInquilinos());
-            propietario.setOfertas(propietarioEditar.getOfertas());
-            propietario.setPisos(propietarioEditar.getPisos());
             propietario.setEmail(propietarioEditar.getEmail());
             propietario.setFecha_nacimiento(propietarioEditar.getFecha_nacimiento());
             propietario.setNombre_real(propietarioEditar.getNombre_real());

@@ -32,7 +32,6 @@ public class OfertaServicioImpl implements  OfertaServicio {
             oferta.setCantidad(ofertaActualizar.getCantidad());
             oferta.setDescripcion(ofertaActualizar.getDescripcion());
             oferta.setPiso(ofertaActualizar.getPiso());
-            oferta.setSolicitudes(ofertaActualizar.getSolicitudes());
             oferta.setInquilino(ofertaActualizar.getInquilino());
             ofertaRepositorio.save(oferta);
         }

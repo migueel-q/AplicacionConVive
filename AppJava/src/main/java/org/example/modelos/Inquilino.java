@@ -14,67 +14,12 @@ public class Inquilino extends Usuario {
 
     private LocalDateTime fecha_alta;
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference("piso-inquilinos")
     private Piso piso;
-    @OneToMany(mappedBy = "inquilino",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Tarea> tareas;
-    @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Oferta> ofertas;
-    @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Solicitud> solicitudes;
-    @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Gasto> gastos;
-    @OneToMany(mappedBy = "inquilino", cascade =  CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<InquilinoPropietario> propietarios;     //Esta lista recoge los propietarios con los que hablan los inquilinos y la fecha de los mensajes permiten que se puedan repetir
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Contrato contrato;
 
     public Inquilino() {
-    }
-
-    public List<InquilinoPropietario> getPropietarios() {
-        return propietarios;
-    }
-
-    public void setPropietarios(List<InquilinoPropietario> propietarios) {
-        this.propietarios = propietarios;
-    }
-
-    public List<Gasto> getGastos() {
-        return gastos;
-    }
-
-    public void setGastos(List<Gasto> gastos) {
-        this.gastos = gastos;
-    }
-
-    public List<Solicitud> getSolicitudes() {
-        return solicitudes;
-    }
-
-    public void setSolicitudes(List<Solicitud> solicitudes) {
-        this.solicitudes = solicitudes;
-    }
-
-    public List<Oferta> getOfertas() {
-        return ofertas;
-    }
-
-    public void setOfertas(List<Oferta> ofertas) {
-        this.ofertas = ofertas;
-    }
-
-    public List<Tarea> getTareas() {
-        return tareas;
-    }
-
-    public void setTareas(List<Tarea> tareas) {
-        this.tareas = tareas;
     }
 
     public Piso getPiso() {
@@ -99,6 +44,14 @@ public class Inquilino extends Usuario {
 
     public void setContrato(Contrato contrato) {
         this.contrato = contrato;
+    }
+
+    public LocalDateTime getFecha_alta() {
+        return fecha_alta;
+    }
+
+    public void setFecha_alta(LocalDateTime fecha_alta) {
+        this.fecha_alta = fecha_alta;
     }
 
     @Override

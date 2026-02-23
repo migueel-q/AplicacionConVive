@@ -1,5 +1,6 @@
 package org.example.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -20,7 +21,7 @@ public class Solicitud {
         this.id = id;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Oferta oferta;
     private boolean aceptado;
 

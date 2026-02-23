@@ -17,14 +17,9 @@ public class Oferta {
     private double cantidad;
     private String descripcion;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Piso piso;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
     private Inquilino inquilino;
-    @OneToMany(mappedBy = "oferta",  cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Solicitud> solicitudes;
 
 
     public Oferta() {
@@ -68,14 +63,6 @@ public class Oferta {
 
     public void setInquilino(Inquilino inquilino) {
         this.inquilino = inquilino;
-    }
-
-    public List<Solicitud> getSolicitudes() {
-        return solicitudes;
-    }
-
-    public void setSolicitudes(List<Solicitud> solicitudes) {
-        this.solicitudes = solicitudes;
     }
 
 }
