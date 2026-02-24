@@ -10,10 +10,14 @@ namespace Modelos
     {
         public int id { get; set; }
         public Direccion direccion { get; set; }
+        public string calle => direccion.calle;
+        public string ciudad => direccion.ciudad;
+        public string provincia => direccion.provincia;
         public string descripcion { get; set; }
         public string url_imagen { get; set; }
         public bool disponible { get; set; }
         public Propietario propietario { get; set; }
+        public string nombrePropietario => propietario.nombre_real;
         public double precio { get; set; }
         public bool validado { get; set; }
     }

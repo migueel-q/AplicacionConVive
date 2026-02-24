@@ -24,10 +24,13 @@ interface ContratoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(contratos: List<Contrato>) : List<Long>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertContratos(contratos: List<Contrato>)
+
     @Delete
     suspend fun deleteContrato(contrato: Contrato)
 
-    // Devuelve la lista como suspend function (para inicialización)
-    @Query("SELECT * FROM contratos")
-    suspend fun getAllContratosOnce(): List<Contrato>
+    @Query("SELECT * FROM contratos WHERE id_contrato = :id")
+    suspend fun getContratoById(id: Int): Contrato
+
 }

@@ -20,20 +20,64 @@ public class InquilinoPropietario {
     @JoinColumn(name="propietario_id", nullable = false)
     private Propietario propietario;
     @Id
-    @Column(nullable = false)
-    private LocalDateTime fecha_msg;
+    @Column(nullable = false, name = "fecha_msg")
+    private LocalDateTime fechaMsg;
 
+    @Column(nullable = false)
     private String mensaje;
+
+    private boolean enviadoPorInquilino;
+
+
+    public Inquilino getInquilino() {
+        return inquilino;
+    }
+
+    public void setInquilino(Inquilino inquilino) {
+        this.inquilino = inquilino;
+    }
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+
+    public LocalDateTime getFechaMsg() {
+        return fechaMsg;
+    }
+
+    public void setFechaMsg(LocalDateTime fechaMsg) {
+        this.fechaMsg = fechaMsg;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public boolean isEnviadoPorInquilino() {
+        return enviadoPorInquilino;
+    }
+
+    public void setEnviadoPorInquilino(boolean enviadoPorInquilino) {
+        this.enviadoPorInquilino = enviadoPorInquilino;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         InquilinoPropietario that = (InquilinoPropietario) o;
-        return Objects.equals(inquilino, that.inquilino) && Objects.equals(propietario, that.propietario) && Objects.equals(fecha_msg, that.fecha_msg) && Objects.equals(mensaje, that.mensaje);
+        return Objects.equals(inquilino, that.inquilino) && Objects.equals(propietario, that.propietario) && Objects.equals(fechaMsg, that.fechaMsg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inquilino, propietario, fecha_msg, mensaje);
+        return Objects.hash(inquilino, propietario, fechaMsg);
     }
 }

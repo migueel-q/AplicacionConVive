@@ -35,10 +35,6 @@ fun PantallaMisPisos(navController: NavHostController) {
             disponible = true,
             propietario = null,
             precio = 350.00,
-            inquilinos = null,
-            ofertas = null,
-            gastos = null,
-            contratos = null,
             id = 1
         ),
         Piso(
@@ -52,10 +48,6 @@ fun PantallaMisPisos(navController: NavHostController) {
             propietario = null,
             precio = 420.00,
             url_imagen = "https://picsum.photos/600/400?random=2",
-            inquilinos = null,
-            ofertas = null,
-            gastos = null,
-            contratos = null,
             id = 2
         )
     )

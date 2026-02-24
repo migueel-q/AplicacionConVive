@@ -38,42 +38,45 @@
             // 
             // txtContrasena
             // 
-            txtContrasena.Location = new Point(114, 156);
+            txtContrasena.Location = new Point(174, 216);
+            txtContrasena.Margin = new Padding(3, 4, 3, 4);
             txtContrasena.Name = "txtContrasena";
-            txtContrasena.Size = new Size(100, 23);
+            txtContrasena.Size = new Size(122, 27);
             txtContrasena.TabIndex = 12;
             txtContrasena.UseSystemPasswordChar = true;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(114, 101);
+            txtEmail.Location = new Point(150, 143);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(100, 23);
+            txtEmail.Size = new Size(176, 27);
             txtEmail.TabIndex = 11;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(101, 138);
+            label5.Location = new Point(159, 192);
             label5.Name = "label5";
-            label5.Size = new Size(134, 15);
+            label5.Size = new Size(167, 20);
             label5.TabIndex = 10;
             label5.Text = "Introduce la contraseña:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(114, 83);
+            label4.Location = new Point(174, 119);
             label4.Name = "label4";
-            label4.Size = new Size(107, 15);
+            label4.Size = new Size(133, 20);
             label4.TabIndex = 9;
             label4.Text = "Introduce tu email:";
             // 
             // btnIniciarSesion
             // 
-            btnIniciarSesion.Location = new Point(183, 225);
+            btnIniciarSesion.Location = new Point(253, 308);
+            btnIniciarSesion.Margin = new Padding(3, 4, 3, 4);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(89, 23);
+            btnIniciarSesion.Size = new Size(110, 31);
             btnIniciarSesion.TabIndex = 13;
             btnIniciarSesion.Text = "Iniciar sesión";
             btnIniciarSesion.UseVisualStyleBackColor = true;
@@ -81,9 +84,10 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(54, 225);
+            btnVolver.Location = new Point(106, 308);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(89, 23);
+            btnVolver.Size = new Size(110, 31);
             btnVolver.TabIndex = 14;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -91,15 +95,16 @@
             // 
             // FormInicioSesion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(342, 302);
+            ClientSize = new Size(482, 453);
             Controls.Add(btnVolver);
             Controls.Add(btnIniciarSesion);
             Controls.Add(txtContrasena);
             Controls.Add(txtEmail);
             Controls.Add(label5);
             Controls.Add(label4);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormInicioSesion";
             Text = "FormInicioSesion";
             ResumeLayout(false);

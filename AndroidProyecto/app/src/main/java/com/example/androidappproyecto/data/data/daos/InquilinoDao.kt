@@ -14,8 +14,14 @@ interface InquilinoDao {
     @Query("SELECT * FROM inquilinos")
     fun getAllInquilinos(): Flow<List<Inquilino>>
 
+    @Query("SELECT * FROM inquilinos WHERE id = :id")
+    suspend fun getInquilinoById(id: Int): Inquilino
+
     @Insert
     suspend fun insertInquilino(inquilino: Inquilino): Long
+
+    @Insert
+    suspend fun insertInquilinos(inquilinos: List<Inquilino>)
 
     @Update
     suspend fun updateInquilino(inquilino: Inquilino)

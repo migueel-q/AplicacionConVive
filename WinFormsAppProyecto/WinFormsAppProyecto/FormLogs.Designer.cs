@@ -37,9 +37,10 @@
             // 
             // btnRegistro
             // 
-            btnRegistro.Location = new Point(34, 190);
+            btnRegistro.Location = new Point(93, 347);
+            btnRegistro.Margin = new Padding(3, 4, 3, 4);
             btnRegistro.Name = "btnRegistro";
-            btnRegistro.Size = new Size(115, 23);
+            btnRegistro.Size = new Size(131, 31);
             btnRegistro.TabIndex = 0;
             btnRegistro.Text = "Registrate";
             btnRegistro.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // btnInicioSesion
             // 
-            btnInicioSesion.Location = new Point(174, 190);
+            btnInicioSesion.Location = new Point(253, 347);
+            btnInicioSesion.Margin = new Padding(3, 4, 3, 4);
             btnInicioSesion.Name = "btnInicioSesion";
-            btnInicioSesion.Size = new Size(115, 23);
+            btnInicioSesion.Size = new Size(131, 31);
             btnInicioSesion.TabIndex = 1;
             btnInicioSesion.Text = "Inicio de sesion";
             btnInicioSesion.UseVisualStyleBackColor = true;
@@ -58,21 +60,23 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(34, 33);
+            pictureBox1.Location = new Point(81, 47);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(255, 113);
+            pictureBox1.Size = new Size(316, 276);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
             // FormLogs
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(322, 234);
+            ClientSize = new Size(482, 453);
             Controls.Add(pictureBox1);
             Controls.Add(btnInicioSesion);
             Controls.Add(btnRegistro);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormLogs";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

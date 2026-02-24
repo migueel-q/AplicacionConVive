@@ -8,6 +8,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.androidappproyecto.data.data.daos.ContratoDao
 import com.example.androidappproyecto.data.data.daos.GastoDao
+import com.example.androidappproyecto.data.data.daos.InquilinoDao
+import com.example.androidappproyecto.data.data.daos.InquilinoPropietarioDao
+import com.example.androidappproyecto.data.data.daos.OfertaDao
+import com.example.androidappproyecto.data.data.daos.PisoDao
+import com.example.androidappproyecto.data.data.daos.PropietarioDao
+import com.example.androidappproyecto.data.data.daos.SolicitudDao
+import com.example.androidappproyecto.data.data.daos.TareaDao
 import com.example.androidappproyecto.data.data.modelos.Contrato
 import com.example.androidappproyecto.data.data.modelos.Converters
 import com.example.androidappproyecto.data.data.modelos.Gasto
@@ -38,6 +45,13 @@ import kotlin.jvm.java
 abstract class AppDatabase : RoomDatabase() {
     abstract fun contratoDao(): ContratoDao
     abstract fun gastoDao(): GastoDao
+    abstract fun inquilinoDao(): InquilinoDao
+    abstract fun inquilinoPropietarioDao(): InquilinoPropietarioDao
+    abstract fun ofertaDao(): OfertaDao
+    abstract fun pisoDao(): PisoDao
+    abstract fun propietarioDao(): PropietarioDao
+    abstract fun solicitudDao(): SolicitudDao
+    abstract fun tareaDao(): TareaDao
 
     companion object {
         @Volatile

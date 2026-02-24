@@ -1,6 +1,7 @@
 package org.example.controladores;
 
 import org.example.DTO.PisoDTO;
+import org.example.modelos.Inquilino;
 import org.example.modelos.Piso;
 import org.example.servicios.PisoServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +58,11 @@ public class PisoControlador {
         pisoServicio.eliminar(id);
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/pisos/propietario/{id}/inquilinos")
+    public List<Inquilino> obtenerInquilinosDePropietario(@PathVariable int id) {
+        return pisoServicio.obtenerInquilinosDePropietario(id);
+    }
+
 }
 

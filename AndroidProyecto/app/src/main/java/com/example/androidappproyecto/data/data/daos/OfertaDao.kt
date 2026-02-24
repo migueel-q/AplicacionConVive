@@ -11,11 +11,19 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OfertaDao {
+
     @Query("SELECT * FROM ofertas")
     fun getAllOfertas(): Flow<List<Oferta>>
 
+    @Query("SELECT * FROM ofertas WHERE id_oferta = :id")
+    suspend fun getOfertaById(id: Int): Oferta
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOferta(oferta: Oferta)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOfertas(ofertas: List<Oferta>)
+
 
     @Update
     suspend fun updateOferta(oferta: Oferta)
