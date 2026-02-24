@@ -7,7 +7,6 @@ public class InquilinoPropietarioId {
     private int inquilino;
     private int propietario;
     private LocalDateTime fecha_msg;
-
     public InquilinoPropietarioId() {
     }
 

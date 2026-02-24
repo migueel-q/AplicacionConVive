@@ -59,21 +59,21 @@
             // añadirPiso
             // 
             añadirPiso.Name = "añadirPiso";
-            añadirPiso.Size = new Size(224, 26);
+            añadirPiso.Size = new Size(188, 26);
             añadirPiso.Text = "Añadir piso";
             añadirPiso.Click += añadirPiso_click;
             // 
             // modificarPiso
             // 
             modificarPiso.Name = "modificarPiso";
-            modificarPiso.Size = new Size(224, 26);
+            modificarPiso.Size = new Size(188, 26);
             modificarPiso.Text = "Modificar piso";
             modificarPiso.Click += modificarPiso_Click;
             // 
             // verPisosToolStripMenuItem
             // 
             verPisosToolStripMenuItem.Name = "verPisosToolStripMenuItem";
-            verPisosToolStripMenuItem.Size = new Size(224, 26);
+            verPisosToolStripMenuItem.Size = new Size(188, 26);
             verPisosToolStripMenuItem.Text = "Ver pisos";
             verPisosToolStripMenuItem.Click += verPisosToolStripMenuItem_Click;
             // 

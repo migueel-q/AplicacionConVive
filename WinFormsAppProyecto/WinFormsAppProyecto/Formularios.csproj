@@ -9,9 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OxyPlot.SkiaSharp" Version="2.2.0" />
-    <PackageReference Include="OxyPlot.WindowsForms" Version="2.2.0" />
     <PackageReference Include="QuestPDF" Version="2026.2.1" />
+    <PackageReference Include="ScottPlot" Version="5.1.57" />
   </ItemGroup>
 
   <ItemGroup>
