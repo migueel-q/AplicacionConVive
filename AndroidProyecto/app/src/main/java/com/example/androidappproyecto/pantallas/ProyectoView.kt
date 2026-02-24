@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.androidappproyecto.modelos.Items_barra_inferior
+import com.example.androidappproyecto.data.data.modelos.Items_barra_inferior
 import com.example.androidappproyecto.navegacion.AppConviveNavigation
 
 

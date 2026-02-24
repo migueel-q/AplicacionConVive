@@ -1,9 +1,8 @@
-import org.gradle.kotlin.dsl.implementation
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -51,9 +50,31 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.runtime.livedata)
+    implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.androidx.adapters)
+    ksp(libs.androidx.room.compiler)
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    //GlideImage
     implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
-    implementation("androidx.navigation:navigation-compose:2.8.4")
+
+    //Navegacion
+    implementation("androidx.navigation:navigation-compose:2.9.6")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.compose.foundation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

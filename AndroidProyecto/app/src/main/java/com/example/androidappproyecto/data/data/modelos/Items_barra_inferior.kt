@@ -1,4 +1,4 @@
-package com.example.androidappproyecto.modelos
+package com.example.androidappproyecto.data.data.modelos
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
@@ -7,7 +7,7 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.androidappproyecto.pantallas.Rutas
+import com.example.androidappproyecto.navegacion.Rutas
 
 sealed class Items_barra_inferior(
     val icono: ImageVector,

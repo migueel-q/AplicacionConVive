@@ -1,4 +1,4 @@
-package com.example.androidappproyecto.modelos
+package com.example.androidappproyecto.data.data.modelos
 
 data class InquilinoPropietarioId(
     val inquilino: Int,
