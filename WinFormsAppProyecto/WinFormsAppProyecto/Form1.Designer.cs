@@ -35,13 +35,16 @@
             verPisosToolStripMenuItem = new ToolStripMenuItem();
             gestiónGastosToolStripMenuItem = new ToolStripMenuItem();
             verGastodToolStripMenuItem = new ToolStripMenuItem();
+            chatToolStripMenuItem = new ToolStripMenuItem();
+            hablarPorChatToolStripMenuItem = new ToolStripMenuItem();
+            listaInquilinosToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónPisosToolStripMenuItem, gestiónGastosToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónPisosToolStripMenuItem, gestiónGastosToolStripMenuItem, chatToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
@@ -87,9 +90,30 @@
             // verGastodToolStripMenuItem
             // 
             verGastodToolStripMenuItem.Name = "verGastodToolStripMenuItem";
-            verGastodToolStripMenuItem.Size = new Size(224, 26);
+            verGastodToolStripMenuItem.Size = new Size(160, 26);
             verGastodToolStripMenuItem.Text = "Ver gastos";
             verGastodToolStripMenuItem.Click += verGastodToolStripMenuItem_Click;
+            // 
+            // chatToolStripMenuItem
+            // 
+            chatToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hablarPorChatToolStripMenuItem, listaInquilinosToolStripMenuItem });
+            chatToolStripMenuItem.Name = "chatToolStripMenuItem";
+            chatToolStripMenuItem.Size = new Size(53, 24);
+            chatToolStripMenuItem.Text = "Chat";
+            // 
+            // hablarPorChatToolStripMenuItem
+            // 
+            hablarPorChatToolStripMenuItem.Name = "hablarPorChatToolStripMenuItem";
+            hablarPorChatToolStripMenuItem.Size = new Size(224, 26);
+            hablarPorChatToolStripMenuItem.Text = "Hablar por chat";
+            hablarPorChatToolStripMenuItem.Click += hablarPorChatToolStripMenuItem_Click;
+            // 
+            // listaInquilinosToolStripMenuItem
+            // 
+            listaInquilinosToolStripMenuItem.Name = "listaInquilinosToolStripMenuItem";
+            listaInquilinosToolStripMenuItem.Size = new Size(224, 26);
+            listaInquilinosToolStripMenuItem.Text = "Lista Inquilinos";
+            listaInquilinosToolStripMenuItem.Click += listaInquilinosToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -116,5 +140,8 @@
         private ToolStripMenuItem verPisosToolStripMenuItem;
         private ToolStripMenuItem gestiónGastosToolStripMenuItem;
         private ToolStripMenuItem verGastodToolStripMenuItem;
+        private ToolStripMenuItem chatToolStripMenuItem;
+        private ToolStripMenuItem hablarPorChatToolStripMenuItem;
+        private ToolStripMenuItem listaInquilinosToolStripMenuItem;
     }
 }

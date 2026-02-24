@@ -16,15 +16,18 @@ public class ChatServicio {
     @Autowired
     private ChatRepositorio chatRepositorio;
 
-    public InquilinoPropietario enviarMensaje(Inquilino inq, Propietario prop, String mensaje) {
+    public InquilinoPropietario enviarMensaje(Inquilino inq, Propietario prop, String mensaje, boolean enviadoPorInquilino) {
         InquilinoPropietario msg = new InquilinoPropietario();
         msg.setInquilino(inq);
         msg.setPropietario(prop);
         msg.setFechaMsg(LocalDateTime.now());
         msg.setMensaje(mensaje);
+        msg.setEnviadoPorInquilino(enviadoPorInquilino);
 
         return chatRepositorio.save(msg);
     }
+
+
 
     public List<InquilinoPropietario> obtenerChat(int idInquilino, int idPropietario) {
         return chatRepositorio.findByInquilinoIdAndPropietarioIdOrderByFechaMsgAsc(idInquilino, idPropietario);

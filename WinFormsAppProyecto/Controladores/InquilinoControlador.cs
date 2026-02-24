@@ -75,5 +75,11 @@ namespace Controladores
             return inquilino;
         }
 
+        public async Task<List<Inquilino>> GetInquilinosDePropietario(int propietarioId) { 
+            HttpResponseMessage resp = await cliente.GetAsync($"http://localhost:8080/api/pisos/propietario/{propietarioId}/inquilinos");
+            resp.EnsureSuccessStatusCode(); 
+            string json = await resp.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<Inquilino>>(json); 
+        }
     }
 }

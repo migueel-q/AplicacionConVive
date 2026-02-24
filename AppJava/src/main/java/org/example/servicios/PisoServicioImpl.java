@@ -1,6 +1,7 @@
 package org.example.servicios;
 
 import org.example.DTO.PisoDTO;
+import org.example.modelos.Inquilino;
 import org.example.modelos.Piso;
 import org.example.repositorios.PisoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +50,9 @@ public class PisoServicioImpl implements  PisoServicio {
         }
         return existe;
     }
+
+    public List<Inquilino> obtenerInquilinosDePropietario(int propietarioId) {
+        return pisoRepositorio.findInquilinosByPropietarioId(propietarioId);
+    }
+
 }

@@ -26,6 +26,8 @@ public class InquilinoPropietario {
     @Column(nullable = false)
     private String mensaje;
 
+    private boolean enviadoPorInquilino;
+
 
     public Inquilino getInquilino() {
         return inquilino;
@@ -57,6 +59,14 @@ public class InquilinoPropietario {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public boolean isEnviadoPorInquilino() {
+        return enviadoPorInquilino;
+    }
+
+    public void setEnviadoPorInquilino(boolean enviadoPorInquilino) {
+        this.enviadoPorInquilino = enviadoPorInquilino;
     }
 
     @Override
