@@ -19,6 +19,7 @@ import com.example.androidappproyecto.data.data.modelos.Contrato
 import com.example.androidappproyecto.data.data.modelos.Converters
 import com.example.androidappproyecto.data.data.modelos.Gasto
 import com.example.androidappproyecto.data.data.modelos.Inquilino
+import com.example.androidappproyecto.data.data.modelos.InquilinoPropietario
 import com.example.androidappproyecto.data.data.modelos.Oferta
 import com.example.androidappproyecto.data.data.modelos.Piso
 import com.example.androidappproyecto.data.data.modelos.Propietario
@@ -37,8 +38,9 @@ import kotlin.jvm.java
         Solicitud::class,
         Tarea::class,
         Propietario::class,
+        InquilinoPropietario::class
     ],
-    version = 6,
+    version = 7,
     exportSchema = true
 )
 @TypeConverters(Converters::class)

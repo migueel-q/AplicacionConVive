@@ -4,9 +4,12 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.ui.input.key.type
 import androidx.room.TypeConverter
-import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import kotlin.text.format
 
 class Converters {
     private val gson = Gson()
@@ -101,5 +104,34 @@ class Converters {
     fun toGastoList(value: String?): List<Gasto>? {
         val listType = object : TypeToken<List<Gasto>?>() {}.type
         return gson.fromJson(value, listType)
+    }
+
+    @TypeConverter
+    fun fromString(value: String): List<String> {
+        val listType = object : TypeToken<List<String>>() {}.type
+        return Gson().fromJson(value, listType)
+    }
+
+    @TypeConverter
+    fun fromList(list: List<String>): String {
+        val gson = Gson()
+        return gson.toJson(list)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private val formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @TypeConverter
+    fun fromTimestamp(value: String?): LocalDateTime? {
+        return value?.let {
+            LocalDateTime.parse(it, formatter)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @TypeConverter
+    fun dateToTimestamp(date: LocalDateTime?): String? {
+        return date?.format(formatter)
     }
 }

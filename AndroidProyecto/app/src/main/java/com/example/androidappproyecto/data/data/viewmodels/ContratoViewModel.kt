@@ -2,68 +2,67 @@ package com.example.androidappproyecto.data.data.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidappproyecto.data.data.modelos.Piso
-import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
+import com.example.androidappproyecto.data.data.modelos.Contrato
+import com.example.androidappproyecto.data.data.repositorios.ContratoRepositorio
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class PisoViewModel(private val repositorio: PisoRepositorio) : ViewModel() {
+class ContratoViewModel(private val repositorio: ContratoRepositorio) : ViewModel() {
 
-    // Estado para la lista de pisos (se actualiza automáticamente desde Room)
-    val todosLosPisos = repositorio.obtenerTodosLosPisos()
+    // Observa los contratos desde la DB local en tiempo real
+    val todosLosContratos = repositorio.obtenerTodosLosContratos()
 
-    // Estado para manejar la carga y los mensajes de error
     private val _estaCargando = MutableStateFlow(false)
     val estaCargando: StateFlow<Boolean> = _estaCargando.asStateFlow()
 
     private val _mensajeError = MutableStateFlow<String?>(null)
     val mensajeError: StateFlow<String?> = _mensajeError.asStateFlow()
 
-    fun refrescarPisos() {
+    fun refrescarContratos() {
         viewModelScope.launch {
             _estaCargando.value = true
             _mensajeError.value = null
             try {
-                repositorio.syncPisos()
+                repositorio.refrescarContratos()
             } catch (e: Exception) {
-                _mensajeError.value = "Error al conectar con el servidor"
+                _mensajeError.value = "Error al refrescar contratos: ${e.message}"
             } finally {
                 _estaCargando.value = false
             }
         }
     }
 
-    fun insertarPiso(piso: Piso) {
+    fun insertarContrato(contrato: Contrato) {
         viewModelScope.launch {
+            _estaCargando.value = true
             try {
-                _estaCargando.value = true
-                repositorio.insertarPiso(piso)
+                repositorio.insertarContrato(contrato)
             } catch (e: Exception) {
-                _mensajeError.value = e.message
+                _mensajeError.value = "Error al crear contrato: ${e.message}"
             } finally {
                 _estaCargando.value = false
             }
         }
     }
 
-    fun actualizarPiso(piso: Piso) {
+    fun actualizarContrato(contrato: Contrato) {
         viewModelScope.launch {
             try {
-                repositorio.actualizarPiso(piso)
+                repositorio.actualizarContrato(contrato)
             } catch (e: Exception) {
-                _mensajeError.value = "No se pudo actualizar: ${e.message}"
+                _mensajeError.value = "Error al actualizar: ${e.message}"
             }
         }
     }
 
-    fun eliminarPiso(piso: Piso) {
+    fun eliminarContrato(contrato: Contrato) {
         viewModelScope.launch {
             try {
-                repositorio.eliminarPiso(piso)
+                repositorio.eliminarContrato(contrato)
             } catch (e: Exception) {
-                _mensajeError.value = "No se pudo eliminar: ${e.message}"
+                _mensajeError.value = "Error al eliminar: ${e.message}"
             }
         }
     }
