@@ -2,11 +2,13 @@
 using Modelos;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using ScottPlot;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,9 +29,9 @@ namespace Formularios
         {
             try
             {
-                var controlador = new GastoControlador(); var todos = await controlador.getAll(); 
+                var controlador = new GastoControlador(); var todos = await controlador.getAll();
                 // Filtrar por piso.id
-                _gastos = todos .Where(g => g.piso != null && g.piso.id == _idPiso) .ToList();
+                _gastos = todos.Where(g => g.piso != null && g.piso.id == _idPiso).ToList();
                 if (_gastos.Count == 0)
                 {
                     MessageBox.Show("Este piso no tiene gastos registrados.");
