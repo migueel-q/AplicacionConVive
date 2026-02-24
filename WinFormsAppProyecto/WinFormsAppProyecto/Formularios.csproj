@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="QuestPDF" Version="2026.2.1" />
+    <PackageReference Include="ScottPlot" Version="5.1.57" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Controladores\Controladores.csproj" />
     <ProjectReference Include="..\Modelos\Modelos.csproj" />
   </ItemGroup>
