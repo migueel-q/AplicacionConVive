@@ -29,4 +29,6 @@ interface PropietarioDao {
     @Delete
     suspend fun deletePropietario(propietario: Propietario)
 
+    @Query("SELECT * FROM propietarios WHERE email = :email AND password = :password LIMIT 1")
+    suspend fun loginPropietario(email: String, password: String): Propietario?
 }

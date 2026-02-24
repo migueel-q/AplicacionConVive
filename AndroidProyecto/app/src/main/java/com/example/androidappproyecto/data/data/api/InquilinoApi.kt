@@ -1,5 +1,6 @@
 package com.example.androidappproyecto.data.data.api
 
+import retrofit2.http.Query
 import com.example.androidappproyecto.data.data.modelos.Inquilino
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -24,5 +25,8 @@ interface InquilinoApi {
 
     @DELETE("api/inquilinos/{id}")
     suspend fun deleteInquilino(@Path("id") id: Int)
+
+    @GET("api/inquilinos/login")
+    suspend fun loginInquilino(@Query("email") username: String, @Query("password") pass: String): Inquilino
 
 }

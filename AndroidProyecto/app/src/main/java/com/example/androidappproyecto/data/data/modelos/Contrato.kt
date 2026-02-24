@@ -15,12 +15,6 @@ import androidx.room.TypeConverters
             parentColumns = ["id_piso"],
             childColumns = ["piso_id_piso"],
             onDelete = ForeignKey.CASCADE // Si borras el piso se borra el contrato
-        ),
-        ForeignKey(
-            entity = Propietario::class,
-            parentColumns = ["id"],
-            childColumns = ["prop_id"],
-            onDelete = ForeignKey.CASCADE
         )
     ]
 )
@@ -40,11 +34,6 @@ data class Contrato(
     var fecha_inicio: String? = null,
     @ColumnInfo(name = "fecha_fin")
     var fecha_fin: String? = null,
-
-    var inquilinos: List<Inquilino>? = null,
-
-    @Embedded(prefix = "prop_")
-    var propietario: Propietario? = null,
 
     @Embedded(prefix = "piso_")
     var piso: Piso? = null
