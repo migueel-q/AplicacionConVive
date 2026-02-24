@@ -140,10 +140,6 @@ fun seleccionDelPiso(): Piso {
         precio = 0.00,
         url_imagen = " ",
         id = 0,
-        disponible = false,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null
+        disponible = false
     )
 }

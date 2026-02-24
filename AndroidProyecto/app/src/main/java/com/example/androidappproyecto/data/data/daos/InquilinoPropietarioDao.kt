@@ -14,8 +14,15 @@ interface InquilinoPropietarioDao {
     @Query("SELECT * FROM inquilinos_propietarios")
     fun getAllInquilinosPropietarios(): Flow<List<InquilinoPropietarioDao>>
 
+    @Query("SELECT * FROM inquilinos_propietarios WHERE id_inquilino_propietario = :id")
+    suspend fun getInquilinoPropietarioById(id: Int): InquilinoPropietario
+
     @Insert
     suspend fun insertInquilinoPropietario(inquilinoPropietario: InquilinoPropietario)
+
+    @Insert
+    suspend fun insertInquilinosPropietarios(inquilinosPropietarios: List<InquilinoPropietario>)
+
 
     @Update
     suspend fun updateInquilinoPropietario(inquilinoPropietario: InquilinoPropietario)

@@ -15,6 +15,12 @@ interface GastoDao {
     @Query("SELECT * FROM gastos")
     fun getAllGastos(): Flow<List<Gasto>>
 
+    @Query("SELECT * FROM gastos WHERE id_gasto = :id")
+    suspend fun getGastoById(id: Int): Gasto
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertGastos(gastos: List<Gasto>)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGasto(gasto: Gasto)
 

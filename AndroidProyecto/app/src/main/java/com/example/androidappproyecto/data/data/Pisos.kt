@@ -17,10 +17,6 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
         id = 1,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     ),
     Piso(
         titulo = "Piso reformado cerca de la universidad",
@@ -35,10 +31,6 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
         id = 2,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     ),
     Piso(
         titulo = "Habitación en piso compartido",
@@ -53,10 +45,6 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1493809842364-78817add7ffb",
         id = 3,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     ),
     Piso(
         titulo = "Piso moderno con balcón",
@@ -71,10 +59,6 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1507089947368-19c1da9775ae",
         id = 4,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     ),
     Piso(
         titulo = "Estudio acogedor",
@@ -89,10 +73,6 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
         id = 5,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     ),
     Piso(
         titulo = "Habitación amplia con escritorio",
@@ -107,10 +87,6 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1519710164239-da123dc03ef4",
         id = 6,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     ),
     Piso(
         titulo = "Piso céntrico para compartir",
@@ -125,10 +101,6 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
         id = 7,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     ),
     Piso(
         titulo = "Apartamento luminoso",
@@ -143,9 +115,5 @@ val pisos = listOf(
         url_imagen = "https://images.unsplash.com/photo-1493666438817-866a91353ca9",
         id = 8,
         disponible = true,
-        inquilinos = null,
-        ofertas = null,
-        gastos = null,
-        contratos = null,
     )
 )
