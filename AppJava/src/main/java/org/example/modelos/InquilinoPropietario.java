@@ -23,7 +23,41 @@ public class InquilinoPropietario {
     @Column(nullable = false)
     private LocalDateTime fecha_msg;
 
+    @Column(nullable = false)
     private String mensaje;
+
+
+    public Inquilino getInquilino() {
+        return inquilino;
+    }
+
+    public void setInquilino(Inquilino inquilino) {
+        this.inquilino = inquilino;
+    }
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+
+    public LocalDateTime getFecha_msg() {
+        return fecha_msg;
+    }
+
+    public void setFecha_msg(LocalDateTime fecha_msg) {
+        this.fecha_msg = fecha_msg;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
 
     @Override
     public boolean equals(Object o) {

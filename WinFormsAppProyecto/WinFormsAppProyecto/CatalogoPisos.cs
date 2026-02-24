@@ -74,5 +74,13 @@ namespace Formularios
         {
             FiltrarRutas();
         }
+
+        public int? PisoSeleccionadoId {
+            get { 
+                if (dgvCatalogoPisos.SelectedRows.Count == 0) 
+                    return null; 
+                return Convert.ToInt32(dgvCatalogoPisos.SelectedRows[0].Cells["id"].Value); 
+            } 
+        }
     }
 }
