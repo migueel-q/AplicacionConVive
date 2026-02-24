@@ -50,8 +50,8 @@ namespace Formularios
             var inquilino = inquilinos.FirstOrDefault(i => i.email == txtEmail.Text && i.password == txtContrasena.Text);
             if(inquilino!=null){
                 MessageBox.Show("Bienvenido");
-                Form1 form1 = new Form1(inquilino);
-                form1.Show();
+                FormMenuInquilino formMenuInquilino = new FormMenuInquilino(inquilino);
+                formMenuInquilino.Show();
                 this.Hide();
                 return;
             }
