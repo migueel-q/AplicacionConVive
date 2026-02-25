@@ -67,6 +67,7 @@ namespace Formularios
             {
                 MessageBox.Show("Error generando informe:\n" + ex.Message);
             }
+
         }
     }
 

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             dgvContratos = new DataGridView();
-            button1 = new Button();
+            btnAceptarContrato = new Button();
             btnDenegar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvContratos).BeginInit();
             SuspendLayout();
@@ -43,14 +43,15 @@
             dgvContratos.Size = new Size(850, 364);
             dgvContratos.TabIndex = 0;
             // 
-            // button1
+            // btnAceptarContrato
             // 
-            button1.Location = new Point(188, 436);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Aceptar";
-            button1.UseVisualStyleBackColor = true;
+            btnAceptarContrato.Location = new Point(188, 436);
+            btnAceptarContrato.Name = "btnAceptarContrato";
+            btnAceptarContrato.Size = new Size(94, 29);
+            btnAceptarContrato.TabIndex = 1;
+            btnAceptarContrato.Text = "Aceptar";
+            btnAceptarContrato.UseVisualStyleBackColor = true;
+            btnAceptarContrato.Click += btnAceptarContrato_Click;
             // 
             // btnDenegar
             // 
@@ -60,6 +61,7 @@
             btnDenegar.TabIndex = 2;
             btnDenegar.Text = "Denegar";
             btnDenegar.UseVisualStyleBackColor = true;
+            btnDenegar.Click += btnDenegar_Click;
             // 
             // GestionarContratos
             // 
@@ -67,7 +69,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(874, 500);
             Controls.Add(btnDenegar);
-            Controls.Add(button1);
+            Controls.Add(btnAceptarContrato);
             Controls.Add(dgvContratos);
             Name = "GestionarContratos";
             Text = "GestionarContratos";
@@ -79,7 +81,7 @@
         #endregion
 
         private DataGridView dgvContratos;
-        private Button button1;
+        private Button btnAceptarContrato;
         private Button btnDenegar;
     }
 }
