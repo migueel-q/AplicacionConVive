@@ -1,7 +1,9 @@
 package com.example.androidappproyecto.pantallas
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -14,21 +16,37 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.androidappproyecto.R
 import com.example.androidappproyecto.data.data.modelos.Items_barra_inferior
 import com.example.androidappproyecto.navegacion.AppConviveNavigation
+import com.example.androidappproyecto.navegacion.Rutas
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ProyectoView(){
     val navController= rememberNavController()
+    val rutaActual = currentRoute(navController)
+
+    val mostrarBarras = rutaActual != Rutas.Login.name
+
     Scaffold(
-        topBar = { AppConviveTopBar() },
-        bottomBar = { AppConviveBottomBar(navController = navController) }
+        topBar = {
+            if (mostrarBarras) {
+                AppConviveTopBar()
+            }
+        },
+        bottomBar = {
+            if (mostrarBarras) {
+                AppConviveBottomBar(navController = navController)
+            }
+        }
     ) { paddingValues ->
         AppConviveNavigation(navController = navController, Modifier.padding(paddingValues))
     }
@@ -48,6 +66,15 @@ fun AppConviveTopBar() {
             Text(
                 text = "ConVive",
                 style = MaterialTheme.typography.headlineLarge
+            )
+        },
+        actions = {
+            Image(
+                painter = painterResource(id = R.drawable.convivelogo),
+                contentDescription = "Logo de ConVive",
+                modifier = Modifier
+                    .size(50.dp)
+                    .padding(end = 12.dp)
             )
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
@@ -81,9 +108,10 @@ private fun AppConviveBottomBar(navController: NavHostController) {
             val clicked = currentRoute(navController) == it.ruta
             NavigationBarItem(selected = clicked,
                 onClick = { navController.navigate(it.ruta) },
-                icon = { Icon(imageVector = it.icono,
+                icon = { Icon(
+                    imageVector = it.icono,
                     contentDescription = null,
-                    )
+                )
                 },
                 label = { Text(text=it.texto) }
             )
