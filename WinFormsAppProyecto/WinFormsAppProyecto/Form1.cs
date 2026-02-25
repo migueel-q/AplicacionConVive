@@ -16,6 +16,12 @@ namespace WinFormsAppProyecto
             this.inquilino = inquilino;
             CatalogoPisos catalogoPisos = new CatalogoPisos();
             AbrirFormulario(catalogoPisos);
+            añadirPiso.Visible = false;
+            modificarPiso.Visible = false;
+            añadirPiso.Visible = false;
+            gestionarOfertas.Visible = false;
+            gestionarSolicitudes.Visible = false;
+            gestionContrato.Visible = false;
         }
 
         public Form1(Propietario propietario)
@@ -25,6 +31,9 @@ namespace WinFormsAppProyecto
             this.propietario = propietario;
             CatalogoPisos catalogoPisos = new CatalogoPisos();
             AbrirFormulario(catalogoPisos);
+            gestionGastos.Visible = false;
+            hacerOferta.Visible = false;
+            hacerSolicitud.Visible = false;
         }
         private void AbrirFormulario(Form formulario)
         {
