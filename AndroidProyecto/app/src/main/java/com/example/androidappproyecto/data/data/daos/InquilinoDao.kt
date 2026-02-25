@@ -29,4 +29,6 @@ interface InquilinoDao {
     @Delete
     suspend fun deleteInquilino(inquilino: Inquilino)
 
+    @Query("SELECT * FROM inquilinos WHERE email = :email AND password = :password LIMIT 1")
+    suspend fun loginInquilino(email: String, password: String): Inquilino?
 }

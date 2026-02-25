@@ -13,7 +13,7 @@ using Microsoft.VisualBasic;
 
 namespace Formularios
 {
-    public partial class FormMenuInquilino : Form
+   /* public partial class FormMenuInquilino : Form
     {
         private Inquilino _inquilino;
         private PisoControlador _pisoControlador;
@@ -90,5 +90,5 @@ namespace Formularios
             FormVerMiPiso formVer = new FormVerMiPiso(_inquilino, piso);
             formVer.ShowDialog();
         }
-    }
+    }*/
 }

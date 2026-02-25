@@ -14,6 +14,7 @@ namespace Formularios
 {
     public partial class FormChatPropietario : Form
     {
+       
         private readonly MensajeControlador controlador = new MensajeControlador();
         private readonly int inquilinoId;
         private readonly int propietarioId;
@@ -66,9 +67,6 @@ namespace Formularios
                 panelMnesajes.ScrollControlIntoView(panelMnesajes.Controls[panelMnesajes.Controls.Count - 1]);
         }
 
-
-
-
         private void AgregarBurbuja(string texto, bool enviadoPorInquilino)
         {
             Label burbuja = new Label();
@@ -107,7 +105,6 @@ namespace Formularios
 
             panelMnesajes.Controls.Add(burbuja);
         }
-
-
     }
 }
+

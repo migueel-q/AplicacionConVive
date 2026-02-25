@@ -42,7 +42,7 @@ namespace Formularios
         }
 
 
-        private void FiltrarRutas()
+        private void FiltrarPisos()
         {
             if (listaPisos == null) return;
 
@@ -72,7 +72,7 @@ namespace Formularios
 
         private void txtFiltrar_TextChanged(object sender, EventArgs e)
         {
-            FiltrarRutas();
+            FiltrarPisos();
         }
 
         public int? PisoSeleccionadoId

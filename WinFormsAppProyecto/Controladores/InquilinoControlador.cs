@@ -32,15 +32,22 @@ namespace Controladores
 
         public async Task<List<Inquilino>> getAll()
         {
-            List<Inquilino> listaInquilinos = new List<Inquilino >();
-            HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/inquilinos");
+            try
+            {
+                List<Inquilino> listaInquilinos = new List<Inquilino>();
+                HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/inquilinos");
 
-            mensaje.EnsureSuccessStatusCode();
-            string mensajeJson = await mensaje.Content.ReadAsStringAsync();
+                mensaje.EnsureSuccessStatusCode();
+                string mensajeJson = await mensaje.Content.ReadAsStringAsync();
 
-            listaInquilinos = JsonConvert.DeserializeObject<List<Inquilino>>(mensajeJson);
+                listaInquilinos = JsonConvert.DeserializeObject<List<Inquilino>>(mensajeJson);
 
-            return listaInquilinos;
+                return listaInquilinos;
+            }
+            catch (Exception ex)
+            {
+                return new List<Inquilino>();
+            }
         }
 
         public async Task<Inquilino> getById(int id)
