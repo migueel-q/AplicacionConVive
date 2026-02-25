@@ -22,12 +22,12 @@ namespace Formularios
             InitializeComponent();
             _piso = piso;
             _propietario = propietario;
-            txtCalle.Text = piso.direccion.calle;
-            txtCiudad.Text = piso.direccion.ciudad;
-            txtProvincia.Text = piso.direccion.provincia;
-            txtPrecio.Text = piso.precio.ToString();
-            txtImagen.Text = piso.url_imagen;
-            richTextBoxDesc.Text = piso.descripcion;
+            txtCalle.Text = _piso.direccion.calle;
+            txtCiudad.Text = _piso.direccion.ciudad;
+            txtProvincia.Text = _piso.direccion.provincia;
+            txtPrecio.Text = _piso.precio.ToString();
+            txtImagen.Text = _piso.url_imagen;
+            richTextBoxDesc.Text = _piso.descripcion;
         }
 
         private async void btnModificarPiso_Click(object sender, EventArgs e)
@@ -52,4 +52,5 @@ namespace Formularios
             MessageBox.Show("Piso actualizado correctamente.");
         }
     }
+
 }

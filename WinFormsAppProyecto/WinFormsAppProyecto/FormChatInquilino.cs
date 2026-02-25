@@ -9,13 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Controladores;
-using Modelos;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Formularios
 {
@@ -32,15 +25,13 @@ namespace Formularios
             propietarioId = prop;
             panelMnesajes.Resize += (s, ev) => CargarChat();
         }
-
-        private async void FormChat_Load(object sender, EventArgs e)
+        private async void FormChatInquilino_Load(object sender, EventArgs e)
         {
             await CargarChat();
 
             panelMnesajes.FlowDirection = FlowDirection.TopDown;
             panelMnesajes.WrapContents = false;
             panelMnesajes.AutoScroll = true;
-
         }
 
         private async void btnEnviar_Click(object sender, EventArgs e)
@@ -67,13 +58,15 @@ namespace Formularios
 
             foreach (var msg in mensajes)
             {
-                bool enviadoPorInquilino = msg.inquilino.id == inquilinoId;
-                AgregarBurbuja(msg.mensaje, enviadoPorInquilino);
+                // Si lo envió el inquilino → es “mío” → derecha
+                bool esMio = msg.enviadoPorInquilino;
+                AgregarBurbuja(msg.mensaje, esMio);
             }
 
             if (panelMnesajes.Controls.Count > 0)
                 panelMnesajes.ScrollControlIntoView(panelMnesajes.Controls[panelMnesajes.Controls.Count - 1]);
         }
+
 
         private void AgregarBurbuja(string texto, bool enviadoPorInquilino)
         {
@@ -114,8 +107,6 @@ namespace Formularios
             panelMnesajes.Controls.Add(burbuja);
         }
 
-
-
-
+        
     }
 }

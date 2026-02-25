@@ -46,7 +46,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(59, 71);
+            label1.Location = new Point(169, 133);
             label1.Name = "label1";
             label1.Size = new Size(42, 20);
             label1.TabIndex = 0;
@@ -55,7 +55,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(59, 178);
+            label2.Location = new Point(169, 240);
             label2.Name = "label2";
             label2.Size = new Size(69, 20);
             label2.TabIndex = 1;
@@ -64,7 +64,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(59, 242);
+            label5.Location = new Point(169, 307);
             label5.Name = "label5";
             label5.Size = new Size(87, 20);
             label5.TabIndex = 4;
@@ -72,21 +72,21 @@
             // 
             // txtCalle
             // 
-            txtCalle.Location = new Point(171, 68);
+            txtCalle.Location = new Point(281, 130);
             txtCalle.Name = "txtCalle";
             txtCalle.Size = new Size(180, 27);
             txtCalle.TabIndex = 5;
             // 
             // txtProvincia
             // 
-            txtProvincia.Location = new Point(171, 171);
+            txtProvincia.Location = new Point(281, 233);
             txtProvincia.Name = "txtProvincia";
             txtProvincia.Size = new Size(180, 27);
             txtProvincia.TabIndex = 6;
             // 
             // btnGuardarPiso
             // 
-            btnGuardarPiso.Location = new Point(344, 418);
+            btnGuardarPiso.Location = new Point(476, 488);
             btnGuardarPiso.Name = "btnGuardarPiso";
             btnGuardarPiso.Size = new Size(94, 29);
             btnGuardarPiso.TabIndex = 9;
@@ -96,7 +96,7 @@
             // 
             // richTextBoxDesc
             // 
-            richTextBoxDesc.Location = new Point(171, 242);
+            richTextBoxDesc.Location = new Point(281, 304);
             richTextBoxDesc.Name = "richTextBoxDesc";
             richTextBoxDesc.Size = new Size(546, 120);
             richTextBoxDesc.TabIndex = 10;
@@ -104,7 +104,7 @@
             // 
             // txtCiudad
             // 
-            txtCiudad.Location = new Point(171, 121);
+            txtCiudad.Location = new Point(281, 183);
             txtCiudad.Name = "txtCiudad";
             txtCiudad.Size = new Size(180, 27);
             txtCiudad.TabIndex = 12;
@@ -112,7 +112,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(59, 124);
+            label6.Location = new Point(169, 186);
             label6.Name = "label6";
             label6.Size = new Size(56, 20);
             label6.TabIndex = 11;
@@ -120,7 +120,7 @@
             // 
             // txtImagen
             // 
-            txtImagen.Location = new Point(556, 68);
+            txtImagen.Location = new Point(666, 130);
             txtImagen.Name = "txtImagen";
             txtImagen.Size = new Size(161, 27);
             txtImagen.TabIndex = 14;
@@ -128,7 +128,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(444, 75);
+            label7.Location = new Point(554, 137);
             label7.Name = "label7";
             label7.Size = new Size(59, 20);
             label7.TabIndex = 13;
@@ -136,7 +136,7 @@
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(556, 121);
+            txtPrecio.Location = new Point(666, 183);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(161, 27);
             txtPrecio.TabIndex = 16;
@@ -144,7 +144,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(444, 128);
+            label8.Location = new Point(554, 190);
             label8.Name = "label8";
             label8.Size = new Size(50, 20);
             label8.TabIndex = 15;
@@ -154,7 +154,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(801, 501);
+            ClientSize = new Size(1049, 582);
             Controls.Add(txtPrecio);
             Controls.Add(label8);
             Controls.Add(txtImagen);

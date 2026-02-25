@@ -14,6 +14,7 @@ namespace Formularios
 {
     public partial class FormChatPropietario : Form
     {
+       
         private readonly MensajeControlador controlador = new MensajeControlador();
         private readonly int inquilinoId;
         private readonly int propietarioId;
@@ -56,15 +57,15 @@ namespace Formularios
 
             foreach (var msg in mensajes)
             {
-                // AHORA SÍ: usamos el booleano que viene del backend
-                bool enviadoPorInquilino = msg.enviadoPorInquilino;
-                AgregarBurbuja(msg.mensaje, enviadoPorInquilino);
+                // Si lo envió el inquilino → NO es mío → izquierda
+                // Si NO lo envió el inquilino → lo envió el propietario → es mío → derecha
+                bool esMio = !msg.enviadoPorInquilino;
+                AgregarBurbuja(msg.mensaje, esMio);
             }
 
             if (panelMnesajes.Controls.Count > 0)
                 panelMnesajes.ScrollControlIntoView(panelMnesajes.Controls[panelMnesajes.Controls.Count - 1]);
         }
-
 
         private void AgregarBurbuja(string texto, bool enviadoPorInquilino)
         {
@@ -104,7 +105,6 @@ namespace Formularios
 
             panelMnesajes.Controls.Add(burbuja);
         }
-
-
     }
 }
+

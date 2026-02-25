@@ -42,7 +42,7 @@ namespace Formularios
         }
 
 
-        private void FiltrarRutas()
+        private void FiltrarPisos()
         {
             if (listaPisos == null) return;
 
@@ -72,15 +72,32 @@ namespace Formularios
 
         private void txtFiltrar_TextChanged(object sender, EventArgs e)
         {
-            FiltrarRutas();
+            FiltrarPisos();
         }
 
-        public int? PisoSeleccionadoId {
-            get { 
-                if (dgvCatalogoPisos.SelectedRows.Count == 0) 
-                    return null; 
-                return Convert.ToInt32(dgvCatalogoPisos.SelectedRows[0].Cells["id"].Value); 
-            } 
+        public int? PisoSeleccionadoId
+        {
+            get
+            {
+                if (dgvCatalogoPisos.SelectedRows.Count == 0)
+                    return null;
+                return Convert.ToInt32(dgvCatalogoPisos.SelectedRows[0].Cells["id"].Value);
+            }
+        }
+
+        public Piso pisoSeleccionado
+        {
+            get
+            {
+                if (dgvCatalogoPisos.SelectedRows.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (Piso)dgvCatalogoPisos.SelectedRows[0].DataBoundItem;
+                }
+            }
         }
     }
 }

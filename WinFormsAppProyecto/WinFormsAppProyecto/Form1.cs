@@ -13,24 +13,43 @@ namespace WinFormsAppProyecto
         {
             InitializeComponent();
             this.IsMdiContainer = true;
-            this.WindowState = FormWindowState.Maximized;
             this.inquilino = inquilino;
+            CatalogoPisos catalogoPisos = new CatalogoPisos();
+            AbrirFormulario(catalogoPisos);
+            añadirPiso.Visible = false;
+            modificarPiso.Visible = false;
+            añadirPiso.Visible = false;
+            gestionarOfertas.Visible = false;
+            gestionarSolicitudes.Visible = false;
+            gestionContrato.Visible = false;
         }
 
         public Form1(Propietario propietario)
         {
             InitializeComponent();
             this.IsMdiContainer = true;
-            this.WindowState = FormWindowState.Maximized;
             this.propietario = propietario;
             CatalogoPisos catalogoPisos = new CatalogoPisos();
             AbrirFormulario(catalogoPisos);
+            gestionGastos.Visible = false;
+            hacerOferta.Visible = false;
+            hacerSolicitud.Visible = false;
         }
         private void AbrirFormulario(Form formulario)
         {
+            // Cerrar cualquier formulario MDI hijo que esté abierto
+            foreach (Form frm in this.MdiChildren)
+                frm.Close();
+
+            // Abrir el nuevo
             formulario.MdiParent = this;
+
+            formulario.StartPosition = FormStartPosition.Manual; 
+            formulario.Location = new Point(0, 0); // o la posición que quieras
+
             formulario.Show();
         }
+
 
 
         private void añadirPiso_click(object sender, EventArgs e)
@@ -41,8 +60,25 @@ namespace WinFormsAppProyecto
 
         private void modificarPiso_Click(object sender, EventArgs e)
         {
-            //FormModificarPiso formMod = new FormModificarPiso();
-            //AbrirFormulario(formMod);
+            CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
+            
+            if (catalogo == null)
+            {
+                MessageBox.Show("Primero abre el catálogo de pisos."); return;
+            }
+            else {
+                Piso piso = catalogo.pisoSeleccionado;
+                if (piso == null)
+                {
+                    MessageBox.Show("Selecciona primero un piso");
+                }
+                else
+                {
+                    FormModificarPiso formMod = new FormModificarPiso(piso, propietario);
+                    AbrirFormulario(formMod);
+                }
+            }
+            
         }
 
         private void verPisosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,84 +89,97 @@ namespace WinFormsAppProyecto
 
         private void verGastodToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Buscar si CatalogoPisos está abierto
-            CatalogoPisos catalogo = Application.OpenForms
-                .OfType<CatalogoPisos>()
-                .FirstOrDefault();
+            CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
 
             if (catalogo == null)
             {
-                MessageBox.Show("Primero abre el catálogo de pisos.");
-                return;
+                MessageBox.Show("Primero abre el catálogo de pisos."); return;
             }
-
-            // Obtener el ID del piso seleccionado
-            int? idPiso = catalogo.PisoSeleccionadoId;
-
-            if (idPiso == null)
+            else
             {
-                MessageBox.Show("Selecciona un piso primero.");
-                return;
+
+                // Obtener el ID del piso seleccionado
+                Piso piso = catalogo.pisoSeleccionado;
+
+                if (piso == null)
+                {
+                    MessageBox.Show("Selecciona un piso primero.");
+                    return;
+                }
+                else
+                {
+
+                    // Abrir el informe con el ID
+                    VerInforme informe = new VerInforme(piso.id);
+                    AbrirFormulario(informe);
+                }
             }
-
-            // Abrir el informe con el ID
-            VerInforme informe = new VerInforme(idPiso.Value);
-            AbrirFormulario(informe);
-
         }
 
         private async void hablarPorChatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 1. Buscar si el catálogo está abierto
-            CatalogoPisos catalogo = Application.OpenForms
-                .OfType<CatalogoPisos>()
-                .FirstOrDefault();
+            CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
 
             if (catalogo == null)
             {
-                MessageBox.Show("Primero abre el catálogo de pisos.");
-                return;
+                MessageBox.Show("Primero abre el catálogo de pisos."); return;
             }
-
-            // 2. Obtener el piso seleccionado
-            int? idPiso = catalogo.PisoSeleccionadoId;
-
-            if (idPiso == null)
+            else
             {
-                MessageBox.Show("Selecciona un piso primero.");
-                return;
-            }
 
-            // 3. Obtener el piso desde el backend
-            PisoControlador pisoControlador = new PisoControlador();
-            Piso piso = await pisoControlador.getById(idPiso.Value);
+                // 2. Obtener el piso seleccionado
+                Piso pisoSeleccion = catalogo.pisoSeleccionado;
 
-            // 4. Si eres INQUILINO ? hablas con el propietario del piso
-            if (inquilino != null)
-            {
-                int propietarioId = piso.propietario.id;
-                FormChatInquilino chat = new FormChatInquilino(inquilino.id, propietarioId);
-                AbrirFormulario(chat);
-                return;
-            }
+                if (pisoSeleccion == null)
+                {
+                    MessageBox.Show("Selecciona un piso primero.");
 
-            // 5. Si eres PROPIETARIO ? NO puedes obtener el inquilino desde el piso
-            //    porque ya no existe piso.contrato
-            //    Así que abrimos la lista de inquilinos
-            if (propietario != null)
-            {
-                CatalogoInquilinos form = new CatalogoInquilinos(propietario);
-                form.Show();
-                return;
+                }
+                else
+                {
+
+                    // 3. Obtener el piso desde el backend
+                    PisoControlador pisoControlador = new PisoControlador();
+                    Piso piso = await pisoControlador.getById(pisoSeleccion.id);
+
+                    // 4. Si eres INQUILINO ? hablas con el propietario del piso
+                    if (inquilino != null)
+                    {
+                        int propietarioId = piso.propietario.id;
+                        FormChatInquilino chat = new FormChatInquilino(inquilino.id, propietarioId);
+                        AbrirFormulario(chat);
+
+                    }
+                    else
+                    {
+
+                        // 5. Si eres PROPIETARIO ? NO puedes obtener el inquilino desde el piso
+                        //    porque ya no existe piso.contrato
+                        //    Así que abrimos la lista de inquilinos
+                        if (propietario != null)
+                        {
+                            CatalogoInquilinos form = new CatalogoInquilinos(propietario);
+                            return;
+                        }
+                    }
+                }
             }
         }
 
-
-        private void listaInquilinosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (propietario == null) { MessageBox.Show("Solo los propietarios pueden ver esta lista."); return; }
-            CatalogoInquilinos form = new CatalogoInquilinos(propietario); 
-            form.Show();
+            this.Hide();
+            FormLogs formLogs = new FormLogs();
+            formLogs.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ValidarPisos validarPisos = new ValidarPisos();
+            validarPisos.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -33,9 +33,10 @@ namespace Formularios
 
         private void btnInquilinos_Click(object sender, EventArgs e)
         {
-            if (listBoxInquilinos.SelectedItem is Inquilino inq) { 
+            if (listBoxInquilinos.SelectedItem is Inquilino inq)
+            {
                 FormChatPropietario chat = new FormChatPropietario(inq.id, _propietario.id);
-                chat.Show(); 
+                chat.Show();
             }
         }
     }

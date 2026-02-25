@@ -33,22 +33,31 @@
             añadirPiso = new ToolStripMenuItem();
             modificarPiso = new ToolStripMenuItem();
             verPisosToolStripMenuItem = new ToolStripMenuItem();
-            gestiónGastosToolStripMenuItem = new ToolStripMenuItem();
+            gestionGastos = new ToolStripMenuItem();
             verGastodToolStripMenuItem = new ToolStripMenuItem();
             chatToolStripMenuItem = new ToolStripMenuItem();
             hablarPorChatToolStripMenuItem = new ToolStripMenuItem();
-            listaInquilinosToolStripMenuItem = new ToolStripMenuItem();
+            gestiónOfertasToolStripMenuItem = new ToolStripMenuItem();
+            hacerOferta = new ToolStripMenuItem();
+            gestionarOfertas = new ToolStripMenuItem();
+            gestiónSolicitudesToolStripMenuItem = new ToolStripMenuItem();
+            hacerSolicitud = new ToolStripMenuItem();
+            gestionarSolicitudes = new ToolStripMenuItem();
+            gestionContrato = new ToolStripMenuItem();
+            gestionarContratosToolStripMenuItem = new ToolStripMenuItem();
+            cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
+            button1 = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónPisosToolStripMenuItem, gestiónGastosToolStripMenuItem, chatToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónPisosToolStripMenuItem, gestionGastos, chatToolStripMenuItem, gestiónOfertasToolStripMenuItem, gestiónSolicitudesToolStripMenuItem, gestionContrato, cerrarSesiónToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(914, 30);
+            menuStrip1.Size = new Size(1085, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -80,23 +89,23 @@
             verPisosToolStripMenuItem.Text = "Ver pisos";
             verPisosToolStripMenuItem.Click += verPisosToolStripMenuItem_Click;
             // 
-            // gestiónGastosToolStripMenuItem
+            // gestionGastos
             // 
-            gestiónGastosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { verGastodToolStripMenuItem });
-            gestiónGastosToolStripMenuItem.Name = "gestiónGastosToolStripMenuItem";
-            gestiónGastosToolStripMenuItem.Size = new Size(121, 24);
-            gestiónGastosToolStripMenuItem.Text = "Gestión Gastos";
+            gestionGastos.DropDownItems.AddRange(new ToolStripItem[] { verGastodToolStripMenuItem });
+            gestionGastos.Name = "gestionGastos";
+            gestionGastos.Size = new Size(121, 24);
+            gestionGastos.Text = "Gestión Gastos";
             // 
             // verGastodToolStripMenuItem
             // 
             verGastodToolStripMenuItem.Name = "verGastodToolStripMenuItem";
-            verGastodToolStripMenuItem.Size = new Size(160, 26);
+            verGastodToolStripMenuItem.Size = new Size(224, 26);
             verGastodToolStripMenuItem.Text = "Ver gastos";
             verGastodToolStripMenuItem.Click += verGastodToolStripMenuItem_Click;
             // 
             // chatToolStripMenuItem
             // 
-            chatToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hablarPorChatToolStripMenuItem, listaInquilinosToolStripMenuItem });
+            chatToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hablarPorChatToolStripMenuItem });
             chatToolStripMenuItem.Name = "chatToolStripMenuItem";
             chatToolStripMenuItem.Size = new Size(53, 24);
             chatToolStripMenuItem.Text = "Chat";
@@ -104,22 +113,84 @@
             // hablarPorChatToolStripMenuItem
             // 
             hablarPorChatToolStripMenuItem.Name = "hablarPorChatToolStripMenuItem";
-            hablarPorChatToolStripMenuItem.Size = new Size(224, 26);
+            hablarPorChatToolStripMenuItem.Size = new Size(196, 26);
             hablarPorChatToolStripMenuItem.Text = "Hablar por chat";
             hablarPorChatToolStripMenuItem.Click += hablarPorChatToolStripMenuItem_Click;
             // 
-            // listaInquilinosToolStripMenuItem
+            // gestiónOfertasToolStripMenuItem
             // 
-            listaInquilinosToolStripMenuItem.Name = "listaInquilinosToolStripMenuItem";
-            listaInquilinosToolStripMenuItem.Size = new Size(224, 26);
-            listaInquilinosToolStripMenuItem.Text = "Lista Inquilinos";
-            listaInquilinosToolStripMenuItem.Click += listaInquilinosToolStripMenuItem_Click;
+            gestiónOfertasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hacerOferta, gestionarOfertas });
+            gestiónOfertasToolStripMenuItem.Name = "gestiónOfertasToolStripMenuItem";
+            gestiónOfertasToolStripMenuItem.Size = new Size(125, 24);
+            gestiónOfertasToolStripMenuItem.Text = "Gestión Ofertas";
+            // 
+            // hacerOferta
+            // 
+            hacerOferta.Name = "hacerOferta";
+            hacerOferta.Size = new Size(224, 26);
+            hacerOferta.Text = "Hacer Oferta";
+            // 
+            // gestionarOfertas
+            // 
+            gestionarOfertas.Name = "gestionarOfertas";
+            gestionarOfertas.Size = new Size(224, 26);
+            gestionarOfertas.Text = "Gestionar Ofertas";
+            // 
+            // gestiónSolicitudesToolStripMenuItem
+            // 
+            gestiónSolicitudesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hacerSolicitud, gestionarSolicitudes });
+            gestiónSolicitudesToolStripMenuItem.Name = "gestiónSolicitudesToolStripMenuItem";
+            gestiónSolicitudesToolStripMenuItem.Size = new Size(149, 24);
+            gestiónSolicitudesToolStripMenuItem.Text = "Gestión Solicitudes";
+            // 
+            // hacerSolicitud
+            // 
+            hacerSolicitud.Name = "hacerSolicitud";
+            hacerSolicitud.Size = new Size(231, 26);
+            hacerSolicitud.Text = "Hacer solicitud";
+            // 
+            // gestionarSolicitudes
+            // 
+            gestionarSolicitudes.Name = "gestionarSolicitudes";
+            gestionarSolicitudes.Size = new Size(231, 26);
+            gestionarSolicitudes.Text = "Gestionar Solicitudes";
+            // 
+            // gestionContrato
+            // 
+            gestionContrato.DropDownItems.AddRange(new ToolStripItem[] { gestionarContratosToolStripMenuItem });
+            gestionContrato.Name = "gestionContrato";
+            gestionContrato.Size = new Size(135, 24);
+            gestionContrato.Text = "Gestion Contrato";
+            // 
+            // gestionarContratosToolStripMenuItem
+            // 
+            gestionarContratosToolStripMenuItem.Name = "gestionarContratosToolStripMenuItem";
+            gestionarContratosToolStripMenuItem.Size = new Size(221, 26);
+            gestionarContratosToolStripMenuItem.Text = "Gestionar contratos";
+            // 
+            // cerrarSesiónToolStripMenuItem
+            // 
+            cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
+            cerrarSesiónToolStripMenuItem.Size = new Size(110, 24);
+            cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
+            cerrarSesiónToolStripMenuItem.Click += cerrarSesiónToolStripMenuItem_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(453, 674);
+            button1.Name = "button1";
+            button1.Size = new Size(187, 40);
+            button1.TabIndex = 1;
+            button1.Text = "Validar Pisos";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(1085, 726);
+            Controls.Add(button1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 4, 3, 4);
@@ -138,10 +209,19 @@
         private ToolStripMenuItem añadirPiso;
         private ToolStripMenuItem modificarPiso;
         private ToolStripMenuItem verPisosToolStripMenuItem;
-        private ToolStripMenuItem gestiónGastosToolStripMenuItem;
+        private ToolStripMenuItem gestionGastos;
         private ToolStripMenuItem verGastodToolStripMenuItem;
         private ToolStripMenuItem chatToolStripMenuItem;
         private ToolStripMenuItem hablarPorChatToolStripMenuItem;
-        private ToolStripMenuItem listaInquilinosToolStripMenuItem;
+        private ToolStripMenuItem cerrarSesiónToolStripMenuItem;
+        private Button button1;
+        private ToolStripMenuItem gestiónOfertasToolStripMenuItem;
+        private ToolStripMenuItem hacerOferta;
+        private ToolStripMenuItem gestionarOfertas;
+        private ToolStripMenuItem gestiónSolicitudesToolStripMenuItem;
+        private ToolStripMenuItem hacerSolicitud;
+        private ToolStripMenuItem gestionarSolicitudes;
+        private ToolStripMenuItem gestionContrato;
+        private ToolStripMenuItem gestionarContratosToolStripMenuItem;
     }
 }

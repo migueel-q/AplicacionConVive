@@ -32,15 +32,22 @@ namespace Controladores
 
         public async Task<List<Contrato>> getAll()
         {
-            List<Contrato> listaContratos = new List<Contrato>();
-            HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/contratos");
+            try
+            {
+                List<Contrato> listaContratos = new List<Contrato>();
+                HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/contratos");
 
-            mensaje.EnsureSuccessStatusCode();
-            string mensajeJson = await mensaje.Content.ReadAsStringAsync();
+                mensaje.EnsureSuccessStatusCode();
+                string mensajeJson = await mensaje.Content.ReadAsStringAsync();
 
-            listaContratos = JsonConvert.DeserializeObject<List<Contrato>>(mensajeJson);
+                listaContratos = JsonConvert.DeserializeObject<List<Contrato>>(mensajeJson);
 
-            return listaContratos;
+                return listaContratos;
+            }
+            catch (Exception ex)
+            {
+                return new List<Contrato>();
+            }
         }
 
         public async Task<Contrato> getById(int id)
