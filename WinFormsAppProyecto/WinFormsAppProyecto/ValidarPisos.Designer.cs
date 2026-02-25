@@ -50,6 +50,7 @@
             btnValidarPiso.TabIndex = 1;
             btnValidarPiso.Text = "Validar";
             btnValidarPiso.UseVisualStyleBackColor = true;
+            btnValidarPiso.Click += btnValidarPiso_Click;
             // 
             // ValidarPisos
             // 
@@ -60,6 +61,7 @@
             Controls.Add(dgvPisos);
             Name = "ValidarPisos";
             Text = "ValidarPisos";
+            Load += ValidarPisos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPisos).EndInit();
             ResumeLayout(false);
         }

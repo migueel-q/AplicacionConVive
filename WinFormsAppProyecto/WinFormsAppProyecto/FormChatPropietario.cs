@@ -14,7 +14,7 @@ namespace Formularios
 {
     public partial class FormChatPropietario : Form
     {
-       
+
         private readonly MensajeControlador controlador = new MensajeControlador();
         private readonly int inquilinoId;
         private readonly int propietarioId;
@@ -47,6 +47,7 @@ namespace Formularios
             richTextBoxMensaje.Text = "";
 
             await CargarChat();
+
         }
 
         private async Task CargarChat()
@@ -105,6 +106,8 @@ namespace Formularios
 
             panelMnesajes.Controls.Add(burbuja);
         }
+
+        
     }
 }
 

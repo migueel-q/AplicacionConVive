@@ -38,7 +38,7 @@ public class ContratoServicioImpl implements ContratoServicio {
             contrato.setFecha_inicio(contratoActualizar.getFecha_inicio());
             contrato.setFecha_fin(contratoActualizar.getFecha_fin());
             contrato.setPiso(contratoActualizar.getPiso());
-
+            contrato.setAceptado(contratoActualizar.isAceptado());
             contratoRepositorio.save(contrato);
         }
 

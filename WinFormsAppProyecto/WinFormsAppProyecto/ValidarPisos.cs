@@ -16,6 +16,7 @@ namespace Formularios
     {
         PisoControlador pisoControlador = new PisoControlador();
         BindingList<Piso> listaPisos;
+
         public ValidarPisos()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Formularios
 
         private async void ValidarPisos_Load(object sender, EventArgs e)
         {
+            dgvPisos.AutoGenerateColumns = true;
             await CargarPisos();
             dgvPisos.DataSource = listaPisos.Where(p => !p.validado).ToList();
 

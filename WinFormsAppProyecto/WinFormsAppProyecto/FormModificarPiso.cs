@@ -30,7 +30,7 @@ namespace Formularios
             richTextBoxDesc.Text = _piso.descripcion;
         }
 
-        private async void btnModificarPiso_Click(object sender, EventArgs e)
+        private async void btnGuardarPiso_Click(object sender, EventArgs e)
         {
             PisoControlador pisoControlador = new PisoControlador();
             Direccion direccionActualizada = new Direccion
