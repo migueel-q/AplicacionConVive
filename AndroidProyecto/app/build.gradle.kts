@@ -9,6 +9,16 @@ android {
     namespace = "com.example.androidappproyecto"
     compileSdk = 36
 
+    packaging {
+        resources {
+            excludes += "/META-INF/DEPENDENCIES"
+            excludes += "/META-INF/INDEX.LIST"
+            excludes += "/META-INF/LICENSE*"
+            excludes += "/META-INF/NOTICE*"
+            excludes += "/META-INF/io.netty.versions.properties"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.example.androidappproyecto"
         minSdk = 24
@@ -50,13 +60,17 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("androidx.compose.material:material-icons-extended")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     implementation(libs.runtime.livedata)
-    implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.androidx.adapters)
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.animation.core.lint)
+    implementation(libs.firebase.appdistribution.gradle)
     ksp(libs.androidx.room.compiler)
 
     // Coroutines

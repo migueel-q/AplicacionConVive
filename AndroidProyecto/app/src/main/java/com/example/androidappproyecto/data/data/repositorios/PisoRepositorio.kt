@@ -10,56 +10,48 @@ class PisoRepositorio(
     private val pisoDao: PisoDao,
     private val pisoApi: PisoApi
 ){
-//    fun obtenerTodosLosPisos(): Flow<List<Piso>> {
-//        return pisoDao.getAllPisos()
-//    }
-//
-//    suspend fun obtenerPisoPorId(pisoId: Int): Piso? {
-//        return pisoDao.getPisoById(pisoId)
-//    }
-//
-//    suspend fun insertarPiso(piso: Piso) : Piso {
-//        val creado = pisoApi.createPiso(piso)
-//        pisoDao.insertPiso(creado)
-//        return creado
-//    }
-//    suspend fun actualizarPiso(piso: Piso) {
-//        try {
-//            val response = pisoApi.updatePiso(piso.id, piso) // Asumo un método updatePiso(id, body)
-//            if (response.isSuccessful) {
-//                pisoDao.updatePiso(piso)
-//            } else {
-//                throw IOException("Error al actualizar el piso en el servidor: ${response.message()}")
-//            }
-//        } catch (e: Exception) {
-//            throw e
-//        }
-//    }
-//    suspend fun eliminarPiso(piso: Piso) {
-//        try {
-//            val response = pisoApi.deletePiso(piso.id) // Asumo un método deletePiso(id)
-//            if (response.isSuccessful) {
-//                pisoDao.deletePiso(piso)
-//            } else {
-//                throw IOException("Error al eliminar el piso en el servidor: ${response.message()}")
-//            }
-//        } catch (e: Exception) {
-//            throw e
-//        }
-//    }
-//
-//
-//    suspend fun syncPisos() : List<Long>{
-//        try {
-//            val response = pisoApi.getAllPisos() // Llama a la API para obtener la lista fresca
-//            if (response.isSuccessful && response.body() != null) {
-//                val pisosDeApi = response.body()!!
-//                pisoDao.insertPisos(pisosDeApi)
-//            }
-//        } catch (e: IOException) {
-//            throw e
-//        }
-//    }
-//
+    fun obtenerTodosLosPisos(): Flow<List<Piso>> {
+        return pisoDao.getAllPisos()
+    }
+
+    suspend fun obtenerPisoPorId(pisoId: Int): Piso? {
+        return pisoDao.getPisoById(pisoId)
+    }
+
+    suspend fun insertarPiso(piso: Piso) {
+        try {
+            val pisoCreadoEnApi = pisoApi.createPiso(piso)
+            pisoDao.insertPiso(pisoCreadoEnApi)
+        } catch (e: Exception) {
+            throw IOException("Error al crear el piso: ${e.message}", e)
+        }
+    }
+    suspend fun actualizarPiso(piso: Piso) {
+        try {
+            pisoApi.updatePiso(piso.id, piso)
+            pisoDao.updatePiso(piso)
+        } catch (e: Exception) {
+            throw IOException("Error al actualizar el piso: ${e.message}", e)
+        }
+    }
+    suspend fun eliminarPiso(piso: Piso) {
+        try {
+            pisoApi.deletePiso(piso.id)
+            pisoDao.deletePiso(piso)
+        } catch (e: Exception) {
+            throw IOException("Error al eliminar el piso: ${e.message}", e)
+        }
+    }
+
+
+    suspend fun syncPisos(){
+        try {
+            val pisosDeApi = pisoApi.getAllPisos()
+            pisoDao.insertPisos(pisosDeApi)
+        } catch (e: Exception) {
+            println("No se pudieron refrescar los pisos: ${e.message}")
+        }
+    }
+
 
 }

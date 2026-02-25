@@ -2,68 +2,68 @@ package com.example.androidappproyecto.data.data.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidappproyecto.data.data.modelos.Piso
-import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
+import com.example.androidappproyecto.data.data.modelos.Solicitud
+import com.example.androidappproyecto.data.data.repositorios.SolicitudRepositorio
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class PisoViewModel(private val repositorio: PisoRepositorio) : ViewModel() {
+class SolicitudViewModel(private val repositorio: SolicitudRepositorio) :
+    ViewModel() {
 
-    // Estado para la lista de pisos (se actualiza automáticamente desde Room)
-    val todosLosPisos = repositorio.obtenerTodosLosPisos()
+    // Observa la lista de solicitudes desde la DB local
+    val todasLasSolicitudes = repositorio.obtenerTodasLasSolicitudes()
 
-    // Estado para manejar la carga y los mensajes de error
     private val _estaCargando = MutableStateFlow(false)
     val estaCargando: StateFlow<Boolean> = _estaCargando.asStateFlow()
 
     private val _mensajeError = MutableStateFlow<String?>(null)
     val mensajeError: StateFlow<String?> = _mensajeError.asStateFlow()
 
-    fun refrescarPisos() {
+    fun refrescarSolicitudes() {
         viewModelScope.launch {
             _estaCargando.value = true
             _mensajeError.value = null
             try {
-                repositorio.syncPisos()
+                repositorio.refrescarSolicitudes()
             } catch (e: Exception) {
-                _mensajeError.value = "Error al conectar con el servidor"
+                _mensajeError.value = "Error al sincronizar solicitudes: ${e.message}"
             } finally {
                 _estaCargando.value = false
             }
         }
     }
 
-    fun insertarPiso(piso: Piso) {
+    fun insertarSolicitud(solicitud: Solicitud) {
         viewModelScope.launch {
+            _estaCargando.value = true
             try {
-                _estaCargando.value = true
-                repositorio.insertarPiso(piso)
+                repositorio.insertarSolicitud(solicitud)
             } catch (e: Exception) {
-                _mensajeError.value = e.message
+                _mensajeError.value = "Error al crear solicitud: ${e.message}"
             } finally {
                 _estaCargando.value = false
             }
         }
     }
 
-    fun actualizarPiso(piso: Piso) {
+    fun actualizarSolicitud(solicitud: Solicitud) {
         viewModelScope.launch {
             try {
-                repositorio.actualizarPiso(piso)
+                repositorio.actualizarSolicitud(solicitud)
             } catch (e: Exception) {
-                _mensajeError.value = "No se pudo actualizar: ${e.message}"
+                _mensajeError.value = "Error al actualizar solicitud: ${e.message}"
             }
         }
     }
 
-    fun eliminarPiso(piso: Piso) {
+    fun eliminarSolicitud(solicitud: Solicitud) {
         viewModelScope.launch {
             try {
-                repositorio.eliminarPiso(piso)
+                repositorio.eliminarSolicitud(solicitud)
             } catch (e: Exception) {
-                _mensajeError.value = "No se pudo eliminar: ${e.message}"
+                _mensajeError.value = "Error al eliminar solicitud: ${e.message}"
             }
         }
     }
