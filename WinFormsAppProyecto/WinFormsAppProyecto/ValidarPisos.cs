@@ -42,12 +42,13 @@ namespace Formularios
             if (dgvPisos.SelectedRows.Count == 0)
             {
                 return;
-            } else
+            }
+            else
             {
                 Piso pisoEditar = (Piso)dgvPisos.SelectedRows[0].DataBoundItem;
                 pisoEditar.validado = true;
                 pisoControlador.update(pisoEditar, pisoEditar.id);
-                
+
             }
             await CargarPisos();
         }

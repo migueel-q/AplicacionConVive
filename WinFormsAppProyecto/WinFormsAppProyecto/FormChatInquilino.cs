@@ -9,13 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Controladores;
-using Modelos;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Formularios
 {
@@ -32,15 +25,13 @@ namespace Formularios
             propietarioId = prop;
             panelMnesajes.Resize += (s, ev) => CargarChat();
         }
-
-        private async void FormChat_Load(object sender, EventArgs e)
+        private async void FormChatInquilino_Load(object sender, EventArgs e)
         {
             await CargarChat();
 
             panelMnesajes.FlowDirection = FlowDirection.TopDown;
             panelMnesajes.WrapContents = false;
             panelMnesajes.AutoScroll = true;
-
         }
 
         private async void btnEnviar_Click(object sender, EventArgs e)
@@ -116,8 +107,6 @@ namespace Formularios
             panelMnesajes.Controls.Add(burbuja);
         }
 
-
-
-
+        
     }
 }
