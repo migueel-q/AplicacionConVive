@@ -36,7 +36,7 @@ namespace Formularios
 
 
 
-        private void btnDenegar_Click(object sender, EventArgs e)
+        private async void btnDenegar_Click(object sender, EventArgs e)
         {
             if (dgvContratos.SelectedRows.Count == 0)
             {
@@ -45,7 +45,9 @@ namespace Formularios
             else
             {
                 Contrato contratoEliminar = (Contrato)dgvContratos.SelectedRows[0].DataBoundItem;
-                contratoControlador.delete(contratoEliminar.id);
+                await contratoControlador.delete(contratoEliminar.id);
+                await CargarContratos();
+                dgvContratos.DataSource = listaContratos.Where(c => !c.aceptado).ToList();
             }
         }
 
@@ -58,10 +60,11 @@ namespace Formularios
             {
                 Contrato contratoEditar = (Contrato) dgvContratos.SelectedRows[0].DataBoundItem;
                 contratoEditar.aceptado = true;
-                contratoControlador.update(contratoEditar, contratoEditar.id);
+                await contratoControlador.update(contratoEditar, contratoEditar.id);
+                await CargarContratos();
+                dgvContratos.DataSource = listaContratos.Where(c => !c.aceptado).ToList();
             }
-            await CargarContratos();
-            dgvContratos.DataSource = listaContratos.Where(c => !c.aceptado).ToList();
+            
         }
     }
 }

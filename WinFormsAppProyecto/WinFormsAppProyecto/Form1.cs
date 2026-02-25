@@ -9,6 +9,7 @@ namespace WinFormsAppProyecto
     {
         Propietario propietario;
         Inquilino inquilino;
+        Administrador administrador;
         public Form1(Inquilino inquilino)
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace WinFormsAppProyecto
             gestionarOfertas.Visible = false;
             gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
+            button1.Visible = false;
         }
 
         public Form1(Propietario propietario)
@@ -34,6 +36,29 @@ namespace WinFormsAppProyecto
             gestionGastos.Visible = false;
             hacerOferta.Visible = false;
             hacerSolicitud.Visible = false;
+            button1.Visible = false;
+        }
+
+        public Form1(Administrador administrador)
+        {
+            InitializeComponent();
+            this.IsMdiContainer = true;
+            this.propietario = propietario;
+            CatalogoPisos catalogoPisos = new CatalogoPisos();
+            AbrirFormulario(catalogoPisos);
+            gestionGastos.Visible = false;
+            hacerOferta.Visible = false;
+            hacerSolicitud.Visible = false;
+            añadirPiso.Visible = false;
+            modificarPiso.Visible = false;
+            añadirPiso.Visible = false;
+            gestionarOfertas.Visible = false;
+            gestionarSolicitudes.Visible = false;
+            gestionContrato.Visible = false;
+            chatToolStripMenuItem.Visible = false;
+            gestiónPisosToolStripMenuItem.Visible = false;
+            gestiónOfertasToolStripMenuItem.Visible = false;
+            gestiónSolicitudesToolStripMenuItem.Visible = false;
         }
         private void AbrirFormulario(Form formulario)
         {
@@ -44,7 +69,7 @@ namespace WinFormsAppProyecto
             // Abrir el nuevo
             formulario.MdiParent = this;
 
-            formulario.StartPosition = FormStartPosition.Manual; 
+            formulario.StartPosition = FormStartPosition.Manual;
             formulario.Location = new Point(0, 0); // o la posición que quieras
 
             formulario.Show();
@@ -61,12 +86,13 @@ namespace WinFormsAppProyecto
         private void modificarPiso_Click(object sender, EventArgs e)
         {
             CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
-            
+
             if (catalogo == null)
             {
                 MessageBox.Show("Primero abre el catálogo de pisos."); return;
             }
-            else {
+            else
+            {
                 Piso piso = catalogo.pisoSeleccionado;
                 if (piso == null)
                 {
@@ -78,7 +104,7 @@ namespace WinFormsAppProyecto
                     AbrirFormulario(formMod);
                 }
             }
-            
+
         }
 
         private void verPisosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -180,6 +206,12 @@ namespace WinFormsAppProyecto
             ValidarPisos validarPisos = new ValidarPisos();
             validarPisos.ShowDialog();
             this.Show();
+        }
+
+        private void gestionarContratosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestionarContratos gestionarContratos = new GestionarContratos();
+            AbrirFormulario(gestionarContratos);
         }
     }
 }

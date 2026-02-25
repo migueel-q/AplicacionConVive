@@ -44,6 +44,7 @@ namespace Formularios
 
             await controlador.enviarMensaje(inquilinoId, propietarioId, texto, enviadoPorInquilino);
 
+            // limpiar el cuadro de texto
             richTextBoxMensaje.Text = "";
 
             await CargarChat();
