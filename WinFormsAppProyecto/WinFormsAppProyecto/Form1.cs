@@ -159,8 +159,8 @@ namespace WinFormsAppProyecto
                         //    Así que abrimos la lista de inquilinos
                         if (propietario != null)
                         {
-                            CatalogoInquilinos form = new CatalogoInquilinos(propietario);
-                            return;
+                            CatalogoInquilinos catalogoInquilinos = new CatalogoInquilinos(propietario);
+                            AbrirFormulario(catalogoInquilinos);
                         }
                     }
                 }

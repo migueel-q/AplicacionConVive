@@ -12,8 +12,9 @@ namespace Modelos
         public int id {  get; set; }
         public string descripcion {  get; set; }
         public double precio { get; set; }
-        public DateOnly fecha_inicio { get; set; }
-        public DateOnly fecha_fin {  get; set; }
+        public string fecha_inicio { get; set; }
+        public string fecha_fin {  get; set; }
         public Piso piso { get; set; }
+        public bool aceptado { get; set; }
     }
 }
