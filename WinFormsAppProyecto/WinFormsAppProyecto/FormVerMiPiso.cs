@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace Formularios
 {
-   /* public partial class FormVerMiPiso : Form
+    public partial class FormVerMiPiso : Form
     {
         private Piso _piso;
         private Inquilino _inquilino;
@@ -125,5 +125,5 @@ namespace Formularios
         {
 
         }
-    }*/
+    }
 }
