@@ -116,7 +116,6 @@ namespace Formularios
 
         private async void recargar_Tick(object sender, EventArgs e)
         {
-            panelMnesajes.Controls.Clear();
             await CargarChat();
         }
     }
