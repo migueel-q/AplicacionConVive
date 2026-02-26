@@ -23,7 +23,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(contratoNuevo);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PostAsync("http://localhost:8080/api/contratos", content);
+            HttpResponseMessage mensaje = await cliente.PostAsync("http://10.203.31.200:8080/api/contratos", content);
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
             contrato = JsonConvert.DeserializeObject<Contrato>(mensajeJson);
@@ -35,7 +35,7 @@ namespace Controladores
             try
             {
                 List<Contrato> listaContratos = new List<Contrato>();
-                HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/contratos");
+                HttpResponseMessage mensaje = await cliente.GetAsync("http://10.203.31.200:8080/api/contratos");
 
                 mensaje.EnsureSuccessStatusCode();
                 string mensajeJson = await mensaje.Content.ReadAsStringAsync();
@@ -53,7 +53,7 @@ namespace Controladores
         public async Task<Contrato> getById(int id)
         {
             Contrato contrato = new Contrato();
-            HttpResponseMessage mensaje = await cliente.GetAsync($"http://localhost:8080/api/contratos/{id}");
+            HttpResponseMessage mensaje = await cliente.GetAsync($"http://10.203.31.200:8080/api/contratos/{id}");
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
 
@@ -63,7 +63,7 @@ namespace Controladores
 
         public async Task<bool> delete(int id)
         {
-            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://localhost:8080/api/contratos/{id}");
+            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://10.203.31.200:8080/api/contratos/{id}");
             mensaje.EnsureSuccessStatusCode();
             return true;
         }
@@ -74,7 +74,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(ofertaModificada);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PutAsync($"http://localhost:8080/api/contratos/{id}", content);
+            HttpResponseMessage mensaje = await cliente.PutAsync($"http://10.203.31.200:8080/api/contratos/{id}", content);
             mensaje.EnsureSuccessStatusCode();
 
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();

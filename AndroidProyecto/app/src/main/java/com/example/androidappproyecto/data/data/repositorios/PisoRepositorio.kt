@@ -13,9 +13,13 @@ class PisoRepositorio(
     fun obtenerTodosLosPisos(): Flow<List<Piso>> {
         return pisoDao.getAllPisos()
     }
-
     suspend fun obtenerPisoPorId(pisoId: Int): Piso? {
         return pisoDao.getPisoById(pisoId)
+    }
+
+
+    suspend fun obtenerPisosPorPropietario(propietarioId: Int): List<Piso> {
+        return pisoApi.getAllPisos().filter { it.propietario?.id == propietarioId }
     }
 
     suspend fun insertarPiso(piso: Piso) {

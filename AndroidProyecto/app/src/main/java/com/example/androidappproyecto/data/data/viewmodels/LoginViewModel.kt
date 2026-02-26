@@ -93,7 +93,7 @@ class LoginViewModel(
         }
     }
 
-    fun resetEstado() {
+    fun logout() {
         estado = LoginState.Idle
     }
 }
