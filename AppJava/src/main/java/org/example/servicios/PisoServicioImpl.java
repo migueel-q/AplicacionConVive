@@ -37,6 +37,7 @@ public class PisoServicioImpl implements  PisoServicio {
             existe.setDisponible(piso.isDisponible());
             existe.setPrecio(piso.getPrecio());
             existe.setValidado(piso.isValidado());
+            existe.setUrl_imagen(piso.getUrl_imagen());
             return pisoRepositorio.save(existe);
         }
         return null;
