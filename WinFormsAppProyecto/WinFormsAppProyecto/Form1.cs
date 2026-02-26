@@ -10,6 +10,7 @@ namespace WinFormsAppProyecto
         Propietario propietario;
         Inquilino inquilino;
         Administrador administrador;
+        
         public Form1(Inquilino inquilino)
         {
             InitializeComponent();
@@ -17,6 +18,7 @@ namespace WinFormsAppProyecto
             this.inquilino = inquilino;
             CatalogoPisos catalogoPisos = new CatalogoPisos();
             AbrirFormulario(catalogoPisos);
+
             añadirPiso.Visible = false;
             modificarPiso.Visible = false;
             añadirPiso.Visible = false;
@@ -213,5 +215,7 @@ namespace WinFormsAppProyecto
             GestionarContratos gestionarContratos = new GestionarContratos();
             AbrirFormulario(gestionarContratos);
         }
+
+        
     }
 }
