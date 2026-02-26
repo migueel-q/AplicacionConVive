@@ -10,6 +10,8 @@ namespace WinFormsAppProyecto
         Propietario propietario;
         Inquilino inquilino;
         Administrador administrador;
+        PisoControlador pisoControlador;
+        TareaControlador tareaControlador;
         public Form1(Inquilino inquilino)
         {
             InitializeComponent();
@@ -17,6 +19,12 @@ namespace WinFormsAppProyecto
             this.inquilino = inquilino;
             CatalogoPisos catalogoPisos = new CatalogoPisos();
             AbrirFormulario(catalogoPisos);
+
+            pisoControlador = new PisoControlador();
+            tareaControlador = new TareaControlador();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Load += Form1_Load;
+
             añadirPiso.Visible = false;
             modificarPiso.Visible = false;
             añadirPiso.Visible = false;
@@ -24,6 +32,54 @@ namespace WinFormsAppProyecto
             gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             button1.Visible = false;
+        }
+
+        
+
+        private async void Form1_Load(object? sender, EventArgs e)
+        {
+            await CargarPisosAsync();
+        }
+
+        private async Task CargarPisosAsync()
+        {
+            try
+            {
+                var pisos = await pisoControlador.getAll();
+                var pisosView = pisos.Select(p => new
+                {
+                    Id = p.id,
+                    Direccion = p.direccion != null ? $"{p.direccion.calle}, {p.direccion.ciudad}, {p.direccion.provincia}" : "",
+                    p.descripcion,
+                    Precio = p.precio,
+                    Disponible = p.disponible
+                }).ToList();
+
+                dataGridView1.DataSource = pisosView;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.MultiSelect = false;
+
+                // If the inquilino has a piso via contrato, select it
+                if (inquilino?.contrato?.piso != null)
+                {
+                    int miPisoId = inquilino.contrato.piso.id;
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells["Id"].Value is int val && val == miPisoId)
+                        {
+                            row.Selected = true;
+                            // Scroll into view
+                            dataGridView1.FirstDisplayedScrollingRowIndex = row.Index;
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando pisos: " + ex.Message);
+            }
         }
 
         public Form1(Propietario propietario)
@@ -213,5 +269,7 @@ namespace WinFormsAppProyecto
             GestionarContratos gestionarContratos = new GestionarContratos();
             AbrirFormulario(gestionarContratos);
         }
+
+        
     }
 }

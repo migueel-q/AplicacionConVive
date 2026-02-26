@@ -22,7 +22,7 @@ namespace Controladores
             try
             {
                 List<Administrador> listaAdministradores = new List<Administrador>();
-                HttpResponseMessage mensaje = await cliente.GetAsync("http://192.168.1.104:8080/api/administradores");
+                HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/administradores");
 
                 mensaje.EnsureSuccessStatusCode();
                 string mensajeJson = await mensaje.Content.ReadAsStringAsync();

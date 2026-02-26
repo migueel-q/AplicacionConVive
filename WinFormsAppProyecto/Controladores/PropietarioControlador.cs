@@ -23,7 +23,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(propietarioNuevo);           
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PostAsync("http://192.168.1.104:8080/api/propietarios", content);
+            HttpResponseMessage mensaje = await cliente.PostAsync("http://localhost:8080/api/propietarios", content);
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
             propietario = JsonConvert.DeserializeObject<Propietario>(mensajeJson);
@@ -33,7 +33,7 @@ namespace Controladores
         public async Task<List<Propietario>> getAll()
         {
             List<Propietario> listaPropietarios = new List<Propietario>();
-            HttpResponseMessage mensaje = await cliente.GetAsync("http://192.168.1.104:8080/api/propietarios");
+            HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/propietarios");
 
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
@@ -46,7 +46,7 @@ namespace Controladores
         public async Task<Propietario> getById(int id)
         {
             Propietario propietario = new Propietario();
-            HttpResponseMessage mensaje = await cliente.GetAsync($"http://192.168.1.104:8080/api/propietarios/{id}");
+            HttpResponseMessage mensaje = await cliente.GetAsync($"http://localhost:8080/api/propietarios/{id}");
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
 
@@ -56,7 +56,7 @@ namespace Controladores
 
         public async Task<bool> delete(int id)
         {
-            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://192.168.1.104:8080/api/propietarios/{id}");
+            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://localhost:8080/api/propietarios/{id}");
             mensaje.EnsureSuccessStatusCode();
             return true;
         }
@@ -67,7 +67,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(propietarioModificado);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PutAsync($"http://192.168.1.104:8080/api/propietarios/{id}", content);
+            HttpResponseMessage mensaje = await cliente.PutAsync($"http://localhost:8080/api/propietarios/{id}", content);
             mensaje.EnsureSuccessStatusCode();
 
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();

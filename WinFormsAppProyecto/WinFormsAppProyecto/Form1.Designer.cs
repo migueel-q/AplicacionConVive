@@ -47,7 +47,9 @@
             gestionarContratosToolStripMenuItem = new ToolStripMenuItem();
             cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
             button1 = new Button();
+            dataGridView1 = new DataGridView();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -165,7 +167,7 @@
             // gestionarContratosToolStripMenuItem
             // 
             gestionarContratosToolStripMenuItem.Name = "gestionarContratosToolStripMenuItem";
-            gestionarContratosToolStripMenuItem.Size = new Size(224, 26);
+            gestionarContratosToolStripMenuItem.Size = new Size(221, 26);
             gestionarContratosToolStripMenuItem.Text = "Gestionar contratos";
             gestionarContratosToolStripMenuItem.Click += gestionarContratosToolStripMenuItem_Click;
             // 
@@ -178,7 +180,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(453, 674);
+            button1.Location = new Point(452, 527);
             button1.Name = "button1";
             button1.Size = new Size(187, 40);
             button1.TabIndex = 1;
@@ -186,11 +188,21 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(12, 33);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(1061, 488);
+            dataGridView1.TabIndex = 2;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1085, 726);
+            ClientSize = new Size(1085, 586);
+            Controls.Add(dataGridView1);
             Controls.Add(button1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -199,6 +211,7 @@
             Text = "Form1";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -224,5 +237,6 @@
         private ToolStripMenuItem gestionarSolicitudes;
         private ToolStripMenuItem gestionContrato;
         private ToolStripMenuItem gestionarContratosToolStripMenuItem;
+        private DataGridView dataGridView1;
     }
 }

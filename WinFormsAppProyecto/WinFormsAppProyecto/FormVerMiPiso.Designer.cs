@@ -49,7 +49,6 @@ namespace Formularios
             txtUrlImagen = new TextBox();
             pictureBoxImagen = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
-            SuspendLayout();
             // 
             // lblId
             // 
