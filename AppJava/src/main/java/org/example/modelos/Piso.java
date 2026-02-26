@@ -19,6 +19,7 @@ public class Piso {
     private Direccion direccion;
     @Column(nullable = false)
     private String descripcion;
+    @Column(columnDefinition = "TEXT")
     private String url_imagen;
     @Column(nullable = false)
     private boolean disponible;
