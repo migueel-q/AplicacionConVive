@@ -1,7 +1,10 @@
 package com.example.androidappproyecto.navegacion
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -10,72 +13,94 @@ import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
 import com.example.androidappproyecto.data.data.modelos.Usuario
 import com.example.androidappproyecto.data.data.repositorios.InquilinoPropietarioRepositorio
+import com.example.androidappproyecto.data.data.repositorios.InquilinoRepositorio
+import com.example.androidappproyecto.data.data.repositorios.PropietarioRepositorio
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoPropietarioViewModel
+import com.example.androidappproyecto.data.data.viewmodels.LoginState
+import com.example.androidappproyecto.data.data.viewmodels.LoginViewModel
 import com.example.androidappproyecto.database.ApiCliente
 import com.example.androidappproyecto.database.AppDatabase
-import com.example.androidappproyecto.pantallas.PantallaBuscar
-import com.example.androidappproyecto.pantallas.PantallaDetallePiso
-import com.example.androidappproyecto.pantallas.PantallaHome
-import com.example.androidappproyecto.pantallas.PantallaMisPisos
-import com.example.androidappproyecto.pantallas.PantallaPerfil
-import com.example.androidappproyecto.pantallas.PantallaChat
+import com.example.androidappproyecto.pantallas.*
 
 @Composable
-fun AppConviveNavigation(navController: NavHostController, modifier: Modifier){
-    // Simula sesión actual
-    var currentUser = Usuario(
-        id = 0,
-        nombre_usuario = "miguelq",
-        nombre_real = "miguel angel",
-        fecha_nacimiento = "2005-12-12",
-        password = "1234",
-        email = "miguel@gmail.com"
+fun AppConviveNavigation(navController: NavHostController, modifier: Modifier) {
+    val context = LocalContext.current
+
+    var currentUser by remember { mutableStateOf<Usuario?>(null) }
+
+    val loginViewModel: LoginViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val database = AppDatabase.getDatabase(context)
+                val repoProp = PropietarioRepositorio(
+                    database.propietarioDao(),
+                    ApiCliente.propietarioApi
+                )
+                val repoInq = InquilinoRepositorio(
+                    database.inquilinoDao(),
+                    ApiCliente.inquilinoApi
+                )
+                @Suppress("UNCHECKED_CAST")
+                return LoginViewModel(repoProp, repoInq) as T
+            }
+        }
     )
 
-    NavHost(navController = navController,
-        modifier = modifier,
-        startDestination = Rutas.Home.name)
-    {
-        composable(Rutas.Home.name){ PantallaHome() }
-        composable(Rutas.Buscar.name) { PantallaBuscar() }
-        composable(Rutas.Chat.name + "/{inqId}/{propId}") { backStack ->
-            val context = androidx.compose.ui.platform.LocalContext.current
+    val loginEstado = loginViewModel.estado
+    LaunchedEffect(loginEstado) {
+        if (loginEstado is LoginState.Success) {
+            currentUser = Usuario(
+                id = loginEstado.userId,
+                nombre_usuario = loginEstado.nombreUsuario,
+                nombre_real = loginEstado.nombreReal,
+                email = loginEstado.email,
+                password = loginEstado.password,
+                fecha_nacimiento = loginEstado.fechaNac
+            )
+        }
+    }
 
+    NavHost(
+        navController = navController,
+        modifier = modifier,
+        startDestination = Rutas.Login.name
+    ) {
+        composable(Rutas.Login.name) {
+            PantallaLogin(viewModel = loginViewModel, navController = navController)
+        }
+        composable(Rutas.Home.name) {
+            PantallaHome()
+        }
+
+        composable(Rutas.Buscar.name) { PantallaBuscar() }
+
+        composable(Rutas.Chat.name + "/{inqId}/{propId}") { backStack ->
             val inq = backStack.arguments?.getString("inqId")?.toInt() ?: 0
             val prop = backStack.arguments?.getString("propId")?.toInt() ?: 0
 
-            val chatViewModel: InquilinoPropietarioViewModel =
-                viewModel(
-                // Usa una clave para que el ViewModel persista correctamente en la navegación
+            val chatViewModel: InquilinoPropietarioViewModel = viewModel(
                 key = "chat_${inq}_${prop}",
                 factory = object : ViewModelProvider.Factory {
                     override fun <T : ViewModel> create(modelClass: Class<T>): T {
                         val database = AppDatabase.getDatabase(context)
-                        // 1. Instancia el servicio de la API
-                        val apiService = ApiCliente.inquilinoPropietarioApi
-                        // 2. Pasa las dos dependencias al repositorio
-                        val repository =
-                            InquilinoPropietarioRepositorio(apiService, database.inquilinoPropietarioDao())
-
-                        // Casteo seguro para devolver el ViewModel
+                        val repository = InquilinoPropietarioRepositorio(
+                            ApiCliente.inquilinoPropietarioApi,
+                            database.inquilinoPropietarioDao()
+                        )
                         @Suppress("UNCHECKED_CAST")
                         return InquilinoPropietarioViewModel(repository) as T
                     }
                 }
             )
-
-            PantallaChat(
-                viewModel = chatViewModel,
-                inqId = inq,
-                propId = prop
-            )
+            PantallaChat(viewModel = chatViewModel, inqId = inq, propId = prop, currentUser)
         }
+
         composable(Rutas.MisPisos.name) { PantallaMisPisos(navController) }
-        composable(Rutas.Perfil.name) { PantallaPerfil(user = currentUser) }
+
+        composable(Rutas.Perfil.name) {
+            PantallaPerfil(user = currentUser ?: Usuario(0,"","","","",""))
+        }
+
         composable(Rutas.DetallePiso.name) { PantallaDetallePiso() }
     }
-
 }
-
-
-

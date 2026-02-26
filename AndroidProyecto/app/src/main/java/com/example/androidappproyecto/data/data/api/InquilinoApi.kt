@@ -2,6 +2,7 @@ package com.example.androidappproyecto.data.data.api
 
 import retrofit2.http.Query
 import com.example.androidappproyecto.data.data.modelos.Inquilino
+import com.example.androidappproyecto.data.data.modelos.Usuario
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -26,7 +27,13 @@ interface InquilinoApi {
     @DELETE("api/inquilinos/{id}")
     suspend fun deleteInquilino(@Path("id") id: Int)
 
-    @GET("api/inquilinos/login")
-    suspend fun loginInquilino(@Query("email") username: String, @Query("password") pass: String): Inquilino
+    @POST("api/inquilinos/login")
+    suspend fun login(
+        @Body loginRequest: LoginRequest
+    ): Inquilino
 
+    data class LoginRequest(
+        val email: String,
+        val password: String
+    )
 }

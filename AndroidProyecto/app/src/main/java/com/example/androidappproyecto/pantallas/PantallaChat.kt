@@ -26,15 +26,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.androidappproyecto.data.data.modelos.Inquilino
+import com.example.androidappproyecto.data.data.modelos.Propietario
+import com.example.androidappproyecto.data.data.modelos.Usuario
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoPropietarioViewModel
 
 @Composable
 fun PantallaChat(
     viewModel: InquilinoPropietarioViewModel,
     inqId: Int,
-    propId: Int
+    propId: Int,
+    usuario: Usuario?
 ) {
     val mensajes = viewModel.mensajes
+    val enviadoPorInquilino = if (usuario is Inquilino) true else false
 
     LaunchedEffect(inqId, propId) {
         viewModel.cargarChat(inqId, propId)
@@ -65,7 +70,7 @@ fun PantallaChat(
         }
 
         CajaEnviarMensaje { texto ->
-            viewModel.enviarMensaje(inqId, propId, texto)
+            viewModel.enviarMensaje(inqId, propId, texto, enviadoPorInquilino)
         }
     }
 }

@@ -49,6 +49,7 @@
             btnEnviar.TabIndex = 2;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = true;
+            btnEnviar.Click += btnEnviar_Click;
             // 
             // panelMnesajes
             // 
@@ -67,6 +68,7 @@
             Controls.Add(panelMnesajes);
             Name = "FormChatPropietario";
             Text = "FormChatPropietario";
+            Load += FormChatPropietario_Load;
             ResumeLayout(false);
         }
 

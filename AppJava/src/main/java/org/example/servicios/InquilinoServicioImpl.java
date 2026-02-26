@@ -1,6 +1,5 @@
 package org.example.servicios;
 
-import org.example.DTO.InquilinoDTO;
 import org.example.modelos.Inquilino;
 import org.example.repositorios.InquilinoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import java.util.List;
 public class InquilinoServicioImpl implements InquilinoServicio {
     @Autowired
     private InquilinoRepositorio inquilinoRepositorio;
+
+    private Inquilino usuarioLogueado;
 
     @Override
     public List<Inquilino> obtenerInquilinos() {
@@ -56,5 +57,22 @@ public class InquilinoServicioImpl implements InquilinoServicio {
         {
             return null;
         }
+    }
+
+    @Override
+    public Inquilino buscarPorCorreo(String email) {
+        return inquilinoRepositorio.findByEmail(email);
+    }
+
+    public Inquilino login(String email, String contrasena) {
+        return inquilinoRepositorio.findByEmailAndPassword(email, contrasena).orElse(null);
+    }
+
+    public Inquilino getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public void setUsuarioLogueado(Inquilino usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
     }
 }

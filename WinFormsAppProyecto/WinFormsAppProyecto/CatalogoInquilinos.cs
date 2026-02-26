@@ -14,6 +14,7 @@ namespace Formularios
 {
     public partial class CatalogoInquilinos : Form
     {
+        //Propietario que inicia sesion
         Propietario _propietario;
         public CatalogoInquilinos(Propietario propietario)
         {

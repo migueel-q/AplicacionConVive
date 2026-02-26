@@ -2,6 +2,7 @@ package org.example.controladores;
 
 import org.example.DTO.InquilinoDTO;
 import org.example.modelos.Inquilino;
+import org.example.modelos.Propietario;
 import org.example.servicios.InquilinoServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,5 +55,16 @@ public class InquilinoControlador {
     public ResponseEntity<Inquilino> borrarInquilino(@PathVariable Integer id){
         inquilinoServicio.eliminar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/inquilinos/login")
+    public ResponseEntity<Inquilino> login(@RequestBody LoginRequest login){
+        Inquilino usuario = inquilinoServicio.login(login.getEmail(), login.getPassword());
+        if(usuario == null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        inquilinoServicio.setUsuarioLogueado(usuario);
+        return ResponseEntity.ok(usuario);
     }
 }

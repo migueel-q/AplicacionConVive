@@ -7,7 +7,9 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@NamedQueries({
+        @NamedQuery(name = "Inquilino.buscarPorCorreo", query = "select i from Inquilino i where i.email=?1")
+})
 @Entity
 @Table(name = "inquilinos")
 public class Inquilino extends Usuario {

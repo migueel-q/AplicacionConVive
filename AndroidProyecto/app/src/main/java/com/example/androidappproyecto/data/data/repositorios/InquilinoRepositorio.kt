@@ -55,13 +55,13 @@ class InquilinoRepositorio(
         }
     }
 
-    suspend fun login(username: String, pass: String): Inquilino? {
+    suspend fun login(email: String, password: String): Inquilino? {
         return try {
-            val inquilino = inquilinoApi.loginInquilino(username, pass)
-            inquilinoDao.insertInquilino(inquilino)
-            inquilino
+            val request = InquilinoApi.LoginRequest(email, password)
+            inquilinoApi.login(request)
         } catch (e: Exception) {
-            inquilinoDao.loginInquilino(username, pass)
+            e.printStackTrace()
+            null
         }
     }
 }

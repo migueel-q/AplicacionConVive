@@ -23,8 +23,8 @@ class InquilinoPropietarioRepositorio(
         dao.insertInquilinosPropietarios(mensajes)
     }
 
-    suspend fun enviarMensaje(inq: Int, prop: Int, texto: String) {
-        val msg = api.enviarMensaje(inq, prop, texto)
+    suspend fun enviarMensaje(inq: Int, prop: Int, texto: String, enviadoPorInquilino: Boolean) {
+        val msg = api.enviarMensaje(inq, prop, texto, enviadoPorInquilino)
         dao.insertInquilinoPropietario(msg)
     }
 

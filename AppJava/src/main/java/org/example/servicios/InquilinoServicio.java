@@ -11,4 +11,5 @@ public interface InquilinoServicio {
     Inquilino guardar(Inquilino inquilino);
     Inquilino actualizar(Inquilino inquilino, Integer id);
     Inquilino eliminar(Integer id);
+    Inquilino buscarPorCorreo(String email);
 }
