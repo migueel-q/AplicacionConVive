@@ -35,31 +35,46 @@ namespace Formularios
             // Codigo para iniciar sesion
             PropietarioControlador propietarioControlador = new PropietarioControlador();
             InquilinoControlador inquilinoControlador = new InquilinoControlador();
-            
-            var propietarios = await propietarioControlador.getAll();
-           
-            var propietario = propietarios.FirstOrDefault(p => p.email == txtEmail.Text && p.password == txtContrasena.Text);
-            if(propietario!=null){
+            AdministradorControlador administradorControlador = new AdministradorControlador();
+            var administradores = await administradorControlador.getAll();
+            var administrador = administradores.FirstOrDefault(a => a.email == txtEmail.Text && a.contrasena == txtContrasena.Text);            
+            if (administrador != null)
+            {
                 MessageBox.Show("Bienvenido");
-                Form1 form1 = new Form1(propietario); 
-                form1.Show(); 
+                Form1 form1 = new Form1(administrador);
+                form1.Show();
                 this.Hide();
                 return;
-            } else
-            {
-                var inquilinos = await inquilinoControlador.getAll();
-                var inquilino = inquilinos.FirstOrDefault(i => i.email == txtEmail.Text && i.password == txtContrasena.Text);
-                if (inquilino != null)
+            }
+            else
+            {          
+                var propietarios = await propietarioControlador.getAll();
+           
+                var propietario = propietarios.FirstOrDefault(p => p.email == txtEmail.Text && p.password == txtContrasena.Text);                
+                if (propietario != null)
                 {
                     MessageBox.Show("Bienvenido");
-                    Form1 form1 = new Form1(inquilino);
+                    Form1 form1 = new Form1(propietario);
                     form1.Show();
                     this.Hide();
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("Email o contraseña incorrectos, vuelve a intentarlo");
+                    var inquilinos = await inquilinoControlador.getAll();
+                    var inquilino = inquilinos.FirstOrDefault(i => i.email == txtEmail.Text && i.password == txtContrasena.Text);
+                    if (inquilino != null)
+                    {
+                        MessageBox.Show("Bienvenido");
+                        Form1 form1 = new Form1(inquilino);
+                        form1.Show();
+                        this.Hide();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email o contraseña incorrectos, vuelve a intentarlo");
+                    }
                 }
             }         
         }

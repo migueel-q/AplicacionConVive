@@ -33,12 +33,13 @@
             // 
             // btnDescargar
             // 
-            btnDescargar.Location = new Point(343, 225);
+            btnDescargar.Location = new Point(337, 225);
             btnDescargar.Name = "btnDescargar";
             btnDescargar.Size = new Size(94, 29);
             btnDescargar.TabIndex = 0;
             btnDescargar.Text = "Descargar";
             btnDescargar.UseVisualStyleBackColor = true;
+            btnDescargar.Click += btnDescargar_Click;
             // 
             // VerInforme
             // 

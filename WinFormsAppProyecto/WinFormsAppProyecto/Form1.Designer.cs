@@ -99,7 +99,7 @@
             // verGastodToolStripMenuItem
             // 
             verGastodToolStripMenuItem.Name = "verGastodToolStripMenuItem";
-            verGastodToolStripMenuItem.Size = new Size(224, 26);
+            verGastodToolStripMenuItem.Size = new Size(160, 26);
             verGastodToolStripMenuItem.Text = "Ver gastos";
             verGastodToolStripMenuItem.Click += verGastodToolStripMenuItem_Click;
             // 
@@ -127,13 +127,13 @@
             // hacerOferta
             // 
             hacerOferta.Name = "hacerOferta";
-            hacerOferta.Size = new Size(224, 26);
+            hacerOferta.Size = new Size(207, 26);
             hacerOferta.Text = "Hacer Oferta";
             // 
             // gestionarOfertas
             // 
             gestionarOfertas.Name = "gestionarOfertas";
-            gestionarOfertas.Size = new Size(224, 26);
+            gestionarOfertas.Size = new Size(207, 26);
             gestionarOfertas.Text = "Gestionar Ofertas";
             // 
             // gestiónSolicitudesToolStripMenuItem
@@ -165,8 +165,9 @@
             // gestionarContratosToolStripMenuItem
             // 
             gestionarContratosToolStripMenuItem.Name = "gestionarContratosToolStripMenuItem";
-            gestionarContratosToolStripMenuItem.Size = new Size(221, 26);
+            gestionarContratosToolStripMenuItem.Size = new Size(224, 26);
             gestionarContratosToolStripMenuItem.Text = "Gestionar contratos";
+            gestionarContratosToolStripMenuItem.Click += gestionarContratosToolStripMenuItem_Click;
             // 
             // cerrarSesiónToolStripMenuItem
             // 

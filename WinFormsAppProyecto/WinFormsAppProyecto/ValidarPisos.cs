@@ -16,6 +16,7 @@ namespace Formularios
     {
         PisoControlador pisoControlador = new PisoControlador();
         BindingList<Piso> listaPisos;
+
         public ValidarPisos()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Formularios
 
         private async void ValidarPisos_Load(object sender, EventArgs e)
         {
+            dgvPisos.AutoGenerateColumns = true;
             await CargarPisos();
             dgvPisos.DataSource = listaPisos.Where(p => !p.validado).ToList();
 
@@ -39,6 +41,7 @@ namespace Formularios
 
         private async void btnValidarPiso_Click(object sender, EventArgs e)
         {
+          
             if (dgvPisos.SelectedRows.Count == 0)
             {
                 return;
@@ -47,10 +50,11 @@ namespace Formularios
             {
                 Piso pisoEditar = (Piso)dgvPisos.SelectedRows[0].DataBoundItem;
                 pisoEditar.validado = true;
-                pisoControlador.update(pisoEditar, pisoEditar.id);
+                await pisoControlador.update(pisoEditar, pisoEditar.id);
 
             }
             await CargarPisos();
+            dgvPisos.DataSource = listaPisos.Where(p => !p.validado).ToList();
         }
     }
 }
