@@ -56,4 +56,15 @@ public class PropietarioControlador {
             propietarioServicio.eliminar(id);
             return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/propietarios/login")
+    public ResponseEntity<Propietario> login(@RequestBody LoginRequest login){
+        Propietario usuario = propietarioServicio.login(login.getEmail(), login.getPassword());
+        if(usuario == null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        propietarioServicio.setUsuarioLogueado(usuario);
+        return ResponseEntity.ok(usuario);
+    }
 }

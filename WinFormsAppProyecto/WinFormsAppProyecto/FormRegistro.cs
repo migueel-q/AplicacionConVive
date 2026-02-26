@@ -21,7 +21,6 @@ namespace Formularios
             this.StartPosition = FormStartPosition.CenterScreen;
             cmbTipoUsuario.Items.Add("Propietario");
             cmbTipoUsuario.Items.Add("Inquilino");
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void label3_Click(object sender, EventArgs e)

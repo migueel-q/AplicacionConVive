@@ -24,7 +24,8 @@ interface InquilinoPropietarioApi {
     suspend fun enviarMensaje(
         @Query("inq_id") inq: Int,
         @Query("prop_id") prop: Int,
-        @Query("mensaje") mensaje: String
+        @Query("mensaje") mensaje: String,
+        @Query("enviado_por_inquilino") enviadoPorInquilino: Boolean
     ): InquilinoPropietario
 
 

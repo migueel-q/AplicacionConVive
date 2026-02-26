@@ -56,13 +56,13 @@ class PropietarioRepositorio(
         }
     }
 
-    suspend fun login(username: String, pass: String): Propietario? {
+    suspend fun login(email: String, password: String): Propietario? {
         return try {
-            val propietario = propietarioApi.loginPropietario(username, pass)
-            propietarioDao.insertPropietario(propietario)
-            propietario
+            val request = PropietarioApi.LoginRequest(email, password)
+            propietarioApi.login(request)
         } catch (e: Exception) {
-            propietarioDao.loginPropietario(username, pass)
+            e.printStackTrace()
+            null
         }
     }
 }

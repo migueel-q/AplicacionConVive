@@ -39,9 +39,9 @@ class InquilinoPropietarioViewModel(
             }
         }
     }
-    fun enviarMensaje(inq: Int, prop: Int, texto: String) {
+    fun enviarMensaje(inq: Int, prop: Int, texto: String, enviadoPorInquilino: Boolean) {
         viewModelScope.launch {
-            repo.enviarMensaje(inq, prop, texto)
+            repo.enviarMensaje(inq, prop, texto, enviadoPorInquilino)
         }
     }
 

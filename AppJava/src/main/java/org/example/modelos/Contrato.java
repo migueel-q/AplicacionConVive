@@ -26,6 +26,8 @@ public class Contrato {
     @ManyToOne(fetch = FetchType.EAGER)
     private Piso piso;
 
+    private boolean aceptado;
+
     public Contrato() {
     }
 
@@ -71,5 +73,13 @@ public class Contrato {
 
     public void setPiso(Piso piso) {
         this.piso = piso;
+    }
+
+    public boolean isAceptado() {
+        return aceptado;
+    }
+
+    public void setAceptado(boolean aceptado) {
+        this.aceptado = aceptado;
     }
 }

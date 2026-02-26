@@ -107,6 +107,7 @@
             btnGuardarPiso.TabIndex = 22;
             btnGuardarPiso.Text = "Modificar";
             btnGuardarPiso.UseVisualStyleBackColor = true;
+            btnGuardarPiso.Click += btnGuardarPiso_Click;
             // 
             // txtProvincia
             // 

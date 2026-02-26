@@ -27,7 +27,7 @@ public class PisoControlador {
         return ResponseEntity.ok(pisos);
     }
 
-    @GetMapping("pisos/{id}")
+    @GetMapping("/pisos/{id}")
     public ResponseEntity<Piso> obtenerPisoPorId(@PathVariable Integer id) {
         Piso piso = pisoServicio.obtenerPisoPorId(id);
         if (piso == null) {

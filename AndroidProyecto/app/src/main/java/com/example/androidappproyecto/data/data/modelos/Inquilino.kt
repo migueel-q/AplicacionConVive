@@ -22,13 +22,17 @@ import androidx.room.TypeConverters
 @TypeConverters(Converters::class)
 data class Inquilino(
     @PrimaryKey(autoGenerate = true)
-    override val id: Int,
-    override val nombre_usuario: String,
-    override val nombre_real: String,
-    override val fecha_nacimiento: String?,
-    override val email: String,
-    override val password: String,
+    val id: Int,
+    @ColumnInfo(name = "nombre_usuario")
+    val nombre_usuario: String,
+    @ColumnInfo(name = "nombre_real")
+    val nombre_real: String,
+    @ColumnInfo(name = "fecha_nacimiento")
+    val fecha_nacimiento: String?,
+    @ColumnInfo(name = "email")
+    val email: String,
+    @ColumnInfo(name = "password")
+    val password: String,
     @Embedded(prefix = "contrato_")
     val contrato: Contrato? = null,
-
-) : Usuario(id, nombre_usuario, nombre_real, fecha_nacimiento, email, password)
+    )

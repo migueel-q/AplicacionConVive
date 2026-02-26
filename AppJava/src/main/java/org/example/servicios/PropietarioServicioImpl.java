@@ -1,6 +1,5 @@
 package org.example.servicios;
 
-import org.example.DTO.PropietarioDTO;
 import org.example.modelos.Propietario;
 import org.example.repositorios.PropietarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import java.util.List;
 public class PropietarioServicioImpl implements PropietarioServicio {
     @Autowired
     private PropietarioRepositorio propietarioRepositorio;
+
+    private Propietario usuarioLogueado;
 
     @Override
     public List<Propietario> obtenerPropietarios() {
@@ -55,5 +56,22 @@ public class PropietarioServicioImpl implements PropietarioServicio {
         {
             return null;
         }
+    }
+
+    @Override
+    public Propietario buscarPorCorreo(String email) {
+        return propietarioRepositorio.findByEmail(email);
+    }
+
+    public Propietario login(String email, String password) {
+        return propietarioRepositorio.findByEmailAndPassword(email, password).orElse(null);
+    }
+
+    public Propietario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public void setUsuarioLogueado(Propietario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
     }
 }

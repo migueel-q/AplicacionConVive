@@ -11,4 +11,5 @@ public interface PropietarioServicio {
     Propietario guardar(Propietario propietario);
     Propietario actualizar(Propietario propietario, Integer id);
     Propietario eliminar(Integer id);
+    Propietario buscarPorCorreo(String email);
 }
