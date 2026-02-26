@@ -49,61 +49,10 @@ class MainActivity : ComponentActivity() {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return PisoViewModel(
                     repositorio = pisoRepository,
-                    pisoDao = db.pisoDao()
                 ) as T
             }
         }
-
-        // DTO para Retrofit (evitar problemas de @Body converter)
-        val propietarioDTO = PropietarioDTO(
-            nombre_usuario = "propietario1",
-            nombre_real = "Juan Perez",
-            fecha_nacimiento = "1980-01-01",
-            email = "juan@example.com",
-            password = "1234"
-        )
-
-        // Lanzamos coroutine para insertar el propietario y piso
-        lifecycleScope.launch {
-            try {
-
-                val response = ApiCliente.propietarioApi.createPropietario(propietarioDTO)
-                if (response.isSuccessful) {
-                    Log.d("API", "Propietario insertado en MySQL")
-
-
-                    val propietarioRoom = Propietario(
-                        id = response.body()?.id ?: 0,
-                        nombre_usuario = propietarioDTO.nombre_usuario,
-                        nombre_real = propietarioDTO.nombre_real,
-                        fecha_nacimiento = propietarioDTO.fecha_nacimiento,
-                        email = propietarioDTO.email,
-                        password = propietarioDTO.password
-                    )
-                    db.propietarioDao().insertPropietario(propietarioRoom)
-
-                    // 3️⃣ Crear piso asociado
-                    val piso1 = Piso(
-                        id = 0, // Room autoGenerate
-                        titulo = "Piso Demo",
-                        descripcion = "Piso de prueba con 2 habitaciones",
-                        direccion = Direccion("Calle Demo 1", "Madrid", "Madrid"),
-                        disponible = true,
-                        precio = 120000.0,
-                        url_imagen = "https://example.com/piso.jpg",
-                        validado = true,
-                        propietario = propietarioRoom
-                    )
-                    db.pisoDao().insertPiso(piso1)
-
-                } else {
-                    Log.e("API", "Error al insertar propietario: ${response.code()} ${response.message()}")
-                }
-            } catch (e: Exception) {
-                Log.e("API", "Exception al insertar propietario: ${e.message}")
-            } finally {
-                // Inicializamos el ViewModel y la UI
-                pisoViewModel = ViewModelProvider(this@MainActivity, factory)[PisoViewModel::class.java]
+        pisoViewModel = ViewModelProvider(this, factory)[PisoViewModel::class.java]
                 setContent {
                     AndroidAppProyectoTheme {
                         MainScreen(pisoViewModel = pisoViewModel)
@@ -111,8 +60,8 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
+
+
 
 @Composable
 fun MainScreen(pisoViewModel: PisoViewModel) {

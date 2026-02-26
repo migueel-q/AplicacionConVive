@@ -34,7 +34,7 @@ class PropietarioViewModel(private val repositorio: PropietarioRepositorio) : Vi
         }
     }
 
-    fun insertarPropietario(propietario: PropietarioDTO) {
+    fun insertarPropietario(propietario: Propietario) {
         viewModelScope.launch {
             _estaCargando.value = true
             try {

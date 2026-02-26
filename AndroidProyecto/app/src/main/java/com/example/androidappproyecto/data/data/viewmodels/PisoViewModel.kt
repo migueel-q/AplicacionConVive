@@ -1,12 +1,17 @@
 package com.example.androidappproyecto.data.data.viewmodels
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidappproyecto.data.data.daos.PisoDao
 import com.example.androidappproyecto.data.data.modelos.Direccion
 import com.example.androidappproyecto.data.data.modelos.Piso
 import com.example.androidappproyecto.data.data.modelos.Propietario
+import com.example.androidappproyecto.data.data.pisos
 import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -15,25 +20,44 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class PisoViewModel(private val repositorio: PisoRepositorio
-, private val pisoDao: PisoDao) : ViewModel() {
+class PisoViewModel(
+    private val repositorio: PisoRepositorio
+) : ViewModel() {
 
-    // Estado para la lista de pisos (se actualiza automáticamente desde Room)
-    val todosLosPisos = repositorio.obtenerTodosLosPisos()
 
-    // Estado para manejar la carga y los mensajes de error
     private val _estaCargando = MutableStateFlow(false)
-    val estaCargando: StateFlow<Boolean> = _estaCargando.asStateFlow()
+    val estaCargando: StateFlow<Boolean> = _estaCargando
+
 
     private val _mensajeError = MutableStateFlow<String?>(null)
-    val mensajeError: StateFlow<String?> = _mensajeError.asStateFlow()
+    val mensajeError: StateFlow<String?> = _mensajeError
 
-    val listaDePisos: StateFlow<List<Piso>> = pisoDao.getAllPisos()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = emptyList()
-        )
+
+    private val _pisos = MutableStateFlow<List<Piso>>(emptyList())
+    val pisos: StateFlow<List<Piso>> = _pisos
+
+
+    var estado by mutableStateOf<HomeState>(HomeState.Idle)
+        private set
+
+    fun cargarPisos(userId: Int, rol: String) {
+        viewModelScope.launch {
+            estado = HomeState.Loading
+            try {
+                val lista = if (rol == "PROPIETARIO") {
+                    repositorio.obtenerPisosPorPropietario(userId)
+                } else {
+                    repositorio.obtenerTodosLosPisos()
+                }
+
+                _pisos.value = lista as List<Piso>
+                estado = HomeState.Success
+
+            } catch (e: Exception) {
+                estado = HomeState.Error("Error al cargar pisos: ${e.message}")
+            }
+        }
+    }
 
 
     fun refrescarPisos() {
@@ -85,5 +109,12 @@ class PisoViewModel(private val repositorio: PisoRepositorio
 
     fun limpiarError() {
         _mensajeError.value = null
+    }
+
+    sealed class HomeState {
+        object Idle : HomeState()
+        object Loading : HomeState()
+        object Success : HomeState()
+        data class Error(val mensaje: String) : HomeState()
     }
 }

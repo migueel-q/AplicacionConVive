@@ -20,7 +20,7 @@ class PropietarioRepositorio(
         return propietarioDao.getPropietarioById(id)
     }
 
-    suspend fun insertarPropietario(propietario: PropietarioDTO) {
+    suspend fun insertarPropietario(propietario: Propietario) {
         try {
             val propietarioCreado = propietarioApi.createPropietario(propietario)
 //            propietarioDao.insertPropietario(propietarioCreado)

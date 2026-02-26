@@ -14,16 +14,18 @@ import androidx.navigation.NavHostController
 import com.example.androidappproyecto.data.data.modelos.Usuario
 import com.example.androidappproyecto.data.data.repositorios.InquilinoPropietarioRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoRepositorio
+import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.PropietarioRepositorio
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoPropietarioViewModel
 import com.example.androidappproyecto.data.data.viewmodels.LoginState
 import com.example.androidappproyecto.data.data.viewmodels.LoginViewModel
+import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
 import com.example.androidappproyecto.database.ApiCliente
 import com.example.androidappproyecto.database.AppDatabase
 import com.example.androidappproyecto.pantallas.*
 
 @Composable
-fun AppConviveNavigation(navController: NavHostController, modifier: Modifier) {
+fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pisoViewModel: PisoViewModel) {
     val context = LocalContext.current
 
     var currentUser by remember { mutableStateOf<Usuario?>(null) }
@@ -45,7 +47,6 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier) {
             }
         }
     )
-
     val loginEstado = loginViewModel.estado
     LaunchedEffect(loginEstado) {
         if (loginEstado is LoginState.Success) {
@@ -55,7 +56,8 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier) {
                 nombre_real = loginEstado.nombreReal,
                 email = loginEstado.email,
                 password = loginEstado.password,
-                fecha_nacimiento = loginEstado.fechaNac
+                fecha_nacimiento = loginEstado.fechaNac,
+                rol = loginEstado.rol
             )
         }
     }
@@ -69,9 +71,14 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier) {
             PantallaLogin(viewModel = loginViewModel, navController = navController)
         }
         composable(Rutas.Home.name) {
-            PantallaHome()
+            currentUser?.let { user ->
+                PantallaHome(
+                    userId = user.id,
+                    rol = user.rol,
+                    pisoViewModel = pisoViewModel
+                )
+            }
         }
-
         composable(Rutas.Buscar.name) { PantallaBuscar() }
 
         composable(Rutas.Chat.name + "/{inqId}/{propId}") { backStack ->
@@ -98,7 +105,7 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier) {
         composable(Rutas.MisPisos.name) { PantallaMisPisos(navController) }
 
         composable(Rutas.Perfil.name) {
-            PantallaPerfil(user = currentUser ?: Usuario(0,"","","","",""))
+            PantallaPerfil(user = currentUser ?: Usuario(0,"","","","","",  ""))
         }
 
         composable(Rutas.DetallePiso.name) { PantallaDetallePiso() }
