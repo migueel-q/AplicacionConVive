@@ -46,7 +46,7 @@ namespace Formularios
 
             // limpiar el cuadro de texto
             richTextBoxMensaje.Text = "";
-            panelMnesajes.Controls.Clear();
+
             await CargarChat();
 
         }
@@ -106,7 +106,19 @@ namespace Formularios
             }
 
             panelMnesajes.Controls.Add(burbuja);
-        }        
+        }
+
+        private async void recargar_Tick(object sender, EventArgs e)
+        {
+            panelMnesajes.Controls.Clear();
+            await CargarChat();
+        }
+
+        private async void btnRecargar_Click(object sender, EventArgs e)
+        {
+            panelMnesajes.Controls.Clear();
+            await CargarChat();
+        }
     }
 }
 
