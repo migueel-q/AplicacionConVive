@@ -23,10 +23,8 @@ namespace Formularios
             InitializeComponent();
             inquilinoId = inq;
             propietarioId = prop;
-            panelMnesajes.Resize += (s, ev) => CargarChat();
+            CargarChat();
             
-
-
         }
         private async void FormChatInquilino_Load(object sender, EventArgs e)
         {

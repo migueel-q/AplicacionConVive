@@ -18,13 +18,12 @@ namespace Formularios
         private readonly MensajeControlador controlador = new MensajeControlador();
         private readonly int inquilinoId;
         private readonly int propietarioId;
-        private bool recargando = true;
         public FormChatPropietario(int inq, int prop)
         {
             InitializeComponent();
             inquilinoId = inq;
             propietarioId = prop;
-            panelMnesajes.Resize += (s, ev) => CargarChat();
+            CargarChat();
         }
 
         private async void FormChatPropietario_Load(object sender, EventArgs e)
