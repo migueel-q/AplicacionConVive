@@ -24,7 +24,6 @@ fun PantallaMisPisos(navController: NavHostController) {
 
     val pisosPrueba = listOf(
         Piso(
-            titulo = "Piso Centro",
             direccion = Direccion(
                 calle = "Calle Consolación",
                 ciudad = "Torrelavega",
@@ -38,7 +37,6 @@ fun PantallaMisPisos(navController: NavHostController) {
             id = 1
         ),
         Piso(
-            titulo = "Piso Playa",
             direccion = Direccion(
                 calle = "Calle Burgos",
                 ciudad = "Santander",
@@ -95,7 +93,7 @@ private fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = piso.titulo,
+                text = piso.precio.toString(),
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.titleMedium
             )

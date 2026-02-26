@@ -41,7 +41,8 @@ class MainActivity : ComponentActivity() {
         val db = AppDatabase.getDatabase(applicationContext)
         val pisoRepository = PisoRepositorio(
             pisoDao = db.pisoDao(),
-            pisoApi = ApiCliente.pisoApi
+            pisoApi = ApiCliente.pisoApi,
+            propietarioDao = db.propietarioDao()
         )
 
         // ViewModel Factory

@@ -36,19 +36,20 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import com.example.androidappproyecto.R
 import com.example.androidappproyecto.data.data.modelos.Direccion
-import com.example.androidappproyecto.data.data.pisos
+import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Piso
+import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
 
 @Composable
 fun PantallaHome(
-    userId: Int,
-    rol: String,
+    inquilino: Inquilino?,
+    propietario: Propietario?,
     pisoViewModel: PisoViewModel
 ) {
     // Cargar pisos al entrar a la pantalla
     LaunchedEffect(Unit) {
-        pisoViewModel.cargarPisos(userId, rol)
+        pisoViewModel.refrescarPisos()
     }
 
     // Observar la lista de pisos desde el ViewModel
@@ -127,26 +128,26 @@ fun PisoCard(piso: Piso) {
                     loading = placeholder(R.drawable.loading),
                     failure = placeholder(R.drawable.error)
                 )
+                Spacer(modifier = Modifier.height(8.dp))
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Información del piso con null-safe
             Text(
-                text = piso.titulo ?: "Sin título",
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                color = Color.Black
-            )
-
-            Text(
-                text = "Precio: ${piso.precio} €",
+                text = "${piso.precio} €/mes",
                 fontSize = 16.sp,
-                color = Color.DarkGray
+                color = Color.DarkGray,
+                fontWeight = FontWeight.Bold
             )
 
             Text(
-                text = piso.descripcion ?: "Sin descripción",
+                text = "${piso.direccion?.calle}, ${piso.direccion?.ciudad}, ${piso.direccion?.provincia}",
+                fontSize = 14.sp,
+                color = Color.Gray,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            Text(
+                text = piso.descripcion,
                 fontSize = 14.sp,
                 color = Color.Gray,
                 maxLines = 3,

@@ -89,15 +89,13 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
             PantallaLogin(viewModel = loginViewModel, navController = navController)
         }
         composable(Rutas.Home.name) {
-            currentUser?.let { user ->
                 PantallaHome(
-                    userId = user.id,
-                    rol = user.rol,
+                    currentUserInq,
+                    currentUserProp,
                     pisoViewModel = pisoViewModel
                 )
-            }
         }
-        composable(Rutas.Buscar.name) { PantallaBuscar() }
+        composable(Rutas.Buscar.name) { PantallaBuscar(pisoViewModel) }
 
         composable(Rutas.Chat.name + "/{inqId}/{propId}") { backStack ->
             val inq = backStack.arguments?.getString("inqId")?.toInt() ?: 0
@@ -123,7 +121,7 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
         composable(Rutas.MisPisos.name) { PantallaMisPisos(navController) }
 
         composable(Rutas.Perfil.name) {
-            PantallaPerfil(user = currentUser ?: Usuario(0,"","","","",""), navController, loginViewModel)
+            PantallaPerfil(currentUserInq, currentUserProp, navController, loginViewModel)
         }
 
         composable(Rutas.DetallePiso.name) { PantallaDetallePiso(currentUserInq, currentUserProp) }

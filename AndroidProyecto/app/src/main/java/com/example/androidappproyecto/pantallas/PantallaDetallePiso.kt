@@ -42,7 +42,6 @@ fun PantallaDetallePiso(
                     .height(220.dp)
             )
             Spacer(modifier = Modifier.height(12.dp))
-            Text(piso.titulo, fontWeight = FontWeight.Bold)
             piso.direccion?.let { dir ->
                 Text(
                     text = "${dir.calle}, ${dir.ciudad} (${dir.provincia})",

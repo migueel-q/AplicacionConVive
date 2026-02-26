@@ -2,6 +2,8 @@ package com.example.androidappproyecto.pantallas
 
 import android.Manifest
 import android.content.Context
+import android.graphics.Bitmap.createScaledBitmap
+import android.graphics.drawable.BitmapDrawable
 import android.location.Geocoder
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -13,7 +15,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
-import com.example.androidappproyecto.data.data.modelos.Piso // Asegúrate de importar tu clase Piso real
+import androidx.core.content.ContextCompat
+import com.example.androidappproyecto.R
+import com.example.androidappproyecto.data.data.modelos.Piso
+import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.osmdroid.config.Configuration
@@ -26,33 +31,34 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 import java.util.Locale
 
 @Composable
-fun PantallaBuscar() {
+fun PantallaBuscar(pisoViewModel: PisoViewModel) {
     val context = LocalContext.current
 
-    // 1. Estado para almacenar los puntos geolocalizados
-    // Usamos un mapa para asociar el Piso con su GeoPoint una vez calculado
     var puntosPisos by remember { mutableStateOf<List<Pair<String, GeoPoint>>>(emptyList()) }
 
-    // Simulación de tu lista de la DB (Esto vendría de tu ViewModel)
-    val listaPisosFromDb = remember { mutableStateListOf<Piso>() }
+    val pisos by pisoViewModel.pisos.collectAsState()
 
-    // 2. Efecto para convertir direcciones a Coordenadas
-    LaunchedEffect(listaPisosFromDb) {
+    LaunchedEffect(pisos) {
+        if (pisos.isEmpty()) return@LaunchedEffect
+
         val geocoder = Geocoder(context, Locale.getDefault())
         val listaTemporal = mutableListOf<Pair<String, GeoPoint>>()
 
         withContext(Dispatchers.IO) {
-            listaPisosFromDb.forEach { piso ->
-                val direccionCompleta = "${piso.direccion?.calle}, ${piso.direccion?.ciudad}, ${piso.direccion?.provincia}"
-                try {
-                    // Obtener coordenadas de la dirección
-                    val resultados = geocoder.getFromLocationName(direccionCompleta, 1)
-                    if (!resultados.isNullOrEmpty()) {
-                        val location = resultados[0]
-                        listaTemporal.add(piso.titulo to GeoPoint(location.latitude, location.longitude))
+            pisos.forEach { piso ->
+                val dir = piso.direccion
+                if (dir != null) {
+                    val direccionCompleta = "${dir.calle}, ${dir.ciudad}, ${dir.provincia}"
+                    try {
+                        val resultados = geocoder.getFromLocationName(direccionCompleta, 1)
+                        if (!resultados.isNullOrEmpty()) {
+                            val location = resultados[0]
+                            val punto = GeoPoint(location.latitude, location.longitude)
+                            listaTemporal.add("${piso.direccion.calle},${piso.direccion.ciudad} \nPrecio: ${piso.precio}€/mes" to punto)
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
             withContext(Dispatchers.Main) {
@@ -61,12 +67,10 @@ fun PantallaBuscar() {
         }
     }
 
-    // Configuración inicial OSMDroid
     LaunchedEffect(Unit) {
         Configuration.getInstance().load(context, context.getSharedPreferences("osmdroid", Context.MODE_PRIVATE))
     }
 
-    // Permisos (igual que antes)
     var hasLocationPermission by remember { mutableStateOf(false) }
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
@@ -76,25 +80,20 @@ fun PantallaBuscar() {
         launcher.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))
     }
 
-    // 3. El Mapa
     AndroidView(
         factory = { ctx ->
             MapView(ctx).apply {
                 setTileSource(TileSourceFactory.MAPNIK)
                 setMultiTouchControls(true)
-                controller.setZoom(15.0) // Un zoom más cercano para ver calles
+                controller.setZoom(15.0)
 
-                // Capa de ubicación
                 val locationProvider = GpsMyLocationProvider(ctx)
                 val locationOverlay = MyLocationNewOverlay(locationProvider, this)
 
-                // ESTA ES LA CLAVE:
                 locationOverlay.enableMyLocation()
-                locationOverlay.enableFollowLocation() // Intenta seguir al usuario automáticamente
+                locationOverlay.enableFollowLocation()
 
-                // Centrar el mapa la primera vez que se obtenga la ubicación
                 locationOverlay.runOnFirstFix {
-                    // Usamos post para asegurar que se ejecuta en el hilo de la UI
                     post {
                         controller.animateTo(locationOverlay.myLocation)
                         controller.setCenter(locationOverlay.myLocation)
@@ -106,17 +105,26 @@ fun PantallaBuscar() {
         },
         modifier = Modifier.fillMaxSize(),
         update = { mapView ->
-            // Limpiar marcadores antiguos (excepto la capa de mi ubicación)
+            // Buscamos si ya existe el overlay de ubicación para no borrarlo
             val locationOverlay = mapView.overlays.firstOrNull { it is MyLocationNewOverlay }
+
             mapView.overlays.clear()
+
+            // Volvemos a añadir la ubicación si existía
             locationOverlay?.let { mapView.overlays.add(it) }
 
-            // Añadir los nuevos marcadores calculados
-            puntosPisos.forEach { (titulo, punto) ->
+            // Añadimos los marcadores de los pisos
+            puntosPisos.forEach { (texto, punto) ->
                 val marker = Marker(mapView)
                 marker.position = punto
-                marker.title = titulo
+                marker.title = texto
                 marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                val originalDrawable = ContextCompat.getDrawable(context, R.drawable.img)
+                if (originalDrawable != null) {
+                    val bitmap = (originalDrawable as BitmapDrawable).bitmap
+                    val scaledBitmap = createScaledBitmap(bitmap, 100, 100, true)
+                    marker.icon = BitmapDrawable(context.resources, scaledBitmap)
+                }
                 mapView.overlays.add(marker)
             }
             mapView.invalidate()
