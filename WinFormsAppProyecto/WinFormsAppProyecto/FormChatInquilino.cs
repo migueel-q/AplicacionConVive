@@ -24,7 +24,7 @@ namespace Formularios
             inquilinoId = inq;
             propietarioId = prop;
             CargarChat();
-            
+
         }
         private async void FormChatInquilino_Load(object sender, EventArgs e)
         {
@@ -106,6 +106,18 @@ namespace Formularios
             }
 
             panelMnesajes.Controls.Add(burbuja);
+        }
+
+        private async void btnRecargar_Click(object sender, EventArgs e)
+        {
+            panelMnesajes.Controls.Clear();
+            await CargarChat();
+        }
+
+        private async void recargar_Tick(object sender, EventArgs e)
+        {
+            panelMnesajes.Controls.Clear();
+            await CargarChat();
         }
     }
 }

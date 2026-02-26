@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChatInquilino));
             panelMnesajes = new FlowLayoutPanel();
             btnEnviar = new Button();
             richTextBoxMensaje = new RichTextBox();
+            btnRecargar = new Button();
+            recargar = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // panelMnesajes
             // 
-            panelMnesajes.Location = new Point(12, 22);
+            panelMnesajes.Location = new Point(15, 96);
             panelMnesajes.Name = "panelMnesajes";
-            panelMnesajes.Size = new Size(776, 333);
+            panelMnesajes.Size = new Size(776, 319);
             panelMnesajes.TabIndex = 0;
             // 
             // btnEnviar
@@ -49,7 +53,7 @@
             btnEnviar.FlatStyle = FlatStyle.Flat;
             btnEnviar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEnviar.ForeColor = Color.White;
-            btnEnviar.Location = new Point(660, 375);
+            btnEnviar.Location = new Point(663, 435);
             btnEnviar.Name = "btnEnviar";
             btnEnviar.Size = new Size(128, 63);
             btnEnviar.TabIndex = 0;
@@ -59,18 +63,33 @@
             // 
             // richTextBoxMensaje
             // 
-            richTextBoxMensaje.Location = new Point(12, 375);
+            richTextBoxMensaje.Location = new Point(15, 435);
             richTextBoxMensaje.Name = "richTextBoxMensaje";
             richTextBoxMensaje.Size = new Size(642, 63);
             richTextBoxMensaje.TabIndex = 1;
             richTextBoxMensaje.Text = "";
+            // 
+            // btnRecargar
+            // 
+            btnRecargar.Image = (Image)resources.GetObject("btnRecargar.Image");
+            btnRecargar.Location = new Point(757, 39);
+            btnRecargar.Name = "btnRecargar";
+            btnRecargar.Size = new Size(34, 37);
+            btnRecargar.TabIndex = 2;
+            btnRecargar.UseVisualStyleBackColor = true;
+            btnRecargar.Click += btnRecargar_Click;
+            // 
+            // recargar
+            // 
+            recargar.Tick += recargar_Tick;
             // 
             // FormChatInquilino
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(808, 530);
+            Controls.Add(btnRecargar);
             Controls.Add(richTextBoxMensaje);
             Controls.Add(btnEnviar);
             Controls.Add(panelMnesajes);
@@ -85,5 +104,7 @@
         private FlowLayoutPanel panelMnesajes;
         private Button btnEnviar;
         private RichTextBox richTextBoxMensaje;
+        private Button btnRecargar;
+        private System.Windows.Forms.Timer recargar;
     }
 }
