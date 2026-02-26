@@ -132,12 +132,6 @@ fun PisoCard(piso: Piso) {
             Spacer(modifier = Modifier.height(8.dp))
 
             // Información del piso con null-safe
-            Text(
-                text = piso.titulo ?: "Sin título",
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                color = Color.Black
-            )
 
             Text(
                 text = "Precio: ${piso.precio} €",

@@ -5,7 +5,7 @@ import com.example.androidappproyecto.data.data.modelos.Piso
 
 val pisos = listOf(
     Piso(
-        titulo = "Habitación exterior en el centro",
+
         direccion = Direccion(
             calle = "Calle Valle de los Tojos",
             ciudad = "Torrelavega",
@@ -19,7 +19,7 @@ val pisos = listOf(
         disponible = true,
     ),
     Piso(
-        titulo = "Piso reformado cerca de la universidad",
+
         direccion = Direccion(
             calle = "Avenida de España",
             ciudad = "Santander",
@@ -33,7 +33,7 @@ val pisos = listOf(
         disponible = true,
     ),
     Piso(
-        titulo = "Habitación en piso compartido",
+
         direccion = Direccion(
             calle = "Calle Julián Ceballos",
             ciudad = "Torrelavega",
@@ -47,7 +47,7 @@ val pisos = listOf(
         disponible = true,
     ),
     Piso(
-        titulo = "Piso moderno con balcón",
+
         direccion = Direccion(
             calle = "Paseo Pereda",
             ciudad = "Santander",
@@ -61,7 +61,7 @@ val pisos = listOf(
         disponible = true,
     ),
     Piso(
-        titulo = "Estudio acogedor",
+
         direccion = Direccion(
             calle = "Calle Alta",
             ciudad = "Santander",
@@ -75,7 +75,7 @@ val pisos = listOf(
         disponible = true,
     ),
     Piso(
-        titulo = "Habitación amplia con escritorio",
+
         direccion = Direccion(
             calle = "Barrio Covadonga",
             ciudad = "Torrelavega",
@@ -89,7 +89,7 @@ val pisos = listOf(
         disponible = true,
     ),
     Piso(
-        titulo = "Piso céntrico para compartir",
+
         direccion = Direccion(
             calle = "Calle Burgos",
             ciudad = "Santander",
@@ -103,7 +103,7 @@ val pisos = listOf(
         disponible = true,
     ),
     Piso(
-        titulo = "Apartamento luminoso",
+
         direccion = Direccion(
             calle = "Calle Consolación",
             ciudad = "Torrelavega",

@@ -49,7 +49,7 @@ fun PantallaBuscar() {
                     val resultados = geocoder.getFromLocationName(direccionCompleta, 1)
                     if (!resultados.isNullOrEmpty()) {
                         val location = resultados[0]
-                        listaTemporal.add(piso.titulo to GeoPoint(location.latitude, location.longitude))
+                        listaTemporal.add(piso.direccion?.calle.toString() to GeoPoint(location.latitude, location.longitude))
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()

@@ -6,10 +6,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidappproyecto.data.data.daos.PisoDao
+import com.example.androidappproyecto.data.data.modelos.Contrato
 import com.example.androidappproyecto.data.data.modelos.Direccion
 import com.example.androidappproyecto.data.data.modelos.Piso
 import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.pisos
+import com.example.androidappproyecto.data.data.repositorios.ContratoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +23,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class PisoViewModel(
-    private val repositorio: PisoRepositorio
+    private val repositorio: PisoRepositorio,
 ) : ViewModel() {
 
 
