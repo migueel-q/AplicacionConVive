@@ -71,6 +71,8 @@
             // 
             // recargar
             // 
+            recargar.Enabled = true;
+            recargar.Interval = 3000;
             recargar.Tick += recargar_Tick;
             // 
             // btnRecargar

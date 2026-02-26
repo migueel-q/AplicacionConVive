@@ -115,8 +115,7 @@ namespace Formularios
         }
 
         private async void btnRecargar_Click(object sender, EventArgs e)
-        {
-            panelMnesajes.Controls.Clear();
+        {            
             await CargarChat();
         }
     }
