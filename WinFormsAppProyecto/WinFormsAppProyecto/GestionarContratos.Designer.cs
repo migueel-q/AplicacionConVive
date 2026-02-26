@@ -36,7 +36,9 @@
             // 
             // dgvContratos
             // 
+            dgvContratos.BackgroundColor = Color.DarkRed;
             dgvContratos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvContratos.GridColor = Color.Black;
             dgvContratos.Location = new Point(12, 32);
             dgvContratos.Name = "dgvContratos";
             dgvContratos.RowHeadersWidth = 51;
@@ -45,28 +47,43 @@
             // 
             // btnAceptarContrato
             // 
-            btnAceptarContrato.Location = new Point(188, 436);
+            btnAceptarContrato.BackColor = Color.DarkRed;
+            btnAceptarContrato.Cursor = Cursors.Hand;
+            btnAceptarContrato.FlatAppearance.BorderColor = Color.Black;
+            btnAceptarContrato.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnAceptarContrato.FlatStyle = FlatStyle.Flat;
+            btnAceptarContrato.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnAceptarContrato.ForeColor = Color.White;
+            btnAceptarContrato.Location = new Point(253, 418);
             btnAceptarContrato.Name = "btnAceptarContrato";
-            btnAceptarContrato.Size = new Size(94, 29);
+            btnAceptarContrato.Size = new Size(111, 47);
             btnAceptarContrato.TabIndex = 1;
             btnAceptarContrato.Text = "Aceptar";
-            btnAceptarContrato.UseVisualStyleBackColor = true;
+            btnAceptarContrato.UseVisualStyleBackColor = false;
             btnAceptarContrato.Click += btnAceptarContrato_Click;
             // 
             // btnDenegar
             // 
-            btnDenegar.Location = new Point(557, 436);
+            btnDenegar.BackColor = Color.DarkRed;
+            btnDenegar.Cursor = Cursors.Hand;
+            btnDenegar.FlatAppearance.BorderColor = Color.Black;
+            btnDenegar.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnDenegar.FlatStyle = FlatStyle.Flat;
+            btnDenegar.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnDenegar.ForeColor = Color.White;
+            btnDenegar.Location = new Point(520, 418);
             btnDenegar.Name = "btnDenegar";
-            btnDenegar.Size = new Size(94, 29);
+            btnDenegar.Size = new Size(111, 47);
             btnDenegar.TabIndex = 2;
             btnDenegar.Text = "Denegar";
-            btnDenegar.UseVisualStyleBackColor = true;
+            btnDenegar.UseVisualStyleBackColor = false;
             btnDenegar.Click += btnDenegar_Click;
             // 
             // GestionarContratos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(874, 500);
             Controls.Add(btnDenegar);
             Controls.Add(btnAceptarContrato);

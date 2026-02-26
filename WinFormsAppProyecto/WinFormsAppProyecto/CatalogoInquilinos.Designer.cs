@@ -36,25 +36,33 @@
             // 
             listBoxInquilinos.DisplayMember = "nombre_real";
             listBoxInquilinos.FormattingEnabled = true;
-            listBoxInquilinos.Location = new Point(22, 36);
+            listBoxInquilinos.Location = new Point(12, 36);
             listBoxInquilinos.Name = "listBoxInquilinos";
-            listBoxInquilinos.Size = new Size(766, 304);
+            listBoxInquilinos.Size = new Size(776, 304);
             listBoxInquilinos.TabIndex = 0;
             // 
             // btnInquilinos
             // 
-            btnInquilinos.Location = new Point(355, 387);
+            btnInquilinos.BackColor = Color.DarkRed;
+            btnInquilinos.Cursor = Cursors.Hand;
+            btnInquilinos.FlatAppearance.BorderColor = Color.Black;
+            btnInquilinos.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnInquilinos.FlatStyle = FlatStyle.Flat;
+            btnInquilinos.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInquilinos.ForeColor = Color.White;
+            btnInquilinos.Location = new Point(330, 371);
             btnInquilinos.Name = "btnInquilinos";
-            btnInquilinos.Size = new Size(94, 29);
+            btnInquilinos.Size = new Size(127, 47);
             btnInquilinos.TabIndex = 1;
             btnInquilinos.Text = "Hablar";
-            btnInquilinos.UseVisualStyleBackColor = true;
+            btnInquilinos.UseVisualStyleBackColor = false;
             btnInquilinos.Click += btnInquilinos_Click;
             // 
             // CatalogoInquilinos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(800, 450);
             Controls.Add(btnInquilinos);
             Controls.Add(listBoxInquilinos);
