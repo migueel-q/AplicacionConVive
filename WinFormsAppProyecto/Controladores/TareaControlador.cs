@@ -23,7 +23,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(tareaNueva);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PostAsync("http://localhost:8080/api/tareas", content);
+            HttpResponseMessage mensaje = await cliente.PostAsync("http://192.168.1.104:8080/api/tareas", content);
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
             tarea = JsonConvert.DeserializeObject<Tarea>(mensajeJson);
@@ -35,7 +35,7 @@ namespace Controladores
             try
             {
                 List<Tarea> listaTarea = new List<Tarea>();
-                HttpResponseMessage mensaje = await cliente.GetAsync("http://localhost:8080/api/tareas");
+                HttpResponseMessage mensaje = await cliente.GetAsync("http://192.168.1.104:8080/api/tareas");
 
                 mensaje.EnsureSuccessStatusCode();
                 string mensajeJson = await mensaje.Content.ReadAsStringAsync();
@@ -53,7 +53,7 @@ namespace Controladores
         public async Task<Tarea> getById(int id)
         {
             Tarea tarea = new Tarea();
-            HttpResponseMessage mensaje = await cliente.GetAsync($"http://localhost:8080/api/tareas/{id}");
+            HttpResponseMessage mensaje = await cliente.GetAsync($"http://192.168.1.104:8080/api/tareas/{id}");
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
 
@@ -63,7 +63,7 @@ namespace Controladores
 
         public async Task<bool> delete(int id)
         {
-            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://localhost:8080/api/tareas/{id}");
+            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://192.168.1.104:8080/api/tareas/{id}");
             mensaje.EnsureSuccessStatusCode();
             return true;
         }
@@ -74,7 +74,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(tareaModificada);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PutAsync($"http://localhost:8080/api/tareas/{id}", content);
+            HttpResponseMessage mensaje = await cliente.PutAsync($"http://192.168.1.104:8080/api/tareas/{id}", content);
             mensaje.EnsureSuccessStatusCode();
 
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
