@@ -24,13 +24,14 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.androidappproyecto.R
 import com.example.androidappproyecto.data.data.modelos.Items_barra_inferior
+import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
 import com.example.androidappproyecto.navegacion.AppConviveNavigation
 import com.example.androidappproyecto.navegacion.Rutas
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProyectoView(){
+fun ProyectoView(pisoViewModel: PisoViewModel){
     val navController= rememberNavController()
     val rutaActual = currentRoute(navController)
 
@@ -48,15 +49,11 @@ fun ProyectoView(){
             }
         }
     ) { paddingValues ->
-        AppConviveNavigation(navController = navController, Modifier.padding(paddingValues))
+        AppConviveNavigation(navController = navController, Modifier.padding(paddingValues),pisoViewModel)
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewAppConviveView() {
-    ProyectoView()
-}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

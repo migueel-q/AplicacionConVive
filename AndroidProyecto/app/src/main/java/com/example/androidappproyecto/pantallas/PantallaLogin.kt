@@ -20,6 +20,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lint.kotlin.metadata.Visibility
 import androidx.navigation.NavController
 import com.example.androidappproyecto.R
 import com.example.androidappproyecto.data.data.viewmodels.LoginState

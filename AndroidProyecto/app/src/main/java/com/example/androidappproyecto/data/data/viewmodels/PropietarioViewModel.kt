@@ -2,6 +2,7 @@ package com.example.androidappproyecto.data.data.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.androidappproyecto.data.data.DTO.PropietarioDTO
 import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.repositorios.PropietarioRepositorio
 import kotlinx.coroutines.flow.MutableStateFlow
