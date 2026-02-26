@@ -24,7 +24,7 @@ namespace Formularios
             inquilinoId = inq;
             propietarioId = prop;
             panelMnesajes.Resize += (s, ev) => CargarChat();
-            RecargarChatPeriodicamente();
+            
 
 
         }
@@ -47,7 +47,7 @@ namespace Formularios
             await controlador.enviarMensaje(inquilinoId, propietarioId, texto, enviadoPorInquilino);
 
             richTextBoxMensaje.Text = "";
-
+            panelMnesajes.Controls.Clear();
             await CargarChat();
         }
 
@@ -109,15 +109,5 @@ namespace Formularios
 
             panelMnesajes.Controls.Add(burbuja);
         }
-
-        private async Task RecargarChatPeriodicamente()
-        {
-            while (recargando)
-            {
-                await CargarChat();       // recarga el chat
-                await Task.Delay(1000);   // espera 1 segundo
-            }
-        }
-
     }
 }
