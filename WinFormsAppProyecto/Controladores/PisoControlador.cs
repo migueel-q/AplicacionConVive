@@ -53,7 +53,7 @@ namespace Controladores
         public async Task<Piso> getById(int id)
         {
             Piso piso = new Piso();
-            HttpResponseMessage mensaje = await cliente.GetAsync($"http://10.203.31.200/api/pisos/{id}");
+            HttpResponseMessage mensaje = await cliente.GetAsync($"http://10.203.31.200:8080/api/pisos/{id}");
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
 
