@@ -47,6 +47,7 @@
             gestionarContratosToolStripMenuItem = new ToolStripMenuItem();
             cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
             button1 = new Button();
+            verMiPisoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             // 
             // gestiónPisosToolStripMenuItem
             // 
-            gestiónPisosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { añadirPiso, modificarPiso, verPisosToolStripMenuItem });
+            gestiónPisosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { añadirPiso, modificarPiso, verPisosToolStripMenuItem, verMiPisoToolStripMenuItem });
             gestiónPisosToolStripMenuItem.Name = "gestiónPisosToolStripMenuItem";
             gestiónPisosToolStripMenuItem.Size = new Size(125, 27);
             gestiónPisosToolStripMenuItem.Text = "Gestión pisos";
@@ -102,7 +103,7 @@
             // verGastodToolStripMenuItem
             // 
             verGastodToolStripMenuItem.Name = "verGastodToolStripMenuItem";
-            verGastodToolStripMenuItem.Size = new Size(224, 28);
+            verGastodToolStripMenuItem.Size = new Size(173, 28);
             verGastodToolStripMenuItem.Text = "Ver gastos";
             verGastodToolStripMenuItem.Click += verGastodToolStripMenuItem_Click;
             // 
@@ -196,6 +197,13 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // verMiPisoToolStripMenuItem
+            // 
+            verMiPisoToolStripMenuItem.Name = "verMiPisoToolStripMenuItem";
+            verMiPisoToolStripMenuItem.Size = new Size(224, 28);
+            verMiPisoToolStripMenuItem.Text = "Ver mi piso";
+            verMiPisoToolStripMenuItem.Click += verMiPisoToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -235,5 +243,6 @@
         private ToolStripMenuItem gestionarSolicitudes;
         private ToolStripMenuItem gestionContrato;
         private ToolStripMenuItem gestionarContratosToolStripMenuItem;
+        private ToolStripMenuItem verMiPisoToolStripMenuItem;
     }
 }

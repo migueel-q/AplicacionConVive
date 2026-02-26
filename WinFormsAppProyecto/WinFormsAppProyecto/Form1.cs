@@ -10,7 +10,7 @@ namespace WinFormsAppProyecto
         Propietario propietario;
         Inquilino inquilino;
         Administrador administrador;
-        
+
         public Form1(Inquilino inquilino)
         {
             InitializeComponent();
@@ -26,6 +26,7 @@ namespace WinFormsAppProyecto
             gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             button1.Visible = false;
+            verMiPisoToolStripMenuItem.Visible = true;
         }
 
         public Form1(Propietario propietario)
@@ -39,6 +40,7 @@ namespace WinFormsAppProyecto
             hacerOferta.Visible = false;
             hacerSolicitud.Visible = false;
             button1.Visible = false;
+            verMiPisoToolStripMenuItem.Visible = false;
         }
 
         public Form1(Administrador administrador)
@@ -216,6 +218,17 @@ namespace WinFormsAppProyecto
             AbrirFormulario(gestionarContratos);
         }
 
-        
+        private void verMiPisoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (inquilino == null)
+            {
+                MessageBox.Show("Esta opción está disponible solo para inquilinos.");
+                return;
+            }
+
+            FormVerMiPiso formVerMiPiso = new FormVerMiPiso(inquilino, null);
+            AbrirFormulario(formVerMiPiso);
+        }
     }
 }
