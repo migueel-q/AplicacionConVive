@@ -1,5 +1,6 @@
 package com.example.androidappproyecto.data.data.repositorios
 
+import com.example.androidappproyecto.data.data.DTO.PropietarioDTO
 import com.example.androidappproyecto.data.data.api.PropietarioApi
 import com.example.androidappproyecto.data.data.daos.PropietarioDao
 import com.example.androidappproyecto.data.data.modelos.Propietario
@@ -22,7 +23,7 @@ class PropietarioRepositorio(
     suspend fun insertarPropietario(propietario: Propietario) {
         try {
             val propietarioCreado = propietarioApi.createPropietario(propietario)
-            propietarioDao.insertPropietario(propietarioCreado)
+//            propietarioDao.insertPropietario(propietarioCreado)
         } catch (e: Exception) {
             throw IOException("Error al insertar propietario: ${e.message}", e)
         }
