@@ -1,5 +1,6 @@
 package com.example.androidappproyecto.pantallas
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -20,19 +21,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Propietario
 
 import com.example.androidappproyecto.data.data.modelos.Usuario
+import com.example.androidappproyecto.data.data.viewmodels.LoginViewModel
+import com.example.androidappproyecto.navegacion.Rutas
+import com.example.androidappproyecto.ui.theme.rojo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaPerfil(user: Usuario){
-    val rolTexto = when (user) {
-        is Propietario -> "Propietario"
-        is Inquilino -> "Inquilino"
-        else -> "Usuario"
-    }
+fun PantallaPerfil(user: Usuario, navController: NavController, loginViewModel: LoginViewModel){
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -77,7 +78,7 @@ fun PantallaPerfil(user: Usuario){
             Text(user.email, fontSize = 16.sp, color = Color.Gray)
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = rolTexto,
+                text = "Usuario",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF800000)
@@ -86,18 +87,27 @@ fun PantallaPerfil(user: Usuario){
 
             Spacer(modifier = Modifier.height(22.dp))
             Button(
-                onClick = { },
+                onClick = {
+                    loginViewModel.logout()
+                    navController.navigate(Rutas.Login.name) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
+                        }
+                    }
+                },
                 modifier = Modifier.fillMaxWidth(),
-                colors=ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF800000)
-              )
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent,
+                    contentColor = rojo
+                ),
+                border = BorderStroke(1.dp, rojo)
             ) {
                 Text(
-                  text = "Editar Perfil",
-                  color = Color.White,
-                  fontSize = 16.sp
-              )
-          }
+                    text = "Cerrar Sesión",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
         }
     }
 }
