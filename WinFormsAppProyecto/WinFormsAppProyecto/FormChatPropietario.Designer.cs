@@ -43,12 +43,19 @@
             // 
             // btnEnviar
             // 
-            btnEnviar.Location = new Point(674, 387);
+            btnEnviar.BackColor = Color.DarkRed;
+            btnEnviar.Cursor = Cursors.Hand;
+            btnEnviar.FlatAppearance.BorderColor = Color.Black;
+            btnEnviar.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnEnviar.FlatStyle = FlatStyle.Flat;
+            btnEnviar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEnviar.ForeColor = Color.White;
+            btnEnviar.Location = new Point(660, 370);
             btnEnviar.Name = "btnEnviar";
-            btnEnviar.Size = new Size(114, 29);
+            btnEnviar.Size = new Size(128, 63);
             btnEnviar.TabIndex = 2;
             btnEnviar.Text = "Enviar";
-            btnEnviar.UseVisualStyleBackColor = true;
+            btnEnviar.UseVisualStyleBackColor = false;
             btnEnviar.Click += btnEnviar_Click;
             // 
             // panelMnesajes
@@ -62,6 +69,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(800, 450);
             Controls.Add(richTextBoxMensaje);
             Controls.Add(btnEnviar);
