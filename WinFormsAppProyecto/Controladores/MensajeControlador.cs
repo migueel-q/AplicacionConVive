@@ -22,7 +22,7 @@ namespace Controladores
             try
             {
                 List<Mensaje> listaMensajes = new List<Mensaje>();
-                HttpResponseMessage respuesta = await cliente.GetAsync($"http://localhost:8080/api/{inquilinoId}/{propietarioId}");
+                HttpResponseMessage respuesta = await cliente.GetAsync($"http://10.203.31.200:8080/api/{inquilinoId}/{propietarioId}");
                 respuesta.EnsureSuccessStatusCode();
 
                 string json = await respuesta.Content.ReadAsStringAsync();
@@ -40,7 +40,7 @@ namespace Controladores
         {
             string textoCodificado = Uri.EscapeDataString(texto);
 
-            string url = $"http://localhost:8080/api/enviar" +
+            string url = $"http://10.203.31.200:8080/api/enviar" +
                          $"?inquilinoId={inquilinoId}" +
                          $"&propietarioId={propietarioId}" +
                          $"&mensaje={textoCodificado}" +

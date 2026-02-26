@@ -8,6 +8,7 @@ open class Usuario(
     open val nombre_real: String,
     open val fecha_nacimiento: String? = null,
     open val email: String,
-    open val password: String
+    open val password: String,
+    val rol: String
 ) : Serializable
 

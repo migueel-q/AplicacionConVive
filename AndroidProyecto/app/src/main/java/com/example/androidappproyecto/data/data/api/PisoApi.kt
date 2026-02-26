@@ -1,6 +1,7 @@
 package com.example.androidappproyecto.data.data.api
 
 import com.example.androidappproyecto.data.data.modelos.Piso
+import kotlinx.coroutines.flow.Flow
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
