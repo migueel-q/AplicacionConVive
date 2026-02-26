@@ -34,6 +34,8 @@ data class Contrato(
     var fecha_inicio: String? = null,
     @ColumnInfo(name = "fecha_fin")
     var fecha_fin: String? = null,
+    @ColumnInfo(name = "aceptado")
+    var aceptado: Boolean,
 
     @Embedded(prefix = "piso_")
     var piso: Piso? = null
