@@ -26,17 +26,7 @@ namespace Formularios
         }
 
         private async void btnSolicitarPiso_Click(object sender, EventArgs e)
-        {
-            if (_piso != null)
-            {
-                MessageBox.Show("_piso NO es NULL");
-            }
-
-            if (_inquilino != null)
-            {
-                MessageBox.Show("_inquilino NO es NULL");
-            }
-
+        {       
             Oferta oferta = new Oferta {
                 cantidad = double.Parse(txtPrecio.Text),
                 descripcion = richTextBoxDesc.Text,
@@ -53,6 +43,10 @@ namespace Formularios
             };
 
             await solicitudControlador.add(solicitud);
+            if (solicitud != null)
+            {
+                MessageBox.Show("Solicitud añadida correctamente");
+            }
         }
 
         private void FormOfertas_Load(object sender, EventArgs e)

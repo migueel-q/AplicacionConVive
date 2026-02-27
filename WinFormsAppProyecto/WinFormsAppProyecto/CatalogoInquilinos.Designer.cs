@@ -63,7 +63,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(813, 439);
             Controls.Add(btnInquilinos);
             Controls.Add(listBoxInquilinos);
             Name = "CatalogoInquilinos";
