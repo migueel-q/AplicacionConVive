@@ -31,6 +31,7 @@
             pictureBox1 = new PictureBox();
             dgvCatalogoPisos = new DataGridView();
             btnOcupado = new Button();
+            btnDesocupar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCatalogoPisos).BeginInit();
             SuspendLayout();
@@ -59,19 +60,34 @@
             // 
             // btnOcupado
             // 
-            btnOcupado.Location = new Point(445, 462);
+            btnOcupado.BackColor = Color.DarkRed;
+            btnOcupado.ForeColor = SystemColors.ControlLightLight;
+            btnOcupado.Location = new Point(618, 453);
             btnOcupado.Name = "btnOcupado";
             btnOcupado.Size = new Size(94, 29);
             btnOcupado.TabIndex = 10;
             btnOcupado.Text = "Ocupar";
-            btnOcupado.UseVisualStyleBackColor = true;
+            btnOcupado.UseVisualStyleBackColor = false;
             btnOcupado.Click += btnOcupado_Click;
+            // 
+            // btnDesocupar
+            // 
+            btnDesocupar.BackColor = Color.DarkRed;
+            btnDesocupar.ForeColor = SystemColors.ControlLightLight;
+            btnDesocupar.Location = new Point(274, 453);
+            btnDesocupar.Name = "btnDesocupar";
+            btnDesocupar.Size = new Size(94, 29);
+            btnDesocupar.TabIndex = 11;
+            btnDesocupar.Text = "Desocupar";
+            btnDesocupar.UseVisualStyleBackColor = false;
+            btnDesocupar.Click += btnDesocupar_Click;
             // 
             // CatalogosPisosPropietario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1026, 503);
+            Controls.Add(btnDesocupar);
             Controls.Add(btnOcupado);
             Controls.Add(pictureBox1);
             Controls.Add(dgvCatalogoPisos);
@@ -88,5 +104,6 @@
         private PictureBox pictureBox1;
         private DataGridView dgvCatalogoPisos;
         private Button btnOcupado;
+        private Button btnDesocupar;
     }
 }

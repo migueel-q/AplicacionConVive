@@ -86,5 +86,27 @@ namespace Formularios
             VerPisoPropietario verPisoPropietario = new VerPisoPropietario(_propietario, pisoSeleccionado);
             verPisoPropietario.Show();
         }
+
+        private async void btnDesocupar_Click(object sender, EventArgs e)
+        {
+            if (dgvCatalogoPisos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona un piso.");
+                return;
+            }
+
+            Piso pisoActualizar = (Piso)dgvCatalogoPisos.SelectedRows[0].DataBoundItem;
+            pisoActualizar.disponible = true;
+
+            await pisoControlador.update(pisoActualizar, pisoActualizar.id);
+
+            await CargarPisos();
+
+            var filtrados = listaPisos
+                .Where(p => p.propietario.id == _propietario.id)
+                .ToList();
+
+            bs.DataSource = new BindingList<Piso>(filtrados);
+        }
     }
 }
