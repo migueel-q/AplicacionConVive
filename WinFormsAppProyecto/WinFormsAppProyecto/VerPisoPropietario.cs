@@ -33,7 +33,7 @@ namespace Formularios
             txtPropietario.Text = _propietario.nombre_real;
             checkBoxDisponible.Checked = _piso.disponible;
 
-           
+           this.CenterToScreen();
         }
 
         private async Task CargarImagen(string urlImagen)
