@@ -190,7 +190,7 @@
             btnRegistrarse.FlatAppearance.MouseOverBackColor = Color.Red;
             btnRegistrarse.FlatStyle = FlatStyle.Flat;
             btnRegistrarse.ForeColor = Color.White;
-            btnRegistrarse.Location = new Point(275, 420);
+            btnRegistrarse.Location = new Point(431, 420);
             btnRegistrarse.Margin = new Padding(4, 5, 4, 5);
             btnRegistrarse.Name = "btnRegistrarse";
             btnRegistrarse.Size = new Size(113, 42);
@@ -206,7 +206,7 @@
             btnVolver.FlatAppearance.MouseOverBackColor = Color.Red;
             btnVolver.FlatStyle = FlatStyle.Flat;
             btnVolver.ForeColor = Color.White;
-            btnVolver.Location = new Point(13, 420);
+            btnVolver.Location = new Point(66, 420);
             btnVolver.Margin = new Padding(4, 5, 4, 5);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(113, 42);
