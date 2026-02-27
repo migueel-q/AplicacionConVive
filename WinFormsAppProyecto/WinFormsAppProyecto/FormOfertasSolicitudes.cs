@@ -41,11 +41,17 @@ namespace Formularios
                 inquilino = oferta.inquilino,
                 aceptado = false,
             };
-
-            await solicitudControlador.add(solicitud);
-            if (solicitud != null)
+            if (_inquilino.contrato == null)
             {
-                MessageBox.Show("Solicitud añadida correctamente");
+                MessageBox.Show("No puedes hacer una oferta");
+            }
+            else
+            {
+                await solicitudControlador.add(solicitud);
+                if (solicitud != null)
+                {
+                    MessageBox.Show("Solicitud añadida correctamente");
+                }
             }
         }
 

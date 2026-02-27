@@ -34,5 +34,5 @@ data class Inquilino(
     @ColumnInfo(name = "password")
     val password: String,
     @Embedded(prefix = "contrato_")
-    val contrato: Contrato? = null,
+    var contrato: Contrato? = null,
     )
