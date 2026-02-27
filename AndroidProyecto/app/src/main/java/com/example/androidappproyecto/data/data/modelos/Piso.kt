@@ -24,8 +24,6 @@ data class Piso(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_piso")
     val id: Int = 0,
-    @ColumnInfo(name = "titulo")
-    val titulo : String,
     @Embedded(prefix = "dir_")
     val direccion: Direccion? = null,
     @ColumnInfo(name = "descripcion")

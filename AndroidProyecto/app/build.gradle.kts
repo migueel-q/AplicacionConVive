@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.androidappproyecto"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.animation.core.lint)
     implementation(libs.firebase.appdistribution.gradle)
+    implementation(libs.androidx.compose.material)
     ksp(libs.androidx.room.compiler)
 
     // Coroutines
