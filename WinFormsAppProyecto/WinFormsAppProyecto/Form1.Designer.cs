@@ -46,6 +46,7 @@
             gestionarContratosToolStripMenuItem = new ToolStripMenuItem();
             cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
             button1 = new Button();
+            añadirGastos = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -107,7 +108,7 @@
             // 
             // gestionGastos
             // 
-            gestionGastos.DropDownItems.AddRange(new ToolStripItem[] { verGastodToolStripMenuItem });
+            gestionGastos.DropDownItems.AddRange(new ToolStripItem[] { verGastodToolStripMenuItem, añadirGastos });
             gestionGastos.Name = "gestionGastos";
             gestionGastos.Size = new Size(138, 27);
             gestionGastos.Text = "Gestión Gastos";
@@ -115,7 +116,7 @@
             // verGastodToolStripMenuItem
             // 
             verGastodToolStripMenuItem.Name = "verGastodToolStripMenuItem";
-            verGastodToolStripMenuItem.Size = new Size(173, 28);
+            verGastodToolStripMenuItem.Size = new Size(224, 28);
             verGastodToolStripMenuItem.Text = "Ver gastos";
             verGastodToolStripMenuItem.Click += verGastodToolStripMenuItem_Click;
             // 
@@ -192,6 +193,13 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // añadirGastos
+            // 
+            añadirGastos.Name = "añadirGastos";
+            añadirGastos.Size = new Size(224, 28);
+            añadirGastos.Text = "Añadir Gastos";
+            añadirGastos.Click += añadirGastos_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -230,5 +238,6 @@
         private ToolStripMenuItem gestionarContratosToolStripMenuItem;
         private ToolStripMenuItem verMiPisoToolStripMenuItem;
         private ToolStripMenuItem verMisPisos;
+        private ToolStripMenuItem añadirGastos;
     }
 }

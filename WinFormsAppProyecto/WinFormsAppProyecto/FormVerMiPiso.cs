@@ -15,7 +15,7 @@ namespace Formularios
         private TareaControlador _tareaControlador;
         private PisoControlador _pisoControlador;
         private InquilinoControlador _inquilinoControlador;
-        private static readonly HttpClient _httpClient = new HttpClient();
+        private static HttpClient _httpClient = new HttpClient();
 
         public FormVerMiPiso(Inquilino inquilino, Piso piso)
         {
@@ -111,7 +111,7 @@ namespace Formularios
                 Tarea nueva = new Tarea
                 {
                     descripcion = descripcion,
-                    inquilino = _piso
+                    piso = _piso
                 };
 
                 await _tareaControlador.add(nueva);
@@ -127,28 +127,55 @@ namespace Formularios
         {
             try
             {
-                var bytes = await _httpClient.GetByteArrayAsync(_piso.url_imagen);  // Verifica que _httpClient esté inicializado
-                using var ms = new MemoryStream(bytes);
-                using var ImagenTemporal = Image.FromStream(ms);
+                if (string.IsNullOrWhiteSpace(urlImagen))
+                {
+                    MessageBox.Show("La URL de la imagen está vacía.");
+                    pictureBoxImagen.Image = null;
+                    return;
+                }
 
-                // Liberar la imagen anterior para evitar problemas de memoria
+                // Caso 1: Base64 (data URI)
+                if (urlImagen.StartsWith("data:image"))
+                {
+                    var base64 = urlImagen.Substring(urlImagen.IndexOf(",") + 1);
+                    var bytes = Convert.FromBase64String(base64);
+
+                    using var ms = new MemoryStream(bytes);
+                    pictureBoxImagen.Image?.Dispose();
+                    pictureBoxImagen.Image = Image.FromStream(ms);
+                    pictureBoxImagen.SizeMode = PictureBoxSizeMode.Zoom;
+                    return;
+                }
+
+                // Caso 2: URL normal
+                if (_httpClient == null)
+                    _httpClient = new HttpClient();
+
+                var bytesHttp = await _httpClient.GetByteArrayAsync(urlImagen);
+                using var msHttp = new MemoryStream(bytesHttp);
+
                 pictureBoxImagen.Image?.Dispose();
-
-                // Establecer la nueva imagen en el PictureBox
-                pictureBoxImagen.Image = new Bitmap(ImagenTemporal);
+                pictureBoxImagen.Image = Image.FromStream(msHttp);
                 pictureBoxImagen.SizeMode = PictureBoxSizeMode.Zoom;
             }
             catch (Exception ex)
             {
-                // Log y mensaje de error detallado
                 MessageBox.Show($"Error al cargar la imagen: {ex.Message}");
-                pictureBoxImagen.Image = null; // Limpiar el PictureBox si hay un error
+                pictureBoxImagen.Image = null;
             }
         }
+
+
 
         private void FormVerMiPiso_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnVerTareas_Click(object sender, EventArgs e)
+        {
+            CatalogoTareas catalogoTareas = new CatalogoTareas();            
+            catalogoTareas.ShowDialog();
         }
     }
 }
