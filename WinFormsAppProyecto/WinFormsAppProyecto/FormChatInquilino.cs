@@ -17,13 +17,14 @@ namespace Formularios
         private readonly MensajeControlador controlador = new MensajeControlador();
         private readonly int inquilinoId;
         private readonly int propietarioId;
-
+        private bool recargando = true;
         public FormChatInquilino(int inq, int prop)
         {
             InitializeComponent();
             inquilinoId = inq;
             propietarioId = prop;
-            panelMnesajes.Resize += (s, ev) => CargarChat();
+            CargarChat();
+
         }
         private async void FormChatInquilino_Load(object sender, EventArgs e)
         {
@@ -44,7 +45,7 @@ namespace Formularios
             await controlador.enviarMensaje(inquilinoId, propietarioId, texto, enviadoPorInquilino);
 
             richTextBoxMensaje.Text = "";
-
+            panelMnesajes.Controls.Clear();
             await CargarChat();
         }
 
@@ -107,6 +108,15 @@ namespace Formularios
             panelMnesajes.Controls.Add(burbuja);
         }
 
-        
+        private async void btnRecargar_Click(object sender, EventArgs e)
+        {
+            panelMnesajes.Controls.Clear();
+            await CargarChat();
+        }
+
+        private async void recargar_Tick(object sender, EventArgs e)
+        {
+            await CargarChat();
+        }
     }
 }

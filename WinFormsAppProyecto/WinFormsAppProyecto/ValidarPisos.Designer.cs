@@ -35,27 +35,36 @@
             // 
             // dgvPisos
             // 
+            dgvPisos.BackgroundColor = Color.DarkRed;
             dgvPisos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPisos.Location = new Point(12, 22);
             dgvPisos.Name = "dgvPisos";
             dgvPisos.RowHeadersWidth = 51;
-            dgvPisos.Size = new Size(776, 366);
+            dgvPisos.Size = new Size(776, 350);
             dgvPisos.TabIndex = 0;
             // 
             // btnValidarPiso
             // 
-            btnValidarPiso.Location = new Point(338, 409);
+            btnValidarPiso.BackColor = Color.DarkRed;
+            btnValidarPiso.Cursor = Cursors.Hand;
+            btnValidarPiso.FlatAppearance.BorderColor = Color.Black;
+            btnValidarPiso.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnValidarPiso.FlatStyle = FlatStyle.Flat;
+            btnValidarPiso.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnValidarPiso.ForeColor = Color.White;
+            btnValidarPiso.Location = new Point(345, 394);
             btnValidarPiso.Name = "btnValidarPiso";
-            btnValidarPiso.Size = new Size(94, 29);
+            btnValidarPiso.Size = new Size(114, 44);
             btnValidarPiso.TabIndex = 1;
             btnValidarPiso.Text = "Validar";
-            btnValidarPiso.UseVisualStyleBackColor = true;
+            btnValidarPiso.UseVisualStyleBackColor = false;
             btnValidarPiso.Click += btnValidarPiso_Click;
             // 
             // ValidarPisos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(800, 450);
             Controls.Add(btnValidarPiso);
             Controls.Add(dgvPisos);

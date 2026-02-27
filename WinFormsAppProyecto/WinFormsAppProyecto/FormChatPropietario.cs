@@ -23,7 +23,7 @@ namespace Formularios
             InitializeComponent();
             inquilinoId = inq;
             propietarioId = prop;
-            panelMnesajes.Resize += (s, ev) => CargarChat();
+            CargarChat();
         }
 
         private async void FormChatPropietario_Load(object sender, EventArgs e)
@@ -108,7 +108,16 @@ namespace Formularios
             panelMnesajes.Controls.Add(burbuja);
         }
 
-        
+        private async void recargar_Tick(object sender, EventArgs e)
+        {
+            panelMnesajes.Controls.Clear();
+            await CargarChat();
+        }
+
+        private async void btnRecargar_Click(object sender, EventArgs e)
+        {            
+            await CargarChat();
+        }
     }
 }
 

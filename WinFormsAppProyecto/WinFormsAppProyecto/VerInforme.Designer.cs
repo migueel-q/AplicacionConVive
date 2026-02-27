@@ -33,19 +33,27 @@
             // 
             // btnDescargar
             // 
-            btnDescargar.Location = new Point(337, 225);
+            btnDescargar.BackColor = Color.DarkRed;
+            btnDescargar.Cursor = Cursors.Hand;
+            btnDescargar.FlatAppearance.BorderColor = Color.Black;
+            btnDescargar.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnDescargar.FlatStyle = FlatStyle.Flat;
+            btnDescargar.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDescargar.ForeColor = Color.White;
+            btnDescargar.Location = new Point(243, 159);
             btnDescargar.Name = "btnDescargar";
-            btnDescargar.Size = new Size(94, 29);
+            btnDescargar.Size = new Size(111, 47);
             btnDescargar.TabIndex = 0;
             btnDescargar.Text = "Descargar";
-            btnDescargar.UseVisualStyleBackColor = true;
+            btnDescargar.UseVisualStyleBackColor = false;
             btnDescargar.Click += btnDescargar_Click;
             // 
             // VerInforme
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(640, 385);
             Controls.Add(btnDescargar);
             Name = "VerInforme";
             Text = "VerInforme";
