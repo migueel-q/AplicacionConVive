@@ -22,8 +22,8 @@ namespace Controladores
             Solicitud solicitud = new Solicitud();
             string json = JsonConvert.SerializeObject(solicitudNueva);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage mensaje = await cliente.PostAsync("http://192.168.1.104:8080/api/solicitudes", content);
+            System.Diagnostics.Debug.WriteLine(json);
+            HttpResponseMessage mensaje = await cliente.PostAsync("http://10.182.169.200:8080/api/solicitudes", content);
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
             solicitud = JsonConvert.DeserializeObject<Solicitud>(mensajeJson);
@@ -35,7 +35,7 @@ namespace Controladores
             try
             {
                 List<Solicitud> listaSolicitudes = new List<Solicitud>();
-                HttpResponseMessage mensaje = await cliente.GetAsync("http://192.168.1.104:8080/api/solicitudes");
+                HttpResponseMessage mensaje = await cliente.GetAsync("http://10.182.169.200:8080/api/solicitudes");
 
                 mensaje.EnsureSuccessStatusCode();
                 string mensajeJson = await mensaje.Content.ReadAsStringAsync();
@@ -53,7 +53,7 @@ namespace Controladores
         public async Task<Solicitud> getById(int id)
         {
             Solicitud solicitud = new Solicitud();
-            HttpResponseMessage mensaje = await cliente.GetAsync($"http://192.168.1.104:8080/api/solicitudes/{id}");
+            HttpResponseMessage mensaje = await cliente.GetAsync($"http://10.182.169.200/api/solicitudes/{id}");
             mensaje.EnsureSuccessStatusCode();
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();
 
@@ -63,7 +63,7 @@ namespace Controladores
 
         public async Task<bool> delete(int id)
         {
-            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://192.168.1.104:8080/api/solicitudes/{id}");
+            HttpResponseMessage mensaje = await cliente.DeleteAsync($"http://10.182.169.200:8080/api/solicitudes/{id}");
             mensaje.EnsureSuccessStatusCode();
             return true;
         }
@@ -74,7 +74,7 @@ namespace Controladores
             string json = JsonConvert.SerializeObject(solicitudModifcada);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage mensaje = await cliente.PutAsync($"http://192.168.1.104:8080/api/solicitudes/{id}", content);
+            HttpResponseMessage mensaje = await cliente.PutAsync($"http://10.182.169.200/api/solicitudes/{id}", content);
             mensaje.EnsureSuccessStatusCode();
 
             string mensajeJson = await mensaje.Content.ReadAsStringAsync();

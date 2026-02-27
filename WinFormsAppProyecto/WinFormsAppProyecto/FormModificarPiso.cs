@@ -47,6 +47,7 @@ namespace Formularios
                 disponible = true,
                 propietario = _propietario,
                 precio = double.Parse(txtPrecio.Text),
+                validado = true,
             };
             await pisoControlador.update(pisoActualizado, _piso.id);
             MessageBox.Show("Piso actualizado correctamente.");

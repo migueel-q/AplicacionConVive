@@ -60,23 +60,16 @@ fun ProyectoView(pisoViewModel: PisoViewModel){
 fun AppConviveTopBar() {
     TopAppBar(
         title = {
-            Text(
-                text = "ConVive",
-                style = MaterialTheme.typography.headlineLarge
-            )
-        },
-        actions = {
             Image(
                 painter = painterResource(id = R.drawable.convivelogo),
                 contentDescription = "Logo de ConVive",
                 modifier = Modifier
-                    .size(50.dp)
-                    .padding(end = 12.dp)
+                    .size(120.dp)
+                    .padding()
             )
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+            containerColor = Color.White,
         )
     )
 }

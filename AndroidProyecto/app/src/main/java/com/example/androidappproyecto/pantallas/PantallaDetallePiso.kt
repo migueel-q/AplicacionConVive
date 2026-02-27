@@ -1,8 +1,6 @@
 package com.example.androidappproyecto.pantallas
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.compose.foundation.background
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,17 +11,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.androidappproyecto.data.data.modelos.Contrato
-import com.example.androidappproyecto.data.data.modelos.Piso
-import com.example.androidappproyecto.data.data.modelos.Tarea
-import com.example.androidappproyecto.data.data.viewmodels.GastoViewModel
-import com.example.androidappproyecto.data.data.viewmodels.TareaViewModel
+import com.example.androidappproyecto.data.data.modelos.Inquilino
+import com.example.androidappproyecto.data.data.modelos.Propietario
 
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
 import kotlinx.coroutines.CoroutineScope
@@ -38,14 +34,12 @@ import java.time.LocalDate
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun PantallaDetallePiso(
- tareaViewModel: TareaViewModel,
- gastoViewModel: GastoViewModel
+    inqLogueado: Inquilino?,
+    propLogueado: Propietario?
 ) {
-    val piso = PisoSeleccionado.piso ?: return
-    var mostrarDialogoTarea by remember { mutableStateOf(false) }
-    var nombreTarea by remember { mutableStateOf("") }
-    var descripcionTarea by remember { mutableStateOf("") }
 
+    val piso = PisoSeleccionado.piso ?: return
+    val contexto = LocalContext.current
 
     LazyColumn(
         modifier = Modifier
@@ -133,62 +127,23 @@ fun PantallaDetallePiso(
                     )
                 )
             }
-
-            Spacer(modifier = Modifier.height(24.dp))
-            // BOTÓN AÑADIR TAREA
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(piso.precio.toString()+ "€/mes", fontWeight = FontWeight.Bold, fontSize = 24.sp)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(piso.descripcion)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text("Propietario: "+ piso.propietario?.nombre_real)
             Button(
-                onClick = { mostrarDialogoTarea = true },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
-                modifier = Modifier.fillMaxWidth()
+                onClick = {
+                    // viewModel.solicitarAlquiler(piso.id, usuarioLogueado.id)
+                    Toast.makeText(contexto, "Solicitud de alquiler enviada", Toast.LENGTH_SHORT).show()
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF800000))
             ) {
-                Text(text = "Añadir tarea", color = Color.White)
+                Text("Solicitar Alquiler", color = Color.White)
             }
         }
-    }
-
-    // DIALOGO DE NUEVA TAREA
-    if (mostrarDialogoTarea) {
-        AlertDialog(
-            onDismissRequest = { mostrarDialogoTarea = false },
-            title = { Text(text = "Nueva Tarea") },
-            text = {
-                Column {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    OutlinedTextField(
-                        value = descripcionTarea,
-                        onValueChange = { descripcionTarea = it },
-                        label = { Text("Descripción") }
-                    )
-                }
-            },
-            confirmButton = {
-                Button(
-                    onClick = {
-                        // Crear objeto Tarea
-                        val nuevaTarea = Tarea(
-                            descripcion = descripcionTarea,
-                            inquilino = null,
-                            piso = piso
-                        )
-                        // Lanzar coroutine para insertar usando ViewModel
-                        CoroutineScope(Dispatchers.IO).launch {
-                            tareaViewModel.insertarTarea(nuevaTarea)
-                        }
-                        mostrarDialogoTarea = false
-                        descripcionTarea = ""
-                    }
-                ) {
-                    Text("Guardar")
-                }
-            },
-            dismissButton = {
-                Button(
-                    onClick = { mostrarDialogoTarea = false }
-                ) {
-                    Text("Cancelar")
-                }
-            }
-        )
     }
 }
 

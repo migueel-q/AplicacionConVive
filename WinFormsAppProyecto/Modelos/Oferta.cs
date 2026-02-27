@@ -12,6 +12,6 @@ namespace Modelos
         public double cantidad {  get; set; }
         public string descripcion { get; set; }
         public Piso piso { get; set; }
-        public Piso inqulino { get; set; }
+        public Inquilino inquilino { get; set; }
     }
 }

@@ -14,6 +14,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
+import com.example.androidappproyecto.data.data.modelos.Inquilino
+import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.modelos.Usuario
 import com.example.androidappproyecto.data.data.repositorios.GastoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoPropietarioRepositorio
@@ -37,6 +39,9 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
     val context = LocalContext.current
 
     var currentUser by remember { mutableStateOf<Usuario?>(null) }
+    var currentUserInq by remember { mutableStateOf<Inquilino?>(null) }
+    var currentUserProp by remember { mutableStateOf<Propietario?>(null) }
+
 
     val loginViewModel: LoginViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
@@ -58,15 +63,28 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
     val loginEstado = loginViewModel.estado
     LaunchedEffect(loginEstado) {
         if (loginEstado is LoginState.Success) {
-            currentUser = Usuario(
-                id = loginEstado.userId,
-                nombre_usuario = loginEstado.nombreUsuario,
-                nombre_real = loginEstado.nombreReal,
-                email = loginEstado.email,
-                password = loginEstado.password,
-                fecha_nacimiento = loginEstado.fechaNac,
-                rol = loginEstado.rol
-            )
+            if(loginEstado.rol == "INQUILINO") {
+                currentUserInq = Inquilino(
+                    id = loginEstado.userId,
+                    nombre_usuario = loginEstado.nombreUsuario,
+                    nombre_real = loginEstado.nombreReal,
+                    email = loginEstado.email,
+                    password = loginEstado.password,
+                    fecha_nacimiento = loginEstado.fechaNac
+                )
+                currentUserProp = null
+            }
+            if(loginEstado.rol == "PROPIETARIO") {
+                currentUserProp = Propietario(
+                    id = loginEstado.userId,
+                    nombre_usuario = loginEstado.nombreUsuario,
+                    nombre_real = loginEstado.nombreReal,
+                    email = loginEstado.email,
+                    password = loginEstado.password,
+                    fecha_nacimiento = loginEstado.fechaNac
+                    )
+                currentUserInq = null
+            }
         }
     }
 
@@ -121,7 +139,7 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
         } }
 
         composable(Rutas.Perfil.name) {
-            PantallaPerfil(user = currentUser ?: Usuario(0,"","","","","",  ""))
+            PantallaPerfil(user = currentUser ?: Usuario(0,"","","","",""), navController, loginViewModel)
         }
         composable(Rutas.DetallePiso.name) {
             val tareaViewModel: TareaViewModel = viewModel(
@@ -135,20 +153,6 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
                 }
             )
 
-            val gastoViewModel: GastoViewModel = viewModel(
-                factory = object : ViewModelProvider.Factory {
-                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                        val database = AppDatabase.getDatabase(context)
-                        val repo = GastoRepositorio(database.gastoDao(), ApiCliente.gastoApi)
-                        @Suppress("UNCHECKED_CAST")
-                        return GastoViewModel(repo) as T
-                    }
-                }
-            )
-            PantallaDetallePiso(
-                tareaViewModel = tareaViewModel,
-                gastoViewModel = gastoViewModel
-            )
-        }
+        composable(Rutas.DetallePiso.name) { PantallaDetallePiso(currentUserInq, currentUserProp) }
     }
 }
