@@ -1,6 +1,8 @@
 package com.example.androidappproyecto.pantallas
 
+import android.R.attr.onClick
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,12 +42,15 @@ import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Piso
 import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
+import com.example.androidappproyecto.navegacion.PisoSeleccionado
+import com.example.androidappproyecto.navegacion.Rutas
 
 @Composable
 fun PantallaHome(
     inquilino: Inquilino?,
     propietario: Propietario?,
-    pisoViewModel: PisoViewModel
+    pisoViewModel: PisoViewModel,
+    onPisoClick: (Piso) -> Unit
 ) {
     // Cargar pisos al entrar a la pantalla
     LaunchedEffect(Unit) {
@@ -92,7 +97,7 @@ fun PantallaHome(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         items(listaDePisos) { piso ->
-                            PisoCard(piso)
+                            PisoCard(piso, onClick={onPisoClick(piso)})
                         }
                     }
                 }
@@ -103,11 +108,12 @@ fun PantallaHome(
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun PisoCard(piso: Piso) {
+fun PisoCard(piso: Piso, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(4.dp),
+            .padding(4.dp)
+            .clickable { onClick() },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(

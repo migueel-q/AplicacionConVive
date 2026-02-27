@@ -1,6 +1,8 @@
 package com.example.androidappproyecto.pantallas
 
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,16 +16,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.example.androidappproyecto.data.data.modelos.Contrato
 import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Propietario
-
+import com.example.androidappproyecto.data.data.viewmodels.ContratoViewModel
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
+import java.time.LocalDate
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun PantallaDetallePiso(
     inqLogueado: Inquilino?,
-    propLogueado: Propietario?
+    propLogueado: Propietario?,
+    viewModel: ContratoViewModel
 ) {
 
     val piso = PisoSeleccionado.piso ?: return
@@ -46,7 +52,8 @@ fun PantallaDetallePiso(
                 Text(
                     text = "${dir.calle}, ${dir.ciudad} (${dir.provincia})",
                     style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 20.sp
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
@@ -54,10 +61,18 @@ fun PantallaDetallePiso(
             Spacer(modifier = Modifier.height(8.dp))
             Text(piso.descripcion)
             Spacer(modifier = Modifier.height(16.dp))
-            Text("Propietario: "+ piso.propietario?.nombre_real)
+            Text("Propietario: "+ piso.propietario?.nombre_real?.uppercase())
+            Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = {
-                    // viewModel.solicitarAlquiler(piso.id, usuarioLogueado.id)
+                    viewModel.insertarContrato(Contrato(
+                        descripcion = "Solicitud de alquiler",
+                        precio = piso.precio,
+                        fecha_inicio = LocalDate.now().toString(),
+                        fecha_fin = LocalDate.now().plusMonths(1).toString(),
+                        aceptado = false,
+                        piso = piso
+                    ))
                     Toast.makeText(contexto, "Solicitud de alquiler enviada", Toast.LENGTH_SHORT).show()
                 },
                 modifier = Modifier.fillMaxWidth(),

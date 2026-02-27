@@ -1,5 +1,7 @@
 package com.example.androidappproyecto.navegacion
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -14,10 +16,12 @@ import androidx.navigation.NavHostController
 import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.modelos.Usuario
+import com.example.androidappproyecto.data.data.repositorios.ContratoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoPropietarioRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.PropietarioRepositorio
+import com.example.androidappproyecto.data.data.viewmodels.ContratoViewModel
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoPropietarioViewModel
 import com.example.androidappproyecto.data.data.viewmodels.LoginState
 import com.example.androidappproyecto.data.data.viewmodels.LoginViewModel
@@ -26,6 +30,7 @@ import com.example.androidappproyecto.database.ApiCliente
 import com.example.androidappproyecto.database.AppDatabase
 import com.example.androidappproyecto.pantallas.*
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pisoViewModel: PisoViewModel) {
     val context = LocalContext.current
@@ -92,7 +97,14 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
                 PantallaHome(
                     currentUserInq,
                     currentUserProp,
-                    pisoViewModel = pisoViewModel
+                    pisoViewModel = pisoViewModel,
+                    onPisoClick = { piso ->
+                        // 1. Guardamos el piso seleccionado para que la otra pantalla lo lea
+                        PisoSeleccionado.piso = piso
+
+                        // 2. Navegamos a la pantalla de detalle
+                        navController.navigate(Rutas.DetallePiso.name)
+                    }
                 )
         }
         composable(Rutas.Buscar.name) { PantallaBuscar(pisoViewModel) }
@@ -124,6 +136,16 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
             PantallaPerfil(currentUserInq, currentUserProp, navController, loginViewModel)
         }
 
-        composable(Rutas.DetallePiso.name) { PantallaDetallePiso(currentUserInq, currentUserProp) }
+        composable(Rutas.DetallePiso.name) {
+            val contratoViewModel: ContratoViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        val repository = ContratoRepositorio(AppDatabase.getDatabase(context).contratoDao(), ApiCliente.contratoApi)
+                        @Suppress("UNCHECKED_CAST")
+                        return ContratoViewModel(repository) as T
+                    }
+                }
+            )
+            PantallaDetallePiso(currentUserInq, currentUserProp, contratoViewModel) }
     }
 }
