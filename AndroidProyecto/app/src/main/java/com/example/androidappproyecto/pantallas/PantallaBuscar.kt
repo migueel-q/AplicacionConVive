@@ -105,15 +105,12 @@ fun PantallaBuscar(pisoViewModel: PisoViewModel) {
         },
         modifier = Modifier.fillMaxSize(),
         update = { mapView ->
-            // Buscamos si ya existe el overlay de ubicación para no borrarlo
             val locationOverlay = mapView.overlays.firstOrNull { it is MyLocationNewOverlay }
 
             mapView.overlays.clear()
 
-            // Volvemos a añadir la ubicación si existía
             locationOverlay?.let { mapView.overlays.add(it) }
 
-            // Añadimos los marcadores de los pisos
             puntosPisos.forEach { (texto, punto) ->
                 val marker = Marker(mapView)
                 marker.position = punto
@@ -122,7 +119,7 @@ fun PantallaBuscar(pisoViewModel: PisoViewModel) {
                 val originalDrawable = ContextCompat.getDrawable(context, R.drawable.img)
                 if (originalDrawable != null) {
                     val bitmap = (originalDrawable as BitmapDrawable).bitmap
-                    val scaledBitmap = createScaledBitmap(bitmap, 100, 100, true)
+                    val scaledBitmap = createScaledBitmap(bitmap, 40, 40, true)
                     marker.icon = BitmapDrawable(context.resources, scaledBitmap)
                 }
                 mapView.overlays.add(marker)

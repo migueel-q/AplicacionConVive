@@ -10,7 +10,6 @@ import com.example.androidappproyecto.data.data.modelos.Contrato
 import com.example.androidappproyecto.data.data.modelos.Direccion
 import com.example.androidappproyecto.data.data.modelos.Piso
 import com.example.androidappproyecto.data.data.modelos.Propietario
-import com.example.androidappproyecto.data.data.pisos
 import com.example.androidappproyecto.data.data.repositorios.ContratoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.PisoRepositorio
 import kotlinx.coroutines.flow.Flow

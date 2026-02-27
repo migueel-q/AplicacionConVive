@@ -19,6 +19,9 @@ interface TareaDao {
 
     @Insert
     suspend fun insertTarea(tarea: Tarea)
+    @Query("SELECT * FROM tareas WHERE piso_id_piso = :pisoId")
+    fun getTareasByPiso(pisoId: Int): Flow<List<Tarea>>
+
 
     @Insert
     suspend fun insertTareas(tareas: List<Tarea>)
