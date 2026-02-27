@@ -1,5 +1,6 @@
 package com.example.androidappproyecto.navegacion
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.*
@@ -26,6 +27,7 @@ import com.example.androidappproyecto.data.data.viewmodels.InquilinoViewModel
 import com.example.androidappproyecto.data.data.viewmodels.LoginState
 import com.example.androidappproyecto.data.data.viewmodels.LoginViewModel
 import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
+import com.example.androidappproyecto.data.data.viewmodels.TareaViewModel
 import com.example.androidappproyecto.database.ApiCliente
 import com.example.androidappproyecto.database.AppDatabase
 import com.example.androidappproyecto.pantallas.*
@@ -125,11 +127,29 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
 //            PantallaChat(viewModel = chatViewModel, inqLogueado = currentUserInq)
 //        }
 
-        composable(Rutas.MisPisos.name) { PantallaMisPisos(navController) }
+        composable(Rutas.MisPisos.name) { currentUser?.let { user ->
+            PantallaMisPisos(
+                navController = navController,
+                userId = user.id,
+                rol = user.rol,
+                pisoViewModel = pisoViewModel
+            )
+        } }
 
         composable(Rutas.Perfil.name) {
             PantallaPerfil(currentUserInq, currentUserProp, navController, loginViewModel)
         }
+        composable(Rutas.DetallePiso.name) {
+            val tareaViewModel: TareaViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        val database = AppDatabase.getDatabase(context)
+                        val repo = TareaRepositorio(database.tareaDao(), ApiCliente.tareaApi)
+                        @Suppress("UNCHECKED_CAST")
+                        return TareaViewModel(repo) as T
+                    }
+                }
+            )
 
         composable(Rutas.DetallePiso.name) {
             val contratoViewModel: ContratoViewModel = viewModel(

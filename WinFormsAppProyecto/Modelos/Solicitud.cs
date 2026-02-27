@@ -14,6 +14,7 @@ namespace Modelos
         public string nombreInquilino => inquilino.nombre_real;
         public Oferta oferta { get; set; }
         public string piso => oferta.piso.calle;
+        public string provincia => oferta.piso.provincia;
         public bool aceptado { get; set; }
         
     }

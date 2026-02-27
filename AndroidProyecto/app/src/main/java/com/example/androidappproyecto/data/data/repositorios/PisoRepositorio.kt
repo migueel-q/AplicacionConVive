@@ -12,6 +12,7 @@ class PisoRepositorio(
     private val pisoApi: PisoApi,
     private val propietarioDao: PropietarioDao
 ){
+
     fun obtenerTodosLosPisos(): Flow<List<Piso>> {
         return pisoDao.getAllPisos()
     }

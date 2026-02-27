@@ -5,9 +5,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -38,17 +42,23 @@ fun PantallaDetallePiso(
     val contexto = LocalContext.current
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         contentPadding = PaddingValues(16.dp)
     ) {
         item {
+            // FOTO HERO
             GlideImage(
-                model = piso.url_imagen,
-                contentDescription = "Foto piso",
+                model = piso.url_imagen ?: "",
+                contentDescription = "Foto del piso",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(220.dp)
+                    .height(250.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+                contentScale = androidx.compose.ui.layout.ContentScale.Crop
             )
+
             Spacer(modifier = Modifier.height(12.dp))
             piso.direccion?.let { dir ->
                 Text(
@@ -94,3 +104,4 @@ fun PantallaDetallePiso(
         }
     }
 }
+

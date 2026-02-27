@@ -49,13 +49,15 @@ namespace Formularios
             txtUrlImagen = new TextBox();
             pictureBoxImagen = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
+            SuspendLayout();
             // 
             // lblId
             // 
             lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblId.Location = new Point(12, 15);
             lblId.Name = "lblId";
-            lblId.Size = new Size(24, 20);
+            lblId.Size = new Size(27, 23);
             lblId.TabIndex = 0;
             lblId.Text = "ID";
             // 
@@ -70,9 +72,10 @@ namespace Formularios
             // lblDireccion
             // 
             lblDireccion.AutoSize = true;
+            lblDireccion.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblDireccion.Location = new Point(12, 55);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(42, 20);
+            lblDireccion.Size = new Size(47, 23);
             lblDireccion.TabIndex = 2;
             lblDireccion.Text = "Calle";
             // 
@@ -87,9 +90,10 @@ namespace Formularios
             // lblCiudad
             // 
             lblCiudad.AutoSize = true;
+            lblCiudad.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblCiudad.Location = new Point(12, 95);
             lblCiudad.Name = "lblCiudad";
-            lblCiudad.Size = new Size(56, 20);
+            lblCiudad.Size = new Size(64, 23);
             lblCiudad.TabIndex = 4;
             lblCiudad.Text = "Ciudad";
             // 
@@ -104,9 +108,10 @@ namespace Formularios
             // lblProvincia
             // 
             lblProvincia.AutoSize = true;
+            lblProvincia.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblProvincia.Location = new Point(12, 135);
             lblProvincia.Name = "lblProvincia";
-            lblProvincia.Size = new Size(69, 20);
+            lblProvincia.Size = new Size(80, 23);
             lblProvincia.TabIndex = 6;
             lblProvincia.Text = "Provincia";
             // 
@@ -121,9 +126,10 @@ namespace Formularios
             // lblDescripcion
             // 
             lblDescripcion.AutoSize = true;
+            lblDescripcion.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblDescripcion.Location = new Point(12, 175);
             lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(87, 20);
+            lblDescripcion.Size = new Size(98, 23);
             lblDescripcion.TabIndex = 8;
             lblDescripcion.Text = "Descripción";
             // 
@@ -139,9 +145,10 @@ namespace Formularios
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
+            lblPrecio.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblPrecio.Location = new Point(12, 265);
             lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(50, 20);
+            lblPrecio.Size = new Size(57, 23);
             lblPrecio.TabIndex = 10;
             lblPrecio.Text = "Precio";
             // 
@@ -156,9 +163,10 @@ namespace Formularios
             // lblDisponible
             // 
             lblDisponible.AutoSize = true;
+            lblDisponible.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblDisponible.Location = new Point(12, 305);
             lblDisponible.Name = "lblDisponible";
-            lblDisponible.Size = new Size(81, 20);
+            lblDisponible.Size = new Size(90, 23);
             lblDisponible.TabIndex = 12;
             lblDisponible.Text = "Disponible";
             // 
@@ -173,9 +181,10 @@ namespace Formularios
             // lblPropietario
             // 
             lblPropietario.AutoSize = true;
+            lblPropietario.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             lblPropietario.Location = new Point(12, 345);
             lblPropietario.Name = "lblPropietario";
-            lblPropietario.Size = new Size(83, 20);
+            lblPropietario.Size = new Size(94, 23);
             lblPropietario.TabIndex = 14;
             lblPropietario.Text = "Propietario";
             // 
@@ -189,20 +198,23 @@ namespace Formularios
             // 
             // btnAñadirTarea
             // 
+            btnAñadirTarea.BackColor = Color.DarkRed;
+            btnAñadirTarea.ForeColor = SystemColors.ControlLightLight;
             btnAñadirTarea.Location = new Point(120, 380);
             btnAñadirTarea.Name = "btnAñadirTarea";
             btnAñadirTarea.Size = new Size(120, 30);
             btnAñadirTarea.TabIndex = 19;
             btnAñadirTarea.Text = "Añadir tarea";
-            btnAñadirTarea.UseVisualStyleBackColor = true;
+            btnAñadirTarea.UseVisualStyleBackColor = false;
             btnAñadirTarea.Click += btnAñadirTarea_Click;
             // 
             // lblUrlImagen
             // 
             lblUrlImagen.AutoSize = true;
+            lblUrlImagen.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUrlImagen.Location = new Point(400, 15);
             lblUrlImagen.Name = "lblUrlImagen";
-            lblUrlImagen.Size = new Size(82, 20);
+            lblUrlImagen.Size = new Size(95, 23);
             lblUrlImagen.TabIndex = 16;
             lblUrlImagen.Text = "Url Imagen";
             // 

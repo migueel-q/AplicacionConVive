@@ -18,7 +18,9 @@ class ContratoRepositorio(
     suspend fun obtenerContratoPorId(id: Int): Contrato? {
         return contratoDao.getContratoById(id)
     }
-
+    fun getContratosPorPiso(pisoId: Int): List<Contrato> {
+        return contratoDao.getContratosPorPiso(pisoId)
+    }
     suspend fun insertarContrato(contrato: Contrato) {
         try {
             val contratoCreadoEnServidor = contratoApi.createContrato(contrato)

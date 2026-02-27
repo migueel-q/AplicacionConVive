@@ -55,5 +55,8 @@
     <Compile Update="VerInforme.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="VerPisoPropietario.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
