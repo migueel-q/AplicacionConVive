@@ -97,6 +97,7 @@ fun PantallaHome(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         items(listaDePisos) { piso ->
+                            if(piso.validado && piso.disponible)
                             PisoCard(piso, onClick={onPisoClick(piso)})
                         }
                     }

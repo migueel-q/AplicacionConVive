@@ -20,6 +20,7 @@ import com.example.androidappproyecto.data.data.modelos.Contrato
 import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.viewmodels.ContratoViewModel
+import com.example.androidappproyecto.data.data.viewmodels.InquilinoViewModel
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
 import java.time.LocalDate
 
@@ -29,7 +30,8 @@ import java.time.LocalDate
 fun PantallaDetallePiso(
     inqLogueado: Inquilino?,
     propLogueado: Propietario?,
-    viewModel: ContratoViewModel
+    viewModel: ContratoViewModel,
+    inqViewModel: InquilinoViewModel,
 ) {
 
     val piso = PisoSeleccionado.piso ?: return
@@ -63,22 +65,31 @@ fun PantallaDetallePiso(
             Spacer(modifier = Modifier.height(16.dp))
             Text("Propietario: "+ piso.propietario?.nombre_real?.uppercase())
             Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = {
-                    viewModel.insertarContrato(Contrato(
-                        descripcion = "Solicitud de alquiler",
-                        precio = piso.precio,
-                        fecha_inicio = LocalDate.now().toString(),
-                        fecha_fin = LocalDate.now().plusMonths(1).toString(),
-                        aceptado = false,
-                        piso = piso
-                    ))
-                    Toast.makeText(contexto, "Solicitud de alquiler enviada", Toast.LENGTH_SHORT).show()
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF800000))
-            ) {
-                Text("Solicitar Alquiler", color = Color.White)
+            if (inqLogueado != null) {
+                Button(
+                    onClick = {
+                        val contr = Contrato(
+                            descripcion = "Solicitud de alquiler",
+                            precio = piso.precio,
+                            fecha_inicio = LocalDate.now().toString(),
+                            fecha_fin = LocalDate.now().plusMonths(1).toString(),
+                            aceptado = false,
+                            piso = piso
+                        )
+                        viewModel.insertarContrato(contr)
+                        inqLogueado.contrato = contr
+                        inqViewModel.actualizarInquilino(inqLogueado)
+                        Toast.makeText(
+                            contexto,
+                            "Solicitud de alquiler enviada",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF800000))
+                ) {
+                    Text("Solicitar Alquiler", color = Color.White)
+                }
             }
         }
     }

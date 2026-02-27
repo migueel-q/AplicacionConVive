@@ -160,128 +160,126 @@ fun PantallaLogin(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón Registrarse (Abre el Dialog)
-        OutlinedButton(
-            onClick = { showRegistroDialog = true },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = rojo,
-            )
-        ) {
-            Text("REGISTRARSE")
-        }
+//        OutlinedButton(
+//            onClick = { showRegistroDialog = true },
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .height(50.dp),
+//            colors = ButtonDefaults.buttonColors(
+//                containerColor = Color.White,
+//                contentColor = rojo,
+//            )
+//        ) {
+//            Text("REGISTRARSE")
+//        }
     }
 
-    // DIÁLOGO DE REGISTRO
-    if (showRegistroDialog) {
-        DialogRegistro(
-            onDismiss = { showRegistroDialog = false },
-            onConfirm = { nomUsu, nomReal, correo, pass, fecha, esProp ->
-                viewModel.registrar(nomUsu, nomReal, correo, pass, fecha, esProp)
-                showRegistroDialog = false
-            }
-        )
-    }
+//    if (showRegistroDialog) {
+//        DialogRegistro(
+//            onDismiss = { showRegistroDialog = false },
+//            onConfirm = { nomUsu, nomReal, correo, pass, fecha, esProp ->
+//                viewModel.registrar(nomUsu, nomReal, correo, pass, fecha, esProp)
+//                showRegistroDialog = false
+//            }
+//        )
+//    }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun DialogRegistro(
-    onDismiss: () -> Unit,
-    onConfirm: (String, String, String, String, String, Boolean) -> Unit
-) {
-    var regNombreUsuario by remember { mutableStateOf("") }
-    var regNombreReal by remember { mutableStateOf("") }
-    var regEmail by remember { mutableStateOf("") }
-    var regPass by remember { mutableStateOf("") }
-    var regFechaNac by remember { mutableStateOf("") }
-    var esPropietario by remember { mutableStateOf(false) }
-    var expanded by remember { mutableStateOf(false) }
-
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Nueva Cuenta", fontWeight = FontWeight.Bold) },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedTextField(value = regNombreUsuario, onValueChange = { regNombreUsuario = it }, label = { Text("Username") },
-                    colors = TextFieldDefaults.colors(
-                        focusedLabelColor = rojo,
-                        focusedIndicatorColor = rojo
-                    ))
-                OutlinedTextField(value = regNombreReal, onValueChange = { regNombreReal = it }, label = { Text("Nombre Real") },
-                    colors = TextFieldDefaults.colors(
-                        focusedLabelColor = rojo,
-                        focusedIndicatorColor = rojo
-                    ))
-                OutlinedTextField(value = regEmail, onValueChange = { regEmail = it }, label = { Text("Email") },
-                    colors = TextFieldDefaults.colors(
-                        focusedLabelColor = rojo,
-                        focusedIndicatorColor = rojo
-                    ))
-                OutlinedTextField(
-                    value = regPass,
-                    onValueChange = { regPass = it },
-                    label = { Text("Contraseña") },
-                    visualTransformation = PasswordVisualTransformation(),
-                    colors = TextFieldDefaults.colors(
-                        focusedLabelColor = rojo,
-                        focusedIndicatorColor = rojo
-                    )
-                )
-                OutlinedTextField(value = regFechaNac, onValueChange = { regFechaNac = it }, label = { Text("Fecha Nac (YYYY-MM-DD)") },
-                    colors = TextFieldDefaults.colors(
-                        focusedLabelColor = rojo,
-                        focusedIndicatorColor = rojo
-                    ))
-
-                // Desplegable (Exposed Dropdown Menu)
-                ExposedDropdownMenuBox(
-                    expanded = expanded,
-                    onExpandedChange = { expanded = !expanded }
-                ) {
-                    OutlinedTextField(
-                        value = if (esPropietario) "Propietario" else "Inquilino",
-                        onValueChange = {},
-                        readOnly = true,
-                        label = { Text("Tipo de usuario") },
-                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                        modifier = Modifier.menuAnchor(),
-                        colors = TextFieldDefaults.colors(
-                            focusedLabelColor = rojo,
-                            focusedIndicatorColor = rojo
-                        )
-                    )
-                    ExposedDropdownMenu(
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false }
-                    ) {
-                        DropdownMenuItem(
-                            text = { Text("Inquilino") },
-                            onClick = { esPropietario = false; expanded = false }
-                        )
-                        DropdownMenuItem(
-                            text = { Text("Propietario") },
-                            onClick = { esPropietario = true; expanded = false }
-                        )
-                    }
-                }
-            }
-        },
-        confirmButton = {
-            Button(onClick = {
-                onConfirm(regNombreUsuario, regNombreReal, regEmail, regPass, regFechaNac, esPropietario)
-            }, colors = ButtonDefaults.buttonColors(
-                containerColor = rojo,
-                contentColor = Color.White,
-            )) {
-                Text("Registrar")
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss, colors = ButtonDefaults.textButtonColors(contentColor = rojo)) { Text("Cancelar") }
-        }
-    )
-}
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun DialogRegistro(
+//    onDismiss: () -> Unit,
+//    onConfirm: (String, String, String, String, String, Boolean) -> Unit
+//) {
+//    var regNombreUsuario by remember { mutableStateOf("") }
+//    var regNombreReal by remember { mutableStateOf("") }
+//    var regEmail by remember { mutableStateOf("") }
+//    var regPass by remember { mutableStateOf("") }
+//    var regFechaNac by remember { mutableStateOf("") }
+//    var esPropietario by remember { mutableStateOf(false) }
+//    var expanded by remember { mutableStateOf(false) }
+//
+//    AlertDialog(
+//        onDismissRequest = onDismiss,
+//        title = { Text("Nueva Cuenta", fontWeight = FontWeight.Bold) },
+//        text = {
+//            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+//                OutlinedTextField(value = regNombreUsuario, onValueChange = { regNombreUsuario = it }, label = { Text("Username") },
+//                    colors = TextFieldDefaults.colors(
+//                        focusedLabelColor = rojo,
+//                        focusedIndicatorColor = rojo
+//                    ))
+//                OutlinedTextField(value = regNombreReal, onValueChange = { regNombreReal = it }, label = { Text("Nombre Real") },
+//                    colors = TextFieldDefaults.colors(
+//                        focusedLabelColor = rojo,
+//                        focusedIndicatorColor = rojo
+//                    ))
+//                OutlinedTextField(value = regEmail, onValueChange = { regEmail = it }, label = { Text("Email") },
+//                    colors = TextFieldDefaults.colors(
+//                        focusedLabelColor = rojo,
+//                        focusedIndicatorColor = rojo
+//                    ))
+//                OutlinedTextField(
+//                    value = regPass,
+//                    onValueChange = { regPass = it },
+//                    label = { Text("Contraseña") },
+//                    visualTransformation = PasswordVisualTransformation(),
+//                    colors = TextFieldDefaults.colors(
+//                        focusedLabelColor = rojo,
+//                        focusedIndicatorColor = rojo
+//                    )
+//                )
+//                OutlinedTextField(value = regFechaNac, onValueChange = { regFechaNac = it }, label = { Text("Fecha Nac (YYYY-MM-DD)") },
+//                    colors = TextFieldDefaults.colors(
+//                        focusedLabelColor = rojo,
+//                        focusedIndicatorColor = rojo
+//                    ))
+//
+//                // Desplegable (Exposed Dropdown Menu)
+//                ExposedDropdownMenuBox(
+//                    expanded = expanded,
+//                    onExpandedChange = { expanded = !expanded }
+//                ) {
+//                    OutlinedTextField(
+//                        value = if (esPropietario) "Propietario" else "Inquilino",
+//                        onValueChange = {},
+//                        readOnly = true,
+//                        label = { Text("Tipo de usuario") },
+//                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+//                        modifier = Modifier.menuAnchor(),
+//                        colors = TextFieldDefaults.colors(
+//                            focusedLabelColor = rojo,
+//                            focusedIndicatorColor = rojo
+//                        )
+//                    )
+//                    ExposedDropdownMenu(
+//                        expanded = expanded,
+//                        onDismissRequest = { expanded = false }
+//                    ) {
+//                        DropdownMenuItem(
+//                            text = { Text("Inquilino") },
+//                            onClick = { esPropietario = false; expanded = false }
+//                        )
+//                        DropdownMenuItem(
+//                            text = { Text("Propietario") },
+//                            onClick = { esPropietario = true; expanded = false }
+//                        )
+//                    }
+//                }
+//            }
+//        },
+//        confirmButton = {
+//            Button(onClick = {
+//                onConfirm(regNombreUsuario, regNombreReal, regEmail, regPass, regFechaNac, esPropietario)
+//            }, colors = ButtonDefaults.buttonColors(
+//                containerColor = rojo,
+//                contentColor = Color.White,
+//            )) {
+//                Text("Registrar")
+//            }
+//        },
+//        dismissButton = {
+//            TextButton(onClick = onDismiss, colors = ButtonDefaults.textButtonColors(contentColor = rojo)) { Text("Cancelar") }
+//        }
+//    )
+//}
