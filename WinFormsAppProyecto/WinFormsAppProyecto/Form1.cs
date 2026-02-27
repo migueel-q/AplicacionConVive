@@ -9,7 +9,6 @@ namespace WinFormsAppProyecto
     {
         Propietario propietario;
         Inquilino inquilino;
-        Administrador administrador;
 
         public Form1(Inquilino inquilino)
         {
@@ -18,15 +17,15 @@ namespace WinFormsAppProyecto
             this.inquilino = inquilino;
             CatalogoPisos catalogoPisos = new CatalogoPisos();
             AbrirFormulario(catalogoPisos);
-
             añadirPiso.Visible = false;
             modificarPiso.Visible = false;
             añadirPiso.Visible = false;
-            gestionarOfertas.Visible = false;
-            gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             button1.Visible = false;
             verMiPisoToolStripMenuItem.Visible = true;
+            verMisPisos.Visible = false;
+
+            this.CenterToScreen();
         }
 
         public Form1(Propietario propietario)
@@ -38,9 +37,11 @@ namespace WinFormsAppProyecto
             AbrirFormulario(catalogoPisos);
             gestionGastos.Visible = false;
             hacerOferta.Visible = false;
-            hacerSolicitud.Visible = false;
             button1.Visible = false;
             verMiPisoToolStripMenuItem.Visible = false;
+            gestionarOfertas.Visible = false;
+
+            this.CenterToScreen();
         }
 
         public Form1(Administrador administrador)
@@ -52,17 +53,14 @@ namespace WinFormsAppProyecto
             AbrirFormulario(catalogoPisos);
             gestionGastos.Visible = false;
             hacerOferta.Visible = false;
-            hacerSolicitud.Visible = false;
             añadirPiso.Visible = false;
             modificarPiso.Visible = false;
             añadirPiso.Visible = false;
             gestionarOfertas.Visible = false;
-            gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             chatToolStripMenuItem.Visible = false;
             gestiónPisosToolStripMenuItem.Visible = false;
             gestiónOfertasToolStripMenuItem.Visible = false;
-            gestiónSolicitudesToolStripMenuItem.Visible = false;
         }
         private void AbrirFormulario(Form formulario)
         {
@@ -229,6 +227,34 @@ namespace WinFormsAppProyecto
 
             FormVerMiPiso formVerMiPiso = new FormVerMiPiso(inquilino, null);
             AbrirFormulario(formVerMiPiso);
+        }
+
+        private void verMisPisos_Click(object sender, EventArgs e)
+        {
+            CatalogosPisosPropietario catalogosPisosPropietario = new CatalogosPisosPropietario(propietario);
+            AbrirFormulario(catalogosPisosPropietario);
+        }
+
+        private void hacerOferta_Click(object sender, EventArgs e)
+        {
+            CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
+
+            if (catalogo == null)
+            {
+                MessageBox.Show("Primero abre el catálogo de pisos."); return;
+            }
+            else
+            {
+                Piso pisoSeleccion = catalogo.pisoSeleccionado;
+                FormOfertasSolicitudes formOfertas = new FormOfertasSolicitudes(inquilino, pisoSeleccion);
+                AbrirFormulario(formOfertas);
+            }
+        }
+
+        private void gestionarOfertas_Click(object sender, EventArgs e)
+        {
+            GestionSolicitudes gestionSolicitudes = new GestionSolicitudes();
+            AbrirFormulario(gestionSolicitudes);
         }
     }
 }

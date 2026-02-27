@@ -24,7 +24,17 @@ interface InquilinoPropietarioDao {
 
     @Delete
     suspend fun deleteInquilinoPropietario(inquilinoPropietario: InquilinoPropietario)
-
+    @Query("""
+    SELECT 
+        CASE 
+            WHEN enviado_por_inquilino = 1 THEN prop_id 
+            ELSE inq_id 
+        END 
+    FROM inquilinos_propietarios 
+    WHERE inq_id = :idInquilino OR prop_id = :idInquilino 
+    LIMIT 1
+""")
+    suspend fun getPropietarioIdByInquilino(idInquilino: Int): Int?
 }
 
 

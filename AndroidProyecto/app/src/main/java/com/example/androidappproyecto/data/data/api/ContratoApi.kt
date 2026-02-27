@@ -1,6 +1,8 @@
 package com.example.androidappproyecto.data.data.api
 
 import com.example.androidappproyecto.data.data.modelos.Contrato
+import com.example.androidappproyecto.data.data.modelos.Piso
+
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -25,4 +27,5 @@ interface ContratoApi {
 
     @DELETE("api/contratos/{id}")
     suspend fun deleteContrato(@Path("id") id: Int)
+
 }

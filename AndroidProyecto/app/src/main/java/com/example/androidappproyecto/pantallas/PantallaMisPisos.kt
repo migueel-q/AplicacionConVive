@@ -6,64 +6,80 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.androidappproyecto.data.data.modelos.Direccion
 import com.example.androidappproyecto.data.data.modelos.Piso
+import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
 
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
 import com.example.androidappproyecto.navegacion.Rutas
 
 @Composable
-fun PantallaMisPisos(navController: NavHostController) {
+fun PantallaMisPisos(
+    navController: NavHostController,
+    userId: Int,
+    rol: String,
+    pisoViewModel: PisoViewModel
+) {
+    // Cargar pisos al entrar a la pantalla
+    LaunchedEffect(Unit) {
+        pisoViewModel.cargarPisos(userId, rol)
+    }
 
-    val pisosPrueba = listOf(
-        Piso(
-            titulo = "Piso Centro",
-            direccion = Direccion(
-                calle = "Calle Consolación",
-                ciudad = "Torrelavega",
-                provincia = "Cantabria"
-            ),
-            descripcion = "Luminoso, 3 habitaciones, cerca de todo.",
-            url_imagen = "https://picsum.photos/600/400?random=1",
-            disponible = true,
-            propietario = null,
-            precio = 350.00,
-            id = 1
-        ),
-        Piso(
-            titulo = "Piso Playa",
-            direccion = Direccion(
-                calle = "Calle Burgos",
-                ciudad = "Santander",
-                provincia = "Cantabria"
-            ),
-            descripcion = "Vistas al mar, ideal para teletrabajo.",
-            propietario = null,
-            precio = 420.00,
-            url_imagen = "https://picsum.photos/600/400?random=2",
-            id = 2
-        )
-    )
+    val listaDePisos by pisoViewModel.pisos.collectAsStateWithLifecycle()
+    val estado = pisoViewModel.estado
 
-    if (pisosPrueba.isEmpty()) {
-        EstadoSinPisos()
-    } else {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            items(pisosPrueba) { piso ->
-                TarjetaPiso(piso) {
-                    PisoSeleccionado.piso = piso
-                    navController.navigate(Rutas.DetallePiso.name)
+    Column(modifier = Modifier.fillMaxSize()) {
+
+        when (estado) {
+            PisoViewModel.HomeState.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+
+            is PisoViewModel.HomeState.Error -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = (estado as PisoViewModel.HomeState.Error).mensaje
+                            ?: "Error desconocido"
+                    )
+                }
+            }
+
+            PisoViewModel.HomeState.Success, PisoViewModel.HomeState.Idle -> {
+                if (listaDePisos.isEmpty()) {
+                    EstadoSinPisos()
+                } else {
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding = PaddingValues(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(listaDePisos) { piso ->
+                            TarjetaPiso(piso = piso, onClick = {
+                                // Guardamos el piso seleccionado en un objeto global o ViewModel
+                                PisoSeleccionado.piso = piso
+                                // Navegamos a la pantalla de detalle
+                                navController.navigate(Rutas.DetallePiso.name)
+                            })
+                        }
+                    }
                 }
             }
         }
@@ -86,24 +102,18 @@ private fun EstadoSinPisos() {
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-private fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
+fun TarjetaPiso(piso: Piso, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() },
+            .clickable { onClick() }, // Aquí se maneja el clic
         elevation = CardDefaults.cardElevation(2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = piso.titulo,
-                fontWeight = FontWeight.Bold,
-                style = MaterialTheme.typography.titleMedium
-            )
 
-            // Arreglo para el objeto Direccion
             piso.direccion?.let { dir ->
                 Text(
-                    text = "${dir.calle}, ${dir.ciudad}",
+                    text = "${dir.calle ?: ""}, ${dir.ciudad ?: ""}",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

@@ -74,6 +74,7 @@ namespace Formularios
                 await inquilinoControlador.add(nuevoInquilino);
                 MessageBox.Show("Inquilino registrado correctamente.");
             }
+            this.Hide();
         }
     }
 }

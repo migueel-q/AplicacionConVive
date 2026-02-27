@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label5 = new Label();
@@ -41,6 +42,8 @@
             label7 = new Label();
             txtPrecio = new TextBox();
             label8 = new Label();
+            errorProvider = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -144,7 +147,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(525, 85);
+            label7.Location = new Point(536, 85);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(68, 23);
@@ -168,6 +171,10 @@
             label8.Size = new Size(57, 23);
             label8.TabIndex = 15;
             label8.Text = "Precio";
+            // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
             // 
             // FormAñadirPiso
             // 
@@ -194,6 +201,7 @@
             Name = "FormAñadirPiso";
             Text = "Añadir Piso";
             Load += FormAñadirPiso_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,5 +222,6 @@
         private Label label7;
         private TextBox txtPrecio;
         private Label label8;
+        private ErrorProvider errorProvider;
     }
 }

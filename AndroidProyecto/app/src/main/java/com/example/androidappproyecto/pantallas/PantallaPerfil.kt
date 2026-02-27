@@ -33,7 +33,7 @@ import com.example.androidappproyecto.ui.theme.rojo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaPerfil(user: Usuario, navController: NavController, loginViewModel: LoginViewModel){
+fun PantallaPerfil(usuInq : Inquilino?, usuProp : Propietario?, navController: NavController, loginViewModel: LoginViewModel){
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -62,7 +62,9 @@ fun PantallaPerfil(user: Usuario, navController: NavController, loginViewModel: 
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = user.nombre_real.take(1).uppercase(),
+                    text = (if (usuInq != null){ usuInq.nombre_real.take(1)} else {
+                        usuProp?.nombre_real?.take(1) ?: ""
+                    }),
                     fontSize = 48.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold
@@ -72,13 +74,13 @@ fun PantallaPerfil(user: Usuario, navController: NavController, loginViewModel: 
             Spacer(modifier = Modifier.height(24.dp))
 
 
-            Text(user.nombre_usuario, fontSize = 28.sp, fontWeight = FontWeight.Bold)
+            Text((if (usuInq != null){ usuInq.nombre_usuario} else { usuProp?.nombre_usuario}).toString(), fontSize = 28.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(8.dp))
-            Text(user.nombre_real, fontSize = 16.sp, color = Color.Gray)
-            Text(user.email, fontSize = 16.sp, color = Color.Gray)
+            Text((if (usuInq != null){ usuInq.nombre_real} else { usuProp?.nombre_real}).toString(), fontSize = 16.sp, color = Color.Gray)
+            Text((if (usuInq != null){ usuInq.email} else { usuProp?.email}).toString(), fontSize = 16.sp, color = Color.Gray)
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "Usuario",
+                text = "Sesión iniciada",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF800000)

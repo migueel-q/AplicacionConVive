@@ -1,6 +1,8 @@
 package com.example.androidappproyecto.pantallas
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -29,6 +31,7 @@ import com.example.androidappproyecto.navegacion.AppConviveNavigation
 import com.example.androidappproyecto.navegacion.Rutas
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ProyectoView(pisoViewModel: PisoViewModel){
@@ -84,7 +87,7 @@ private fun AppConviveBottomBar(navController: NavHostController) {
     val bar_items= listOf(
         Items_barra_inferior.Item_bottom_nav_home,
         Items_barra_inferior.Item_bottom_nav_search,
-        Items_barra_inferior.Item_bottom_nav_chat,
+//        Items_barra_inferior.Item_bottom_nav_chat,
         Items_barra_inferior.Item_bottom_nav_pisos,
         Items_barra_inferior.Item_bottom_nav_perfil
 )

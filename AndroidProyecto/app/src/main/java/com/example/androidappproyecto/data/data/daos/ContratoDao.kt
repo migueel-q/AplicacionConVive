@@ -1,5 +1,7 @@
 package com.example.androidappproyecto.data.data.daos
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -26,7 +28,8 @@ interface ContratoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertContratos(contratos: List<Contrato>)
-
+    @Query("SELECT * FROM contratos WHERE piso_id_piso = :pisoId")
+    fun getContratosPorPiso(pisoId: Int): List<Contrato>
     @Delete
     suspend fun deleteContrato(contrato: Contrato)
 
