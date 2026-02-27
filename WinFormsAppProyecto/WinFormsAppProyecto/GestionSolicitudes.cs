@@ -56,8 +56,9 @@ namespace Formularios
         {
             await CargarSolicitudes();
             dgvSolicitudes.DataSource = listaSolicitud.Where(s => !s.aceptado).ToList();
-            dgvSolicitudes.Columns["piso"].Visible = false;
+            dgvSolicitudes.Columns["oferta"].Visible = false;
             dgvSolicitudes.Columns["inquilino"].Visible = false;
+            dgvSolicitudes.Columns["id"].Visible = false;
         }
 
         private async Task CargarSolicitudes()

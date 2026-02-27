@@ -26,6 +26,7 @@ namespace Formularios
             await CargarContratos();
             dgvContratos.DataSource = listaContratos.Where(c => !c.aceptado).ToList();
             dgvContratos.Columns["piso"].Visible = false;
+            dgvContratos.Columns["id"].Visible = false;
 
         }
 

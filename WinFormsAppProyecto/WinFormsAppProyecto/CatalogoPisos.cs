@@ -39,6 +39,7 @@ namespace Formularios
 
             dgvCatalogoPisos.Columns["direccion"].Visible = false;
             dgvCatalogoPisos.Columns["propietario"].Visible = false;
+            dgvCatalogoPisos.Columns["id"].Visible = false;
         }
 
 
