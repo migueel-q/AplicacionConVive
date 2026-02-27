@@ -9,8 +9,7 @@ namespace WinFormsAppProyecto
     {
         Propietario propietario;
         Inquilino inquilino;
-        Administrador administrador;
-        
+
         public Form1(Inquilino inquilino)
         {
             InitializeComponent();
@@ -22,10 +21,10 @@ namespace WinFormsAppProyecto
             añadirPiso.Visible = false;
             modificarPiso.Visible = false;
             añadirPiso.Visible = false;
-            gestionarOfertas.Visible = false;
-            gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             button1.Visible = false;
+            verMiPisoToolStripMenuItem.Visible = true;
+            verMisPisos.Visible = false;
         }
 
         public Form1(Propietario propietario)
@@ -37,8 +36,9 @@ namespace WinFormsAppProyecto
             AbrirFormulario(catalogoPisos);
             gestionGastos.Visible = false;
             hacerOferta.Visible = false;
-            hacerSolicitud.Visible = false;
             button1.Visible = false;
+            verMiPisoToolStripMenuItem.Visible = false;
+            gestionarOfertas.Visible = false;
         }
 
         public Form1(Administrador administrador)
@@ -50,17 +50,14 @@ namespace WinFormsAppProyecto
             AbrirFormulario(catalogoPisos);
             gestionGastos.Visible = false;
             hacerOferta.Visible = false;
-            hacerSolicitud.Visible = false;
             añadirPiso.Visible = false;
             modificarPiso.Visible = false;
             añadirPiso.Visible = false;
             gestionarOfertas.Visible = false;
-            gestionarSolicitudes.Visible = false;
             gestionContrato.Visible = false;
             chatToolStripMenuItem.Visible = false;
             gestiónPisosToolStripMenuItem.Visible = false;
             gestiónOfertasToolStripMenuItem.Visible = false;
-            gestiónSolicitudesToolStripMenuItem.Visible = false;
         }
         private void AbrirFormulario(Form formulario)
         {
@@ -216,6 +213,45 @@ namespace WinFormsAppProyecto
             AbrirFormulario(gestionarContratos);
         }
 
-        
+        private void verMiPisoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (inquilino == null)
+            {
+                MessageBox.Show("Esta opción está disponible solo para inquilinos.");
+                return;
+            }
+
+            FormVerMiPiso formVerMiPiso = new FormVerMiPiso(inquilino, null);
+            AbrirFormulario(formVerMiPiso);
+        }
+
+        private void verMisPisos_Click(object sender, EventArgs e)
+        {
+            CatalogosPisosPropietario catalogosPisosPropietario = new CatalogosPisosPropietario(propietario);
+            AbrirFormulario(catalogosPisosPropietario);
+        }
+
+        private void hacerOferta_Click(object sender, EventArgs e)
+        {
+            CatalogoPisos catalogo = Application.OpenForms.OfType<CatalogoPisos>().FirstOrDefault();
+
+            if (catalogo == null)
+            {
+                MessageBox.Show("Primero abre el catálogo de pisos."); return;
+            }
+            else
+            {
+                Piso pisoSeleccion = catalogo.pisoSeleccionado;
+                FormOfertasSolicitudes formOfertas = new FormOfertasSolicitudes(inquilino, pisoSeleccion);
+                AbrirFormulario(formOfertas);
+            }
+        }
+
+        private void gestionarOfertas_Click(object sender, EventArgs e)
+        {
+            GestionSolicitudes gestionSolicitudes = new GestionSolicitudes();
+            AbrirFormulario(gestionSolicitudes);
+        }
     }
 }
