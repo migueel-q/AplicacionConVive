@@ -35,7 +35,7 @@ namespace Formularios
         private async void CatalogoPisos_Load(object sender, EventArgs e)
         {
             await CargarPisos();
-            dgvCatalogoPisos.DataSource = listaPisos.Where(p => p.validado).ToList();
+            dgvCatalogoPisos.DataSource = listaPisos.Where(p => p.validado && p.disponible).ToList();
 
             dgvCatalogoPisos.Columns["direccion"].Visible = false;
             dgvCatalogoPisos.Columns["propietario"].Visible = false;

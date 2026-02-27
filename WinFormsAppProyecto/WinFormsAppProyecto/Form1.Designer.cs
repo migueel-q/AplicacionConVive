@@ -33,6 +33,8 @@
             añadirPiso = new ToolStripMenuItem();
             modificarPiso = new ToolStripMenuItem();
             verPisosToolStripMenuItem = new ToolStripMenuItem();
+            verMiPisoToolStripMenuItem = new ToolStripMenuItem();
+            verMisPisos = new ToolStripMenuItem();
             gestionGastos = new ToolStripMenuItem();
             verGastodToolStripMenuItem = new ToolStripMenuItem();
             chatToolStripMenuItem = new ToolStripMenuItem();
@@ -40,14 +42,10 @@
             gestiónOfertasToolStripMenuItem = new ToolStripMenuItem();
             hacerOferta = new ToolStripMenuItem();
             gestionarOfertas = new ToolStripMenuItem();
-            gestiónSolicitudesToolStripMenuItem = new ToolStripMenuItem();
-            hacerSolicitud = new ToolStripMenuItem();
-            gestionarSolicitudes = new ToolStripMenuItem();
             gestionContrato = new ToolStripMenuItem();
             gestionarContratosToolStripMenuItem = new ToolStripMenuItem();
             cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
             button1 = new Button();
-            verMiPisoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,7 +54,7 @@
             menuStrip1.BackColor = Color.White;
             menuStrip1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónPisosToolStripMenuItem, gestionGastos, chatToolStripMenuItem, gestiónOfertasToolStripMenuItem, gestiónSolicitudesToolStripMenuItem, gestionContrato, cerrarSesiónToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gestiónPisosToolStripMenuItem, gestionGastos, chatToolStripMenuItem, gestiónOfertasToolStripMenuItem, gestionContrato, cerrarSesiónToolStripMenuItem });
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -67,7 +65,7 @@
             // 
             // gestiónPisosToolStripMenuItem
             // 
-            gestiónPisosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { añadirPiso, modificarPiso, verPisosToolStripMenuItem, verMiPisoToolStripMenuItem });
+            gestiónPisosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { añadirPiso, modificarPiso, verPisosToolStripMenuItem, verMiPisoToolStripMenuItem, verMisPisos });
             gestiónPisosToolStripMenuItem.Name = "gestiónPisosToolStripMenuItem";
             gestiónPisosToolStripMenuItem.Size = new Size(125, 27);
             gestiónPisosToolStripMenuItem.Text = "Gestión pisos";
@@ -75,23 +73,37 @@
             // añadirPiso
             // 
             añadirPiso.Name = "añadirPiso";
-            añadirPiso.Size = new Size(224, 28);
+            añadirPiso.Size = new Size(203, 28);
             añadirPiso.Text = "Añadir piso";
             añadirPiso.Click += añadirPiso_click;
             // 
             // modificarPiso
             // 
             modificarPiso.Name = "modificarPiso";
-            modificarPiso.Size = new Size(224, 28);
+            modificarPiso.Size = new Size(203, 28);
             modificarPiso.Text = "Modificar piso";
             modificarPiso.Click += modificarPiso_Click;
             // 
             // verPisosToolStripMenuItem
             // 
             verPisosToolStripMenuItem.Name = "verPisosToolStripMenuItem";
-            verPisosToolStripMenuItem.Size = new Size(224, 28);
+            verPisosToolStripMenuItem.Size = new Size(203, 28);
             verPisosToolStripMenuItem.Text = "Ver pisos";
             verPisosToolStripMenuItem.Click += verPisosToolStripMenuItem_Click;
+            // 
+            // verMiPisoToolStripMenuItem
+            // 
+            verMiPisoToolStripMenuItem.Name = "verMiPisoToolStripMenuItem";
+            verMiPisoToolStripMenuItem.Size = new Size(203, 28);
+            verMiPisoToolStripMenuItem.Text = "Ver mi piso";
+            verMiPisoToolStripMenuItem.Click += verMiPisoToolStripMenuItem_Click;
+            // 
+            // verMisPisos
+            // 
+            verMisPisos.Name = "verMisPisos";
+            verMisPisos.Size = new Size(203, 28);
+            verMisPisos.Text = "Ver mis pisos";
+            verMisPisos.Click += verMisPisos_Click;
             // 
             // gestionGastos
             // 
@@ -131,33 +143,16 @@
             // hacerOferta
             // 
             hacerOferta.Name = "hacerOferta";
-            hacerOferta.Size = new Size(228, 28);
+            hacerOferta.Size = new Size(253, 28);
             hacerOferta.Text = "Hacer Oferta";
+            hacerOferta.Click += hacerOferta_Click;
             // 
             // gestionarOfertas
             // 
             gestionarOfertas.Name = "gestionarOfertas";
-            gestionarOfertas.Size = new Size(228, 28);
-            gestionarOfertas.Text = "Gestionar Ofertas";
-            // 
-            // gestiónSolicitudesToolStripMenuItem
-            // 
-            gestiónSolicitudesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hacerSolicitud, gestionarSolicitudes });
-            gestiónSolicitudesToolStripMenuItem.Name = "gestiónSolicitudesToolStripMenuItem";
-            gestiónSolicitudesToolStripMenuItem.Size = new Size(168, 27);
-            gestiónSolicitudesToolStripMenuItem.Text = "Gestión Solicitudes";
-            // 
-            // hacerSolicitud
-            // 
-            hacerSolicitud.Name = "hacerSolicitud";
-            hacerSolicitud.Size = new Size(253, 28);
-            hacerSolicitud.Text = "Hacer solicitud";
-            // 
-            // gestionarSolicitudes
-            // 
-            gestionarSolicitudes.Name = "gestionarSolicitudes";
-            gestionarSolicitudes.Size = new Size(253, 28);
-            gestionarSolicitudes.Text = "Gestionar Solicitudes";
+            gestionarOfertas.Size = new Size(253, 28);
+            gestionarOfertas.Text = "Gestionar Solicitudes";
+            gestionarOfertas.Click += gestionarOfertas_Click;
             // 
             // gestionContrato
             // 
@@ -197,13 +192,6 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
-            // verMiPisoToolStripMenuItem
-            // 
-            verMiPisoToolStripMenuItem.Name = "verMiPisoToolStripMenuItem";
-            verMiPisoToolStripMenuItem.Size = new Size(224, 28);
-            verMiPisoToolStripMenuItem.Text = "Ver mi piso";
-            verMiPisoToolStripMenuItem.Click += verMiPisoToolStripMenuItem_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -238,11 +226,9 @@
         private ToolStripMenuItem gestiónOfertasToolStripMenuItem;
         private ToolStripMenuItem hacerOferta;
         private ToolStripMenuItem gestionarOfertas;
-        private ToolStripMenuItem gestiónSolicitudesToolStripMenuItem;
-        private ToolStripMenuItem hacerSolicitud;
-        private ToolStripMenuItem gestionarSolicitudes;
         private ToolStripMenuItem gestionContrato;
         private ToolStripMenuItem gestionarContratosToolStripMenuItem;
         private ToolStripMenuItem verMiPisoToolStripMenuItem;
+        private ToolStripMenuItem verMisPisos;
     }
 }
