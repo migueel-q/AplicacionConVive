@@ -18,8 +18,8 @@ sealed class Items_barra_inferior(
         Icons.Filled.Home,"Home", Rutas.Home.name)
     object Item_bottom_nav_search:Items_barra_inferior(
         Icons.Filled.Search,"Buscar", Rutas.Buscar.name)
-    object Item_bottom_nav_chat:Items_barra_inferior(
-        Icons.Filled.Notifications,"Chat", Rutas.Chat.name)
+//    object Item_bottom_nav_chat:Items_barra_inferior(
+//        Icons.Filled.Notifications,"Chat", Rutas.Chat.name)
     object Item_bottom_nav_pisos:Items_barra_inferior(
         Icons.Filled.List,"Mis pisos", Rutas.MisPisos.name)
     object Item_bottom_nav_perfil:Items_barra_inferior(

@@ -42,34 +42,26 @@ class PisoViewModel(
     var estado by mutableStateOf<HomeState>(HomeState.Idle)
         private set
 
-    fun cargarPisos(userId: Int, rol: String) {
-        viewModelScope.launch {
-            estado = HomeState.Loading
-            try {
-                val lista = if (rol == "PROPIETARIO") {
-                    repositorio.obtenerPisosPorPropietario(userId)
-                } else {
-                    repositorio.obtenerTodosLosPisos()
-                }
-
-                _pisos.value = lista as List<Piso>
-                estado = HomeState.Success
-
-            } catch (e: Exception) {
-                estado = HomeState.Error("Error al cargar pisos: ${e.message}")
-            }
-        }
+    init {
+        refrescarPisos()
     }
-
 
     fun refrescarPisos() {
         viewModelScope.launch {
             _estaCargando.value = true
             _mensajeError.value = null
+            estado = HomeState.Loading
+
             try {
                 repositorio.syncPisos()
+                val listaActualizada = repositorio.obtenerTodosLosPisos().first()
+                _pisos.value = listaActualizada
+                estado = HomeState.Success
             } catch (e: Exception) {
-                _mensajeError.value = "Error al conectar con el servidor"
+                val errorDetallado = "Fallo: ${e::class.simpleName} - ${e.localizedMessage}"
+                _mensajeError.value = errorDetallado
+                estado = HomeState.Error(errorDetallado) // Muestra el error real
+
             } finally {
                 _estaCargando.value = false
             }
@@ -81,6 +73,7 @@ class PisoViewModel(
             try {
                 _estaCargando.value = true
                 repositorio.insertarPiso(piso)
+                refrescarPisos()
             } catch (e: Exception) {
                 _mensajeError.value = e.message
             } finally {
@@ -93,6 +86,7 @@ class PisoViewModel(
         viewModelScope.launch {
             try {
                 repositorio.actualizarPiso(piso)
+                refrescarPisos()
             } catch (e: Exception) {
                 _mensajeError.value = "No se pudo actualizar: ${e.message}"
             }
@@ -103,6 +97,7 @@ class PisoViewModel(
         viewModelScope.launch {
             try {
                 repositorio.eliminarPiso(piso)
+                refrescarPisos()
             } catch (e: Exception) {
                 _mensajeError.value = "No se pudo eliminar: ${e.message}"
             }

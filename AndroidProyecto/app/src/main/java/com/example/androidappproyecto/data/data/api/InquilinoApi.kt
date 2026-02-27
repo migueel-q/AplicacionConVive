@@ -22,7 +22,7 @@ interface InquilinoApi {
     suspend fun createInquilino(@Body inquilino: Inquilino): Inquilino
 
     @PUT("api/inquilinos/{id}")
-    suspend fun updateInquilino(@Path("id") id: Int, @Body inquilino: Inquilino): Inquilino
+    suspend fun updateInquilino(@Path("id") id: Int, @Body inquilino: Inquilino?): Inquilino
 
     @DELETE("api/inquilinos/{id}")
     suspend fun deleteInquilino(@Path("id") id: Int)

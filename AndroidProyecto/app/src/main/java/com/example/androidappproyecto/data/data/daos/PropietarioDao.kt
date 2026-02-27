@@ -3,6 +3,7 @@ package com.example.androidappproyecto.data.data.daos
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.androidappproyecto.data.data.modelos.Propietario
@@ -20,7 +21,7 @@ interface PropietarioDao {
     @Insert
     suspend fun insertPropietario(propietario: Propietario)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPropietarios(propietarios: List<Propietario>)
 
     @Update

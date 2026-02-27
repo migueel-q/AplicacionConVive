@@ -18,6 +18,10 @@ class InquilinoPropietarioRepositorio(
     fun getChatLocal(inq: Int, prop: Int) =
         dao.getChat(inq, prop)
 
+    suspend fun buscarPropietarioIdLocal(idInquilino: Int): Int {
+        return dao.getPropietarioIdByInquilino(idInquilino) ?: 0
+    }
+
     suspend fun syncChat(inq: Int, prop: Int) {
         val mensajes = api.getChat(inq, prop)
         dao.insertInquilinosPropietarios(mensajes)

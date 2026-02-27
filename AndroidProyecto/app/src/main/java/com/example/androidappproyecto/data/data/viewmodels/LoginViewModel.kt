@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.androidappproyecto.data.data.modelos.Contrato
 import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.repositorios.InquilinoRepositorio
@@ -52,7 +53,8 @@ class LoginViewModel(
                             nombreReal = respuesta.nombre_real,
                             fechaNac = respuesta.fecha_nacimiento.toString(),
                             email = respuesta.email,
-                            password = respuesta.password
+                            password = respuesta.password,
+                            contrato = respuesta.contrato
                         )
                     } else {
                         estado = LoginState.Error("Fallo al iniciar sesión")
@@ -102,6 +104,6 @@ class LoginViewModel(
 sealed class LoginState {
     object Idle : LoginState()
     object Loading : LoginState()
-    data class Success(val userId: Int, val nombreReal: String,val fechaNac: String, val email: String, val password: String, val rol: String, val nombreUsuario: String) : LoginState()
+    data class Success(val userId: Int, val nombreReal: String,val fechaNac: String, val email: String, val password: String, val rol: String, val nombreUsuario: String, val contrato: Contrato? = null) : LoginState()
     data class Error(val mensaje: String) : LoginState()
 }

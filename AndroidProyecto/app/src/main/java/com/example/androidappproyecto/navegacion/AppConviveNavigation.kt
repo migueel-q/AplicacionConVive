@@ -17,13 +17,13 @@ import androidx.navigation.NavHostController
 import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.modelos.Usuario
-import com.example.androidappproyecto.data.data.repositorios.GastoRepositorio
+import com.example.androidappproyecto.data.data.repositorios.ContratoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoPropietarioRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.PropietarioRepositorio
-import com.example.androidappproyecto.data.data.repositorios.TareaRepositorio
-import com.example.androidappproyecto.data.data.viewmodels.GastoViewModel
+import com.example.androidappproyecto.data.data.viewmodels.ContratoViewModel
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoPropietarioViewModel
+import com.example.androidappproyecto.data.data.viewmodels.InquilinoViewModel
 import com.example.androidappproyecto.data.data.viewmodels.LoginState
 import com.example.androidappproyecto.data.data.viewmodels.LoginViewModel
 import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
@@ -32,16 +32,13 @@ import com.example.androidappproyecto.database.ApiCliente
 import com.example.androidappproyecto.database.AppDatabase
 import com.example.androidappproyecto.pantallas.*
 
-@SuppressLint("RememberReturnType")
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pisoViewModel: PisoViewModel) {
     val context = LocalContext.current
 
-    var currentUser by remember { mutableStateOf<Usuario?>(null) }
     var currentUserInq by remember { mutableStateOf<Inquilino?>(null) }
     var currentUserProp by remember { mutableStateOf<Propietario?>(null) }
-
 
     val loginViewModel: LoginViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
@@ -70,7 +67,8 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
                     nombre_real = loginEstado.nombreReal,
                     email = loginEstado.email,
                     password = loginEstado.password,
-                    fecha_nacimiento = loginEstado.fechaNac
+                    fecha_nacimiento = loginEstado.fechaNac,
+                    contrato = loginEstado.contrato
                 )
                 currentUserProp = null
             }
@@ -97,37 +95,37 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
             PantallaLogin(viewModel = loginViewModel, navController = navController)
         }
         composable(Rutas.Home.name) {
-            currentUser?.let { user ->
                 PantallaHome(
-                    userId = user.id,
-                    rol = user.rol,
-                    pisoViewModel = pisoViewModel
-                )
-            }
-        }
-        composable(Rutas.Buscar.name) { PantallaBuscar() }
-
-        composable(Rutas.Chat.name + "/{inqId}/{propId}") { backStack ->
-            val inq = backStack.arguments?.getString("inqId")?.toInt() ?: 0
-            val prop = backStack.arguments?.getString("propId")?.toInt() ?: 0
-
-            val chatViewModel: InquilinoPropietarioViewModel = viewModel(
-                key = "chat_${inq}_${prop}",
-                factory = object : ViewModelProvider.Factory {
-                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                        val database = AppDatabase.getDatabase(context)
-                        val repository = InquilinoPropietarioRepositorio(
-                            ApiCliente.inquilinoPropietarioApi,
-                            database.inquilinoPropietarioDao()
-                        )
-                        @Suppress("UNCHECKED_CAST")
-                        return InquilinoPropietarioViewModel(repository) as T
+                    currentUserInq,
+                    currentUserProp,
+                    pisoViewModel = pisoViewModel,
+                    onPisoClick = { piso ->
+                        PisoSeleccionado.piso = piso
+                        navController.navigate(Rutas.DetallePiso.name)
                     }
-                }
-            )
-
-            PantallaChat(viewModel = chatViewModel, inqId = inq, propId = prop, currentUser)
+                )
         }
+        composable(Rutas.Buscar.name) { PantallaBuscar(pisoViewModel) }
+
+//        composable(Rutas.Chat.name) { backStack ->
+//            val inqId = currentUserInq?.id ?: 0
+//
+//            val chatViewModel: InquilinoPropietarioViewModel = viewModel(
+//                key = "chat_session_$inqId",
+//                factory = object : ViewModelProvider.Factory {
+//                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//                        val database = AppDatabase.getDatabase(context)
+//                        val repository = InquilinoPropietarioRepositorio(
+//                            ApiCliente.inquilinoPropietarioApi,
+//                            database.inquilinoPropietarioDao()
+//                        )
+//                        @Suppress("UNCHECKED_CAST")
+//                        return InquilinoPropietarioViewModel(repository) as T
+//                    }
+//                }
+//            )
+//            PantallaChat(viewModel = chatViewModel, inqLogueado = currentUserInq)
+//        }
 
         composable(Rutas.MisPisos.name) { currentUser?.let { user ->
             PantallaMisPisos(
@@ -139,7 +137,7 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
         } }
 
         composable(Rutas.Perfil.name) {
-            PantallaPerfil(user = currentUser ?: Usuario(0,"","","","",""), navController, loginViewModel)
+            PantallaPerfil(currentUserInq, currentUserProp, navController, loginViewModel)
         }
         composable(Rutas.DetallePiso.name) {
             val tareaViewModel: TareaViewModel = viewModel(
@@ -153,6 +151,25 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
                 }
             )
 
-        composable(Rutas.DetallePiso.name) { PantallaDetallePiso(currentUserInq, currentUserProp) }
+        composable(Rutas.DetallePiso.name) {
+            val contratoViewModel: ContratoViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        val repository = ContratoRepositorio(AppDatabase.getDatabase(context).contratoDao(), ApiCliente.contratoApi)
+                        @Suppress("UNCHECKED_CAST")
+                        return ContratoViewModel(repository) as T
+                    }
+                }
+            )
+            val inquilinoViewModel: InquilinoViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        val repository = InquilinoRepositorio(AppDatabase.getDatabase(context).inquilinoDao(), ApiCliente.inquilinoApi)
+                        @Suppress("UNCHECKED_CAST")
+                        return InquilinoViewModel(repository) as T
+                    }
+                }
+            )
+            PantallaDetallePiso(currentUserInq, currentUserProp, contratoViewModel, inquilinoViewModel) }
     }
 }
