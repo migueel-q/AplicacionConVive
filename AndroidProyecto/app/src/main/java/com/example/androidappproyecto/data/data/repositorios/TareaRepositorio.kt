@@ -54,4 +54,29 @@ class TareaRepositorio(
             println("Error al refrescar tareas: ${e.message}")
         }
     }
+    fun getTareasByPiso(pisoId: Int): Flow<List<Tarea>> {
+        return tareaDao.getTareasByPiso(pisoId)
+    }
+
+    /**
+     * Actualiza solo el estado de "completada" de una tarea.
+     */
+    suspend fun actualizarEstadoTarea(tareaId: Int, completada: Boolean) {
+        try {
+            // 1. Buscamos la tarea actual en Room para no perder los otros datos
+            val tareaActual = tareaDao.getTareaById(tareaId)
+            if (tareaActual != null) {
+                // 2. Creamos una copia con el nuevo estado
+                val tareaActualizada = tareaActual
+
+                // 3. Actualizamos en el servidor (API Java)
+                tareaApi.updateTarea(tareaId, tareaActualizada)
+
+                // 4. Actualizamos en Room
+                tareaDao.updateTarea(tareaActualizada)
+            }
+        } catch (e: Exception) {
+            throw IOException("Error al cambiar estado de la tarea: ${e.message}", e)
+        }
+    }
 }

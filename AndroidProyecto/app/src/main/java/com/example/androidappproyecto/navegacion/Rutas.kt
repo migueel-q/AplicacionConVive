@@ -7,5 +7,6 @@ enum class Rutas {
     Chat,
     MisPisos,
     Perfil,
-    DetallePiso
+    DetallePiso,
+    DetalleMisPisos
 }

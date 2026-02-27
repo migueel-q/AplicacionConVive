@@ -21,6 +21,7 @@ import com.example.androidappproyecto.data.data.repositorios.ContratoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoPropietarioRepositorio
 import com.example.androidappproyecto.data.data.repositorios.InquilinoRepositorio
 import com.example.androidappproyecto.data.data.repositorios.PropietarioRepositorio
+import com.example.androidappproyecto.data.data.repositorios.TareaRepositorio
 import com.example.androidappproyecto.data.data.viewmodels.ContratoViewModel
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoPropietarioViewModel
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoViewModel
@@ -127,29 +128,18 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
 //            PantallaChat(viewModel = chatViewModel, inqLogueado = currentUserInq)
 //        }
 
-        composable(Rutas.MisPisos.name) { currentUser?.let { user ->
+        composable(Rutas.MisPisos.name) {
             PantallaMisPisos(
                 navController = navController,
-                userId = user.id,
-                rol = user.rol,
-                pisoViewModel = pisoViewModel
+                pisoViewModel = pisoViewModel,
+                inquilino = currentUserInq,
+                propietario = currentUserProp
             )
-        } }
+        }
 
         composable(Rutas.Perfil.name) {
             PantallaPerfil(currentUserInq, currentUserProp, navController, loginViewModel)
         }
-        composable(Rutas.DetallePiso.name) {
-            val tareaViewModel: TareaViewModel = viewModel(
-                factory = object : ViewModelProvider.Factory {
-                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                        val database = AppDatabase.getDatabase(context)
-                        val repo = TareaRepositorio(database.tareaDao(), ApiCliente.tareaApi)
-                        @Suppress("UNCHECKED_CAST")
-                        return TareaViewModel(repo) as T
-                    }
-                }
-            )
 
         composable(Rutas.DetallePiso.name) {
             val contratoViewModel: ContratoViewModel = viewModel(
@@ -170,6 +160,38 @@ fun AppConviveNavigation(navController: NavHostController, modifier: Modifier,pi
                     }
                 }
             )
-            PantallaDetallePiso(currentUserInq, currentUserProp, contratoViewModel, inquilinoViewModel) }
+            PantallaDetallePiso(currentUserInq, currentUserProp, contratoViewModel, inquilinoViewModel)
+        }
+        composable(Rutas.DetalleMisPisos.name) {
+            val contratoViewModel: ContratoViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        val repository = ContratoRepositorio(AppDatabase.getDatabase(context).contratoDao(), ApiCliente.contratoApi)
+                        @Suppress("UNCHECKED_CAST")
+                        return ContratoViewModel(repository) as T
+                    }
+                }
+            )
+            val inquilinoViewModel: InquilinoViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        val repository = InquilinoRepositorio(AppDatabase.getDatabase(context).inquilinoDao(), ApiCliente.inquilinoApi)
+                        @Suppress("UNCHECKED_CAST")
+                        return InquilinoViewModel(repository) as T
+                    }
+                }
+            )
+            val tareaViewModel: TareaViewModel = viewModel(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        val repository = TareaRepositorio(AppDatabase.getDatabase(context).tareaDao(), ApiCliente.tareaApi)
+                        @Suppress("UNCHECKED_CAST")
+                        return TareaViewModel(repository) as T
+                    }
+                }
+            )
+            PantallaDetalleMisPisos(currentUserInq, currentUserProp, contratoViewModel, inquilinoViewModel, tareaViewModel) }
+
+
     }
 }
