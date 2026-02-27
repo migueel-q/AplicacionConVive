@@ -1,0 +1,7 @@
+CREATE EVENT eliminar_contratos_vencidos
+ON SCHEDULE EVERY 1 MINUTE
+STARTS CURRENT_TIMESTAMP
+DO
+    UPDATE contratos
+    SET aceptado = 0
+    WHERE fecha_fin <= CURDATE();
