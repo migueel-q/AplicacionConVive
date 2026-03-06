@@ -3,6 +3,7 @@ package com.example.androidappproyecto.pantallas
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,6 +14,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +28,9 @@ import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.viewmodels.ContratoViewModel
 import com.example.androidappproyecto.data.data.viewmodels.InquilinoViewModel
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -48,7 +53,6 @@ fun PantallaDetallePiso(
         contentPadding = PaddingValues(16.dp)
     ) {
         item {
-            // FOTO HERO
             GlideImage(
                 model = piso.url_imagen ?: "",
                 contentDescription = "Foto del piso",
@@ -99,6 +103,37 @@ fun PantallaDetallePiso(
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF800000))
                 ) {
                     Text("Solicitar Alquiler", color = Color.White)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                AssistChip(
+                    onClick = { },
+                    label = {
+                        Text(
+                            text = if (piso.disponible == true) "Disponible" else "No disponible",
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold
+                        )
+                    },
+                    colors = AssistChipDefaults.assistChipColors(
+                        containerColor = if (piso.disponible == true) Color(0xFF4CAF50) else Color.Red
+                    )
+                )
+                if(propLogueado!=null) {
+                    AssistChip(
+                        onClick = { },
+                        label = {
+                            Text(
+                                text = if (piso.validado == true) "Validado" else "No validado",
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            )
+                        },
+                        colors = AssistChipDefaults.    assistChipColors(
+                            containerColor = if (piso.validado == true) Color(0xFF2196F3) else Color.Gray
+                        )
+                    )
                 }
             }
         }

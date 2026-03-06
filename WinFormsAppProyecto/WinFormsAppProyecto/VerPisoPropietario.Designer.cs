@@ -227,6 +227,7 @@
             Controls.Add(lblDireccion);
             Name = "VerPisoPropietario";
             Text = "VerPisoPropietario";
+            Load += VerPisoPropietario_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -34,13 +34,13 @@ namespace WinFormsAppProyecto
             this.IsMdiContainer = true;
             this.propietario = propietario;
             CatalogoPisos catalogoPisos = new CatalogoPisos();
-            AbrirFormulario(catalogoPisos);
-            gestionGastos.Visible = false;
-            hacerOferta.Visible = false;
+            AbrirFormulario(catalogoPisos);            
+            hacerOferta.Visible = false;            
             button1.Visible = false;
             verMiPisoToolStripMenuItem.Visible = false;
             gestionarOfertas.Visible = false;
-
+            verGastodToolStripMenuItem.Visible = false;
+            gestiónOfertasToolStripMenuItem.Visible = false;
             this.CenterToScreen();
         }
 
@@ -255,6 +255,23 @@ namespace WinFormsAppProyecto
         {
             GestionSolicitudes gestionSolicitudes = new GestionSolicitudes();
             AbrirFormulario(gestionSolicitudes);
+        }
+
+        private void añadirGastos_Click(object sender, EventArgs e)
+        {
+            CatalogosPisosPropietario catalogo = Application.OpenForms.OfType<CatalogosPisosPropietario>().FirstOrDefault();
+
+            if (catalogo == null)
+            {
+                MessageBox.Show("Primero abre el catálogo de tus pisos.");
+                return;
+            }
+            else
+            {
+                Piso pisoSeleccion = catalogo.pisoSeleccionado;
+                AñadirGastos añadirGastos = new AñadirGastos(pisoSeleccion);
+                AbrirFormulario(añadirGastos);
+            }
         }
     }
 }

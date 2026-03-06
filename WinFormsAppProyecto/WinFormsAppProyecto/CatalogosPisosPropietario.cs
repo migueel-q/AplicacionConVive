@@ -108,5 +108,22 @@ namespace Formularios
 
             bs.DataSource = new BindingList<Piso>(filtrados);
         }
+
+        public Piso pisoSeleccionado
+        {
+            get
+            {
+                if (dgvCatalogoPisos.SelectedRows.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (Piso)dgvCatalogoPisos.SelectedRows[0].DataBoundItem;
+                }
+            }
+        }
+
+
     }
 }

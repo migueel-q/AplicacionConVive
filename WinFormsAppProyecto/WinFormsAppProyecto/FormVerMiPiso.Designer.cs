@@ -48,6 +48,7 @@ namespace Formularios
             lblUrlImagen = new Label();
             txtUrlImagen = new TextBox();
             pictureBoxImagen = new PictureBox();
+            btnVerTareas = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
             SuspendLayout();
             // 
@@ -235,11 +236,24 @@ namespace Formularios
             pictureBoxImagen.TabIndex = 18;
             pictureBoxImagen.TabStop = false;
             // 
+            // btnVerTareas
+            // 
+            btnVerTareas.BackColor = Color.DarkRed;
+            btnVerTareas.ForeColor = SystemColors.ControlLightLight;
+            btnVerTareas.Location = new Point(500, 380);
+            btnVerTareas.Name = "btnVerTareas";
+            btnVerTareas.Size = new Size(120, 30);
+            btnVerTareas.TabIndex = 20;
+            btnVerTareas.Text = "Ver Tareas";
+            btnVerTareas.UseVisualStyleBackColor = false;
+            btnVerTareas.Click += btnVerTareas_Click;
+            // 
             // FormVerMiPiso
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 421);
+            Controls.Add(btnVerTareas);
             Controls.Add(btnAñadirTarea);
             Controls.Add(pictureBoxImagen);
             Controls.Add(txtUrlImagen);
@@ -290,5 +304,6 @@ namespace Formularios
         private System.Windows.Forms.Label lblUrlImagen;
         private System.Windows.Forms.TextBox txtUrlImagen;
         private System.Windows.Forms.PictureBox pictureBoxImagen;
+        private Button btnVerTareas;
     }
 }

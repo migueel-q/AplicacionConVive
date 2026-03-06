@@ -17,7 +17,9 @@ import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.androidappproyecto.data.data.modelos.Direccion
+import com.example.androidappproyecto.data.data.modelos.Inquilino
 import com.example.androidappproyecto.data.data.modelos.Piso
+import com.example.androidappproyecto.data.data.modelos.Propietario
 import com.example.androidappproyecto.data.data.viewmodels.PisoViewModel
 
 import com.example.androidappproyecto.navegacion.PisoSeleccionado
@@ -26,13 +28,13 @@ import com.example.androidappproyecto.navegacion.Rutas
 @Composable
 fun PantallaMisPisos(
     navController: NavHostController,
-    userId: Int,
-    rol: String,
-    pisoViewModel: PisoViewModel
+    pisoViewModel: PisoViewModel,
+    inquilino: Inquilino?,
+    propietario: Propietario?
 ) {
     // Cargar pisos al entrar a la pantalla
     LaunchedEffect(Unit) {
-        pisoViewModel.cargarPisos(userId, rol)
+        pisoViewModel.refrescarPisos()
     }
 
     val listaDePisos by pisoViewModel.pisos.collectAsStateWithLifecycle()
@@ -72,12 +74,18 @@ fun PantallaMisPisos(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         items(listaDePisos) { piso ->
-                            TarjetaPiso(piso = piso, onClick = {
-                                // Guardamos el piso seleccionado en un objeto global o ViewModel
-                                PisoSeleccionado.piso = piso
-                                // Navegamos a la pantalla de detalle
-                                navController.navigate(Rutas.DetallePiso.name)
-                            })
+                            if (propietario!=null&& piso.propietario?.id ==propietario.id) {
+                                TarjetaPiso(piso = piso, onClick = {
+                                    PisoSeleccionado.piso = piso
+                                    navController.navigate(Rutas.DetalleMisPisos.name)
+                                })
+                            }
+                            if (inquilino!=null && inquilino.contrato?.aceptado == true){
+                                TarjetaPiso(piso = piso, onClick = {
+                                    PisoSeleccionado.piso = piso
+                                    navController.navigate(Rutas.DetalleMisPisos.name)
+                                })
+                            }
                         }
                     }
                 }
